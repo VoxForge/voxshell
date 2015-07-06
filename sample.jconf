@@ -408,15 +408,12 @@
 ####
 #### misc.
 ####
-# !!!!!! VoxForge change
-#-outprobout filename		# save computed outprob vectors to HTK file (for debug)
-# !!!!!! 
 
+# !!!!!!
 # VoxForge configurations:
--dfa grammar/sample/sample.dfa
--v grammar/sample/sample.dict
--h acoustic_model_files/hmmdefs
--hlist acoustic_model_files/tiedlist
+-gram sample/sample
+-h acoustic_model/en/hmmdefs
+-hlist acoustic_model/en/tiedlist
 -spmodel "sp"		# HMM model name
 -multipath
 -gprune safe
@@ -431,6 +428,7 @@
 -n 1
 -silhead "<s>"			# beginning-of-sentence (silence) word
 -siltail "</s>"		# end-of-sentence (silence) word
+-quiet
+-logfile julius.log
 # !!!!!!
-
 

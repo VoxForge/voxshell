@@ -79,6 +79,7 @@ function make_category_voca(vocafile,termfile,tmpvocafile)
   close(tmpvocafile_fh)
   close(termfile_fh)
   println("$vocafile has $n1 categories and $n2 words")
+  println("generated: $termfile")
   println("---")
 end
 
@@ -110,7 +111,7 @@ function voca2dict(vocafile, dictfile)
 
   close(dictfile_fh)
 
-  println("generated: $termfile $dictfile")
+  println("generated: $dictfile")
 end
 
 function vfvoca2dict(vocafile,dic,dictfile)
@@ -159,14 +160,17 @@ function vfvoca2dict(vocafile,dic,dictfile)
 
   close(dictfile_fh)
 
-  println("generated: $termfile $dictfile")
+  println("generated: $dictfile")
 end
 
-# if called from command line
-if length(ARGS) > 0 
+function main ()
+  mkfa= @windows ? "mkfa.exe" : "mkfa"
+  dfa_minimize= @windows ? "dfa_minimize.exe" : "dfa_minimize"
+
   grammar_prefix=ARGS[1] 
+  grammar_folder=ARGS[1] 
   if ! isfile(grammar_prefix * ".grammar")
-    error("can't find gramfile file: $(grammar_prefix).grammar")
+    error("can't find gramfile file: $(grammar_folder)/$(grammar_prefix).grammar")
   end
   if ! isfile(grammar_prefix * ".voca")
     error("can't find voca file: $(grammar_prefix).voca")
@@ -175,7 +179,8 @@ if length(ARGS) > 0
     error("mkdfa: too many arguments for call from command line")
   end
 
-  workingfolder=dirname(ARGS[1])
+  #workingfolder=dirname(ARGS[1]) # debug
+  workingfolder=mktempdir()
   grammar_prefix=ARGS[1] # includes path
 
   rgramfile= "$(workingfolder)/g$(getpid()).grammar"
@@ -187,28 +192,33 @@ if length(ARGS) > 0
   dictfile="$(grammar_prefix).dict"
   headerfile="$(workingfolder)/g$(getpid()).h"
 
-# julius mkdfa.pl port
-#  reverse_grammar(rgramfile,gramfile)
-#  make_category_voca(vocafile,termfile,tmpvocafile)
-#  run(`mkfa -e1 -fg $rgramfile -fv $tmpvocafile -fo $(dfafile).tmp -fh $headerfile`)
-#  run(`dfa_minimize $(dfafile).tmp -o $dfafile`)
-#  voca2dict(vocafile, dictfile)
+  # julius mkdfa.pl port
+  #  reverse_grammar(rgramfile,gramfile)
+  #  make_category_voca(vocafile,termfile,tmpvocafile)
+  #  run(`mkfa -e1 -fg $rgramfile -fv $tmpvocafile -fo $(dfafile).tmp -fh $headerfile`)
+  #  run(`dfa_minimize $(dfafile).tmp -o $dfafile`)
+  #  voca2dict(vocafile, dictfile)
 
-# voxforge updates
-reverse_grammar(rgramfile,gramfile)
-vocafile="$(grammar_prefix).voca"
-dic="etc/VoxForgeDict.txt"
-dicfile="$(grammar_prefix).dict"
-make_category_voca(vocafile,termfile,tmpvocafile)
-run(`bin/mkfa -e1 -fg $rgramfile -fv $tmpvocafile -fo $(dfafile).tmp -fh $headerfile`)
-run(`bin/dfa_minimize $(dfafile).tmp -o $dfafile`)
-vfvoca2dict(vocafile,dic,dicfile)
+  # voxforge updates
+  reverse_grammar(rgramfile,gramfile)
+  vocafile="$(grammar_prefix).voca"
+  dic="etc/VoxForgeDict.txt"
+  dicfile="$(grammar_prefix).dict"
+  make_category_voca(vocafile,termfile,tmpvocafile)
+  println("dir $(pwd())")
+  run(`bin/$mkfa -e1 -fg $rgramfile -fv $tmpvocafile -fo $(dfafile).tmp -fh $headerfile`)
+  run(`bin/$dfa_minimize $(dfafile).tmp -o $dfafile`)
+
+  vfvoca2dict(vocafile,dic,dicfile)
 
   rm("$(dfafile).tmp")
   rm(rgramfile)
   rm(tmpvocafile)
   rm(headerfile)
+
 end
 
-
-
+# called from command line
+if length(ARGS) > 0 
+  main()
+end

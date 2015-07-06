@@ -10,8 +10,13 @@ This Tar file contains everything you need to get Julius working:
  * VoxForge sample Grammar files.
 
 Extract the gzipped tar file to a directory, and execute the following command:
+Linux:
  
   $./julius -input mic -C voxshell.jconf
+
+Windows:
+
+  C:>julius.exe -input mic -C voxshell.jconf
 
 For information on the Julius grammar syntax, see the enclosed GRAMMAR_NOTES.
 
