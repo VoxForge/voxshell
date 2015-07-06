@@ -409,13 +409,9 @@
 #### misc.
 ####
 
-# run: clear && bin/julius -input mic -C voxshell_linux.jconf -plugindir plugin
+# run: clear && bin/julius -input mic -C voxshell.jconf -gramlist grammars_linux -plugindir plugin 
 
 # VoxForge configurations:
-#-dfa rhythmbox/en/grammar/rhythmbox.dfa
-#-v rhythmbox/en/grammar/rhythmbox.vfdict
-
-
 -h acoustic_model/en/hmmdefs
 -hlist acoustic_model/en/tiedlist
 
@@ -437,12 +433,6 @@
 # you may need to adjust your "-lv" value to prevent the recognizer inadvertently 
 # recognizing non-speech sounds:
 -lv 8000			# level threshold (0-32767)
-
-# add you o
--gram linux/rhythmbox/en/grammar/rhythmbox
--gram linux/shell/en/grammar/shell 
--gram linux/firefox/en/grammar/firefox 
-# !!!!!!
-#-record wav			# record each inputs into dir
-#-outfile		# save each result in separate file
 -logfile julius.log
+
+# !!!!!!
