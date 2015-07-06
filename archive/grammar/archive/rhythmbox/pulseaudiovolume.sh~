@@ -1,0 +1,13 @@
+#!/bin/sh
+VOLUME=$1
+echo VOLUME: $VOLUME
+for line in $(pactl list short sinks | awk '{print $1,$7"\n"}')
+do
+echo $line
+  if [[ $line =~ 'RUNNING' ]]
+  then
+    PORT=$(echo $line | awk '{print $1}')
+    echo pactl set-sink-volume $PORT $VOLUME
+    pactl set-sink-volume $PORT $VOLUME
+  fi
+done
