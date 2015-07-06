@@ -1,5 +1,6 @@
 # voxshell
-Speech Recognition Shell
+Speech Recognition Shell using Julius, a high-performance, two-pass large 
+vocabulary continuous speech recognition (LVCSR) decoder.
 
 VoxForge & Julius Quick Start.
 
@@ -10,7 +11,7 @@ This Tar file contains everything you need to get Julius working:
 
 Extract the gzipped tar file to a directory, and execute the following command:
  
-  $./julius -input mic -C Sample.jconf
+  $./julius -input mic -C voxshell.jconf
 
 For information on the Julius grammar syntax, see the enclosed GRAMMAR_NOTES.
 
