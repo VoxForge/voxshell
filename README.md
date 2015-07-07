@@ -17,11 +17,11 @@ This Tar file contains everything you need to get Julius working:
 Extract the gzipped tar file to a directory, and execute the following command:
 Linux:
  
-  $ bin/julius -input mic -C voxshell_linux.jconf -gramlist grammars_linux
+  $ bin/julius -input mic -C voxshell.jconf -gramlist grammars_linux
 
 Windows:
 
-  C:> bin/julius.exe -input mic -C voxshell_windows.jconf -gramlist grammars_linux
+  C:> bin/julius.exe -input mic -C voxshell.jconf -gramlist grammars_linux
 
 For information on the Julius grammar syntax, see the enclosed GRAMMAR_NOTES.
 

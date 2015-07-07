@@ -406,10 +406,9 @@
 #-salign			# enable alignment for result at state level
 
 ####
-#### misc.
-####
-
-# run: clear && bin/julius -input mic -C voxshell.jconf -gramlist grammars_linux -plugindir plugin 
+#### 
+# on Linux: clear && bin/julius -input mic -C voxshell.jconf -gramlist grammars_linux 
+# on Windows: bin\julius -input mic -C voxshell.jconf -gramlist grammars_windows
 
 # VoxForge configurations:
 -h acoustic_model/en/hmmdefs
@@ -434,5 +433,5 @@
 # recognizing non-speech sounds:
 -lv 8000			# level threshold (0-32767)
 -logfile julius.log
-
+-plugindir plugin 
 # !!!!!!
