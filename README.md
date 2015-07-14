@@ -27,7 +27,8 @@ command:
 For information on the Julius grammar syntax, see the enclosed GRAMMAR_NOTES.
 
 Note that we need many more speech submissions to create high quality free Acoustic 
-Models.  Please take the time to submit some transcribed speech to www.voxforge.org.
+Models.  Please take the time to submit some speech to www.voxforge.org using the 
+VoxForge speech applet.
 
 thank you,
 
