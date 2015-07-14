@@ -38,6 +38,7 @@
 #include <stdlib.h> 
 #include <stdbool.h>
 #include <process.h>
+#include <errno.h>
 void child(char *result_str);
 // !!!!!!
 
@@ -105,9 +106,12 @@ get_plugin_info(int opcode, char *buf, int buflen)
   return 0;
 }
 
-
+// windows:
 // to compile for Windows (from Cygwin terminal): i686-w64-mingw32-gcc -shared -o result.jpi result.c
-
+// bin\julius.exe -input mic -C voxshell.jconf -gramlist grammars_windows.txt
+// c:> assoc .pl=Perl
+// C:> ftype Perl="C:\cygwin\bin\perl.exe" "%1" %*
+// linux:
 // to run: clear && ./julius -input mic -C voxshell.jconf -plugindir plugin -quiet
 void result_best_str(char *result_str)
 {
@@ -120,81 +124,76 @@ printf("result %s\n", result_str);
   }
 }
 
+// Note: this function modified the result string
+// while parsing it replaces spaces with string endings ('\0')
 void child(char *result)
 {
-//printf("child [%s]\n", result); 
-  int status;
-  int i;
-  int parse_idx;
-  char command[2048]; 
+  int status; // return variable from executing spawnv command
+  int i; // loop counter
+  int arg_idx; // argument index counter
+  char *command; // actual command to run in child process
+  char *argv[100]; // array of pointers to strings (char arrays)
 
-  bool reading_command=true;
-  int command_idx=0;
-  i=9; // skip [<s> COM "]
-  //command[command_idx++] = '\\'; // put first escaped double quote in command string
-  command[command_idx++] = '"';
-  while ( result[i] != '<' && result[i] != '\0' ) // stops before "</s>"
+  // process command
+  i=9; // skip [<s> COM "] // skip first set of double quotes
+  command=&(result[i]);  // point to start of command
+  while ( result[i] != '"' ) i++; // looking next set of double quotes indicating end of command
+  result[i++]='\0'; // replace double quotes null string ending
+
+  // process arguments
+  // (from: https://msdn.microsoft.com/en-us/library/7zt1y878.aspx)
+  // The argument argv[0] (i.e. argv) is usually a pointer to a path in real 
+  // mode or to the program name in protected mode.
+  // Note: putting command name in argv[0] will execute the command twice???
+  // nice one Windows...
+  argv[0]="child";  // used an as identifier, not used as an argument
+
+  // (from: https://msdn.microsoft.com/en-us/library/7zt1y878.aspx)
+  // argv[1] through argv[n] are pointers to the character strings forming the 
+  // new argument list.
+  arg_idx=1;
+  while ( !(result[i] == ' ' && result[i+1] == '<' && result[i+2] == '/') )
   {
-//printf("%i %c\n", i, result[i]);
-    if (reading_command) 
+    if (result[i] == ' ' || result[i] == '\t') // split argv based on space or tab
     {
-      if (result[i] == '"') // trailing double quotes
-      {
-        //command[command_idx++] = '\\'; // put first escaped double quote in command string
-        command[command_idx++] = '"';
-        reading_command=false;
-      }
-      else
-      {
-        command[command_idx++] = result[i];
-      }
-    }
-    else // reading parameters
-    {
-      command[command_idx++] = result[i];  
+      result[i]='\0'; // terminate argumet inside result string
+      i++; // move to next char
+      while ( result[i] == ' ' || result[i] == '\t' ) i++; // skip any more spaces or tabs
+      argv[arg_idx++]=&(result[i]); // point to start of next token
     }
 
     i++;
   }
-  command[command_idx]='\0';
-
-
+  result[i]='\0';
+  // (from: https://msdn.microsoft.com/en-us/library/7zt1y878.aspx)
+  // The argument argv[n +1] must be a NULL pointer to mark the end of the 
+  // argument list.
+  argv[arg_idx]=NULL;
 
   // debug
-  //printf("command: [%s]\n", command); 
+  printf("command: [%s]; \narg_idx = %d\n", command, arg_idx); 
+  for (i=0; i<arg_idx; i++)
+  {
+    printf("argv: %d [%s]\n", i, argv[i]); 
+  }
 
-  //char parsed = "firefox.exe www.voxforge.org";
+  //status = _execvp(command, argv);  // will not compile with mingw
+  //status = system(command); // blocks until user terminates child
+                              // takes a string and passes it to shell...
+  //popen(command,"r"); // takes a string and passes it to shell...
+  _spawnv(P_NOWAIT, (const char *) command, (const char * const*) argv);  
 
-  //status = execvp(tokens[0], tokens); // does not work in mingw32; works in Cygwin
-  //system("\"C:\\Program Files\\Mozilla Firefox\\firefox.exe\" www.voxforge.org"); // blocks
-  //status = system(command); // blocks until user closes firfox window
-                              // spawns a shell to execute the command
-  //int len=3;
-  //const char *my_args[4]; // spawnv wants a constant char???
-  //my_args[0]="C:\\Program Files\\Mozilla Firefox\\firefox.exe";
-  //my_args[1]="-new-tab";
-  //my_args[2]="www.voxforge.org/home/about";
-  //my_args[3]='\0';
-  //  printf("Debug: \n");
-  //  for (i=0; i<len; i++)
-  //  {
-  //    printf("%d [%s]\n", i, my_args[i]);
-  //  }
-  // _flushall();
-  //status = _spawnv(P_NOWAIT, "bob", my_args); // opens two firefox windows???? not sure why
+  if (status < 0)
+  {
+    printf("Warning: can't find command: %d\n"), status;
 
-  popen(command,"r"); 
-  
-
-  //if (status < 0)
-  //{
-  //  printf("Warning: can't find command: \n");
-  //  for (i=0; i<len; i++)
-  //  {
-  //    printf("%d [%s]\n", i, my_args[i]);
-  //  }
-  //  exit(EXIT_FAILURE);
- // }
+    printf("command:[%s]\n", command);
+    for (i=0; i<arg_idx; i++)
+    {
+      printf("argv: %d [%s]\n", i, argv[i]);
+    }
+    exit(EXIT_FAILURE);
+  }
 }
 
 
