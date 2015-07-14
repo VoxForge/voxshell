@@ -1,8 +1,5 @@
 # voxshell
 
-# notes
-Linux version works; still working Windows side
-
 # description
 Speech Recognition Shell using Julius, a high-performance, two-pass large 
 vocabulary continuous speech recognition (LVCSR) decoder.
