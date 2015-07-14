@@ -1,4 +1,4 @@
-# voxshell
+# VoxShell
 
 VoxShell is a simple command and control dialog manager that uses the Julius
 speech recognition engine and VoxForge acoustic models.
