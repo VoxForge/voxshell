@@ -21,7 +21,7 @@ Linux:
 
 Windows:
 
-  C:> bin/julius.exe -input mic -C voxshell.jconf -gramlist grammars_linux
+  C:> bin\julius.exe -input mic -C voxshell.jconf -gramlist grammars_windows.txt
 
 For information on the Julius grammar syntax, see the enclosed GRAMMAR_NOTES.
 
