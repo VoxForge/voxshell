@@ -1,24 +1,27 @@
 # voxshell
 
-# description
-Speech Recognition Shell using Julius, a high-performance, two-pass large 
-vocabulary continuous speech recognition (LVCSR) decoder.
+VoxShell is a simple command and control dialog manager that uses the Julius
+speech recognition engine and VoxForge acoustic models.
 
-VoxForge & Julius Quick Start.
+Julius, a high-performance, two-pass large vocabulary continuous speech 
+recognition (LVCSR) decoder.  VoxForge is a Free speech corpus repository
+that uses the collected speech to create Free and Open acoustic models.
 
-This Tar file contains everything you need to get Julius working:
- * Julius Run-time engine executable;
- * VoxForge Acoustic Model files;
- * sample Grammar files.
+In the most generic sense, the term 'shell' means any program that a user
+employs to type commands.  VoxShell is a shell program that uses the
+underlying operating system as its command dispatcher.  Users can create 
+commands in any language to be executed when predefined keywords or phrases
+are spoken into a microphone.
 
-Extract the gzipped tar file to a directory, and execute the following command:
-Linux:
+Extract the github zip file to a directory, and execute one of the following command:
+
+  Linux:
  
-  $ bin/julius -input mic -C voxshell.jconf -gramlist grammars_linux -plugindir plugin/linux
+      $ bin/julius -input mic -C voxshell.jconf -gramlist grammars_linux -plugindir plugin/linux
 
-Windows:
+  Windows:
 
-  C:> bin\julius.exe -input mic -C voxshell.jconf -gramlist grammars_windows.txt -plugindir plugin/windows
+      C:> bin\julius.exe -input mic -C voxshell.jconf -gramlist grammars_windows.txt -plugindir plugin/windows
 
 For information on the Julius grammar syntax, see the enclosed GRAMMAR_NOTES.
 
@@ -27,4 +30,4 @@ Models.  Please take the time to submit some transcribed speech to www.voxforge.
 
 thank you,
 
-VoxForge team.
+VoxForge.
