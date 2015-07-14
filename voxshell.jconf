@@ -433,5 +433,4 @@
 # recognizing non-speech sounds:
 -lv 8000			# level threshold (0-32767)
 -logfile julius.log
--plugindir plugin 
 # !!!!!!
