@@ -4,13 +4,10 @@ VoxShell is a simple command and control dialog manager that uses the Julius
 speech recognition engine and VoxForge acoustic models.
 
 In the most generic sense, the term 'shell' means any program that a user
-employs to type commands.  VoxShell is a shell program that uses the
-underlying operating system as its command dispatcher.  Unlike a regular shell,
-it allows users to speak key word or phrases to execute those commands without 
-touching the keyboard.  Users can execute any existing shell command or program
-using their voice or define their own shell commands in any programming or 
-scripting language) and link them to predefined keywords or phrases that
-can be recognized by the speech recognition engine.
+employs to type commands.  However, unlike a regular shell, VoxShell allows 
+you to speak key words or phrases into a microphone to execute those commands. 
+You can set up grammars to execute any shell command or program using your 
+own voice. 
 
 Julius is a high-performance, two-pass large vocabulary continuous speech 
 recognition (LVCSR) decoder.  VoxForge is a 'Free' speech repository (speech 
@@ -28,8 +25,6 @@ command:
   Windows:
 
       C:> bin\julius.exe -input mic -C voxshell.jconf -gramlist grammars_windows.txt -plugindir plugin/windows
-
-For information on the Julius grammar syntax, see the enclosed GRAMMAR_NOTES.
 
 Note that we need many more speech submissions to create high quality free Acoustic 
 Models.  Please take the time to submit some speech to www.voxforge.org using the 
