@@ -25,6 +25,8 @@ RHYTHMBOX [rhythmbox-client --pause]
 
 % RHYTHMBOX
 RHYTHMBOX [COM]
+PLAYER [COM]
+MUSIC [COM]
 
 % RHYTHMBOX_CAT
 PLAY [rhythmbox-client --play]
