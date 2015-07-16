@@ -431,6 +431,6 @@
 -zmean				# remove DC offset (use long input average)
 # you may need to adjust your "-lv" value to prevent the recognizer inadvertently 
 # recognizing non-speech sounds:
--lv 8000			# level threshold (0-32767)
+-lv 4000			# level threshold (0-32767)
 -logfile julius.log
 # !!!!!!
