@@ -146,7 +146,7 @@ function vfvoca2dict(vocafile,dic,dictfile)
     # compound words are seperated by dashes, but pronunciation is looked for 
     # each individual word, and joined together with short pause (sp) between
     # them
-    # Note: no need to check VoxForgeDict if word is alraedy defined in dict,
+    # Note: no need to check in VoxForgeDict to see if word is already defined,
     # because if it is, then the triphones you need are already defined, and 
     # that's all that matters
     function process_compound_word(command, word)
