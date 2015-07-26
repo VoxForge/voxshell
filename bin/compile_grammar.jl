@@ -125,52 +125,72 @@ end
 #   4 [firefox -remote openurl(http://www.voxforge.org/home/read)] r eh d
 function vfvoca2dict(vocafile,dic,dictfile)
   dic_hash=Dict{String,String}()
+
   # read in pronunciation dictionary
-  dic_arr=open(readlines, dic) # automatically closes file handle 
-  for lineln=dic_arr
-    line=replace(chomp(lineln), r"#.*", "") # remove line endings & comments
-    line_arr=split(line,r"[\s\t]+")
-    uniq_word=shift!(line_arr)
-    return_word=shift!(line_arr)
-    phones=join(line_arr," ")
-    dic_hash[uniq_word]=phones
+  function get_pron_dict()
+    dic_arr=open(readlines, dic) # automatically closes file handle 
+    for lineln=dic_arr
+      line=replace(chomp(lineln), r"#.*", "") # remove line endings & comments
+      line_arr=split(line,r"[\s\t]+")
+      uniq_word=shift!(line_arr)
+      return_word=shift!(line_arr)
+      phones=join(line_arr," ")
+      dic_hash[uniq_word]=phones
+    end
+    dic_hash["<s>"]="sil"
+    dic_hash["</s>"]="sil"
+  end 
+
+  # open .vox file for processing
+  function processVoxFile()
+    dictfile_fh=open(dictfile,"w")
+
+    vocafile_arr=open(readlines, vocafile) # automatically closes file handle
+    newid=-1
+    for lineln=vocafile_arr
+      if ismatch(r"\r$", lineln)
+        lineend="\r\n" # windows line ending
+      else
+        lineend="\n" # unix/linux line ending
+      end
+
+      line=replace(chomp(lineln), r"#.*", "") # remove line endings & comments
+      if ismatch(r"^[\s\t]*$", line) # skip blank lines
+        continue
+      end
+
+      if ismatch(r"^%", line)
+        newid=newid+1
+      elseif ismatch(r"\<s\>", line) # get a bounds error if search for <s> or </s>
+        write(dictfile_fh, "$(newid)\t[<s>] sil\n")
+      elseif ismatch(r"\<\/s\>", line) # get a bounds error if search for <s> or </s>
+        write(dictfile_fh, "$(newid)\t[</s>] sil\n")
+      else
+        #line_array=split(line,r"[\s\t]+")
+        #name=shift!(line_array)
+        #command=join(line_array," ")
+
+        # remove command within brackets and trailing spaces or tabs; drop empties
+        word_list::Array=split(line,r"\[(.*)\][\s\t]*", false) 
+        #command=$1
+        for wordln=word_list
+          word_array=split(wordln,r"[\s\t]+")
+          for word=word_array
+            println (word)
+            #write(dictfile_fh, "$(newid)\t$command $(dic_hash[word])\n")
+          end
+        end
+
+
+       # write(dictfile_fh, "$(newid)\t$command $(dic_hash[name])\n")
+      end
+    end
+
+    close(dictfile_fh)
   end
-  dic_hash["<s>"]="sil"
-  dic_hash["</s>"]="sil"
 
-  dictfile_fh=open(dictfile,"w")
-
-  # open .voca file for processing
-  vocafile_arr=open(readlines, vocafile) # automatically closes file handle 
-  newid=-1
-  for lineln=vocafile_arr
-    if ismatch(r"\r$", lineln)
-      lineend="\r\n" # windows line ending
-    else
-      lineend="\n" # unix/linux line ending
-    end
-
-    line=replace(chomp(lineln), r"#.*", "") # remove line endings & comments
-    if ismatch(r"^[\s\t]*$", line) # skip blank lines
-      continue
-    end
-
-    if ismatch(r"^%", line)
-      newid=newid+1
-    elseif ismatch(r"\<s\>", line) # get a bounds error if search for <s> or </s>
-      write(dictfile_fh, "$(newid)\t[<s>] sil\n")
-    elseif ismatch(r"\<\/s\>", line) # get a bounds error if search for <s> or </s>
-      write(dictfile_fh, "$(newid)\t[</s>] sil\n")
-    else
-      line_array=split(line,r"[\s\t]+")
-      name=shift!(line_array)
-      command=join(line_array," ")
-      write(dictfile_fh, "$(newid)\t$command $(dic_hash[name])\n")
-    end
-  end
-
-  close(dictfile_fh)
-
+  get_pron_dict()
+  processVoxFile()
   println("generated: $dictfile")
 end
 
@@ -184,24 +204,26 @@ function main ()
 
   rgramfile= "$(workingfolder)/g$(getpid()).grammar"
   gramfile="$(grammar_prefix).grammar"
-  vocafile=grammar_prefix * ".voca"
+  vocafile=grammar_prefix * ".vox"
   termfile=grammar_prefix * ".term"
-  tmpvocafile="$(workingfolder)/g$(getpid()).voca"
+  tmpvocafile="$(workingfolder)/g$(getpid()).vox"
   dfafile=grammar_prefix * ".dfa"
   dictfile="$(grammar_prefix).dict"
   headerfile="$(workingfolder)/g$(getpid()).h"
 
   reverse_grammar(rgramfile,gramfile)
-  vocafile="$(grammar_prefix).voca"
   dic="language/en/VoxForgeDict.txt"
   dicfile="$(grammar_prefix).dict"
+#= !!!!!!
   make_category_voca(vocafile,termfile,tmpvocafile)
   println("dir $(pwd())")
   # mkfa outputs dfafile.tmp and headerfile.h (not sure what it is used for)
   run(`$mkfa -e1 -fg $rgramfile -fv $tmpvocafile -fo $(dfafile).tmp -fh $headerfile`)
   # dfa_minimize compresses dfafile.tmp (if it can) to .dfa file
   run(`$dfa_minimize $(dfafile).tmp -o $dfafile`)
-
+  # !!!!!!
+=# 
+  println("hello")
   vfvoca2dict(vocafile,dic,dicfile)
 
   rm("$(dfafile).tmp")
@@ -217,8 +239,8 @@ if length(ARGS) > 0
   if ! isfile(grammar_prefix * ".grammar")
     error("can't find gramfile file: $(grammar_folder)/$(grammar_prefix).grammar")
   end
-  if ! isfile(grammar_prefix * ".voca")
-    error("can't find voca file: $(grammar_prefix).voca")
+  if ! isfile(grammar_prefix * ".vox")
+    error("can't find voca file: $(grammar_prefix).vox")
   end
   if length(ARGS) > 1
     error("mkdfa: too many arguments for call from command line")
