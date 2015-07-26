@@ -166,12 +166,8 @@ function vfvoca2dict(vocafile,dic,dictfile)
       elseif ismatch(r"\<\/s\>", line) # get a bounds error if search for <s> or </s>
         write(dictfile_fh, "$(newid)\t[</s>] sil\n")
       else
-        #line_array=split(line,r"[\s\t]+")
-        #name=shift!(line_array)
-        #command=join(line_array," ")
-
+        command=(match(r"\[.*\]", line)).match
         # remove command within brackets and trailing spaces or tabs; drop empties
-        command=match(r"\[.*\]", line) 
         word_list::Array=split(line,r"\[(.*)\][\s\t]*", false) 
         for wordln::String=word_list
           words::Array=split(wordln,r"[\s\t]+")
@@ -180,9 +176,6 @@ function vfvoca2dict(vocafile,dic,dictfile)
             write(dictfile_fh, "$(newid)\t$command $(dic_hash[word])\n")
           end
         end
-
-
-       # write(dictfile_fh, "$(newid)\t$command $(dic_hash[name])\n")
       end
     end
 
@@ -214,15 +207,14 @@ function main ()
   reverse_grammar(rgramfile,gramfile)
   dic="language/en/VoxForgeDict.txt"
   dicfile="$(grammar_prefix).dict"
-#= !!!!!!
+
   make_category_voca(vocafile,termfile,tmpvocafile)
   println("dir $(pwd())")
   # mkfa outputs dfafile.tmp and headerfile.h (not sure what it is used for)
   run(`$mkfa -e1 -fg $rgramfile -fv $tmpvocafile -fo $(dfafile).tmp -fh $headerfile`)
   # dfa_minimize compresses dfafile.tmp (if it can) to .dfa file
   run(`$dfa_minimize $(dfafile).tmp -o $dfafile`)
-  # !!!!!!
-=# 
+
   vfvoca2dict(vocafile,dic,dicfile)
 
   rm("$(dfafile).tmp")
