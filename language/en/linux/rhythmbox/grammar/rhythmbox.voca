@@ -27,6 +27,7 @@ PLAYER [COM]
 MUSIC [COM]
 
 % RHYTHMBOX_CAT
+#PLAY [dbus-send --print-reply --dest=org.mpris.MediaPlayer2.rhythmbox /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Next]
 PLAY [rhythmbox-client --play]
 START [rhythmbox-client --play]
 NEXT [rhythmbox-client --next]

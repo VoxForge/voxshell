@@ -83,37 +83,6 @@ function make_category_voca(vocafile,termfile,tmpvocafile)
   println("---")
 end
 
-function voca2dict(vocafile, dictfile)
-  dictfile_fh=open(dictfile,"w")
-
-  vocafile_arr=open(readlines, vocafile) # automatically closes file handle 
-  newid=-1
-  for lineln=vocafile_arr
-    if ismatch(r"\r$", lineln)
-      lineend="\r\n" # windows line ending
-    else
-      lineend="\n" # unix/linux line ending
-    end
-
-    line=replace(chomp(lineln), r"#.*", "") # remove line endings & comments
-    if ismatch(r"^[\s\t]*$", line) # skip blank lines
-      continue
-    end
-
-    if ismatch(r"^%", line)
-      newid=newid+1
-    else
-      line_arr=split(line,r"[\s\t]+")
-      name=shift!(line_arr)
-      write(dictfile_fh, "$(newid)\t[$(name)]\t$(join(line_arr," "))$(lineend)")
-    end
-  end
-
-  close(dictfile_fh)
-
-  println("generated: $dictfile")
-end
-
 function vfvoca2dict(vocafile,dic,dictfile)
   dic_hash=Dict{String,String}()
   dic_arr=open(readlines, dic) # automatically closes file handle 
@@ -179,7 +148,6 @@ function main ()
     error("mkdfa: too many arguments for call from command line")
   end
 
-  #workingfolder=dirname(ARGS[1]) # debug
   workingfolder=mktempdir()
   grammar_prefix=ARGS[1] # includes path
 
