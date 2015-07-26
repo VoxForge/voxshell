@@ -171,13 +171,13 @@ function vfvoca2dict(vocafile,dic,dictfile)
         #command=join(line_array," ")
 
         # remove command within brackets and trailing spaces or tabs; drop empties
+        command=match(r"\[.*\]", line) 
         word_list::Array=split(line,r"\[(.*)\][\s\t]*", false) 
-        #command=$1
-        for wordln=word_list
-          word_array=split(wordln,r"[\s\t]+")
-          for word=word_array
-            println (word)
-            #write(dictfile_fh, "$(newid)\t$command $(dic_hash[word])\n")
+        for wordln::String=word_list
+          words::Array=split(wordln,r"[\s\t]+")
+          for word=words
+            #println ("$(command.match) $word")
+            write(dictfile_fh, "$(newid)\t$command $(dic_hash[word])\n")
           end
         end
 
@@ -223,7 +223,6 @@ function main ()
   run(`$dfa_minimize $(dfafile).tmp -o $dfafile`)
   # !!!!!!
 =# 
-  println("hello")
   vfvoca2dict(vocafile,dic,dicfile)
 
   rm("$(dfafile).tmp")

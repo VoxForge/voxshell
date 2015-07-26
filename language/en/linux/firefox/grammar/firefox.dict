@@ -1,2 +1,18 @@
 0	[<s>] sil
 1	[</s>] sil
+2	RegexMatch("[]") ah
+2	RegexMatch("[]") w eh l
+2	RegexMatch("[]") hh ah m
+3	RegexMatch("[COM]") v aa k s f ao r jh
+3	RegexMatch("[COM]") f ay r f aa k s
+4	RegexMatch("[firefox -remote openurl(http://www.voxforge.org)]") hh ow m
+4	RegexMatch("[firefox -remote openurl(http://www.voxforge.org)]") p ey jh
+4	RegexMatch("[firefox -remote openurl(http://www.voxforge.org/home/read)]") r eh d
+4	RegexMatch("[firefox -remote openurl(http://www.voxforge.org/home/read)]") s ah b m ih t
+4	RegexMatch("[firefox -remote openurl(http://www.voxforge.org/home/listen)]") l ih s ah n
+4	RegexMatch("[firefox -remote openurl(http://www.voxforge.org/home/forums)]") f ao r ah m z
+4	RegexMatch("[firefox -remote openurl(http://www.voxforge.org/home/dev)]") d ih v eh l ah p
+4	RegexMatch("[firefox -remote openurl(http://www.voxforge.org/home/dev)]") d ih v eh l ah p er
+4	RegexMatch("[firefox -remote openurl(http://www.voxforge.org/home/about)]") ah b aw t
+4	RegexMatch("[firefox -remote openurl(http://www.voxforge.org/home/dev/acousticmodels/linux/create/htkjulius/how-to/download)]") hh aw t uw
+4	RegexMatch("[firefox -remote openurl(http://www.voxforge.org/home/dev/acousticmodels/linux/create/htkjulius/tutorial/download)]") t uw t ao r iy ah l
