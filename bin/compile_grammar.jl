@@ -152,7 +152,8 @@ function vfvoca2dict(vocafile,dic,dictfile)
       #for word=compound_word
       for i=1:length(compound_word)-1
         word=dic_hash[compound_word[i]]
-        write(dictfile_fh, "$word sp ")
+        #write(dictfile_fh, "$word sp ") # do you really need a sort pause???
+        write(dictfile_fh, "$word ")
       end
       i=i+1
       word=dic_hash[compound_word[i]]
@@ -229,7 +230,7 @@ function main ()
   headerfile="$(workingfolder)/g$(getpid()).h"
 
   reverse_grammar(rgramfile,gramfile)
-  dic="language/en/VoxForgeDict.txt"
+  dic="language/en/lexicon/VoxForgeDict.txt"
   dicfile="$(grammar_prefix).dict"
 
   make_category_voca(vocafile,termfile,tmpvocafile)
