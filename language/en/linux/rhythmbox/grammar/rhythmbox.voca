@@ -1,5 +1,3 @@
-# compile: clear && julia bin/mkdfa.jl linux/rhythmbox/en/grammar/rhythmbox
-
 % NS_B
 <s>
 
@@ -37,9 +35,9 @@ FORWARD [rhythmbox-client --next]
 PREVIOUS [rhythmbox-client --previous]
 BACK [rhythmbox-client --previous]
 SHOW [rhythmbox/en/scripts/show.sh]
-WHO [linux/rhythmbox/en/scripts/show.sh]
-ABOUT [linux/rhythmbox/en/scripts/show.sh]
-INFORMATION [linux/rhythmbox/en/scripts/show.sh]
+WHO [language/en/linux/rhythmbox/scripts/show.sh]
+ABOUT [[language/en/linux/rhythmbox/scripts/show.sh]
+INFORMATION [language/en/linux/rhythmbox/scripts/show.sh]
 UP [rhythmbox-client --volume-up]
 LOUDER [rhythmbox-client --volume-up]
 DOWN [rhythmbox-client --volume-down]

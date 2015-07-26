@@ -19,12 +19,12 @@ Extract the github zip file to a directory, and execute one of the following
 command:
 
   Linux:
- 
-      $ bin/julius -input mic -C voxshell.jconf -gramlist grammars_linux -plugindir plugin/linux
+
+      $ bin/linux/julius -input mic -C voxshell.jconf -gramlist language/en/grammars_linux -plugindir bin/linux/plugin/fedora
 
   Windows:
 
-      C:> bin\julius.exe -input mic -C voxshell.jconf -gramlist grammars_windows.txt -plugindir plugin/windows
+      C:> bin\windows\julius.exe -input mic -C voxshell.jconf -gramlist language/en/grammars_windows.txt -plugindir bin/windows/plugin
 
 Note that we need many more speech submissions to create high quality free Acoustic 
 Models.  Please take the time to submit some speech to [www.voxforge.org](http://www.voxforge.org) using the 

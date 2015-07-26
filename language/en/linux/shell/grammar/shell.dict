@@ -4,7 +4,7 @@
 2	[] w eh l
 2	[] hh ah m
 3	[COM] k ah m p y uw t er
-4	[linux/shell/en/scripts/weather.sh] w eh dh er
+4	[language/en/linux/shell/scripts/weather.sh] w eh dh er
 4	[firefox -remote openurl(https://ca-mg6.mail.yahoo.com/neo/launch?.partner=rogers-acs)] iy m ey l
 5	[COM] v aa l y uw m
 6	[pactl set-sink-volume 1 -- +20%] l aw d er

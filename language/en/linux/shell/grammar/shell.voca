@@ -1,5 +1,3 @@
-# compile: clear && julia bin/mkdfa.jl linux/shell/en/grammar/shell
-
 % NS_B
 <s>
 
@@ -15,7 +13,7 @@ HUM []
 COMPUTER [COM]
 
 % SHELL_COMMANDS
-WEATHER [linux/shell/en/scripts/weather.sh]
+WEATHER [language/en/linux/shell/scripts/weather.sh]
 EMAIL [firefox -remote openurl(https://ca-mg6.mail.yahoo.com/neo/launch?.partner=rogers-acs)]
 
 % VOLUME

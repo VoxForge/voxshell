@@ -18,9 +18,9 @@
 8	[rhythmbox-client --previous] p r iy v iy ah s
 8	[rhythmbox-client --previous] b ae k
 8	[rhythmbox/en/scripts/show.sh] sh ow
-8	[linux/rhythmbox/en/scripts/show.sh] hh uw
-8	[linux/rhythmbox/en/scripts/show.sh] ah b aw t
-8	[linux/rhythmbox/en/scripts/show.sh] ih n f ao r m ey sh ah n
+8	[language/en/linux/rhythmbox/scripts/show.sh] hh uw
+8	[[language/en/linux/rhythmbox/scripts/show.sh] ah b aw t
+8	[language/en/linux/rhythmbox/scripts/show.sh] ih n f ao r m ey sh ah n
 8	[rhythmbox-client --volume-up] ah p
 8	[rhythmbox-client --volume-up] l aw d er
 8	[rhythmbox-client --volume-down] d aw n

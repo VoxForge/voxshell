@@ -1,5 +1,3 @@
-# compile: julia bin/mkdfa.jl linux/firefox/en/grammar/firefox
-
 % NS_B
 <s>
 
