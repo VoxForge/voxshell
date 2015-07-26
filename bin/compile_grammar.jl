@@ -125,6 +125,7 @@ end
 #   4 [firefox -remote openurl(http://www.voxforge.org/home/read)] r eh d
 function vfvoca2dict(vocafile,dic,dictfile)
   dic_hash=Dict{String,String}()
+  dictfile_fh=open(dictfile,"w")
 
   # read in pronunciation dictionary
   function get_pron_dict()
@@ -141,10 +142,42 @@ function vfvoca2dict(vocafile,dic,dictfile)
     dic_hash["</s>"]="sil"
   end 
 
+  function processLine(newid, line)
+    # compound words are seperated by dashes, but pronunciation is looked for 
+    # each individual word, and joined together with short pause (sp) between
+    # them
+    function process_compound_word(command, word)
+      compound_word=split(word,r"\-")
+      write(dictfile_fh, "$(newid)\t$command ")
+      #for word=compound_word
+      for i=1:length(compound_word)-1
+        word=dic_hash[compound_word[i]]
+        write(dictfile_fh, "$word sp ")
+      end
+      i=i+1
+      word=dic_hash[compound_word[i]]
+      write(dictfile_fh, "$word \n")
+    end
+
+    # extract command from line
+    command=(match(r"\[.*\]", line)).match
+    # remove command within brackets and trailing spaces or tabs; drop empties
+    # put into one element array
+    word_arr=split(line,r"\[(.*)\][\s\t]*", false)
+    words=split(word_arr[1],r"[\s\t]+")
+
+    # for each word on the line, create a dict file entry
+    for word=words
+      if (ismatch(r"\-", word)) # compound word
+        process_compound_word(command, word)
+      else
+        write(dictfile_fh, "$(newid)\t$command $(dic_hash[word])\n")
+      end
+    end
+  end
+
   # open .vox file for processing
   function processVoxFile()
-    dictfile_fh=open(dictfile,"w")
-
     vocafile_arr=open(readlines, vocafile) # automatically closes file handle
     newid=-1
     for lineln=vocafile_arr
@@ -166,24 +199,15 @@ function vfvoca2dict(vocafile,dic,dictfile)
       elseif ismatch(r"\<\/s\>", line) # get a bounds error if search for <s> or </s>
         write(dictfile_fh, "$(newid)\t[</s>] sil\n")
       else
-        command=(match(r"\[.*\]", line)).match
-        # remove command within brackets and trailing spaces or tabs; drop empties
-        word_list::Array=split(line,r"\[(.*)\][\s\t]*", false) 
-        for wordln::String=word_list
-          words::Array=split(wordln,r"[\s\t]+")
-          for word=words
-            #println ("$(command.match) $word")
-            write(dictfile_fh, "$(newid)\t$command $(dic_hash[word])\n")
-          end
-        end
+        processLine(newid, line)
       end
     end
-
-    close(dictfile_fh)
   end
 
   get_pron_dict()
   processVoxFile()
+
+  close(dictfile_fh)
   println("generated: $dictfile")
 end
 

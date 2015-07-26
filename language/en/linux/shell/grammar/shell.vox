@@ -6,15 +6,13 @@
 
 # using empty command return values
 % FILLER
-[] UH
-[] WELL
-[] HUM
+[] UH WELL HUM
 
 % ID
 [COM] COMPUTER
 
 % SHELL_COMMANDS
-[language/en/linux/shell/scripts/weather.sh] WEATHER
+[language/en/linux/shell/scripts/weather.sh] WEATHER NEW IS-IT-CLOUDY SUNNY
 [firefox -remote openurl(https://ca-mg6.mail.yahoo.com/neo/launch?.partner=rogers-acs)] EMAIL MAIL
 
 % VOLUME

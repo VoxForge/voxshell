@@ -31,7 +31,7 @@
 # recognizing non-speech sounds:
 -lv 4000			# level threshold (0-32767)
 
--multigramout
--quiet
--logfile julius.log
+#-multigramout
+#-quiet
+#-logfile julius.log
 # !!!!!!
