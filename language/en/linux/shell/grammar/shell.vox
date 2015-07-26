@@ -15,7 +15,7 @@
 # compile_grammar.jl will expand the pronunciation of compound words; this may
 # be a problem if the triphones do not exist (Julius tells when this happens)
 # may need to add your own triphones to tiedlist file
-[language/en/linux/shell/scripts/weather.sh] WEATHER NEW IS-IT-CLOUDY SUNNY
+[language/en/linux/shell/scripts/weather.sh] WEATHER IS-IT-CLOUDY IS-IT-SUNNY
 [firefox -remote openurl(https://ca-mg6.mail.yahoo.com/neo/launch?.partner=rogers-acs)] EMAIL MAIL
 
 % VOLUME
