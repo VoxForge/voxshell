@@ -1,0 +1,26 @@
+% NS_B
+<s>
+
+% NS_E
+</s>
+
+# using empty command return values
+% FILLER
+[] UH
+[] WELL
+[] HUM
+
+% ID
+[COM] COMPUTER
+
+% SHELL_COMMANDS
+[language/en/linux/shell/scripts/weather.sh] WEATHER
+[firefox -remote openurl(https://ca-mg6.mail.yahoo.com/neo/launch?.partner=rogers-acs)] EMAIL MAIL
+
+% VOLUME
+[COM] VOLUME
+
+% VOLUME_CAT
+[pactl set-sink-volume 1 -- +20%] UP LOUDER
+[pactl set-sink-volume 1 -- -20%] DOWN LOWER SOFTER
+

@@ -1,0 +1,38 @@
+% NS_B
+<s>
+
+% NS_E
+</s>
+
+% FILLER
+UH []
+WELL []
+HUM []
+
+% PLAY_RHYTHMBOX
+PLAY [COM]
+
+% RHYTHMBOX_PLAY
+RHYTHMBOX [rhythmbox-client --play]
+
+% STOP_RHYTHMBOX
+[COM] STOP
+
+% RHYTHMBOX_STOP
+[rhythmbox-client --pause] RHYTHMBOX
+
+% RHYTHMBOX
+[COM] RHYTHMBOX
+[COM] PLAYER
+[COM] MUSIC
+
+% RHYTHMBOX_CAT
+#[dbus-send --print-reply --dest=org.mpris.MediaPlayer2.rhythmbox /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Next] PLAY 
+[rhythmbox-client --play] PLAY START
+[rhythmbox-client --next] NEXT SKIP FORWARD
+[rhythmbox-client --previous] PREVIOUS BACK
+[rhythmbox/en/scripts/show.sh] SHOW WHO ABOUT INFORMATION
+[rhythmbox-client --volume-up] UP LOUDER
+[rhythmbox-client --volume-down] DOWN LOWER SOFTER
+[rhythmbox-client --pause] SILENCE STOP QUIET
+
