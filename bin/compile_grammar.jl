@@ -17,6 +17,9 @@
 #
 ###############################################################################
 
+# convert grammar from forward to backward grammar format required by mkfa::
+# from: S: NS_B COMMAND NS_E 
+# to:   S: NS_E COMMAND NS_B 
 function reverse_grammar(rgramfile,gramfile)
   rgramfile_fh=open(rgramfile,"w")
 
@@ -46,6 +49,12 @@ function reverse_grammar(rgramfile,gramfile)
   println("---")
 end
 
+# copy each category entry in .voca file (line beginning with '%'% to temp file
+# containing only category information, to format required by mkfa:
+#  #NS_B
+#  #NS_E
+#  #VOXFORGE
+#  #VOXFORGE_CAT
 function make_category_voca(vocafile,termfile,tmpvocafile)
   tmpvocafile_fh=open(tmpvocafile,"w")
   termfile_fh=open(termfile,"w")
@@ -83,8 +92,40 @@ function make_category_voca(vocafile,termfile,tmpvocafile)
   println("---")
 end
 
+# convert VoxShell specific version of Julius .voca file:
+# % NS_B
+# <s>
+#
+# % NS_E
+# </s>
+#
+# % FILLER
+# UH []
+# WELL []
+# HUM []
+#
+# % VOXFORGE
+# VOXFORGE [COM]
+# FIREFOX [COM]
+#
+# % VOXFORGE_CAT
+# HOME [firefox -remote openurl(http://www.voxforge.org)]
+# READ [firefox -remote openurl(http://www.voxforge.org/home/read)]
+#
+# to a Julius format .dict file to be 
+# used by Julius:
+#   0	[<s>] sil
+#   1	[</s>] sil
+#   2	[] ah
+#   2	[] w eh l
+#   2	[] hh ah m
+#   3	[COM] v aa k s f ao r jh
+#   3	[COM] f ay r f aa k s
+#   4	[firefox -remote openurl(http://www.voxforge.org)] hh ow m
+#   4 [firefox -remote openurl(http://www.voxforge.org/home/read)] r eh d
 function vfvoca2dict(vocafile,dic,dictfile)
   dic_hash=Dict{String,String}()
+  # read in pronunciation dictionary
   dic_arr=open(readlines, dic) # automatically closes file handle 
   for lineln=dic_arr
     line=replace(chomp(lineln), r"#.*", "") # remove line endings & comments
@@ -99,6 +140,7 @@ function vfvoca2dict(vocafile,dic,dictfile)
 
   dictfile_fh=open(dictfile,"w")
 
+  # open .voca file for processing
   vocafile_arr=open(readlines, vocafile) # automatically closes file handle 
   newid=-1
   for lineln=vocafile_arr
@@ -136,6 +178,40 @@ function main ()
   mkfa= @windows ? "bin/windows/mkfa.exe" : "bin/linux/mkfa"
   dfa_minimize= @windows ? "bin/windows/dfa_minimize.exe" : "bin/linux/dfa_minimize"
 
+  workingfolder=mktempdir()
+  # grammar prefix must be same for .voca and .grammar files
+  grammar_prefix=ARGS[1] # includes path
+
+  rgramfile= "$(workingfolder)/g$(getpid()).grammar"
+  gramfile="$(grammar_prefix).grammar"
+  vocafile=grammar_prefix * ".voca"
+  termfile=grammar_prefix * ".term"
+  tmpvocafile="$(workingfolder)/g$(getpid()).voca"
+  dfafile=grammar_prefix * ".dfa"
+  dictfile="$(grammar_prefix).dict"
+  headerfile="$(workingfolder)/g$(getpid()).h"
+
+  reverse_grammar(rgramfile,gramfile)
+  vocafile="$(grammar_prefix).voca"
+  dic="language/en/VoxForgeDict.txt"
+  dicfile="$(grammar_prefix).dict"
+  make_category_voca(vocafile,termfile,tmpvocafile)
+  println("dir $(pwd())")
+  # mkfa outputs dfafile.tmp and headerfile.h (not sure what it is used for)
+  run(`$mkfa -e1 -fg $rgramfile -fv $tmpvocafile -fo $(dfafile).tmp -fh $headerfile`)
+  # dfa_minimize compresses dfafile.tmp (if it can) to .dfa file
+  run(`$dfa_minimize $(dfafile).tmp -o $dfafile`)
+
+  vfvoca2dict(vocafile,dic,dicfile)
+
+  rm("$(dfafile).tmp")
+  rm(rgramfile)
+  rm(tmpvocafile)
+  rm(headerfile)
+
+end
+
+if length(ARGS) > 0 
   grammar_prefix=ARGS[1] 
   grammar_folder=ARGS[1] 
   if ! isfile(grammar_prefix * ".grammar")
@@ -148,38 +224,8 @@ function main ()
     error("mkdfa: too many arguments for call from command line")
   end
 
-  workingfolder=mktempdir()
-  grammar_prefix=ARGS[1] # includes path
-
-  rgramfile= "$(workingfolder)/g$(getpid()).grammar"
-  gramfile="$(grammar_prefix).grammar"
-  vocafile=grammar_prefix * ".voca"
-  termfile=grammar_prefix * ".term"
-  tmpvocafile="$(workingfolder)/g$(getpid()).voca"
-  dfafile=grammar_prefix * ".dfa"
-  dictfile="$(grammar_prefix).dict"
-  headerfile="$(workingfolder)/g$(getpid()).h"
-
-  # voxforge updates
-  reverse_grammar(rgramfile,gramfile)
-  vocafile="$(grammar_prefix).voca"
-  dic="language/en/VoxForgeDict.txt"
-  dicfile="$(grammar_prefix).dict"
-  make_category_voca(vocafile,termfile,tmpvocafile)
-  println("dir $(pwd())")
-  run(`$mkfa -e1 -fg $rgramfile -fv $tmpvocafile -fo $(dfafile).tmp -fh $headerfile`)
-  run(`$dfa_minimize $(dfafile).tmp -o $dfafile`)
-
-  vfvoca2dict(vocafile,dic,dicfile)
-
-  rm("$(dfafile).tmp")
-  rm(rgramfile)
-  rm(tmpvocafile)
-  rm(headerfile)
-
-end
-
-# called from command line
-if length(ARGS) > 0 
   main()
+else
+  println("must be called from command line")
+  println("usage: juliua compile_grammar.jl [grammar prefix with path]")
 end
