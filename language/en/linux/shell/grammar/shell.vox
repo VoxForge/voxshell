@@ -14,7 +14,7 @@
 % SHELL_COMMANDS
 # compile_grammar.jl will expand the pronunciation of compound words; this may
 # be a problem if the triphones do not exist (Julius tells you when this
-# happens).  You may need to add your own logical to physical triphone mapping
+# happens).  You may need to add your own *logical* to *physical* triphone mapping
 # to tiedlist file (not as complicated as it sounds...)
 [language/en/linux/shell/scripts/weather.sh] WEATHER IS-IT-CLOUDY IS-IT-SUNNY
 [firefox -remote openurl(https://ca-mg6.mail.yahoo.com/neo/launch?.partner=rogers-acs)] EMAIL MAIL
