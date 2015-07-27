@@ -20,7 +20,7 @@ command:
 
   Linux:
 
-      $ bin/linux/julius -input mic -C voxshell.jconf -gramlist language/en/grammars_linux -plugindir bin/linux/plugin/fedora
+      $ bin/linux/julius -input mic -C voxshell.jconf -gramlist language/en/grammars_linux -plugindir bin/linux/plugin
 
   Windows:
 
