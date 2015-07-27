@@ -1,4 +1,8 @@
-#!/bin/sh
+#!/bin/bash
+# see: https://stackoverflow.com/questions/9666102/bash-double-bracket-issue
+# On Ubuntu systems, /bin/sh is dash, not bash, and dash does not support the 
+# double bracket keyword. You can solve your problem by explicitly invoking 
+# bash instead
 
 if [[ $(ps -Al | grep rhythmbox) =~ 'rhythmbox' ]]
 then

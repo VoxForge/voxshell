@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 rhythmbox-client --pause
 rhythmbox-client --print-playing 
 
