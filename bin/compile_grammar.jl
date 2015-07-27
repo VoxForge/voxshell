@@ -92,25 +92,25 @@ function make_category_voca(vocafile,termfile,tmpvocafile)
   println("---")
 end
 
-# convert VoxShell specific version of Julius .voca file:
-# % NS_B
-# <s>
+# convert VoxShell .vox file format (modified version of Julius .voca file):
+#  % NS_B
+#  <s>
 #
-# % NS_E
-# </s>
+#  % NS_E
+#  </s>
 #
-# % FILLER
-# UH []
-# WELL []
-# HUM []
+#  % FILLER
+#  [] UH
+#  [] WELL
+#  [] HUM
 #
-# % VOXFORGE
-# VOXFORGE [COM]
-# FIREFOX [COM]
+#  % VOXFORGE
+#  [COM] VOXFORGE
+#  [COM] FIREFOX
 #
-# % VOXFORGE_CAT
-# HOME [firefox -remote openurl(http://www.voxforge.org)]
-# READ [firefox -remote openurl(http://www.voxforge.org/home/read)]
+#  % VOXFORGE_CAT
+#  [firefox -remote openurl(http://www.voxforge.org)] HOME
+#  [firefox -remote openurl(http://www.voxforge.org/home/read)] READ
 #
 # to a Julius format .dict file to be 
 # used by Julius:
@@ -143,9 +143,8 @@ function vfvoca2dict(vocafile,dic,dictfile)
   end 
 
   function processLine(newid, line)
-    # compound words are seperated by dashes, but pronunciation is looked for 
-    # each individual word, and joined together with short pause (sp) between
-    # them
+    # compound words are separated by dashes, but pronunciation is looked up for 
+    # each individual word, and these are combined into one pronunciation list
     # Note: no need to check in VoxForgeDict to see if word is already defined,
     # because if it is, then the triphones you need are already defined, and 
     # that's all that matters
@@ -220,7 +219,7 @@ function main ()
   dfa_minimize= @windows ? "bin/windows/dfa_minimize.exe" : "bin/linux/dfa_minimize"
 
   workingfolder=mktempdir()
-  # grammar prefix must be same for .voca and .grammar files
+  # grammar prefix must be same for .vox and .grammar files
   grammar_prefix=ARGS[1] # includes path
 
   rgramfile= "$(workingfolder)/g$(getpid()).grammar"
@@ -249,7 +248,6 @@ function main ()
   rm(rgramfile)
   rm(tmpvocafile)
   rm(headerfile)
-
 end
 
 if length(ARGS) > 0 

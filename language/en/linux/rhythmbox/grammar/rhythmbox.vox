@@ -5,15 +5,15 @@
 </s>
 
 % FILLER
-UH []
-WELL []
-HUM []
+[] UH
+[] WELL
+[] HUM
 
 % PLAY_RHYTHMBOX
-PLAY [COM]
+[COM] PLAY
 
 % RHYTHMBOX_PLAY
-RHYTHMBOX [rhythmbox-client --play]
+[rhythmbox-client --play] RHYTHMBOX
 
 % STOP_RHYTHMBOX
 [COM] STOP
@@ -31,7 +31,7 @@ RHYTHMBOX [rhythmbox-client --play]
 [rhythmbox-client --play] PLAY START
 [rhythmbox-client --next] NEXT SKIP FORWARD
 [rhythmbox-client --previous] PREVIOUS BACK
-[rhythmbox/en/scripts/show.sh] SHOW WHO ABOUT INFORMATION
+[language/en/linux/rhythmbox/scripts/show.sh] SHOW WHO ABOUT INFORMATION
 [rhythmbox-client --volume-up] UP LOUDER
 [rhythmbox-client --volume-down] DOWN LOWER SOFTER
 [rhythmbox-client --pause] SILENCE STOP QUIET
