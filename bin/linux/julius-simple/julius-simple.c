@@ -108,6 +108,55 @@ process_status(RecogProcess *r)
   }
 }
 
+// VoxShell changes
+void child(char *result)
+{
+  int status;
+  int i;
+  int token_idx;
+  int nxt_token_start; // starts after "sentence1: <s> COMP "
+  char *tokens[100]; // array of pointers to strings (char arrays)
+                    // - exec wants command in this format
+
+  token_idx=0;
+  i=0;
+  nxt_token_start=i;
+  while ( result[i] != '\0' ) 
+  {
+    if (result[i] == ' ' || result[i] == '\t') // split tokens based on space or tab
+    {
+      tokens[token_idx]=&(result[nxt_token_start]); // point to start of token
+      result[i]='\0'; // terminate token inside result string
+
+      i++;
+      while ( result[i] == ' ' || result[i] == '\t' ) 
+      {      
+        i++; // skip spaces or tabs, if any
+      }
+      token_idx++;
+      nxt_token_start=i;
+    }
+   
+    i++;
+  }
+  tokens[token_idx]='\0';
+
+  // debug
+  for (i=0; i<token_idx; i++)
+  {
+    printf("tokens: %d [%s]\n", i, tokens[i]); 
+  }
+
+  
+  status = execvp(tokens[0], tokens); 
+  if (status < 0)
+  {
+    printf("Warning: can't find command: [%s]\n", tokens[0]);
+    exit(EXIT_FAILURE);
+  }
+}
+
+
 /** 
  * Callback to output final recognition result.
  * This function will be called just after recognition of an input ends
@@ -156,19 +205,17 @@ output_result(Recog *recog, void *dummy)
 
       /* output word sequence like Julius */
       printf("sentence%d:", n+1);
-      for(i=0;i<seqnum;i++) printf(" %s", winfo->woutput[seq[i]]);
+      for(i=0;i<seqnum;i++) 
+      {
+        printf("%d %s", i, winfo->woutput[seq[i]]);
+      }
       printf("\n");
-      /* LM entry sequence */
-      //printf("wseq%d:", n+1);
-      //for(i=0;i<seqnum;i++) printf(" %s", winfo->wname[seq[i]]);
-      printf("\n");
-      /* phoneme sequence */
-      //printf("phseq%d:", n+1);
-      //put_hypo_phoneme(seq, seqnum, winfo);
-      //printf("\n");
       /* confidence scores */
       printf("cmscore%d:", n+1);
-      for (i=0;i<seqnum; i++) printf(" %5.3f", s->confidence[i]);
+      for (i=0;i<seqnum; i++) 
+      {
+        printf(" %5.3f", s->confidence[i]);
+      }
       printf("\n");
       /* AM and LM scores */
       printf("score%d: %f", n+1, s->score);
@@ -185,6 +232,31 @@ output_result(Recog *recog, void *dummy)
             printf("grammar%d: %d\n", n+1, s->gram_id);
           }
       }
+      // !!!!!!
+      pid_t pid; // process id
+      if (winfo->woutput[seq[2]] == NULL) 
+      {
+        printf("[null result]\n");
+      } 
+      else 
+      {
+        pid = fork();
+        if (pid < 0) 
+        {
+          perror("fork error");
+          exit(EXIT_FAILURE);
+        }
+        if(pid > 0) // parent
+        {
+          wait(NULL);
+        } 
+        else // child
+        {
+          child(winfo->woutput[seq[2]]);
+        }
+      }
+      // !!!!!!
+
 
     }
   }
