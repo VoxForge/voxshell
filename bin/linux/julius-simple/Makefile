@@ -27,6 +27,7 @@ julius-simple: julius-simple.c
 # !!!!!!
 	#$(CC) $(CFLAGS) $(CPPFLAGS) -o julius-simple julius-simple.c $(LDFLAGS)
 	$(CC) $(CFLAGS) $(CPPFLAGS) -m32 -o julius-simple julius-simple.c $(LDFLAGS)
+	#$(CC) $(CFLAGS) $(CPPFLAGS) -m32 -o bob julius-simple.c $(LDFLAGS)
 # !!!!!!
 clean:
 	$(RM) *.o *.bak *~ core TAGS

@@ -98,7 +98,8 @@ output_result(Recog *recog, void *dummy)
 
   /* all recognition results are stored at each recognition process
      instance */
-  for(r=recog->process_list;r;r=r->next) {
+  for(r=recog->process_list;r;r=r->next) 
+  {
 
     /* skip the process if the process is not alive */
     if (! r->live) continue;
@@ -106,30 +107,32 @@ output_result(Recog *recog, void *dummy)
     /* result are in r->result.  See recog.h for details */
 
     /* check result status */
-    if (r->result.status < 0) {      /* no results obtained */
+    if (r->result.status < 0)  /* no results obtained */
+    {     
       /* outout message according to the status code */
-      switch(r->result.status) {
-      case J_RESULT_STATUS_REJECT_POWER:
-	printf("<input rejected by power>\n");
-	break;
-      case J_RESULT_STATUS_TERMINATE:
-	printf("<input teminated by request>\n");
-	break;
-      case J_RESULT_STATUS_ONLY_SILENCE:
-	printf("<input rejected by decoder (silence input result)>\n");
-	break;
-      case J_RESULT_STATUS_REJECT_GMM:
-	printf("<input rejected by GMM>\n");
-	break;
-      case J_RESULT_STATUS_REJECT_SHORT:
-	printf("<input rejected by short input>\n");
-	break;
-      case J_RESULT_STATUS_REJECT_LONG:
-	printf("<input rejected by long input>\n");
-	break;
-      case J_RESULT_STATUS_FAIL:
-	printf("<search failed>\n");
-	break;
+      switch(r->result.status) 
+      {
+        case J_RESULT_STATUS_REJECT_POWER:
+	        printf("<input rejected by power>\n");
+	        break;
+        case J_RESULT_STATUS_TERMINATE:
+	        printf("<input teminated by request>\n");
+	        break;
+        case J_RESULT_STATUS_ONLY_SILENCE:
+	        printf("<input rejected by decoder (silence input result)>\n");
+	        break;
+        case J_RESULT_STATUS_REJECT_GMM:
+	        printf("<input rejected by GMM>\n");
+	        break;
+        case J_RESULT_STATUS_REJECT_SHORT:
+	        printf("<input rejected by short input>\n");
+	        break;
+        case J_RESULT_STATUS_REJECT_LONG:
+	        printf("<input rejected by long input>\n");
+	        break;
+        case J_RESULT_STATUS_FAIL:
+	        printf("<search failed>\n");
+	        break;
       }
       /* continue to next process instance */
       continue;
@@ -138,8 +141,8 @@ output_result(Recog *recog, void *dummy)
     /* output results for all the obtained sentences */
     winfo = r->lm->winfo;
 
-    for(n = 0; n < r->result.sentnum; n++) { /* for all sentences */
-
+    for(n = 0; n < r->result.sentnum; n++) /* for all sentences */
+    { 
       s = &(r->result.sent[n]);
       seq = s->word;
       seqnum = s->word_num;
@@ -163,71 +166,94 @@ output_result(Recog *recog, void *dummy)
       /* AM and LM scores */
       printf("score%d: %f", n+1, s->score);
       if (r->lmtype == LM_PROB) { /* if this process uses N-gram */
-	printf(" (AM: %f  LM: %f)", s->score_am, s->score_lm);
+        printf(" (AM: %f  LM: %f)", s->score_am, s->score_lm);
       }
       printf("\n");
-      if (r->lmtype == LM_DFA) { /* if this process uses DFA grammar */
-	/* output which grammar the hypothesis belongs to
-	   when using multiple grammars */
-	if (multigram_get_all_num(r->lm) > 1) {
-	  printf("grammar%d: %d\n", n+1, s->gram_id);
-	}
+      if (r->lmtype == LM_DFA)  /* if this process uses DFA grammar */
+      {
+      /* output which grammar the hypothesis belongs to
+         when using multiple grammars */
+          if (multigram_get_all_num(r->lm) > 1) 
+          {
+            printf("grammar%d: %d\n", n+1, s->gram_id);
+          }
       }
-      
-      /* output alignment result if exist */
-      for (align = s->align; align; align = align->next) {
-	printf("=== begin forced alignment ===\n");
-	switch(align->unittype) {
-	case PER_WORD:
-	  printf("-- word alignment --\n"); break;
-	case PER_PHONEME:
-	  printf("-- phoneme alignment --\n"); break;
-	case PER_STATE:
-	  printf("-- state alignment --\n"); break;
-	}
-	printf(" id: from  to    n_score    unit\n");
-	printf(" ----------------------------------------\n");
-	for(i=0;i<align->num;i++) {
-	  printf("[%4d %4d]  %f  ", align->begin_frame[i], align->end_frame[i], align->avgscore[i]);
-	  switch(align->unittype) {
-	  case PER_WORD:
-	    printf("%s\t[%s]\n", winfo->wname[align->w[i]], winfo->woutput[align->w[i]]);
-	    break;
-	  case PER_PHONEME:
-	    p = align->ph[i];
-	    if (p->is_pseudo) {
-	      printf("{%s}\n", p->name);
-	    } else if (strmatch(p->name, p->body.defined->name)) {
-	      printf("%s\n", p->name);
-	    } else {
-	      printf("%s[%s]\n", p->name, p->body.defined->name);
-	    }
-	    break;
-	  case PER_STATE:
-	    p = align->ph[i];
-	    if (p->is_pseudo) {
-	      printf("{%s}", p->name);
-	    } else if (strmatch(p->name, p->body.defined->name)) {
-	      printf("%s", p->name);
-	    } else {
-	      printf("%s[%s]", p->name, p->body.defined->name);
-	    }
-	    if (r->am->hmminfo->multipath) {
-	      if (align->is_iwsp[i]) {
-		printf(" #%d (sp)\n", align->loc[i]);
-	      } else {
-		printf(" #%d\n", align->loc[i]);
-	      }
-	    } else {
-	      printf(" #%d\n", align->loc[i]);
-	    }
-	    break;
-	  }
-	}
-	
-	printf("re-computed AM score: %f\n", align->allscore);
+    
+    /* output alignment result if exist */
+    for (align = s->align; align; align = align->next) 
+    {
+      printf("=== begin forced alignment ===\n");
+      switch(align->unittype) 
+      {
+        case PER_WORD:
+          printf("-- word alignment --\n"); break;
+        case PER_PHONEME:
+          printf("-- phoneme alignment --\n"); break;
+        case PER_STATE:
+          printf("-- state alignment --\n"); break;
+      }
+      printf(" id: from  to    n_score    unit\n");
+      printf(" ----------------------------------------\n");
+      for(i=0;i<align->num;i++) 
+      {
+        printf("[%4d %4d]  %f  ", align->begin_frame[i], align->end_frame[i], align->avgscore[i]);
+        switch(align->unittype) 
+        {
+          case PER_WORD:
+            printf("%s\t[%s]\n", winfo->wname[align->w[i]], winfo->woutput[align->w[i]]);
+            break;
+          case PER_PHONEME:
+            p = align->ph[i];
+            if (p->is_pseudo) 
+            {
+              printf("{%s}\n", p->name);
+            } 
+            else if (strmatch(p->name, p->body.defined->name)) 
+            {
+              printf("%s\n", p->name);
+            } 
+            else 
+            {
+              printf("%s[%s]\n", p->name, p->body.defined->name);
+            }
+            break;
+          case PER_STATE:
+            p = align->ph[i];
+            if (p->is_pseudo) 
+            {
+              printf("{%s}", p->name);
+            } 
+            else if (strmatch(p->name, p->body.defined->name)) 
+            {
+              printf("%s", p->name);
+            } 
+            else 
+            {
+              printf("%s[%s]", p->name, p->body.defined->name);
+            }
 
-	printf("=== end forced alignment ===\n");
+            if (r->am->hmminfo->multipath) 
+            {
+              if (align->is_iwsp[i]) 
+              {
+	              printf(" #%d (sp)\n", align->loc[i]);
+              }
+              else 
+              {
+	              printf(" #%d\n", align->loc[i]);
+              }
+            } 
+            else 
+            {
+              printf(" #%d\n", align->loc[i]);
+            }
+            break;
+        } // switch
+      }
+	
+	    printf("re-computed AM score: %f\n", align->allscore);
+
+	    printf("=== end forced alignment ===\n");
       }
     }
   }
@@ -266,13 +292,14 @@ main(int argc, char *argv[])
 
   /* by default, all messages will be output to standard out */
   /* to disable output, uncomment below */
-  //jlog_set_output(NULL);
+  jlog_set_output(NULL); // disable start up log output; replaces -logfile
 
   /* output log to a file */
   //FILE *fp; fp = fopen("log.txt", "w"); jlog_set_output(fp);
 
   /* if no argument, output usage and exit */
-  if (argc == 1) {
+  if (argc == 1) 
+  {
     fprintf(stderr, "Julius rev.%s - based on ", JULIUS_VERSION);
     j_put_version(stderr);
     fprintf(stderr, "Try '-setting' for built-in engine configuration.\n");
@@ -287,7 +314,8 @@ main(int argc, char *argv[])
   jconf = j_config_load_args_new(argc, argv);
   /* else, you can load configurations from a jconf file */
   //jconf = j_config_load_file_new(jconf_filename);
-  if (jconf == NULL) {		/* error */
+  if (jconf == NULL) 
+  {		/* error */
     fprintf(stderr, "Try `-help' for more information.\n");
     return -1;
   }
@@ -296,7 +324,8 @@ main(int argc, char *argv[])
   /* it loads models, setup final parameters, build lexicon
      and set up work area for recognition */
   recog = j_create_instance_from_jconf(jconf);
-  if (recog == NULL) {
+  if (recog == NULL) 
+  {
     fprintf(stderr, "Error in startup\n");
     return -1;
   }
@@ -314,7 +343,8 @@ main(int argc, char *argv[])
   /**************************/
   /* initialize audio input device */
   /* ad-in thread starts at this time for microphone */
-  if (j_adin_init(recog) == FALSE) {    /* error */
+  if (j_adin_init(recog) == FALSE)  /* error */
+  {   
     return -1;
   }
 
@@ -325,54 +355,33 @@ main(int argc, char *argv[])
   /* Open input stream and recognize */
   /***********************************/
 
-  if (jconf->input.speech_input == SP_MFCFILE || jconf->input.speech_input == SP_OUTPROBFILE) {
-    /* MFCC file input */
+  /* raw speech input (microphone etc.) */
 
-    while (get_line_from_stdin(speechfilename, MAXPATHLEN, "enter MFCC filename->") != NULL) {
-      if (verbose_flag) printf("\ninput MFCC file: %s\n", speechfilename);
-      /* open the input file */
-      ret = j_open_stream(recog, speechfilename);
-      switch(ret) {
-      case 0:			/* succeeded */
-	break;
-      case -1:      		/* error */
-	/* go on to the next input */
-	continue;
-      case -2:			/* end of recognition */
-	return;
-      }
-      /* recognition loop */
-      ret = j_recognize_stream(recog);
-      if (ret == -1) return -1;	/* error */
-      /* reach here when an input ends */
-    }
-
-  } else {
-    /* raw speech input (microphone etc.) */
-
-    switch(j_open_stream(recog, NULL)) {
-    case 0:			/* succeeded */
-      break;
-    case -1:      		/* error */
-      fprintf(stderr, "error in input stream\n");
-      return;
-    case -2:			/* end of recognition process */
-      fprintf(stderr, "failed to begin input stream\n");
-      return;
-    }
-    
-    /**********************/
-    /* Recognization Loop */
-    /**********************/
-    /* enter main loop to recognize the input stream */
-    /* finish after whole input has been processed and input reaches end */
-    ret = j_recognize_stream(recog);
-    if (ret == -1) return -1;	/* error */
-    
-    /*******/
-    /* End */
-    /*******/
+  switch(j_open_stream(recog, NULL)) {
+  case 0:			/* succeeded */
+    break;
+  case -1:      		/* error */
+    fprintf(stderr, "error in input stream\n");
+    return;
+  case -2:			/* end of recognition process */
+    fprintf(stderr, "failed to begin input stream\n");
+    return;
   }
+  
+  /**********************/
+  /* Recognization Loop */
+  /**********************/
+  /* enter main loop to recognize the input stream */
+  /* finish after whole input has been processed and input reaches end */
+  ret = j_recognize_stream(recog);
+  if (ret == -1) 	/* error */
+  {
+    return -1;
+  }
+  /*******/
+  /* End */
+  /*******/
+
 
   /* calling j_close_stream(recog) at any time will terminate
      recognition and exit j_recognize_stream() */
