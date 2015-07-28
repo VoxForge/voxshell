@@ -77,6 +77,37 @@ put_hypo_phoneme(WORD_ID *seq, int n, WORD_INFO *winfo)
   }
   printf("\n");  
 }
+
+static void
+process_status(RecogProcess *r)
+{
+  /* outout message according to the status code */
+  switch(r->result.status) 
+  {
+    case J_RESULT_STATUS_REJECT_POWER:
+      printf("<input rejected by power>\n");
+      break;
+    case J_RESULT_STATUS_TERMINATE:
+      printf("<input teminated by request>\n");
+      break;
+    case J_RESULT_STATUS_ONLY_SILENCE:
+      printf("<input rejected by decoder (silence input result)>\n");
+      break;
+    case J_RESULT_STATUS_REJECT_GMM:
+      printf("<input rejected by GMM>\n");
+      break;
+    case J_RESULT_STATUS_REJECT_SHORT:
+      printf("<input rejected by short input>\n");
+      break;
+    case J_RESULT_STATUS_REJECT_LONG:
+      printf("<input rejected by long input>\n");
+      break;
+    case J_RESULT_STATUS_FAIL:
+      printf("<search failed>\n");
+      break;
+  }
+}
+
 /** 
  * Callback to output final recognition result.
  * This function will be called just after recognition of an input ends
@@ -109,31 +140,7 @@ output_result(Recog *recog, void *dummy)
     /* check result status */
     if (r->result.status < 0)  /* no results obtained */
     {     
-      /* outout message according to the status code */
-      switch(r->result.status) 
-      {
-        case J_RESULT_STATUS_REJECT_POWER:
-	        printf("<input rejected by power>\n");
-	        break;
-        case J_RESULT_STATUS_TERMINATE:
-	        printf("<input teminated by request>\n");
-	        break;
-        case J_RESULT_STATUS_ONLY_SILENCE:
-	        printf("<input rejected by decoder (silence input result)>\n");
-	        break;
-        case J_RESULT_STATUS_REJECT_GMM:
-	        printf("<input rejected by GMM>\n");
-	        break;
-        case J_RESULT_STATUS_REJECT_SHORT:
-	        printf("<input rejected by short input>\n");
-	        break;
-        case J_RESULT_STATUS_REJECT_LONG:
-	        printf("<input rejected by long input>\n");
-	        break;
-        case J_RESULT_STATUS_FAIL:
-	        printf("<search failed>\n");
-	        break;
-      }
+      process_status(r);
       /* continue to next process instance */
       continue;
     }
@@ -178,83 +185,7 @@ output_result(Recog *recog, void *dummy)
             printf("grammar%d: %d\n", n+1, s->gram_id);
           }
       }
-    
-    /* output alignment result if exist */
-    for (align = s->align; align; align = align->next) 
-    {
-      printf("=== begin forced alignment ===\n");
-      switch(align->unittype) 
-      {
-        case PER_WORD:
-          printf("-- word alignment --\n"); break;
-        case PER_PHONEME:
-          printf("-- phoneme alignment --\n"); break;
-        case PER_STATE:
-          printf("-- state alignment --\n"); break;
-      }
-      printf(" id: from  to    n_score    unit\n");
-      printf(" ----------------------------------------\n");
-      for(i=0;i<align->num;i++) 
-      {
-        printf("[%4d %4d]  %f  ", align->begin_frame[i], align->end_frame[i], align->avgscore[i]);
-        switch(align->unittype) 
-        {
-          case PER_WORD:
-            printf("%s\t[%s]\n", winfo->wname[align->w[i]], winfo->woutput[align->w[i]]);
-            break;
-          case PER_PHONEME:
-            p = align->ph[i];
-            if (p->is_pseudo) 
-            {
-              printf("{%s}\n", p->name);
-            } 
-            else if (strmatch(p->name, p->body.defined->name)) 
-            {
-              printf("%s\n", p->name);
-            } 
-            else 
-            {
-              printf("%s[%s]\n", p->name, p->body.defined->name);
-            }
-            break;
-          case PER_STATE:
-            p = align->ph[i];
-            if (p->is_pseudo) 
-            {
-              printf("{%s}", p->name);
-            } 
-            else if (strmatch(p->name, p->body.defined->name)) 
-            {
-              printf("%s", p->name);
-            } 
-            else 
-            {
-              printf("%s[%s]", p->name, p->body.defined->name);
-            }
 
-            if (r->am->hmminfo->multipath) 
-            {
-              if (align->is_iwsp[i]) 
-              {
-	              printf(" #%d (sp)\n", align->loc[i]);
-              }
-              else 
-              {
-	              printf(" #%d\n", align->loc[i]);
-              }
-            } 
-            else 
-            {
-              printf(" #%d\n", align->loc[i]);
-            }
-            break;
-        } // switch
-      }
-	
-	    printf("re-computed AM score: %f\n", align->allscore);
-
-	    printf("=== end forced alignment ===\n");
-      }
     }
   }
 
