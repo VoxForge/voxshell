@@ -37,6 +37,7 @@
 #include <unistd.h> 
 #include <stdlib.h> 
 #include <stdbool.h>
+#include <sys/wait.h>
 
 void child(char *result_str);
 // !!!!!!
@@ -126,8 +127,6 @@ get_plugin_info(int opcode, char *buf, int buflen)
  * </EN>
  * 
  */
-// to compile: clear && gcc -shared    result.c   -o result.jpi -fPIC
-//             clear && gcc -shared    result.c   -o result.jpi -fPIC && cp /home/kmaclean/bin/julius-4.3.1/plugin/result.jpi /home/kmaclean/VoxForge-dev/Main/AcousticModels/QuickStart/Linux/julius-4.3.1-quickstart-linux/plugin/result.jpi
 
 // to run: clear && ./julius -input mic -C voxshell.jconf -plugindir plugin -quiet
 void result_best_str(char *result_str)

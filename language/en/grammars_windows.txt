@@ -1,1 +1,2 @@
+# to compile: julia bin/compile_grammar.jl language/en/windows/firefox/grammar/firefox
 windows/firefox/grammar/firefox
