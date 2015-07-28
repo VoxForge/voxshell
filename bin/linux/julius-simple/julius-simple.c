@@ -159,13 +159,13 @@ output_result(Recog *recog, void *dummy)
       for(i=0;i<seqnum;i++) printf(" %s", winfo->woutput[seq[i]]);
       printf("\n");
       /* LM entry sequence */
-      printf("wseq%d:", n+1);
-      for(i=0;i<seqnum;i++) printf(" %s", winfo->wname[seq[i]]);
+      //printf("wseq%d:", n+1);
+      //for(i=0;i<seqnum;i++) printf(" %s", winfo->wname[seq[i]]);
       printf("\n");
       /* phoneme sequence */
-      printf("phseq%d:", n+1);
-      put_hypo_phoneme(seq, seqnum, winfo);
-      printf("\n");
+      //printf("phseq%d:", n+1);
+      //put_hypo_phoneme(seq, seqnum, winfo);
+      //printf("\n");
       /* confidence scores */
       printf("cmscore%d:", n+1);
       for (i=0;i<seqnum; i++) printf(" %5.3f", s->confidence[i]);
