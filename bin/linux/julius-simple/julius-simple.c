@@ -29,6 +29,14 @@
 
 /* include top Julius library header */
 #include <julius/juliuslib.h>
+// !!!!!!
+#include <sys/types.h> 
+#include <unistd.h> 
+#include <stdlib.h> 
+#include <stdbool.h>
+#include <sys/wait.h>
+// !!!!!!
+
 
 /** 
  * Callback to be called when start waiting speech input. 
@@ -52,30 +60,6 @@ status_recstart(Recog *recog, void *dummy)
   if (recog->jconf->input.speech_input == SP_MIC || recog->jconf->input.speech_input == SP_NETAUDIO) {
     fprintf(stderr, "\r                    \r");
   }
-}
-
-/** 
- * Sub function to output phoneme sequence.
- * 
- */
-static void
-put_hypo_phoneme(WORD_ID *seq, int n, WORD_INFO *winfo)
-{
-  int i,j;
-  WORD_ID w;
-  static char buf[MAX_HMMNAME_LEN];
-
-  if (seq != NULL) {
-    for (i=0;i<n;i++) {
-      if (i > 0) printf(" |");
-      w = seq[i];
-      for (j=0;j<winfo->wlen[w];j++) {
-	center_name(winfo->wseq[w][j]->name, buf);
-	printf(" %s", buf);
-      }
-    }
-  }
-  printf("\n");  
 }
 
 static void
@@ -104,6 +88,7 @@ process_status(RecogProcess *r)
       break;
     case J_RESULT_STATUS_FAIL:
       printf("<search failed>\n");
+      printf("\a"); // ring terminal bell
       break;
   }
 }
@@ -114,27 +99,23 @@ void child(char *result)
   int status;
   int i;
   int token_idx;
-  int nxt_token_start; // starts after "sentence1: <s> COMP "
   char *tokens[100]; // array of pointers to strings (char arrays)
                     // - exec wants command in this format
 
-  token_idx=0;
   i=0;
-  nxt_token_start=i;
-  while ( result[i] != '\0' ) 
+  token_idx=0;
+  tokens[token_idx++]=&(result[i]); 
+  while ( result[i] != '\0' )
   {
     if (result[i] == ' ' || result[i] == '\t') // split tokens based on space or tab
     {
-      tokens[token_idx]=&(result[nxt_token_start]); // point to start of token
       result[i]='\0'; // terminate token inside result string
-
       i++;
       while ( result[i] == ' ' || result[i] == '\t' ) 
       {      
         i++; // skip spaces or tabs, if any
       }
-      token_idx++;
-      nxt_token_start=i;
+      tokens[token_idx++]=&(result[i]); 
     }
    
     i++;
@@ -165,16 +146,13 @@ void child(char *result)
 static void
 output_result(Recog *recog, void *dummy)
 {
-  int i, j;
-  int len;
+  int i;
   WORD_INFO *winfo;
   WORD_ID *seq;
   int seqnum;
   int n;
   Sentence *s;
   RecogProcess *r;
-  HMM_Logical *p;
-  SentenceAlign *align;
 
   /* all recognition results are stored at each recognition process
      instance */
@@ -252,6 +230,7 @@ output_result(Recog *recog, void *dummy)
         } 
         else // child
         {
+          winfo->woutput[seq[3]]='\0';
           child(winfo->woutput[seq[2]]);
         }
       }
@@ -284,12 +263,6 @@ main(int argc, char *argv[])
    * 
    */
   Recog *recog;
-
-  /**
-   * speech file name for MFCC file input
-   * 
-   */
-  static char speechfilename[MAXPATHLEN];
 
   int ret;
 
@@ -360,15 +333,16 @@ main(int argc, char *argv[])
 
   /* raw speech input (microphone etc.) */
 
-  switch(j_open_stream(recog, NULL)) {
-  case 0:			/* succeeded */
-    break;
-  case -1:      		/* error */
-    fprintf(stderr, "error in input stream\n");
-    return;
-  case -2:			/* end of recognition process */
-    fprintf(stderr, "failed to begin input stream\n");
-    return;
+  switch(j_open_stream(recog, NULL)) 
+  {
+    case 0:			/* succeeded */
+      break;
+    case -1:      		/* error */
+      fprintf(stderr, "error in input stream\n");
+      return(0);
+    case -2:			/* end of recognition process */
+      fprintf(stderr, "failed to begin input stream\n");
+      return(0);
   }
   
   /**********************/
