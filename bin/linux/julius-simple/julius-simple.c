@@ -46,7 +46,7 @@ static void
 status_recready(Recog *recog, void *dummy)
 {
   if (recog->jconf->input.speech_input == SP_MIC || recog->jconf->input.speech_input == SP_NETAUDIO) {
-    fprintf(stderr, "\n<<< please speak >>>");
+    fprintf(stderr, "<<< please speak >>>");
   }
 }
 
@@ -123,10 +123,10 @@ void child(char *result)
   tokens[token_idx]='\0';
 
   // debug
-  for (i=0; i<=token_idx; i++)
-  {
-    printf("tokens: %d [%s]\n", i, tokens[i]); 
-  }
+  //for (i=0; i<token_idx; i++)
+  //{
+  //  printf("tokens: %d [%s]\n", i, tokens[i]); 
+  //}
   
   status = execvp(tokens[0], tokens); 
   if (status < 0)

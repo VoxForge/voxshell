@@ -19,6 +19,7 @@
 [language/en/linux/shell/scripts/weather.sh] WEATHER IS-IT-CLOUDY IS-IT-SUNNY
 [firefox -remote openurl(https://ca-mg6.mail.yahoo.com/neo/launch?.partner=rogers-acs)] EMAIL MAIL
 [ls] LIST-FILES FILES
+# if want to execute shell command with certain parameters (like '*'), need to put it in a bash script
 [language/en/linux/shell/scripts/listdirs.sh] LIST-DIRECTORIES DIRECTORY-LIST DIRECTORIES
 [pwd] PRINT-WORKING-DIRECTORY
 [ls bin] LIST-BIN BIN
