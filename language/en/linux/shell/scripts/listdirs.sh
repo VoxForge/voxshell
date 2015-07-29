@@ -1,0 +1,2 @@
+#!/bin/bash
+find * -maxdepth 0 -type d

@@ -18,8 +18,10 @@
 # to tiedlist file (not as complicated as it sounds...)
 [language/en/linux/shell/scripts/weather.sh] WEATHER IS-IT-CLOUDY IS-IT-SUNNY
 [firefox -remote openurl(https://ca-mg6.mail.yahoo.com/neo/launch?.partner=rogers-acs)] EMAIL MAIL
-[ls] LIST-FILES
+[ls] LIST-FILES FILES
+[language/en/linux/shell/scripts/listdirs.sh] LIST-DIRECTORIES DIRECTORY-LIST DIRECTORIES
 [pwd] PRINT-WORKING-DIRECTORY
+[ls bin] LIST-BIN BIN
 
 % VOLUME
 [COM] VOLUME

@@ -46,7 +46,7 @@ static void
 status_recready(Recog *recog, void *dummy)
 {
   if (recog->jconf->input.speech_input == SP_MIC || recog->jconf->input.speech_input == SP_NETAUDIO) {
-    fprintf(stderr, "<<< please speak >>>");
+    fprintf(stderr, "\n<<< please speak >>>");
   }
 }
 
@@ -123,11 +123,10 @@ void child(char *result)
   tokens[token_idx]='\0';
 
   // debug
-  for (i=0; i<token_idx; i++)
+  for (i=0; i<=token_idx; i++)
   {
     printf("tokens: %d [%s]\n", i, tokens[i]); 
   }
-
   
   status = execvp(tokens[0], tokens); 
   if (status < 0)
@@ -183,35 +182,40 @@ output_result(Recog *recog, void *dummy)
       seq = s->word;
       seqnum = s->word_num;
 
-      /* output word sequence like Julius */
-      printf("sentence%d:", n+1);
-      for(i=0;i<seqnum;i++) 
+      // see https://stackoverflow.com/questions/1961209/making-some-text-in-printf-appear-in-green-and-red
+      printf("\033[1m\033[30mcommand [%s] \033[0m\n", winfo->woutput[seq[2]]);
+      if (false) // debugging
       {
-        //printf("%d %s", i, winfo->woutput[seq[i]]); // debug
-        printf("%s", winfo->woutput[seq[i]]);
-      }
-      printf("\n");
-      /* confidence scores */
-      printf("cmscore%d:", n+1);
-      for (i=0;i<seqnum; i++) 
-      {
-        printf(" %5.3f", s->confidence[i]);
-      }
-      printf("\n");
-      /* AM and LM scores */
-      printf("score%d: %f", n+1, s->score);
-      if (r->lmtype == LM_PROB) { /* if this process uses N-gram */
-        printf(" (AM: %f  LM: %f)", s->score_am, s->score_lm);
-      }
-      printf("\n");
-      if (r->lmtype == LM_DFA)  /* if this process uses DFA grammar */
-      {
-      /* output which grammar the hypothesis belongs to
-         when using multiple grammars */
-          if (multigram_get_all_num(r->lm) > 1) 
-          {
-            printf("grammar%d: %d\n", n+1, s->gram_id);
-          }
+        /* output word sequence like Julius */
+        printf("sentence%d:", n+1);
+        for(i=0;i<seqnum;i++) 
+        {
+          //printf("%d %s", i, winfo->woutput[seq[i]]); // debug
+          printf("%s", winfo->woutput[seq[i]]);
+        }
+        printf("\n");
+        /* confidence scores */
+        printf("cmscore%d:", n+1);
+        for (i=0;i<seqnum; i++) 
+        {
+          printf(" %5.3f", s->confidence[i]);
+        }
+        printf("\n");
+        /* AM and LM scores */
+        printf("score%d: %f", n+1, s->score);
+        if (r->lmtype == LM_PROB) { /* if this process uses N-gram */
+          printf(" (AM: %f  LM: %f)", s->score_am, s->score_lm);
+        }
+        printf("\n");
+        if (r->lmtype == LM_DFA)  /* if this process uses DFA grammar */
+        {
+        /* output which grammar the hypothesis belongs to
+           when using multiple grammars */
+            if (multigram_get_all_num(r->lm) > 1) 
+            {
+              printf("grammar%d: %d\n", n+1, s->gram_id);
+            }
+        }
       }
       // !!!!!!
       bool skip=false;
