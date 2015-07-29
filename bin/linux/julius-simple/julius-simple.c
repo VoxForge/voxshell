@@ -187,7 +187,8 @@ output_result(Recog *recog, void *dummy)
       printf("sentence%d:", n+1);
       for(i=0;i<seqnum;i++) 
       {
-        printf("%d %s", i, winfo->woutput[seq[i]]);
+        //printf("%d %s", i, winfo->woutput[seq[i]]); // debug
+        printf("%s", winfo->woutput[seq[i]]);
       }
       printf("\n");
       /* confidence scores */
