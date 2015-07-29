@@ -1,5 +1,8 @@
 # make file to create/update grammars
+
+# update this path to your voxshell directory
 VOXSHELL=~/VoxForge-git/voxshell
+
 export COMPILE_GRAMMAR=$(VOXSHELL)/bin/compile_grammar.jl
 export MKFA_DIR=$(VOXSHELL)/bin/linux
 export VOXFORGE_DICT=$(VOXSHELL)/language/en/lexicon/VoxForgeDict.txt

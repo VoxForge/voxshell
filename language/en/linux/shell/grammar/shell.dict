@@ -9,11 +9,11 @@
 4	[language/en/linux/shell/scripts/weather.sh] ih z ih t s ah n iy 
 4	[firefox -remote openurl(https://ca-mg6.mail.yahoo.com/neo/launch?.partner=rogers-acs)] iy m ey l
 4	[firefox -remote openurl(https://ca-mg6.mail.yahoo.com/neo/launch?.partner=rogers-acs)] m ey l
+4	[ls] l ih s t f ay l z 
+4	[pwd] p r ih n t w er k ih ng d er eh k t er iy 
 5	[COM] v aa l y uw m
 6	[pactl set-sink-volume 1 -- +20%] ah p
 6	[pactl set-sink-volume 1 -- +20%] l aw d er
 6	[pactl set-sink-volume 1 -- -20%] d aw n
 6	[pactl set-sink-volume 1 -- -20%] l ow er
 6	[pactl set-sink-volume 1 -- -20%] s aa f t er
-6	[ls] l ih s t f ay l z 
-6	[pwd] p r ih n t w er k ih ng d er eh k t er iy 
