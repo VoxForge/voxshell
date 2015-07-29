@@ -214,13 +214,11 @@ function vfvoca2dict(vocafile,dic,dictfile)
   println("generated: $dictfile")
 end
 
-function main ()
-  mkfa= @windows ? "bin/windows/mkfa.exe" : "bin/linux/mkfa"
-  dfa_minimize= @windows ? "bin/windows/dfa_minimize.exe" : "bin/linux/dfa_minimize"
+function main (grammar_prefix, mkfa_folder, voxforge_dict)
+  mkfa= @windows ? "$(mkfa_folder)/mkfa.exe" : "$(mkfa_folder)/mkfa"
+  dfa_minimize= @windows ? "$(mkfa_folder)/dfa_minimize.exe" : "$(mkfa_folder)/dfa_minimize"
 
   workingfolder=mktempdir()
-  # grammar prefix must be same for .vox and .grammar files
-  grammar_prefix=ARGS[1] # includes path
 
   rgramfile= "$(workingfolder)/g$(getpid()).grammar"
   gramfile="$(grammar_prefix).grammar"
@@ -232,8 +230,7 @@ function main ()
   headerfile="$(workingfolder)/g$(getpid()).h"
 
   reverse_grammar(rgramfile,gramfile)
-  dic="language/en/lexicon/VoxForgeDict.txt"
-  dicfile="$(grammar_prefix).dict"
+  dictfile="$(grammar_prefix).dict"
 
   make_category_voca(vocafile,termfile,tmpvocafile)
   println("dir $(pwd())")
@@ -242,7 +239,7 @@ function main ()
   # dfa_minimize compresses dfafile.tmp (if it can) to .dfa file
   run(`$dfa_minimize $(dfafile).tmp -o $dfafile`)
 
-  vfvoca2dict(vocafile,dic,dicfile)
+  vfvoca2dict(vocafile,voxforge_dict,dictfile)
 
   rm("$(dfafile).tmp")
   rm(rgramfile)
@@ -253,18 +250,31 @@ end
 if length(ARGS) > 0 
   grammar_prefix=ARGS[1] 
   grammar_folder=ARGS[1] 
+  mkfa_folder=ARGS[2] 
+  voxforge_dict=ARGS[3] 
+
+  # grammar prefix must be same for .vox and .grammar files
   if ! isfile(grammar_prefix * ".grammar")
     error("can't find gramfile file: $(grammar_folder)/$(grammar_prefix).grammar")
   end
   if ! isfile(grammar_prefix * ".vox")
     error("can't find voca file: $(grammar_prefix).vox")
   end
-  if length(ARGS) > 1
+  if ! isfile(mkfa_folder * "/mkfa")
+    error("can't find mkfa executable: $(mkfa_folder)/mkfa")
+  end
+  if ! isfile(mkfa_folder * "/dfa_minimize")
+    error("can't find mkfa executable: $(mkfa_folder)/dfa_minimize")
+  end
+  if ! isfile(voxforge_dict)
+    error("can't find voxforge_dict file: $(voxforge_dict)")
+  end
+  if length(ARGS) > 3
     error("mkdfa: too many arguments for call from command line")
   end
 
-  main()
+  main(grammar_prefix, mkfa_folder, voxforge_dict)
 else
   println("must be called from command line")
-  println("usage: juliua compile_grammar.jl [grammar prefix with path]")
+  println("usage: juliua compile_grammar.jl grammarPrefixWithPath mkfaFolder voxforge_dict")
 end
