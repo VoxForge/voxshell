@@ -25,4 +25,5 @@
 % VOLUME_CAT
 [pactl set-sink-volume 1 -- +20%] UP LOUDER
 [pactl set-sink-volume 1 -- -20%] DOWN LOWER SOFTER
-
+[ls] LIST-FILES
+[pwd] PRINT-WORKING-DIRECTORY

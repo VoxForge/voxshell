@@ -10,7 +10,7 @@
 [] HUM
 
 % PLAY_RHYTHMBOX
-[COM] PLAY
+[COM] PLAY START
 
 % RHYTHMBOX_PLAY
 [rhythmbox-client --play] RHYTHMBOX
@@ -31,7 +31,7 @@
 [rhythmbox-client --play] PLAY START
 [rhythmbox-client --next] NEXT SKIP FORWARD
 [rhythmbox-client --previous] PREVIOUS BACK
-[language/en/linux/rhythmbox/scripts/show.sh] SHOW WHO ABOUT INFORMATION INFO
+[language/en/linux/rhythmbox/scripts/show.sh] SHOW WHO ABOUT INFORMATION
 [rhythmbox-client --volume-up] UP LOUDER
 [rhythmbox-client --volume-down] DOWN LOWER SOFTER
 [rhythmbox-client --pause] SILENCE STOP QUIET

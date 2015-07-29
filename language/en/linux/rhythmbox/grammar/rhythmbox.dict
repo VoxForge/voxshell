@@ -4,6 +4,7 @@
 2	[] w eh l
 2	[] hh ah m
 3	[COM] p l ey
+3	[COM] s t aa r t
 4	[rhythmbox-client --play] r ih dh ah m b aa k s
 5	[COM] s t aa p
 6	[rhythmbox-client --pause] r ih dh ah m b aa k s
@@ -21,7 +22,6 @@
 8	[language/en/linux/rhythmbox/scripts/show.sh] hh uw
 8	[language/en/linux/rhythmbox/scripts/show.sh] ah b aw t
 8	[language/en/linux/rhythmbox/scripts/show.sh] ih n f ao r m ey sh ah n
-8	[language/en/linux/rhythmbox/scripts/show.sh] ih n f ow
 8	[rhythmbox-client --volume-up] ah p
 8	[rhythmbox-client --volume-up] l aw d er
 8	[rhythmbox-client --volume-down] d aw n
