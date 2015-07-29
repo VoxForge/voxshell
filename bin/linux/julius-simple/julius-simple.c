@@ -153,7 +153,9 @@ output_result(Recog *recog, void *dummy)
   int n;
   Sentence *s;
   RecogProcess *r;
-
+  // !!!!!!
+  pid_t pid; // process id
+  // !!!!!!
   /* all recognition results are stored at each recognition process
      instance */
   for(r=recog->process_list;r;r=r->next) 
@@ -211,7 +213,22 @@ output_result(Recog *recog, void *dummy)
           }
       }
       // !!!!!!
-      pid_t pid; // process id
+      bool skip=false;
+      for (i=1;i<seqnum-1; i++)  // skip start and end silence
+      {
+        if (s->confidence[i] < .7)
+        {
+          printf("word %d confidence too low: %5.3f\n", i+1, s->confidence[i]);
+          skip=true;
+          continue;
+        }
+      }
+      if (skip)
+      {
+        printf("\a"); // ring terminal bell
+        continue;
+      }
+
       if (winfo->woutput[seq[2]] == NULL) 
       {
         printf("[null result]\n");
@@ -235,8 +252,6 @@ output_result(Recog *recog, void *dummy)
         }
       }
       // !!!!!!
-
-
     }
   }
 

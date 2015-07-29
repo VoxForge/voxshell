@@ -32,5 +32,5 @@
 -lv 4000			        # level threshold (0-32767)
 
 -quiet                # output less log
--logfile julius.log   # redirect logs to file
+#-logfile julius.log   # redirect logs to file
 # !!!!!!

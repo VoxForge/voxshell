@@ -24,7 +24,7 @@ command:
 
   Windows:
 
-      C:> bin\windows\julius.exe -input mic -C voxshell.jconf -gramlist language/en/grammars_windows.txt -plugindir bin/windows/plugin
+      C:> bin\windows\julius.exe -input mic -C voxshell.jconf -gramlist language/en/grammars_windows.txt -plugindir bin/windows/plugin -logfile julius.log  
 
 Note that we need many more speech submissions to create high quality free Acoustic 
 Models.  Please take the time to submit some speech to [www.voxforge.org](http://www.voxforge.org) using the 

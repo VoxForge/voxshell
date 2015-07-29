@@ -5,7 +5,7 @@ LIBSENT=libsent
 LIBJULIUS=libjulius
 # !!!!!!!
 CC=gcc
-CFLAGS=-g -O2 
+CFLAGS=-g -O2 -Wall
 
 ####
 #### When using system-installed libraries
@@ -25,13 +25,10 @@ all: julius-simple
 
 julius-simple: julius-simple.c
 # !!!!!!
-	#$(CC) $(CFLAGS) $(CPPFLAGS) -o julius-simple julius-simple.c $(LDFLAGS)
+#$(CC) $(CFLAGS) $(CPPFLAGS) -o julius-simple julius-simple.c $(LDFLAGS)
 	$(CC) $(CFLAGS) $(CPPFLAGS) -m32 -o julius-simple julius-simple.c $(LDFLAGS)
-	#$(CC) $(CFLAGS) $(CPPFLAGS) -m32 -o bob julius-simple.c $(LDFLAGS)
 # !!!!!!
-clean:
-	$(RM) *.o *.bak *~ core TAGS
 
-distclean:
+clean:
 	$(RM) *.o *.bak *~ core TAGS
 	$(RM) julius-simple
