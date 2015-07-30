@@ -14,15 +14,15 @@ SHELL_DIR=shell/grammar
 all: firefox_grammar rhythmbox_grammar shell_grammar
 
 rhythmbox_grammar:
-	 $(MAKE) -C $(RHYTHMBOX_DIR)
+	 $(MAKE) -s -C $(RHYTHMBOX_DIR)
 
 firefox_grammar:
-	 $(MAKE) -C $(FIREFOX_DIR)
+	 $(MAKE) -s -C $(FIREFOX_DIR)
 
 shell_grammar:
-	 $(MAKE) -C $(SHELL_DIR)
+	 $(MAKE) -s -C $(SHELL_DIR)
 
 clean:
-	$(MAKE) clean -C $(FIREFOX_DIR)
-	$(MAKE) clean -C $(RHYTHMBOX_DIR)
-	$(MAKE) clean -C $(SHELL_DIR)
+	$(MAKE) -s clean -C $(FIREFOX_DIR)
+	$(MAKE) -s clean -C $(RHYTHMBOX_DIR)
+	$(MAKE) -s clean -C $(SHELL_DIR)
