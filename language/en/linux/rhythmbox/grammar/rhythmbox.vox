@@ -1,30 +1,18 @@
 % NS_B
-<s>
+[] <s>
 
 % NS_E
-</s>
+[] </s>
 
 % FILLER
 [] UH
 [] WELL
 [] HUM
 
-% PLAY_RHYTHMBOX
-[COM] PLAY START
-
-% RHYTHMBOX_PLAY
-[rhythmbox-client --play] RHYTHMBOX
-
-% STOP_RHYTHMBOX
-[COM] STOP
-
-% RHYTHMBOX_STOP
-[rhythmbox-client --pause] RHYTHMBOX
-
 % MUSIC_PLAYER 
-[JAN] RHYTHMBOX PLAYER MUSIC
+[] RHYTHMBOX PLAYER MUSIC
 
-% RHYTHMBOX_CAT
+% DO
 [language/en/linux/rhythmbox/scripts/search.sh police] PLAY-POLICE
 [rhythmbox-client --play] PLAY START
 [rhythmbox-client --next] NEXT SKIP
@@ -38,10 +26,25 @@
 [dbus-send --print-reply --dest=org.mpris.MediaPlayer2.rhythmbox /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Seek int64:-30000000] REWIND GO-BACK
 
 % SEARCH
-[BOB] ARTIST GROUP SEARCH
+[] ARTIST GROUP SEARCH
 
-% SEARCH_CAT
+% ARTIST
 [language/en/linux/rhythmbox/scripts/search.sh arcade fire] ARCADE-FIRE
 [language/en/linux/rhythmbox/scripts/search.sh police] POLICE
 [language/en/linux/rhythmbox/scripts/search.sh radiohead] RADIO-HEAD
 [language/en/linux/rhythmbox/scripts/search.sh U2] U-TWO
+
+
+
+
+% PLAY_RHYTHMBOX
+[] PLAY START
+
+% RHYTHMBOX_PLAY
+[rhythmbox-client --play] RHYTHMBOX
+
+% STOP_RHYTHMBOX
+[] STOP
+
+% RHYTHMBOX_STOP
+[rhythmbox-client --pause] RHYTHMBOX
