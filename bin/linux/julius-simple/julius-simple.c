@@ -154,6 +154,11 @@ output_result(Recog *recog, void *dummy)
   RecogProcess *r;
   // !!!!!!
   pid_t pid; // process id
+
+  //PROCESS_LM *lm;
+  //for(lm=recog->lmlist;lm;lm=lm->next) {
+  //  printf("lmlist %d\n", multigram_get_all_num(lm) );
+  // }
   // !!!!!!
   /* all recognition results are stored at each recognition process
      instance */

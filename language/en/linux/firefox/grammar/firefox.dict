@@ -5,6 +5,7 @@
 2	[] hh ah m
 3	[COM] v aa k s f ao r jh
 3	[COM] f ay r f aa k s
+4	[language/en/linux/firefox/scripts/test.sh] t eh s t
 4	[firefox -remote openurl(http://www.voxforge.org)] hh ow m
 4	[firefox -remote openurl(http://www.voxforge.org)] p ey jh
 4	[firefox -remote openurl(http://www.voxforge.org/home/read)] r eh d

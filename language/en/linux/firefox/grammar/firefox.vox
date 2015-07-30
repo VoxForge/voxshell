@@ -11,9 +11,9 @@
 
 % VOXFORGE
 [COM] VOXFORGE
-[COM] FIREFOX
 
 % VOXFORGE_CAT
+[language/en/linux/firefox/scripts/test.sh] TEST
 [firefox -remote openurl(http://www.voxforge.org)] HOME PAGE
 [firefox -remote openurl(http://www.voxforge.org/home/read)] READ SUBMIT
 [firefox -remote openurl(http://www.voxforge.org/home/listen)] LISTEN
@@ -23,3 +23,9 @@
 [firefox -remote openurl(http://www.voxforge.org/home/dev/acousticmodels/linux/create/htkjulius/how-to/download)] HOWTO
 [firefox -remote openurl(http://www.voxforge.org/home/dev/acousticmodels/linux/create/htkjulius/tutorial/download)] TUTORIAL
 
+% BROWSER
+[COM] FIREFOX
+[COM] BROWSER
+
+% VOXFORGE_CAT
+[language/en/linux/firefox/scripts/search.sh xkcd] TEST

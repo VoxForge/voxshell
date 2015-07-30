@@ -28,6 +28,7 @@
 
 % RHYTHMBOX_CAT
 #[dbus-send --print-reply --dest=org.mpris.MediaPlayer2.rhythmbox /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Next] PLAY 
+[language/en/linux/rhythmbox/scripts/search.sh police] PLAY-POLICE
 [rhythmbox-client --play] PLAY START
 [rhythmbox-client --next] NEXT SKIP FORWARD
 [rhythmbox-client --previous] PREVIOUS BACK
@@ -36,3 +37,10 @@
 [rhythmbox-client --volume-down] DOWN LOWER SOFTER
 [rhythmbox-client --pause] SILENCE STOP QUIET
 
+% RHYTHMBOX_SEARCH
+[COM] RHYTHMBOX-QUEUE
+
+% RHYTHMBOX_SEARCH_CAT
+[language/en/linux/rhythmbox/scripts/search.sh police] POLICE
+[language/en/linux/rhythmbox/scripts/search.sh radiohead] RADIO-HEAD
+[language/en/linux/rhythmbox/scripts/search.sh U2] U-2
