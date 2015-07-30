@@ -28,10 +28,6 @@ julius-simple: julius-simple.c
 #$(CC) $(CFLAGS) $(CPPFLAGS) -o julius-simple julius-simple.c $(LDFLAGS)
 	$(CC) $(CFLAGS) $(CPPFLAGS) -m32 -o julius-simple julius-simple.c $(LDFLAGS)
 
-# !!!!!!
-voxshell: voxshell.c
-	$(CC) $(CFLAGS) $(CPPFLAGS) -m32 -o voxshell voxshell.c $(LDFLAGS)
-
 clean:
 	$(RM) *.o *.bak *~ core TAGS
 	$(RM) julius-simple

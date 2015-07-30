@@ -21,26 +21,27 @@
 % RHYTHMBOX_STOP
 [rhythmbox-client --pause] RHYTHMBOX
 
-% RHYTHMBOX
-[COM] RHYTHMBOX
-[COM] PLAYER
-[COM] MUSIC
+% MUSIC_PLAYER 
+[JAN] RHYTHMBOX PLAYER MUSIC
 
 % RHYTHMBOX_CAT
-#[dbus-send --print-reply --dest=org.mpris.MediaPlayer2.rhythmbox /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Next] PLAY 
 [language/en/linux/rhythmbox/scripts/search.sh police] PLAY-POLICE
 [rhythmbox-client --play] PLAY START
-[rhythmbox-client --next] NEXT SKIP FORWARD
+[rhythmbox-client --next] NEXT SKIP
 [rhythmbox-client --previous] PREVIOUS BACK
 [language/en/linux/rhythmbox/scripts/show.sh] SHOW WHO ABOUT INFORMATION
 [rhythmbox-client --volume-up] UP LOUDER
 [rhythmbox-client --volume-down] DOWN LOWER SOFTER
 [rhythmbox-client --pause] SILENCE STOP QUIET
+# see: http://specifications.freedesktop.org/mpris-spec/latest/Player_Interface.html
+[dbus-send --print-reply --dest=org.mpris.MediaPlayer2.rhythmbox /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Seek int64:30000000] FAST-FORWARD ADVANCE
+[dbus-send --print-reply --dest=org.mpris.MediaPlayer2.rhythmbox /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Seek int64:-30000000] REWIND GO-BACK
 
-% RHYTHMBOX_SEARCH
-[COM] RHYTHMBOX-QUEUE
+% SEARCH
+[BOB] ARTIST GROUP SEARCH
 
-% RHYTHMBOX_SEARCH_CAT
+% SEARCH_CAT
+[language/en/linux/rhythmbox/scripts/search.sh arcade fire] ARCADE-FIRE
 [language/en/linux/rhythmbox/scripts/search.sh police] POLICE
 [language/en/linux/rhythmbox/scripts/search.sh radiohead] RADIO-HEAD
-[language/en/linux/rhythmbox/scripts/search.sh U2] U-2
+[language/en/linux/rhythmbox/scripts/search.sh U2] U-TWO

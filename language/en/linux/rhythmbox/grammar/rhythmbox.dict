@@ -8,15 +8,14 @@
 4	[rhythmbox-client --play] r ih dh ah m b aa k s
 5	[COM] s t aa p
 6	[rhythmbox-client --pause] r ih dh ah m b aa k s
-7	[COM] r ih dh ah m b aa k s
-7	[COM] p l ey er
-7	[COM] m y uw z ih k
+7	[JAN] r ih dh ah m b aa k s
+7	[JAN] p l ey er
+7	[JAN] m y uw z ih k
 8	[language/en/linux/rhythmbox/scripts/search.sh police] p l ey p ah l iy s 
 8	[rhythmbox-client --play] p l ey
 8	[rhythmbox-client --play] s t aa r t
 8	[rhythmbox-client --next] n eh k s t
 8	[rhythmbox-client --next] s k ih p
-8	[rhythmbox-client --next] f ao r w er d
 8	[rhythmbox-client --previous] p r iy v iy ah s
 8	[rhythmbox-client --previous] b ae k
 8	[language/en/linux/rhythmbox/scripts/show.sh] sh ow
@@ -31,7 +30,14 @@
 8	[rhythmbox-client --pause] s ay l ah n s
 8	[rhythmbox-client --pause] s t aa p
 8	[rhythmbox-client --pause] k w ay ah t
-9	[COM] r ih dh ah m b aa k s k y uw 
+8	[dbus-send --print-reply --dest=org.mpris.MediaPlayer2.rhythmbox /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Seek int64:30000000] f ae s t f ao r w er d 
+8	[dbus-send --print-reply --dest=org.mpris.MediaPlayer2.rhythmbox /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Seek int64:30000000] ah d v ae n s
+8	[dbus-send --print-reply --dest=org.mpris.MediaPlayer2.rhythmbox /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Seek int64:-30000000] r iy w ay n d
+8	[dbus-send --print-reply --dest=org.mpris.MediaPlayer2.rhythmbox /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Seek int64:-30000000] g ow b ae k 
+9	[BOB] aa r t ah s t
+9	[BOB] g r uw p
+9	[BOB] s er ch
+10	[language/en/linux/rhythmbox/scripts/search.sh arcade fire] aa r k ey d f ay er 
 10	[language/en/linux/rhythmbox/scripts/search.sh police] p ah l iy s
 10	[language/en/linux/rhythmbox/scripts/search.sh radiohead] r ey d iy ow hh eh d 
-10	[language/en/linux/rhythmbox/scripts/search.sh U2] y uw 
+10	[language/en/linux/rhythmbox/scripts/search.sh U2] y uw t uw 

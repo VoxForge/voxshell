@@ -27,5 +27,5 @@
 [COM] FIREFOX
 [COM] BROWSER
 
-% VOXFORGE_CAT
+% BROWSER_CAT
 [language/en/linux/firefox/scripts/search.sh xkcd] TEST

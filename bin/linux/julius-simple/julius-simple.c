@@ -123,10 +123,10 @@ void child(char *result)
   tokens[token_idx]='\0';
 
   // debug
-  //for (i=0; i<token_idx; i++)
-  //{
-  //  printf("tokens: %d [%s]\n", i, tokens[i]); 
-  //}
+  for (i=0; i<token_idx; i++)
+  {
+    printf("tokens: %d [%s]\n", i, tokens[i]); 
+  }
   
   status = execvp(tokens[0], tokens); 
   if (status < 0)
@@ -189,7 +189,7 @@ output_result(Recog *recog, void *dummy)
 
       // see https://stackoverflow.com/questions/1961209/making-some-text-in-printf-appear-in-green-and-red
       printf("\033[1m\033[30mcommand [%s] \033[0m\n", winfo->woutput[seq[2]]);
-      if (false) // debugging
+      if (true) // debugging
       {
         /* output word sequence like Julius */
         printf("sentence%d:", n+1);
@@ -239,7 +239,15 @@ output_result(Recog *recog, void *dummy)
         continue;
       }
 
-      if (winfo->woutput[seq[2]] == NULL) 
+      char result[1024];
+      for(i=1;i<seqnum-1;i++) 
+      {
+        sprintf(result, "%s ", winfo->woutput[seq[i]]);
+      }
+      printf("sprintf %s\n", result);
+
+      //if (winfo->woutput[seq[2]] == NULL) 
+      if (result == NULL) 
       {
         printf("[null result]\n");
       } 
@@ -257,8 +265,9 @@ output_result(Recog *recog, void *dummy)
         } 
         else // child
         {
-          winfo->woutput[seq[3]]='\0';
-          child(winfo->woutput[seq[2]]);
+          //winfo->woutput[seq[3]]='\0';
+          //child(winfo->woutput[seq[2]]);
+          child(result);
         }
       }
       // !!!!!!
@@ -293,7 +302,7 @@ main(int argc, char *argv[])
 
   /* by default, all messages will be output to standard out */
   /* to disable output, uncomment below */
-  jlog_set_output(NULL); // disable start up log output; replaces -logfile
+  //jlog_set_output(NULL); // disable start up log output; replaces -logfile
 
   /* output log to a file */
   //FILE *fp; fp = fopen("log.txt", "w"); jlog_set_output(fp);
