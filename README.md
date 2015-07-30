@@ -4,7 +4,7 @@ VoxShell is a simple command and control dialog manager that uses the [Julius](h
 speech recognition engine and [VoxForge](http://www.voxforge.org) acoustic models.
 
 In the most generic sense, the term 'shell' means any program that a user
-employs to type commands.  However, unlike a regular shell, VoxShell allows 
+employs to type commands.  Unlike a regular shell, VoxShell allows 
 you to speak key words or phrases into a microphone to execute those commands. 
 You can set up grammars to execute any shell command or program using your 
 own voice. 
