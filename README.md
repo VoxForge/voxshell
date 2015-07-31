@@ -23,9 +23,11 @@ command:
       $ cd bin/linux/julius-simple
       $ make
 got back to voxshell root
+
       $ cd language/en/linux
       $ make
 got back to voxshell root
+
       $ bin/linux/julius-simple/julius-simple -input mic -C voxshell.jconf -gramlist language/en/grammars_linux
 
   Windows:
