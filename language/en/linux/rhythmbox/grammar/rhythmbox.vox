@@ -22,7 +22,7 @@
 [language/en/linux/rhythmbox/scripts/dbus_seek.sh -30000000] REWIND GO-BACK
 
 % SEARCH
-[] ARTIST GROUP SEARCH PLAY
+[] ARTIST GROUP SEARCH BAND
 
 % ARTIST
 [language/en/linux/rhythmbox/scripts/search.sh arcade fire] ARCADE-FIRE
@@ -33,10 +33,28 @@
 % PLAY
 [] PLAY
 
-% ALBUM
-[] ALBUM
+% POLICE
+[] POLICE
 
-% BAND
-[language/en/linux/rhythmbox/scripts/search.sh U2 best of] U-TWO-BEST-OF
-[language/en/linux/rhythmbox/scripts/search.sh The Police] THE-POLICE
+% RADIOHEAD
+[] RADIO-HEAD
+
+% U2
+[] U-TWO
+
+% POLICE_ALBUMS
+[language/en/linux/rhythmbox/scripts/search.sh The Police] BEST-OF
+[language/en/linux/rhythmbox/scripts/search.sh Police Every Breath] EVERY-BREATH
+
+% U2_ALBUMS
+[language/en/linux/rhythmbox/scripts/search.sh U2 best of] BEST-OF
+[language/en/linux/rhythmbox/scripts/search.sh U2 Zooropa] ZOOP-ROPE-A
+
+% RADIOHEAD_ALBUMS
+[language/en/linux/rhythmbox/scripts/search.sh radiohead best of] BEST-OF
+[language/en/linux/rhythmbox/scripts/search.sh radiohead OK Computer] OK-COMPUTER
+
+
+
+
 

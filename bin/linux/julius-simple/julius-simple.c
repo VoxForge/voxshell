@@ -110,9 +110,8 @@ parse_command(char result[], char *tokens[]) // modifies result string!
       // terminate token string inside result string
       result[i]='\0'; 
       i++;
-      // skip any additional spaces or tabs
-      //while ( result[i] == ' ' || result[i] == '\t' || result[i] == '&'  || result[i] == '|' ) 
-      while ( result[i] == ' ' || result[i] == '\t' ) 
+      // skip any additional spaces, tabs, special characters (&,|,<,>)
+      while ( result[i] == ' ' || result[i] == '\t' || result[i] == '&'  || result[i] == '|' || result[i] == '<' || result[i] == '>' ) 
       {      
         i++; 
       }
