@@ -16,6 +16,6 @@
 % WORKSPACE
 [] WORK-SPACE
 
-% WORKSPACE_ACTION
+% WORKSPACE_NAVIGATION
 [language/en/linux/gnome/scripts/next_workspace.sh] NEXT
 [language/en/linux/gnome/scripts/previous_workspace.sh] PREVIOUS
