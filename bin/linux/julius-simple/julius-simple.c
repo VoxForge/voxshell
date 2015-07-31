@@ -93,49 +93,72 @@ process_status(RecogProcess *r)
   }
 }
 
-// VoxShell changes
-void child(char *result)
+void 
+parse_command(char result[], char *tokens[]) // modifies result string!
 {
-  int status;
-  int i;
-  int token_idx;
-  char *tokens[100]; // array of pointers to strings (char arrays)
-                    // - exec wants command in this format
+  int i; // result index counter
+  int idx; // token index counter
 
   i=0;
-  token_idx=0;
-  tokens[token_idx++]=&(result[i]); 
+  idx=0;
+  tokens[idx++]=&(result[i]); 
   while ( result[i] != '\0' )
   {
-    if (result[i] == ' ' || result[i] == '\t') // split tokens based on space or tab
+    // split command tokens based on space or tab
+    if (result[i] == ' ' || result[i] == '\t') 
     {
-      result[i]='\0'; // terminate token inside result string
+      // terminate token string inside result string
+      result[i]='\0'; 
       i++;
+      // skip any additional spaces or tabs
+      //while ( result[i] == ' ' || result[i] == '\t' || result[i] == '&'  || result[i] == '|' ) 
       while ( result[i] == ' ' || result[i] == '\t' ) 
       {      
-        i++; // skip spaces or tabs, if any
+        i++; 
       }
-      tokens[token_idx++]=&(result[i]); 
+      tokens[idx++]=&(result[i]); 
     }
    
     i++;
   }
-  tokens[token_idx]='\0';
-
-  // debug
-  for (i=0; i<token_idx; i++)
-  {
-    printf("tokens: %d [%s]\n", i, tokens[i]); 
-  }
-  
-  status = execvp(tokens[0], tokens); 
-  if (status < 0)
-  {
-    printf("Warning: can't find command: [%s]\n", tokens[0]);
-    exit(EXIT_FAILURE);
-  }
+  tokens[idx]='\0';
 }
 
+void 
+process_command(char command[]) 
+{
+  char *tokens[100]; // array of pointers to strings (char arrays)
+  pid_t pid; // process id
+  int status;
+  int len=2048;  // max parse_command length
+  char command_modifiable[len];
+
+  // see https://stackoverflow.com/questions/1961209/making-some-text-in-printf-appear-in-green-and-red
+  printf("\033[1m\033[30mcommand [%s]\033[0m\n", command); /* Bold Black */
+
+  strncpy(command_modifiable, command, len);
+  parse_command(command_modifiable, tokens);
+
+  pid = fork();
+  if (pid < 0) 
+  {
+    perror("fork error");
+    exit(EXIT_FAILURE);
+  }
+  if(pid > 0) // parent
+  {
+    wait(NULL);
+  } 
+  else // child
+  {
+    status = execvp(tokens[0], tokens); 
+    if (status < 0)
+    {
+      printf("Warning: can't find command: [%s]\n", tokens[0]);
+      exit(EXIT_FAILURE);
+    }
+  }
+}
 
 /** 
  * Callback to output final recognition result.
@@ -153,7 +176,8 @@ output_result(Recog *recog, void *dummy)
   Sentence *s;
   RecogProcess *r;
   // !!!!!!
-  pid_t pid; // process id
+  bool skip;
+  int min_confidence=.7;
 
   //PROCESS_LM *lm;
   //for(lm=recog->lmlist;lm;lm=lm->next) {
@@ -181,93 +205,38 @@ output_result(Recog *recog, void *dummy)
     /* output results for all the obtained sentences */
     winfo = r->lm->winfo;
 
-    for(n = 0; n < r->result.sentnum; n++) /* for all sentences */
+    /* for all sentences */
+    for(n = 0; n < r->result.sentnum; n++) 
     { 
       s = &(r->result.sent[n]);
       seq = s->word;
       seqnum = s->word_num;
 
-      // see https://stackoverflow.com/questions/1961209/making-some-text-in-printf-appear-in-green-and-red
-      printf("\033[1m\033[30mcommand [%s] \033[0m\n", winfo->woutput[seq[2]]);
-      if (true) // debugging
-      {
-        /* output word sequence like Julius */
-        printf("sentence%d:", n+1);
-        for(i=0;i<seqnum;i++) 
-        {
-          //printf("%d %s", i, winfo->woutput[seq[i]]); // debug
-          printf("%s", winfo->woutput[seq[i]]);
-        }
-        printf("\n");
-        /* confidence scores */
-        printf("cmscore%d:", n+1);
-        for (i=0;i<seqnum; i++) 
-        {
-          printf(" %5.3f", s->confidence[i]);
-        }
-        printf("\n");
-        /* AM and LM scores */
-        printf("score%d: %f", n+1, s->score);
-        if (r->lmtype == LM_PROB) { /* if this process uses N-gram */
-          printf(" (AM: %f  LM: %f)", s->score_am, s->score_lm);
-        }
-        printf("\n");
-        if (r->lmtype == LM_DFA)  /* if this process uses DFA grammar */
-        {
-        /* output which grammar the hypothesis belongs to
-           when using multiple grammars */
-            if (multigram_get_all_num(r->lm) > 1) 
-            {
-              printf("grammar%d: %d\n", n+1, s->gram_id);
-            }
-        }
-      }
       // !!!!!!
-      bool skip=false;
-      for (i=1;i<seqnum-1; i++)  // skip start and end silence
+      skip=false;
+      for (i=0;i<seqnum; i++) 
       {
-        if (s->confidence[i] < .7)
+        if (s->confidence[i] < min_confidence)
         {
           printf("word %d confidence too low: %5.3f\n", i+1, s->confidence[i]);
           skip=true;
-          continue;
         }
       }
       if (skip)
       {
         printf("\a"); // ring terminal bell
-        continue;
       }
-
-      char result[1024];
-      for(i=1;i<seqnum-1;i++) 
+      else
       {
-        sprintf(result, "%s ", winfo->woutput[seq[i]]);
-      }
-      printf("sprintf %s\n", result);
-
-      //if (winfo->woutput[seq[2]] == NULL) 
-      if (result == NULL) 
-      {
-        printf("[null result]\n");
-      } 
-      else 
-      {
-        pid = fork();
-        if (pid < 0) 
+        // the before last word in woutput contains the command to execute
+        char *command = winfo->woutput[seq[seqnum-2]];
+        if (command == NULL) 
         {
-          perror("fork error");
-          exit(EXIT_FAILURE);
-        }
-        if(pid > 0) // parent
-        {
-          wait(NULL);
+          printf("[null result]\n");
         } 
-        else // child
+        else
         {
-          //winfo->woutput[seq[3]]='\0';
-          //child(winfo->woutput[seq[2]]);
-          child(result);
+          process_command(command);
         }
       }
       // !!!!!!
@@ -302,7 +271,7 @@ main(int argc, char *argv[])
 
   /* by default, all messages will be output to standard out */
   /* to disable output, uncomment below */
-  //jlog_set_output(NULL); // disable start up log output; replaces -logfile
+  jlog_set_output(NULL); // disable start up log output; replaces -logfile
 
   /* output log to a file */
   //FILE *fp; fp = fopen("log.txt", "w"); jlog_set_output(fp);

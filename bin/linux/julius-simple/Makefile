@@ -21,7 +21,7 @@ LDFLAGS= -L$(LIBJULIUS) `$(LIBJULIUS)/libjulius-config --libs` -L$(LIBSENT) `$(L
 
 ############################################################
 
-all: julius-simple voxshell
+all: julius-simple
 
 julius-simple: julius-simple.c
 # !!!!!!

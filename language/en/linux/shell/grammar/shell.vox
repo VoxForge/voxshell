@@ -9,7 +9,7 @@
 [] UH WELL HUM
 
 % ID
-[COM] COMPUTER
+[] COMPUTER
 
 % SHELL_COMMANDS
 # compile_grammar.jl will expand the pronunciation of compound words; this may
@@ -25,7 +25,7 @@
 [ls bin] LIST-BIN BIN
 
 % VOLUME
-[COM] VOLUME
+[] VOLUME
 
 % VOLUME_CAT
 [pactl set-sink-volume 1 -- +20%] UP LOUDER

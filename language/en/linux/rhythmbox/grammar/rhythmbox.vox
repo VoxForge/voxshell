@@ -5,15 +5,12 @@
 [] </s>
 
 % FILLER
-[] UH
-[] WELL
-[] HUM
+[] UH WELL HUM
 
 % MUSIC_PLAYER 
 [] RHYTHMBOX PLAYER MUSIC
 
 % DO
-[language/en/linux/rhythmbox/scripts/search.sh police] PLAY-POLICE
 [rhythmbox-client --play] PLAY START
 [rhythmbox-client --next] NEXT SKIP
 [rhythmbox-client --previous] PREVIOUS BACK
@@ -21,12 +18,11 @@
 [rhythmbox-client --volume-up] UP LOUDER
 [rhythmbox-client --volume-down] DOWN LOWER SOFTER
 [rhythmbox-client --pause] SILENCE STOP QUIET
-# see: http://specifications.freedesktop.org/mpris-spec/latest/Player_Interface.html
-[dbus-send --print-reply --dest=org.mpris.MediaPlayer2.rhythmbox /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Seek int64:30000000] FAST-FORWARD ADVANCE
-[dbus-send --print-reply --dest=org.mpris.MediaPlayer2.rhythmbox /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Seek int64:-30000000] REWIND GO-BACK
+[language/en/linux/rhythmbox/scripts/dbus_seek.sh 30000000] FAST-FORWARD ADVANCE
+[language/en/linux/rhythmbox/scripts/dbus_seek.sh -30000000] REWIND GO-BACK
 
 % SEARCH
-[] ARTIST GROUP SEARCH
+[] ARTIST GROUP SEARCH PLAY
 
 % ARTIST
 [language/en/linux/rhythmbox/scripts/search.sh arcade fire] ARCADE-FIRE
@@ -34,17 +30,13 @@
 [language/en/linux/rhythmbox/scripts/search.sh radiohead] RADIO-HEAD
 [language/en/linux/rhythmbox/scripts/search.sh U2] U-TWO
 
+% PLAY
+[] PLAY
 
+% ALBUM
+[] ALBUM
 
+% BAND
+[language/en/linux/rhythmbox/scripts/search.sh U2 best of] U-TWO-BEST-OF
+[language/en/linux/rhythmbox/scripts/search.sh The Police] THE-POLICE
 
-% PLAY_RHYTHMBOX
-[] PLAY START
-
-% RHYTHMBOX_PLAY
-[rhythmbox-client --play] RHYTHMBOX
-
-% STOP_RHYTHMBOX
-[] STOP
-
-% RHYTHMBOX_STOP
-[rhythmbox-client --pause] RHYTHMBOX

@@ -6,7 +6,6 @@
 3	[] r ih dh ah m b aa k s
 3	[] p l ey er
 3	[] m y uw z ih k
-4	[language/en/linux/rhythmbox/scripts/search.sh police] p l ey p ah l iy s 
 4	[rhythmbox-client --play] p l ey
 4	[rhythmbox-client --play] s t aa r t
 4	[rhythmbox-client --next] n eh k s t
@@ -25,19 +24,19 @@
 4	[rhythmbox-client --pause] s ay l ah n s
 4	[rhythmbox-client --pause] s t aa p
 4	[rhythmbox-client --pause] k w ay ah t
-4	[dbus-send --print-reply --dest=org.mpris.MediaPlayer2.rhythmbox /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Seek int64:30000000] f ae s t f ao r w er d 
-4	[dbus-send --print-reply --dest=org.mpris.MediaPlayer2.rhythmbox /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Seek int64:30000000] ah d v ae n s
-4	[dbus-send --print-reply --dest=org.mpris.MediaPlayer2.rhythmbox /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Seek int64:-30000000] r iy w ay n d
-4	[dbus-send --print-reply --dest=org.mpris.MediaPlayer2.rhythmbox /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Seek int64:-30000000] g ow b ae k 
+4	[language/en/linux/rhythmbox/scripts/dbus_seek.sh 30000000] f ae s t f ao r w er d 
+4	[language/en/linux/rhythmbox/scripts/dbus_seek.sh 30000000] ah d v ae n s
+4	[language/en/linux/rhythmbox/scripts/dbus_seek.sh -30000000] r iy w ay n d
+4	[language/en/linux/rhythmbox/scripts/dbus_seek.sh -30000000] g ow b ae k 
 5	[] aa r t ah s t
 5	[] g r uw p
 5	[] s er ch
+5	[] p l ey
 6	[language/en/linux/rhythmbox/scripts/search.sh arcade fire] aa r k ey d f ay er 
 6	[language/en/linux/rhythmbox/scripts/search.sh police] p ah l iy s
 6	[language/en/linux/rhythmbox/scripts/search.sh radiohead] r ey d iy ow hh eh d 
 6	[language/en/linux/rhythmbox/scripts/search.sh U2] y uw t uw 
 7	[] p l ey
-7	[] s t aa r t
-8	[rhythmbox-client --play] r ih dh ah m b aa k s
-9	[] s t aa p
-10	[rhythmbox-client --pause] r ih dh ah m b aa k s
+8	[] ae l b ah m
+9	[language/en/linux/rhythmbox/scripts/search.sh U2 best of] y uw t uw b eh s t ah v 
+9	[language/en/linux/rhythmbox/scripts/search.sh The Police] dh ah p ah l iy s 
