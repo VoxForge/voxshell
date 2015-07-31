@@ -1,9 +1,10 @@
 # make file to create/update grammars
+NAME=shell
 
-all: shell.dict
+all: $(NAME).dict
 
-shell.dict: shell.vox shell.grammar
-	julia $(COMPILE_GRAMMAR) shell $(MKFA_DIR) $(VOXFORGE_DICT)
+$(NAME).dict: $(NAME).vox $(NAME).grammar
+	julia $(COMPILE_GRAMMAR) $(NAME) $(MKFA_DIR) $(VOXFORGE_DICT)
 
 clean:
 	rm -f *.dict *.dfa *.term *.tmp

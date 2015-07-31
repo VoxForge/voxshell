@@ -1,9 +1,6 @@
-# to compile: julia bin/compile_grammar.jl language/en/linux/rhythmbox/grammar/rhythmbox
 linux/rhythmbox/grammar/rhythmbox
-
-# to compile: julia bin/compile_grammar.jl language/en/linux/firefox/grammar/firefox
 linux/firefox/grammar/firefox 
-
-# to compile: julia bin/compile_grammar.jl language/en/linux/shell/grammar/shell
 linux/shell/grammar/shell 
+linux/libreoffice/grammar/libreoffice 
+linux/gnome/grammar/gnome 
 

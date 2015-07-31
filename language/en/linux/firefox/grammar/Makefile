@@ -1,9 +1,10 @@
 # make file to create/update grammars
+NAME=firefox
 
-all: firefox.dict
+all: $(NAME).dict
 
-firefox.dict: firefox.vox firefox.grammar
-	julia $(COMPILE_GRAMMAR) firefox $(MKFA_DIR) $(VOXFORGE_DICT)
+$(NAME).dict: $(NAME).vox $(NAME).grammar
+	julia $(COMPILE_GRAMMAR) $(NAME) $(MKFA_DIR) $(VOXFORGE_DICT)
 
 clean:
 	rm -f *.dict *.dfa *.term *.tmp

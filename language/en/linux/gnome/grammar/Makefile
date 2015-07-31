@@ -1,5 +1,5 @@
 # make file to create/update grammars
-NAME=rhythmbox
+NAME=gnome
 
 all: $(NAME).dict
 

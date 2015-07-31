@@ -3,3 +3,7 @@ wav
 *.*~
 *~
 *.log
+julius-simple
+*.daf
+*.dict
+*.term

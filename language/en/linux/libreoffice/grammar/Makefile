@@ -1,5 +1,5 @@
 # make file to create/update grammars
-NAME=rhythmbox
+NAME=libreoffice
 
 all: $(NAME).dict
 

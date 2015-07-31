@@ -270,7 +270,7 @@ main(int argc, char *argv[])
 
   /* by default, all messages will be output to standard out */
   /* to disable output, uncomment below */
-  jlog_set_output(NULL); // disable start up log output; replaces -logfile
+  //jlog_set_output(NULL); // disable start up log output; replaces -logfile
 
   /* output log to a file */
   //FILE *fp; fp = fopen("log.txt", "w"); jlog_set_output(fp);
