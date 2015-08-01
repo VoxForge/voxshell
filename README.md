@@ -18,12 +18,18 @@ corpus) that uses the collected speech to create acoustic models.
 Extract the github zip file to a directory, and execute one of the following 
 command:
 
-  Linux:
+##  Linux:
+
+### prerequisites
+
+  [Julia](http://julialang.org/) - scripting language (required to compile  grammars)
+
+### commands
 
       $ make -f Makefile_linux
       $ bin/linux/julius-simple/julius-simple -input mic -C voxshell.jconf -gramlist language/en/grammars_linux
 
-  Windows:
+##  Windows:
 
       C:> bin\windows\julius.exe -input mic -C voxshell.jconf -gramlist language/en/grammars_windows.txt -plugindir bin/windows/plugin -logfile julius.log  
 
