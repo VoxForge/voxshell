@@ -28,7 +28,7 @@ Extract the github zip file to a directory.
 
 ### Grammar prerequisites
 
-  Rhythmbox grammar requires: rhythmbox-client - controls a running instance of rhythmbox; dbus-send - Send a message to a message bus.
+  Rhythmbox grammar requires: rhythmbox-client - controls a running instance of rhythmbox; dbus-send - send a message to a message bus.
 
       # yum install rhythmbox-client dbus-send
 
@@ -36,7 +36,7 @@ Extract the github zip file to a directory.
 
       # yum install wmctrl xdotool
 
-  Shell grammar requires: inxi - Command line system information script for console (for weather lookup); festival - text-to-speech system.
+  Shell grammar requires: inxi - command line system information script for console (for weather lookup); festival - text-to-speech system.
 
       # yum install inxi festival
 
