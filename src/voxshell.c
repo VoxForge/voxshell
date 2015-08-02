@@ -104,20 +104,32 @@ parse_command(char result[], char *tokens[]) // modifies result string!
   tokens[idx++]=&(result[i]); 
   while ( result[i] != '\0' )
   {
-    // split command tokens based on space or tab
-    if (result[i] == ' ' || result[i] == '\t') 
+    // skip non-valid ASCII printable characters && special characters (&,|,<,>)
+    if ( (result[i] >= 32 && result[i] <= 126) &&
+         (result[i] != '\t' && result[i] != '&' && result[i] != '|'  && 
+           result[i] != '<' && result[i] != '>')
+       ) 
     {
-      // terminate token string inside result string
-      result[i]='\0'; 
-      i++;
-      // skip any additional spaces, tabs, special characters (&,|,<,>)
-      while ( result[i] == ' ' || result[i] == '\t' || result[i] == '&'  || result[i] == '|' || result[i] == '<' || result[i] == '>' ) 
-      {      
-        i++; 
+      // split command tokens based on space or tab
+      if (result[i] == ' '|| result[i] == '\t') 
+      {
+        // terminate token string inside result string
+        result[i]='\0'; 
+        i++;
+        // skip any additional spaces, tabs, 
+        while ( result[i] == ' ' || result[i] == '\t' ) 
+        {      
+          i++; 
+        }
+        tokens[idx++]=&(result[i]); 
       }
-      tokens[idx++]=&(result[i]); 
+    
     }
-   
+    else
+    {
+      printf("Warning: unsupported grammar character: [%c]\n", result[i]);
+    }
+
     i++;
   }
   tokens[idx]='\0';

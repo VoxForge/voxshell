@@ -18,8 +18,8 @@
 [rhythmbox-client --volume-up] UP LOUDER
 [rhythmbox-client --volume-down] DOWN LOWER SOFTER QUIETER
 [rhythmbox-client --pause] SILENCE STOP QUIET
-[language/en/linux/rhythmbox/scripts/dbus_seek.sh 30000000] FAST-FORWARD ADVANCE
-[language/en/linux/rhythmbox/scripts/dbus_seek.sh -30000000] REWIND GO-BACK
+[language/en/linux/rhythmbox/scripts/dbus_fastforward.sh] FAST-FORWARD ADVANCE
+[language/en/linux/rhythmbox/scripts/dbus_rewind.sh] REWIND GO-BACK
 
 % SEARCH
 [] ARTIST GROUP SEARCH BAND
