@@ -4,14 +4,12 @@ Extract the github zip file to a directory.
 
 ## Linux software prerequisites
 
+
+  You need Julius r4.3.1 to be able to compile voxshell on your computer.  Unfortunately, Fedora 23 & Ubuntu 14.01 both use Julius r4.2.2.  To get around this, the VoxShell includes 32-bit static libraries in the 'lib' directory.  The /src/Makefile uses these by default.
+
 ###  Fedora:
 
 ####older than Julius r4.3.1
-
-  You need Julius r4.3.1 to be able to compile voxshell on your computer.  
-Unfortunately, Fedora 23 uses Julius r4.2.2.  To get around this, the VoxShell
-includes 32-bit static libraries in the 'lib' directory.  The /src/Makefile 
-uses these by default.
 
   Install [Julius](http://julius.osdn.jp/en_index.php) (large vocabulary speech recognition engine - provides the dfa_minimize & mkfa executables used for grammar compilation): 
 
@@ -31,12 +29,9 @@ uses these by default.
 
       $ sudo yum install julia
 
-###  Ubuntu:
+### Ubuntu:
 
-  You need Julius r4.3.1 to be able to compile voxshell on your computer.  
-Unfortunately, Ubuntu 14.01 uses Julius r4.2.2.  To get around this, the VoxShell
-includes 32-bit static libraries in the 'lib' directory.  The /src/Makefile 
-uses these by default.
+####older than Julius r4.3.1
 
   Install [Julius](http://julius.osdn.jp/en_index.php) (large vocabulary speech recognition engine - provides the dfa_minimize & mkfa executables) - you need the executable and development packages: 
 
