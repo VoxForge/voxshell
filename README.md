@@ -21,7 +21,7 @@ Extract the github zip file to a directory.
 
 ### software prerequisites
 
-  [Julius](http://julius.osdn.jp/en_index.php) large vocabulary speech recognition engine (dfa_minimize & mkfa); Install [Julia](http://julialang.org/) - scripting language (required to compile  grammars).
+  Install [Julius](http://julius.osdn.jp/en_index.php) (large vocabulary speech recognition engine - provides the dfa_minimize & mkfa executables), and [Julia](http://julialang.org/) (scripting language required  to compile  grammars).
 
       # yum install julius
       # yum install julia
@@ -42,7 +42,8 @@ Extract the github zip file to a directory.
 
 ### commands
 
-      $ make
+      $ make        # to run make serially (one grammar build at a time)
+      $ make -j 4   # to run make in parallel, with max of 4 jobs at same time
       $ bin/julius-simple -input mic -C voxshell.jconf -gramlist language/en/grammars_linux
 
 Look to the .vox and .grammar grammar files to see what the system will recognize (e.g. language/en/linux/rhythmbox/rhythmbox.vox & rhythmbox.grammar).  
