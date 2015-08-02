@@ -1,13 +1,14 @@
 # update to your environment:
 export VOXSHELL=~/VoxForge-git/voxshell
 JULIUS_DIR=/usr/bin
+export RM=rm -f
+export INSTALL=install -c
 
+
+###############################################################################
 export COMPILE_GRAMMAR=$(VOXSHELL)/bin/compile_grammar.jl
 export VOXFORGE_DICT=$(VOXSHELL)/language/en/lexicon/VoxForgeDict.txt
 export MKFA_DIR=$(JULIUS_DIR)
-
-RM=/usr/bin/rm -f
-INSTALL=/usr/bin/install -c
 
 # update this path to your voxshell directory
 LINUX_GRAMMARS=language/en/linux

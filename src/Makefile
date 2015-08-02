@@ -9,9 +9,6 @@ LDFLAGS=-L../lib -ljulius -ldl -lpthread -lsent -lasound -lm
 #CPPFLAGS=-I/usr/include
 #LDFLAGS=-L/usr/lib64 -ljulius -ldl -lpthread -lsent -lasound -lm -lpulse-simple -lz
 
-RM=/usr/bin/rm -f
-INSTALL=/usr/bin/install -c
-
 ############################################################
 TARGET=voxshell
 
