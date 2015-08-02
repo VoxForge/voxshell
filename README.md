@@ -15,42 +15,13 @@ corpus) that uses the collected speech to create acoustic models.
 
 # Try it out
 
-Extract the github zip file to a directory.
+follow instructions in INSTALL.md.
 
 ##  Linux:
 
-### software prerequisites
-
-  Install [Julius](http://julius.osdn.jp/en_index.php) (large vocabulary speech recognition engine - provides the dfa_minimize & mkfa executables), and [Julia](http://julialang.org/) (scripting language required  to compile  grammars).
-
-      # yum install julius
-      # yum install julia
-
-### grammar prerequisites
-
-  Rhythmbox grammar requires: **rhythmbox-client** (controls a running instance of rhythmbox); **dbus-send** (send a message to a message bus).
-
-      # yum install rhythmbox-client dbus-send
-
-  Gnome grammar requires: **wmctrl** (command line interface to X Window Manager); **xdotool** (command-line X11 automation tool).
-
-      # yum install wmctrl xdotool
-
-  Shell grammar requires: **inxi** (command line system information script for console - used for weather lookup example); **festival** (text-to-speech system).
-
-      # yum install inxi festival
-
-### build executable and compile grammars
-
-  Make is a tool to generate executables and other non-source files from the program's source files.  It can be run serially (one build command at a time), or in parallel, with the -j parameter, with a number indicating the number of build jobs to run concurrently.
-
-      $ make        # to run make serially (one grammar build at a time)
-      -or-
-      $ make -j 4   # to run make in parallel, with max of 4 jobs at same time
-
 ### run VoxShell version of julius
       
-      $ bin/julius-simple -input mic -C voxshell.jconf -gramlist language/en/grammars_linux
+      $ bin/voxshell -input mic -C voxshell.jconf -gramlist language/en/grammars_linux
 
 ### how do grammar files work?
 

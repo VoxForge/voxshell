@@ -31,6 +31,6 @@ grammars:
 clean:
 	$(MAKE) -s clean -C $(LINUX_GRAMMARS)
 	$(MAKE) -s clean -C $(JULIUS_SIMPLE)
-	$(RM) bin/julius-simple
+	$(RM) bin/voxshell
 	$(RM) bin/compile_grammar.jl
 
