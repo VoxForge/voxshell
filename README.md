@@ -23,11 +23,15 @@ command:
 ### prerequisites
 
   [Julia](http://julialang.org/) - scripting language (required to compile  grammars)
+  [Julius](http://julius.osdn.jp/en_index.php) large vocabulary speech recognition engine (dfa_minimize & mkfa)
+
+      # yum install julius
+      # yum install julia
 
 ### commands
 
-      $ make -f Makefile_linux
-      $ bin/linux/julius-simple/julius-simple -input mic -C voxshell.jconf -gramlist language/en/grammars_linux
+      $ make
+      $ bin/julius-simple -input mic -C voxshell.jconf -gramlist language/en/grammars_linux
 
 ##  Windows:
 

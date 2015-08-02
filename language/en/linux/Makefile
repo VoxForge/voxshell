@@ -1,17 +1,12 @@
 # make file to create/update grammars
 
 # update this path to your voxshell directory
-VOXSHELL=~/VoxForge-git/voxshell
 
-export COMPILE_GRAMMAR=$(VOXSHELL)/bin/compile_grammar.jl
-export MKFA_DIR=$(VOXSHELL)/bin/linux
-export VOXFORGE_DICT=$(VOXSHELL)/language/en/lexicon/VoxForgeDict.txt
-
-FIREFOX_DIR=firefox/grammar
-RHYTHMBOX_DIR=rhythmbox/grammar
-SHELL_DIR=shell/grammar
-LIBREOFFICE_DIR=libreoffice/grammar
-GNOME_DIR=gnome/grammar
+FIREFOX_DIR=firefox
+RHYTHMBOX_DIR=rhythmbox
+SHELL_DIR=shell
+LIBREOFFICE_DIR=libreoffice
+GNOME_DIR=gnome
 
 all: firefox_grammar rhythmbox_grammar shell_grammar libreoffice_grammar gnome_grammar
 
