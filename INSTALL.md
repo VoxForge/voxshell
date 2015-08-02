@@ -25,7 +25,7 @@ Extract the github zip file to a directory.
 
 ####Julia
 
-  Install [Julia](http://julialang.org/) (scripting language required  to compile  grammars).
+  Install [Julia](http://julialang.org/) (scripting language used to compile VoxShell grammars).
 
       $ sudo yum install julia
 
@@ -37,10 +37,6 @@ Extract the github zip file to a directory.
 
       $ sudo apt-get install julius julius-devel build-essential zlib1g-dev flex libasound2-dev libesd0-dev libsndfile1-dev
 
-  Install [Julia](http://julialang.org/) (scripting language required  to compile  grammars).
-
-      $ sudo apt-get install julia
-
 ####Julius r4.3.1 or later
 
   If your O/S package manager installs Julius r4.3.1 or later, then install these dependencies:
@@ -51,7 +47,7 @@ Extract the github zip file to a directory.
 
 ####Julia
 
-  Install [Julia](http://julialang.org/) (scripting language required  to compile  grammars).
+  Install [Julia](http://julialang.org/) (scripting language used to compile VoxShell grammars).
 
      $ sudo apt-get install julia
 
@@ -75,7 +71,7 @@ Extract the github zip file to a directory.
 
       $ make        # to run make serially (one grammar build at a time)
       -or-
-      $ make -j 4   # to run make in parallel, with max of 4 jobs at same time
+      $ make -j n   # to run make in parallel, with max of n jobs at same time
 
 ##  Windows:
 
