@@ -1,0 +1,31 @@
+% NS_B
+<s>
+
+% NS_E
+</s>
+
+% FILLER
+[] UH
+[] WELL
+[] HUM
+
+% VOXFORGE
+[COM] VOXFORGE
+
+% VOXFORGE_CAT
+[language/en/linux/firefox/scripts/test.sh] TEST
+[firefox -remote openurl(http://www.voxforge.org)] HOME PAGE
+[firefox -remote openurl(http://www.voxforge.org/home/read)] READ SUBMIT
+[firefox -remote openurl(http://www.voxforge.org/home/listen)] LISTEN
+[firefox -remote openurl(http://www.voxforge.org/home/forums)] FORUMS
+[firefox -remote openurl(http://www.voxforge.org/home/dev)] DEVELOP DEVELOPER
+[firefox -remote openurl(http://www.voxforge.org/home/about)] ABOUT
+[firefox -remote openurl(http://www.voxforge.org/home/dev/acousticmodels/linux/create/htkjulius/how-to/download)] HOWTO
+[firefox -remote openurl(http://www.voxforge.org/home/dev/acousticmodels/linux/create/htkjulius/tutorial/download)] TUTORIAL
+
+% BROWSER
+[COM] FIREFOX
+[COM] BROWSER
+
+% BROWSER_CAT
+[language/en/linux/firefox/scripts/search.sh xkcd] TEST

@@ -1,0 +1,27 @@
+% NS_B
+[] <s>
+
+% NS_E
+[] </s>
+
+% FILLER
+[] UH WELL HUM
+
+% WORD
+[] LIBRE OFFICE DOCUMENT
+
+% START
+[language/en/linux/libreoffice/scripts/start.sh] START
+
+% PAGE
+[] PAGE SCREEN
+
+% PAGE_DIRECTION
+[language/en/linux/libreoffice/scripts/page_down.sh] DOWN
+[language/en/linux/libreoffice/scripts/page_up.sh] UP
+
+% OPEN
+[] OPEN
+
+% DOC
+[language/en/linux/libreoffice/scripts/open.sh] RECENT
