@@ -20,18 +20,33 @@ command:
 
 ##  Linux:
 
-### prerequisites
+### Software prerequisites
 
-  [Julia](http://julialang.org/) - scripting language (required to compile  grammars)
-  [Julius](http://julius.osdn.jp/en_index.php) large vocabulary speech recognition engine (dfa_minimize & mkfa)
+  [Julia](http://julialang.org/) - scripting language (required to compile  grammars); [Julius](http://julius.osdn.jp/en_index.php) large vocabulary speech recognition engine (dfa_minimize & mkfa)
 
       # yum install julius
       # yum install julia
+
+### Grammar prerequisites
+
+  Gnome grammar requires: wmctrl - command line interface to X Window Manager; xdotool - command-line X11 automation tool.
+
+      # yum install wmctrl xdotool
+
+  Rhythmbox grammar requires: rhythmbox-client - controls a running instance of rhythmbox; dbus-send - Send a message to a message bus.
+
+      # yum install rhythmbox-client dbus-send
+
+  Shell grammar requires: inxi - Command line system information script for console (for weather lookup); festival - text-to-speech system
+
+      # yum install inxi festival
 
 ### commands
 
       $ make
       $ bin/julius-simple -input mic -C voxshell.jconf -gramlist language/en/grammars_linux
+
+Look to the .vox and .grammar grammar files to see what the system will recognize (e.g. language/en/linux/rhythmbox/rhythmbox.vox & rhythmbox.grammar.  If you modify one of the grammar files, just run 'make' at the top level directory.
 
 ##  Windows:
 
