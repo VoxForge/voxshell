@@ -19,24 +19,24 @@ Extract the github zip file to a directory.
 
 ##  Linux:
 
-### Software prerequisites
+### software prerequisites
 
-  Install [Julia](http://julialang.org/) - scripting language (required to compile  grammars); [Julius](http://julius.osdn.jp/en_index.php) large vocabulary speech recognition engine (dfa_minimize & mkfa).
+  [Julius](http://julius.osdn.jp/en_index.php) large vocabulary speech recognition engine (dfa_minimize & mkfa); Install [Julia](http://julialang.org/) - scripting language (required to compile  grammars).
 
       # yum install julius
       # yum install julia
 
-### Grammar prerequisites
+### grammar prerequisites
 
-  Rhythmbox grammar requires: rhythmbox-client - controls a running instance of rhythmbox; dbus-send - send a message to a message bus.
+  Rhythmbox grammar requires: **rhythmbox-client** (controls a running instance of rhythmbox); **dbus-send** (send a message to a message bus).
 
       # yum install rhythmbox-client dbus-send
 
-  Gnome grammar requires: wmctrl - command line interface to X Window Manager; xdotool - command-line X11 automation tool.
+  Gnome grammar requires: **wmctrl** (command line interface to X Window Manager); **xdotool** (command-line X11 automation tool).
 
       # yum install wmctrl xdotool
 
-  Shell grammar requires: inxi - command line system information script for console (for weather lookup); festival - text-to-speech system.
+  Shell grammar requires: **inxi** (command line system information script for console - used for weather lookup example); **festival** (text-to-speech system).
 
       # yum install inxi festival
 
