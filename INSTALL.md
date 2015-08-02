@@ -9,8 +9,9 @@ Extract the github zip file to a directory.
 ####older than Julius r4.3.1
 
   You need Julius r4.3.1 to be able to compile voxshell on your computer.  
-Unfortunately, Fedora 23 uses Julius r4.2.2, so the voxshell Makefile uses
-the included 32-bit static libraries in the 'lib' directory. 
+Unfortunately, Fedora 23 uses Julius r4.2.2.  To get around this, the VoxShell
+includes 32-bit static libraries in the 'lib' directory.  The /src/Makefile 
+uses these by default.
 
   Install [Julius](http://julius.osdn.jp/en_index.php) (large vocabulary speech recognition engine - provides the dfa_minimize & mkfa executables used for grammar compilation): 
 
@@ -32,16 +33,32 @@ the included 32-bit static libraries in the 'lib' directory.
 
 ###  Ubuntu:
 
+  You need Julius r4.3.1 to be able to compile voxshell on your computer.  
+Unfortunately, Ubuntu 14.01 uses Julius r4.2.2.  To get around this, the VoxShell
+includes 32-bit static libraries in the 'lib' directory.  The /src/Makefile 
+uses these by default.
+
   Install [Julius](http://julius.osdn.jp/en_index.php) (large vocabulary speech recognition engine - provides the dfa_minimize & mkfa executables) - you need the executable and development packages: 
 
       $ sudo apt-get install julius julius-devel build-essential zlib1g-dev flex libasound2-dev libesd0-dev libsndfile1-dev
 
   Install [Julia](http://julialang.org/) (scripting language required  to compile  grammars).
 
-      $ sudo apt-get install install julia
+      $ sudo apt-get install julia
+
+####Julius r4.3.1 or later
 
   If your O/S package manager installs Julius r4.3.1 or later, then install these dependencies:
 
+      $ sudo yum install julius julius-devel pulseaudio-libs-devel zlib-devel flex-devel alsa-lib-devel
+
+  And, update the src/Makefile to use your O/S dynamic shared libraries.
+
+####Julia
+
+  Install [Julia](http://julialang.org/) (scripting language required  to compile  grammars).
+
+     $ sudo apt-get install julia
 
 ## grammar prerequisites
 
