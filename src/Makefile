@@ -12,9 +12,6 @@ LDFLAGS=-L../lib -ljulius -ldl -lpthread -lsent -lasound -lm
 RM=/usr/bin/rm -f
 INSTALL=/usr/bin/install -c
 
-prefix=~/VoxForge-git/voxshell/bin
-exec_prefix=$(prefix)
-
 ############################################################
 TARGET=voxshell
 
@@ -27,7 +24,7 @@ voxshell: voxshell.c
 #	$(CC) $(CFLAGS) $(CPPFLAGS) -o $(TARGET) voxshell.c $(LDFLAGS) 
 
 install: $(TARGET)
-	${INSTALL} $(TARGET) ${exec_prefix}
+	${INSTALL} $(TARGET) $(VOXSHELL)/bin
 
 clean:
 	$(RM) *.o *.bak *~ 

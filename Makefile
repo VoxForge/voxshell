@@ -1,5 +1,5 @@
 # update to your environment:
-VOXSHELL=~/VoxForge-git/voxshell
+export VOXSHELL=~/VoxForge-git/voxshell
 JULIUS_DIR=/usr/bin
 
 export COMPILE_GRAMMAR=$(VOXSHELL)/bin/compile_grammar.jl
@@ -13,9 +13,6 @@ INSTALL=/usr/bin/install -c
 LINUX_GRAMMARS=language/en/linux
 JULIUS_SIMPLE=src
 
-prefix=~/VoxForge-git/voxshell
-exec_prefix=$(prefix)
-
 .all: linux
 
 linux: grammars julius-simple
@@ -25,7 +22,7 @@ julius-simple:
 	$(MAKE) -s install -C $(JULIUS_SIMPLE)
 
 grammars: 
-	${INSTALL} src/compile_grammar.jl $(exec_prefix)/bin
+	${INSTALL} src/compile_grammar.jl $(VOXSHELL)/bin
 	$(MAKE) -s -C $(LINUX_GRAMMARS)
 
 clean:

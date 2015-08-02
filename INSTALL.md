@@ -71,7 +71,7 @@ Extract the github zip file to a directory.
 
       $ make        # to run make serially (one grammar build at a time)
       -or-
-      $ make -j n   # to run make in parallel, with max of n jobs at same time
+      $ make -j n   # to run grammar makes in parallel, with max of n jobs at same time
 
 ##  Windows:
 

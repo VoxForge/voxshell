@@ -104,10 +104,11 @@ parse_command(char result[], char *tokens[]) // modifies result string!
   tokens[idx++]=&(result[i]); 
   while ( result[i] != '\0' )
   {
+    // see: http://www.theasciicode.com.ar/ascii-control-characters/escape-ascii-code-27.html
     // skip non-valid ASCII printable characters && special characters (&,|,<,>)
     if ( (result[i] >= 32 && result[i] <= 126) &&
-         (result[i] != '\t' && result[i] != '&' && result[i] != '|'  && 
-           result[i] != '<' && result[i] != '>')
+         (result[i] != '&' && result[i] != '|'  && 
+          result[i] != '<' && result[i] != '>')
        ) 
     {
       // split command tokens based on space or tab
