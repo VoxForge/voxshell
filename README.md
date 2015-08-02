@@ -15,14 +15,13 @@ corpus) that uses the collected speech to create acoustic models.
 
 # Try it out
 
-Extract the github zip file to a directory, and execute one of the following 
-command:
+Extract the github zip file to a directory.
 
 ##  Linux:
 
 ### Software prerequisites
 
-  [Julia](http://julialang.org/) - scripting language (required to compile  grammars); [Julius](http://julius.osdn.jp/en_index.php) large vocabulary speech recognition engine (dfa_minimize & mkfa).
+  Install [Julia](http://julialang.org/) - scripting language (required to compile  grammars); [Julius](http://julius.osdn.jp/en_index.php) large vocabulary speech recognition engine (dfa_minimize & mkfa).
 
       # yum install julius
       # yum install julia
@@ -46,7 +45,9 @@ command:
       $ make
       $ bin/julius-simple -input mic -C voxshell.jconf -gramlist language/en/grammars_linux
 
-Look to the .vox and .grammar grammar files to see what the system will recognize (e.g. language/en/linux/rhythmbox/rhythmbox.vox & rhythmbox.grammar).  If you modify one of the grammar files, just run 'make' at the top level directory to recompile your grammar files (i.e. .dict, .dfa, .term).
+Look to the .vox and .grammar grammar files to see what the system will recognize (e.g. language/en/linux/rhythmbox/rhythmbox.vox & rhythmbox.grammar).  
+
+If you modify one of the grammar files, just run 'make' in the top voxshell directory to recompile your grammar files (i.e. .dict, .dfa, .term).
 
 ##  Windows:
 
