@@ -59,16 +59,32 @@ Extract the github zip file to a directory.
 
   Rhythmbox grammar requires: **rhythmbox-client** (controls a running instance of rhythmbox); **dbus-send** (send a message to a message bus).
 
+  Fedora:
+
       # yum install rhythmbox-client dbus-send
+
+  Ubuntu:
+    these are installed by default.
 
   Gnome grammar requires: **wmctrl** (command line interface to X Window Manager); **xdotool** (command-line X11 automation tool).
 
-      # yum install wmctrl xdotool
+  Fedora:
+
+      $ sudo yum install wmctrl xdotool
+
+  Ubuntu:
+
+      $ sudo apt-get install wmctrl xdotool   
 
   Shell grammar requires: **inxi** (command line system information script for console - used for weather lookup example); **festival** (text-to-speech system).
 
-      # yum install inxi festival
+  Fedora:
 
+      $ sudo yum install inxi festival
+
+  Ubuntu:
+
+      $ sudo apt-get install inxi festival
 
 ##  Windows:
 
