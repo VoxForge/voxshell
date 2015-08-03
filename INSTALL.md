@@ -64,6 +64,7 @@ Extract the github zip file to a directory.
       # yum install rhythmbox-client dbus-send
 
   Ubuntu:
+
     these are installed by default.
 
   Gnome grammar requires: **wmctrl** (command line interface to X Window Manager); **xdotool** (command-line X11 automation tool).

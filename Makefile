@@ -1,5 +1,5 @@
 # update to your environment:
-export VOXSHELL=~/VoxForge-git/voxshell
+export VOXSHELL=~/voxshell
 JULIUS_DIR=/usr/bin
 export RM=rm -f
 export INSTALL=install -c
