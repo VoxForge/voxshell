@@ -4,22 +4,31 @@ Extract the github zip file to a directory.
 
 ## Linux software prerequisites
 
-
   You need Julius r4.3.1 to be able to compile voxshell on your computer.  Unfortunately, Fedora 23 & Ubuntu 14.01 both use Julius r4.2.2.  To get around this, the VoxShell includes 32-bit static libraries in the 'lib' directory.  The /src/Makefile uses these by default.
 
 ###  Fedora:
 
-####older than Julius r4.3.1
+#### install Julius
 
-  Install [Julius](http://julius.osdn.jp/en_index.php) (large vocabulary speech recognition engine - provides the dfa_minimize & mkfa executables used for grammar compilation): 
+     $ sudo yum install julius
 
-      $ sudo yum install julius
+  [Julius](http://julius.osdn.jp/en_index.php) is a large vocabulary speech recognition engine.  Voxshell replaces the 'julius' front-end to the julius libraries.  We still need it because the package provides the dfa_minimize & mkfa executables used for grammar compilation.
+
+#### get version Julius number
+
+     $ julius
+
+####older than Julius rev.4.3.1
+
+  If your package manager installs a version of Julius older than r4.3.1, then install these dependencies:
+
+     $ sudo yum install gcc glibc-devel.i686 libgcc.i686 alsa-lib.i686 alsa-lib-devel.i686 pulseaudio-libs.i686 pulseaudio-libs-devel.i686 alsa-plugins.i686 alsa-plugins-pulseaudio.i686
 
 ####Julius r4.3.1 or later
 
-  If your O/S package manager installs Julius r4.3.1 or later, then install these dependencies:
+  If your package manager installs Julius r4.3.1 or newer, then install these dependencies:
 
-      $ sudo yum install julius julius-devel pulseaudio-libs-devel zlib-devel flex-devel alsa-lib-devel
+      $ sudo yum install gcc glibc-devel libgcc alsa-lib alsa-lib-devel pulseaudio-libs pulseaudio-libs-devel alsa-plugins alsa-plugins-pulseaudio
 
   And, update the src/Makefile to use your O/S dynamic shared libraries.
 
@@ -31,9 +40,15 @@ Extract the github zip file to a directory.
 
 ### Ubuntu:
 
+#### install Julius
+
+     $ sudo apt-get install julius
+
+  [Julius](http://julius.osdn.jp/en_index.php) is a large vocabulary speech recognition engine.  Voxshell replaces the 'julius' front-end to the julius libraries.  We still need it because the package provides the dfa_minimize & mkfa executables used for grammar compilation.
+
 ####older than Julius r4.3.1
 
-  Install [Julius](http://julius.osdn.jp/en_index.php) (large vocabulary speech recognition engine - provides the dfa_minimize & mkfa executables) - you need the executable and development packages: 
+  Install [Julius](http://julius.osdn.jp/en_index.php) (large vocabulary speech recognition engine - provides the dfa_minimize & mkfa executables used for grammar compilation): 
 
       $ sudo apt-get install julius libjulius-dev build-essential zlib1g-dev flex libsndfile1-dev libc6-dev-i386 libasound2-dev:i386 libasound2-plugins:i386
 
@@ -50,6 +65,7 @@ Extract the github zip file to a directory.
   Install [Julia](http://julialang.org/) (scripting language used to compile VoxShell grammars).
 
      $ sudo apt-get install julia
+
 
 ## grammar prerequisites
 

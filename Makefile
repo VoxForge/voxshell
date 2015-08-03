@@ -3,7 +3,12 @@ export VOXSHELL=~/VoxForge-git/voxshell
 JULIUS_DIR=/usr/bin
 export RM=rm -f
 export INSTALL=install -c
-
+# 32-bit
+export CFLAGS_MOD=-m32
+export LDFLAGS_MOD=-L../lib
+# 64-bit
+#export CFLAGS_MOD=
+#export LDFLAGS_MOD=-L../lib64
 
 ###############################################################################
 export COMPILE_GRAMMAR=$(VOXSHELL)/bin/compile_grammar.jl

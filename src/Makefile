@@ -1,9 +1,9 @@
 CC=gcc
-CFLAGS=-g -O2 -Wall
+CFLAGS=$(CFLAGS_MOD) -g -O2 -Wall
 
 # older than Julius r4.3.1
 CPPFLAGS=-I../include
-LDFLAGS=-L../lib -ljulius -ldl -lpthread -lsent -lasound -lm
+LDFLAGS=$(LDFLAGS_MOD) -ljulius -ldl -lpthread -lsent -lasound -lm
 
 # Julius r4.3.1 or later 
 #CPPFLAGS=-I/usr/include
@@ -16,7 +16,7 @@ all: $(TARGET)
 
 voxshell: voxshell.c
 # older than Julius r4.3.1
-	$(CC) $(CFLAGS) $(CPPFLAGS) -m32  -o $(TARGET) voxshell.c $(LDFLAGS) 
+	$(CC) $(CFLAGS) $(CPPFLAGS) -o $(TARGET) voxshell.c $(LDFLAGS) 
 # Julius r4.3.1 or later (make sure you keep the tab at beginning of this line)
 #	$(CC) $(CFLAGS) $(CPPFLAGS) -o $(TARGET) voxshell.c $(LDFLAGS) 
 
