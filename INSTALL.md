@@ -35,7 +35,7 @@ Extract the github zip file to a directory.
 
   Install [Julius](http://julius.osdn.jp/en_index.php) (large vocabulary speech recognition engine - provides the dfa_minimize & mkfa executables) - you need the executable and development packages: 
 
-      $ sudo apt-get install julius julius-devel build-essential zlib1g-dev flex libasound2-dev libesd0-dev libsndfile1-dev
+      $ sudo apt-get install julius libjulius-dev build-essential zlib1g-dev flex libsndfile1-dev libc6-dev-i386 libasound2-dev:i386 libasound2-plugins:i386
 
 ####Julius r4.3.1 or later
 
