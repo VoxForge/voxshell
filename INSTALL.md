@@ -4,7 +4,8 @@ Extract the github zip file to a directory.
 
 ## Linux software prerequisites
 
-  You need Julius r4.3.1 to be able to compile voxshell on your computer.  Unfortunately, Fedora 23 & Ubuntu 14.01 both use Julius r4.2.2.  To get around this, the VoxShell includes 32-bit static libraries in the 'lib' directory.  The /src/Makefile uses these by default.
+  You need Julius r4.3.1 to be able to compile voxshell on your computer.  Unfortunately, Fedora 23 & Ubuntu 14.01 both use Julius r4.2.2.  To get around this, the VoxShell includes static libraries in the 'lib' and
+'lib64' directories.  The /src/Makefile uses these by default.
 
 ###  Fedora:
 
@@ -22,7 +23,7 @@ Extract the github zip file to a directory.
 
   If your package manager installs a version of Julius older than r4.3.1, then install these dependencies:
 
-     $ sudo yum install gcc glibc-devel.i686 libgcc.i686 alsa-lib.i686 alsa-lib-devel.i686 pulseaudio-libs.i686 pulseaudio-libs-devel.i686 alsa-plugins.i686 alsa-plugins-pulseaudio.i686
+     $ sudo yum install gcc glibc-devel libgcc alsa-lib alsa-lib-devel pulseaudio-libs pulseaudio-libs-devel alsa-plugins alsa-plugins-pulseaudio
 
 ####Julius r4.3.1 or later
 
@@ -37,6 +38,14 @@ Extract the github zip file to a directory.
   Install [Julia](http://julialang.org/) (scripting language used to compile VoxShell grammars).
 
       $ sudo yum install julia
+
+
+
+
+
+
+
+
 
 ### Ubuntu:
 
