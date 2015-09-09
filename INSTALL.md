@@ -12,7 +12,7 @@ Extract the github zip file to a directory.
 
      $ sudo yum install gcc glibc-devel libgcc alsa-lib alsa-lib-devel pulseaudio-libs pulseaudio-libs-devel alsa-plugins-pulseaudio
 
-#### Julia
+#### install Julia
 
       $ sudo yum install julia
 
@@ -35,18 +35,18 @@ Extract the github zip file to a directory.
 
 #### to install VoxShell binaries to default (/usr/local/bin)
 
-  $ configure 
-  $ make
-  $ sudo make install
+  * $ configure 
+  * $ make
+  * $ sudo make install
 
 #### to install VoxShell binaries to another location
 
-  $ configure --prefix=pathToVoxShell      # e.g. --prefix=~/voxshell to create a bin directory in the voxshell folder
-  $ make
-  $ sudo make install
+  * $ configure --prefix=pathToVoxShell      # e.g. --prefix=~/voxshell to create a bin directory in the voxshell folder
+  * $ make
+  * $ sudo make install
 
 
-## grammar dependencies
+## Grammar Dependencies
 
   The Julius grammars can be build without these dependencies.  However, if you try to execute certain speech commands, nothing will happen because the associated program has not been installed.
 
