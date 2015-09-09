@@ -3,7 +3,8 @@ wav
 *.*~
 *~
 *.log
-julius-simple
+bin/*
 *.daf
 *.dict
 *.term
+config.status

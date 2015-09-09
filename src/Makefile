@@ -1,29 +1,53 @@
+# Copyright (c) 2015 VoxForge
+# All rights reserved
+#
+# Makefile.in --- Makefile Template for configure
+#
+# $Id: Makefile.in,v 0.1 2015/09/08 Exp $
+#
+SHELL=/bin/sh
+RM=/usr/bin/rm -f
+prefix=/home/kmaclean/VoxForge-git/voxshell
+exec_prefix=${prefix}
+INSTALL=/usr/bin/install -c
+
+LIBSENT=../lib/libsent
+LIBJULIUS=../lib/libjulius
+
 CC=gcc
-CFLAGS=$(CFLAGS_MOD) -g -O2 -Wall
+CFLAGS=-g -O2 
 
-# older than Julius r4.3.1
-CPPFLAGS=-I../include
-LDFLAGS=$(LDFLAGS_MOD) -ljulius -ldl -lpthread -lsent -lasound -lm
+####
+#### When using system-installed libraries
+####
+# CPPFLAGS=`libjulius-config --cflags` `libsent-config --cflags`
+# LDFLAGS=`libjulius-config --libs` `libsent-config --libs`
 
-# Julius r4.3.1 or later 
-#CPPFLAGS=-I/usr/include
-#LDFLAGS=-L/usr/lib64 -ljulius -ldl -lpthread -lsent -lasound -lm -lpulse-simple -lz
+####
+#### When using within-package libraries
+####
+CPPFLAGS=-I$(LIBJULIUS)/include -I$(LIBSENT)/include  `$(LIBSENT)/libsent-config --cflags` `$(LIBJULIUS)/libjulius-config --cflags`
+LDFLAGS= -L$(LIBJULIUS) `$(LIBJULIUS)/libjulius-config --libs` -L$(LIBSENT) `$(LIBSENT)/libsent-config --libs`
+
+TARGET=compile_grammar.jl voxshell
 
 ############################################################
-TARGET=voxshell
 
-all: $(TARGET)
+all: voxshell
 
 voxshell: voxshell.c
-# older than Julius r4.3.1
-	$(CC) $(CFLAGS) $(CPPFLAGS) -o $(TARGET) voxshell.c $(LDFLAGS) 
-# Julius r4.3.1 or later (make sure you keep the tab at beginning of this line)
-#	$(CC) $(CFLAGS) $(CPPFLAGS) -o $(TARGET) voxshell.c $(LDFLAGS) 
+	$(CC) $(CFLAGS) $(CPPFLAGS) -o voxshell voxshell.c $(LDFLAGS)
 
-install: $(TARGET)
-	${INSTALL} $(TARGET) $(VOXSHELL)/bin
+install: install.bin
+
+install.bin:
+	${INSTALL} -d ${exec_prefix}/bin
+	${INSTALL} $(TARGET) ${exec_prefix}/bin
 
 clean:
-	$(RM) *.o *.bak *~ 
-	$(RM) voxshell
+	$(RM) *.o *.bak *~ core TAGS
 
+distclean:
+	$(RM) *.o *.bak *~ core TAGS
+	$(RM) voxshell
+	$(RM) Makefile

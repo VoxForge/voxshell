@@ -1,40 +1,63 @@
-# update to your environment:
-export VOXSHELL=~/voxshell
-JULIUS_DIR=/usr/bin
-export RM=rm -f
-export INSTALL=install -c
-# 64-bit - default
-export CFLAGS_MOD=
-export LDFLAGS_MOD=-L../lib64
-# 32-bit - uncomment the next two lines for 32-bit systems
-#export CFLAGS_MOD=-m32
-#export LDFLAGS_MOD=-L../lib
+# Copyright (c) 1991-2013 Kawahara Lab., Kyoto University
+# Copyright (c) 2000-2005 Shikano Lab., Nara Institute of Science and Technology
+# Copyright (c) 2005-2013 Julius project team, Nagoya Institute of Technology
+# All rights reserved
+#
+# Makefile.in --- Makefile Template for configure
+#
+# $Id: Makefile.in,v 1.6 2013/06/20 17:14:16 sumomo Exp $
+#
+SHELL=/bin/sh
 
+SUBDIRS=lib/libsent lib/libjulius src lib/gramtools
+CONFIG_SUBDIRS=lib/libsent lib/libjulius lib/gramtools
+INSTALL_SUBDIRS=src lib/gramtools
+
+RM=/usr/bin/rm -f
+RMDIR=/usr/bin/rm -fr
+prefix=/home/kmaclean/VoxForge-git/voxshell
+exec_prefix=${prefix}
+datadir=${prefix}/share
+INSTALL=/usr/bin/install -c
 
 ###############################################################################
-export COMPILE_GRAMMAR=$(VOXSHELL)/bin/compile_grammar.jl
-export VOXFORGE_DICT=$(VOXSHELL)/language/en/lexicon/VoxForgeDict.txt
-export MKFA_DIR=$(JULIUS_DIR)
+export COMPILE_GRAMMAR=$(prefix)/bin/compile_grammar.jl
+export VOXFORGE_DICT=$(prefix)/language/en/lexicon/VoxForgeDict.txt
+export MKFA_DIR=$(prefix)/bin
+LINUX_GRAMMARS=$(prefix)/language/en/linux
 
-# update this path to your voxshell directory
-LINUX_GRAMMARS=language/en/linux
-JULIUS_SIMPLE=src
+all:
+	for d in $(SUBDIRS); do \
+	  (cd $$d; $(MAKE)); \
+	done
 
-.all: linux
-
-linux: grammars julius-simple
-
-julius-simple:
-	$(MAKE) -s -C $(JULIUS_SIMPLE)
-	$(MAKE) -s install -C $(JULIUS_SIMPLE)
-
-grammars: 
-	${INSTALL} src/compile_grammar.jl $(VOXSHELL)/bin
-	$(MAKE) -s -C $(LINUX_GRAMMARS)
+install:
+	for d in $(INSTALL_SUBDIRS); do \
+	  (cd $$d; $(MAKE) install); \
+	done
 
 clean:
-	$(MAKE) -s clean -C $(LINUX_GRAMMARS)
-	$(MAKE) -s clean -C $(JULIUS_SIMPLE)
-	$(RM) bin/voxshell
-	$(RM) bin/compile_grammar.jl
+	for d in $(SUBDIRS); do \
+	  (cd $$d; $(MAKE) clean); \
+	done
+	$(RM) config.log config.cache
+	$(RMDIR) autom4te.cache
 
+distclean:
+	for d in $(SUBDIRS); do \
+	  if test -f $$d/Makefile; then \
+	   (cd $$d; $(MAKE) distclean); \
+	  fi; \
+	done
+	$(RM) config.log config.cache
+	$(RM) config.status
+	$(RM) Makefile
+	$(RMDIR) autom4te.cache
+
+config:
+	for d in $(CONFIG_SUBDIRS); do \
+	  (cd $$d; autoconf); \
+	done
+
+grammar: 
+	$(MAKE) -s -C $(LINUX_GRAMMARS)

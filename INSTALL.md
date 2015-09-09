@@ -4,17 +4,11 @@ Extract the github zip file to a directory.
 
 ## Linux software prerequisites
 
-  [Julius](http://julius.osdn.jp/en_index.php) is a large vocabulary speech recognition engine.  VoxShell uses the Julius backend libraries.  We need Julius rev.4.3.1 to be able to compile VoxShell on your computer.  Unfortunately, Fedora 22 & Ubuntu 14.01 both use Julius rev.4.2.2.  
-
-  To get around this, the VoxShell includes static libraries in the 'lib' and 'lib64' directories.  The /src/Makefile uses lib64 by default, see below to change it for 32-bit architectures.  We still need Julius because the package provides the dfa_minimize & mkfa executables used for grammar compilation.
+  [Julius](http://julius.osdn.jp/en_index.php) is a large vocabulary speech recognition engine.  VoxShell uses the Julius backend libraries for speech recognition and grammar creation/update.
 
 ###  Fedora:
 
-#### Julius
-
-     $ sudo yum install julius
-
-#### compile dependencies
+#### install voxshell compile dependencies
 
      $ sudo yum install gcc glibc-devel libgcc alsa-lib alsa-lib-devel pulseaudio-libs pulseaudio-libs-devel alsa-plugins-pulseaudio
 
@@ -26,11 +20,7 @@ Extract the github zip file to a directory.
 
 ### Ubuntu:
 
-#### Julius
-
-     $ sudo apt-get install julius
-
-#### compile dependencies
+#### install voxshell compile dependencies
 
       $ sudo apt-get install build-essential libasound2-dev libasound2-plugins libc6 libc6-dev zlib1g-dev
 
@@ -43,15 +33,18 @@ Extract the github zip file to a directory.
 
 ### build executable and compile grammars
 
-#### update voxshell Makefile
+#### to install VoxShell binaries to /usr/local/bin
 
-  Manually update the src/Makefile to point to your VoxShell directory, and set your computer architecture (i.e. 32-bit or 64-bit-default)
+  $ configure 
+  $ make
+  $ sudo make install
 
-#### run make command
+#### to install VoxShell binaries to another location
 
-  'make' is a tool to generate executables and other non-source files from a program's source files.
+  $ configure --prefix=pathToVoxShell      # e.g. --prefix=~/voxshell to create a bin directory in the voxshell folder
+  $ make
+  $ sudo make install
 
-      $ make
 
 ## grammar dependencies
 
