@@ -20,12 +20,7 @@ exec_prefix=@exec_prefix@
 datadir=@datadir@
 INSTALL=@INSTALL@
 
-###############################################################################
-export COMPILE_GRAMMAR=$(prefix)/bin/compile_grammar.jl
-export VOXFORGE_DICT=$(prefix)/language/en/lexicon/VoxForgeDict.txt
-export MKFA_DIR=$(prefix)/bin
 LINUX_GRAMMARS=$(prefix)/language/en/linux
-###############################################################################
 
 all:
 	for d in $(SUBDIRS); do \
@@ -54,11 +49,15 @@ distclean:
 	$(RM) config.status
 	$(RM) Makefile
 	$(RMDIR) autom4te.cache
+	if test -f $(LINUX_GRAMMARS)/Makefile; then \
+	 ($(MAKE) distclean -s -C $(LINUX_GRAMMARS)); \
+	fi; 
 
 config:
 	for d in $(CONFIG_SUBDIRS); do \
 	  (cd $$d; autoconf); \
 	done
+	$(MAKE) config -s -C $(LINUX_GRAMMARS)
 
 grammar: 
 	$(MAKE) -s -C $(LINUX_GRAMMARS)

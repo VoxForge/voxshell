@@ -43,20 +43,7 @@ AC_PATH_PROG(PERL,perl)
 if test -z "$PERL"; then
 	AC_MSG_ERROR([perl not found! installation terminated])
 fi
-dnl AC_PATH_PROG(NKF, nkf)
-dnl if test -z "$NKF"; then
-dnl 	AC_MSG_ERROR([nkf not found! installation terminated])
-dnl fi
 
-dnl not more use of bison and flex: use pre-compiled source instead
-dnl AC_PATH_PROG(BISON, bison)
-dnl if test -z "$BISON"; then
-dnl 	AC_MSG_ERROR([bison not found! installation terminated])
-dnl fi
-dnl AC_PATH_PROG(FLEX, flex)
-dnl if test -z "$FLEX"; then
-dnl 	AC_MSG_ERROR([flex not found! installation terminated])
-dnl fi
 AC_PATH_PROG(ICONV,iconv)
 if test -z "$ICONV"; then
 	AC_MSG_WARN([no iconv, gram2sapixml.pl may not work])

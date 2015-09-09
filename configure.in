@@ -32,4 +32,4 @@ AC_PROG_INSTALL
 AC_PATH_PROG(RM, rm)
 AC_EXEEXT
 
-AC_OUTPUT(Makefile src/Makefile)
+AC_OUTPUT(Makefile src/Makefile language/en/linux/Makefile)
