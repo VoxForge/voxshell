@@ -1,0 +1,25 @@
+# make file to create/update grammars
+
+prefix=@prefix@
+COMPILE_GRAMMAR=$(prefix)/bin/compile_grammar.jl
+MKFA_DIR=$(prefix)/bin
+VOXFORGE_DICT=$(prefix)/language/en/lexicon/VoxForgeDict.txt
+
+SUBDIRS=firefox gnome libreoffice rhythmbox shell
+SUBDIRS=`ls -d */ | sed 's/\///'`
+
+all:
+	for d in $(SUBDIRS); do \
+	  (cd $$d; julia $(COMPILE_GRAMMAR) $$d $(MKFA_DIR) $(VOXFORGE_DICT)); \
+	done
+
+clean:
+	for d in $(SUBDIRS); do \
+	  (cd $$d; rm -f *.dict *.dfa *.term *.tmp); \
+	done
+
+distclean:
+	$(RM) Makefile
+	for d in $(SUBDIRS); do \
+	  (cd $$d; rm -f *.dict *.dfa *.term *.tmp); \
+	done
