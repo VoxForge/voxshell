@@ -27,7 +27,7 @@ follow instructions in INSTALL.md.
 
 Look to the .vox and .grammar grammar files to see what the system will recognize (e.g. language/en/linux/rhythmbox/rhythmbox.vox & rhythmbox.grammar).  
 
-If you modify one of the grammar files, just run make in the top voxshell directory to recompile your grammar files (i.e. .dict, .dfa, .term).
+If you modify one of the grammar files, just run *make grammar* in the top voxshell directory to recompile your all your grammar files (i.e. creates new .dict, .dfa, .term files).
 
 ##  Windows:
 

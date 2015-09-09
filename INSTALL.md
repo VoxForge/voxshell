@@ -33,7 +33,7 @@ Extract the github zip file to a directory.
 
 ### build executable and compile grammars
 
-#### to install VoxShell binaries to /usr/local/bin
+#### to install VoxShell binaries to default (/usr/local/bin)
 
   $ configure 
   $ make
@@ -48,9 +48,11 @@ Extract the github zip file to a directory.
 
 ## grammar dependencies
 
-  The Julius grammars can be build without these dependencies.  However, if you try to execute certain speech commands, nothing will happen because the underlying package has not been installed.
+  The Julius grammars can be build without these dependencies.  However, if you try to execute certain speech commands, nothing will happen because the associated program has not been installed.
 
-  Rhythmbox grammar requires: **rhythmbox-client** (controls a running instance of rhythmbox); **dbus-send** (send a message to a message bus).
+### Rhythmbox grammar 
+
+  requires: **rhythmbox-client** (controls a running instance of rhythmbox); **dbus-send** (send a message to a message bus).
 
   Fedora:
 
@@ -60,7 +62,9 @@ Extract the github zip file to a directory.
 
     these are installed by default.
 
-  Gnome grammar requires: **wmctrl** (command line interface to X Window Manager); **xdotool** (command-line X11 automation tool).
+### Gnome grammar 
+
+  requires: **wmctrl** (command line interface to X Window Manager); **xdotool** (command-line X11 automation tool).
 
   Fedora:
 
@@ -70,7 +74,9 @@ Extract the github zip file to a directory.
 
       $ sudo apt-get install wmctrl xdotool   
 
-  Shell grammar requires: **inxi** (command line system information script for console - used for weather lookup example); **festival** (text-to-speech system).
+### Shell grammar
+
+  requires: **inxi** (command line system information script for console - used for weather lookup example); **festival** (text-to-speech system).
 
   Fedora:
 
