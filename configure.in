@@ -7,7 +7,7 @@ dnl $Id: configure.in,v 1.7 2013/06/20 17:14:16 sumomo Exp $
 dnl
 AC_INIT(voxshell.jconf)
 AC_CONFIG_AUX_DIR(lib/support)
-AC_CONFIG_SUBDIRS(lib/gramtools lib/libjulius lib/libsent)
+AC_CONFIG_SUBDIRS(lib/libjulius lib/libsent)
 
 dnl all configure options will be passed to all subdirectries.
 

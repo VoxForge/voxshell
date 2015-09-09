@@ -389,4 +389,4 @@ AC_SUBST(easy_setup)
 AC_OUTPUT_COMMANDS(
 [chmod +x libjulius-config libjulius-config-dist
 ])
-AC_OUTPUT(Makefile libjulius-config libjulius-config-dist src/version.c doxygen.conf.ver)
+AC_OUTPUT(Makefile libjulius-config libjulius-config-dist src/version.c)

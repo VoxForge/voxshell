@@ -4140,7 +4140,7 @@ _ACEOF
 
 ac_config_commands="$ac_config_commands default-1"
 
-ac_config_files="$ac_config_files Makefile libjulius-config libjulius-config-dist src/version.c doxygen.conf.ver"
+ac_config_files="$ac_config_files Makefile libjulius-config libjulius-config-dist src/version.c"
 
 cat >confcache <<\_ACEOF
 # This file is a shell script that caches the results of configure
@@ -4847,7 +4847,6 @@ do
     "libjulius-config") CONFIG_FILES="$CONFIG_FILES libjulius-config" ;;
     "libjulius-config-dist") CONFIG_FILES="$CONFIG_FILES libjulius-config-dist" ;;
     "src/version.c") CONFIG_FILES="$CONFIG_FILES src/version.c" ;;
-    "doxygen.conf.ver") CONFIG_FILES="$CONFIG_FILES doxygen.conf.ver" ;;
 
   *) as_fn_error $? "invalid argument: \`$ac_config_target'" "$LINENO" 5;;
   esac
