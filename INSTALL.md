@@ -33,18 +33,22 @@ Extract the github zip file to a directory.
 
 ### build executable and compile grammars
 
-#### to install VoxShell binaries to default (/usr/local/bin)
+#### to compile and install VoxShell binaries
+##### to default (/usr/local/bin)
 
   * $ configure 
   * $ make
   * $ sudo make install
 
-#### to install VoxShell binaries to another location
+##### to another location
 
   * $ configure --prefix=pathToVoxShell      # e.g. --prefix=~/voxshell to create a bin directory in the voxshell folder
   * $ make
   * $ sudo make install
 
+#### to compile grammars
+
+    $ make grammar
 
 ## Grammar Dependencies
 
