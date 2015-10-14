@@ -1,0 +1,4 @@
+2015-10-14 kmaclean
+
+	* partial conversion of config & makefiles to autotools
+
