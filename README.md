@@ -21,7 +21,7 @@ follow instructions in INSTALL.md.
 
 ### run VoxShell version of julius
       
-      $ bin/voxshell -input mic -C voxshell.jconf -gramlist language/en/grammars_linux
+      $ bin/voxshell -input mic -C share/voxshell/en/voxshell.jconf -gramlist share/voxshell/en/grammars_linux
 
 ### how do grammar files work?
 

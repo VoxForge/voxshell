@@ -36,13 +36,13 @@ Extract the github zip file to a directory.
 #### to compile and install VoxShell binaries
 ##### to default (/usr/local/bin)
 
-  * $ configure 
+  * $ configure --disable-shared
   * $ make
   * $ sudo make install
 
 ##### to another location
 
-  * $ configure --prefix=pathToVoxShell      # e.g. --prefix=~/voxshell to create a bin directory in the voxshell folder
+  * $ configure --disable-shared --prefix=pathToVoxShell      # e.g. --prefix=~/voxshell to create a bin directory in the voxshell folder
   * $ make
   * $ sudo make install
 

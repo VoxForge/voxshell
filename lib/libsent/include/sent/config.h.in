@@ -1,162 +1,197 @@
-/* include/sent/config.h.in.  Generated automatically from configure.in by autoheader.  */
+/* include/sent/config.h.in.  Generated from configure.ac by autoheader.  */
 
-/**
- * @file   libsent/include/sent/config.h
- *
- * <EN>
- * @brief  Environment configuration file
- *
- * This file contains symbol definitions to switch running environment
- * and configuration of this library.
- * This file was generated from config.h.in by @c configure,
- * switching each definitions according to the arguments.
- *
- * The symboles above are defined by default when running @c configure
- * with no argument.
- * To see all definition in detail, please see the source code.
- * @sa configure
- * </EN>
- * <JA>
- * @brief  環境設定ファイル
- *
- * このファイルには動作環境や設定を表すシンボルの定義が含まれています．
- * このファイルは config.h.in から @c configure の実行によって
- * 自動的に生成されます．
- *
- * 上記の定義は, @c configure を引数無しで実行したときにデフォルトで
- * 定義されるシンボルです．
- * 全定義の詳細については, ソースコードを直接ご覧ください．
- * @sa configure
- * @sa configure.in
- * </JA>
- *
- * @author Akinobu LEE
- * @date   Thu Feb 10 17:48:32 2005
- *
- * $Revision: 1.11 $
- *
- */
+/* Define if building universal (internal helper macro) */
+#undef AC_APPLE_UNIVERSAL_BUILD
 
-/* Version string */
-#undef LIBSENT_VERSION
-
-/* Audio API name */
-#undef AUDIO_API_NAME
-
-/* Audio API description */
+/* AUDIO_API_DESC */
 #undef AUDIO_API_DESC
 
-/* Description of supported audio file formats */
+/* AUDIO_API_NAME */
+#undef AUDIO_API_NAME
+
+/* AUDIO_FORMAT_DESC */
 #undef AUDIO_FORMAT_DESC
 
-/* Description of gzip file reading method */
-#undef GZIP_READING_DESC
-
-/* Define to empty if the keyword does not work on your compiler. */
-#undef const
-
-/* Define if you have the ANSI C header files.   */
-#undef STDC_HEADERS
-
-/* Define if your processor stores words with the most significant byte first (like Motorola and SPARC, unlike Intel and VAX).   */
-#undef WORDS_BIGENDIAN
-
-/* Define if use microphone input  */
-#undef USE_MIC
-
-/* Define if use Datlink/Netaudio input  */
-#undef USE_NETAUDIO
-
-/* Define if libsndfile support is available */
-#undef HAVE_LIBSNDFILE
-
-/* Define for libsndfile support (ver.1)  */
-#undef HAVE_LIBSNDFILE_VER1
-
-/* Define if you have spaudio library  */
-#undef USE_SPLIB
-
-/* Define if you use integer word WORD_ID (for vocaburary of over 60k)  */
-#undef WORDS_INT
-
-/* Define if you prefer addlog array function */
-#undef USE_ADDLOG_ARRAY
-
-/* Define if you use zcat command for compressed file input */
-#undef ZCAT
-
-/* Define if you have socklen definition */
-#undef HAVE_SOCKLEN_T
-
-/* Define if you have the <sndfile.h> header file.   */
-#undef HAVE_SNDFILE_H
-
-/* Define if you have the <unistd.h> header file.   */
-#undef HAVE_UNISTD_H
-
-/* Define if you have the nsl library (-lnsl).   */
-#undef HAVE_LIBNSL
-
-/* Define if you have the socket library (-lsocket).   */
-#undef HAVE_LIBSOCKET
-
-/* Define if you have zlib library (-lz).  */
-#undef HAVE_ZLIB
-
-/* Define if you have strcasecmp function  */
-#undef HAVE_STRCASECMP
-
-/* Define if you have sleep function  */
-#undef HAVE_SLEEP
-
-/* Define if you have iconv function */
-#undef HAVE_ICONV
-
-/* Define if you use libjcode */
-#undef USE_LIBJCODE
-
-/* Define if you allow class N-gram  */
+/* CLASS_NGRAM */
 #undef CLASS_NGRAM
 
-/* Define if you want to enable process forking for each adinnet connection */
-#undef FORK_ADINNET
-
-/* Define if use sin/cos table for MFCC calculation  */
-#undef MFCC_SINCOS_TABLE
-
-/* Define if <sys/soundcard.h> found */
-#undef HAVE_SYS_SOUNDCARD_H
-
-/* Define if <machine/soundcard.h> found */
-#undef HAVE_MACHINE_SOUNDCARD_H
-
-/* Define if <alsa/asoundlib.h> found */
-#undef HAVE_ALSA_ASOUNDLIB_H
-
-/* Define if <sys/asoundlib.h> exist and <alsa/asoundlib.h> not exist */
-#undef HAVE_SYS_ASOUNDLIB_H
-
-/* Define if <esd.h> exist  */
-#undef HAVE_ESD_H
-
-/* Define if <pulse/simple.h> exist  */
-#undef HAVE_PULSE_SIMPLE_H
-
-/* Define if enable alsa */
-#undef HAS_ALSA
-
-/* Define if enable oss */
-#undef HAS_OSS
-
-/* Define if enable pulseaudio */
-#undef HAS_PULSEAUDIO
-
-/* Define if enable esd */
-#undef HAS_ESD
-
-/* Define if MSD-HMM support is enabled */
+/* ENABLE_MSD */
 #undef ENABLE_MSD
 
-/* Define if MBR support is enabled */
-/* MBR Extension by Hiroaki Nanjo and Ryo Furutani */
+/* FORK_ADINNET */
+#undef FORK_ADINNET
+
+/* GZIP_READING_DESC */
+#undef GZIP_READING_DESC
+
+/* HAS_ALSA */
+#undef HAS_ALSA
+
+/* HAS_ESD */
+#undef HAS_ESD
+
+/* HAS_OSS */
+#undef HAS_OSS
+
+/* HAS_PULSEAUDIO */
+#undef HAS_PULSEAUDIO
+
+/* Define to 1 if you have the <alsa/asoundlib.h> header file. */
+#undef HAVE_ALSA_ASOUNDLIB_H
+
+/* Define to 1 if you have the <dlfcn.h> header file. */
+#undef HAVE_DLFCN_H
+
+/* Define to 1 if you have the <DSound.h> header file. */
+#undef HAVE_DSOUND_H
+
+/* Define to 1 if you have the <esd.h> header file. */
+#undef HAVE_ESD_H
+
+/* Define to 1 if you have the <inttypes.h> header file. */
+#undef HAVE_INTTYPES_H
+
+/* Define to 1 if you have the `nsl' library (-lnsl). */
+#undef HAVE_LIBNSL
+
+/* HAVE_LIBSNDFILE */
+#undef HAVE_LIBSNDFILE
+
+/* HAVE_LIBSNDFILE_VER1 */
+#undef HAVE_LIBSNDFILE_VER1
+
+/* Define to 1 if you have the `socket' library (-lsocket). */
+#undef HAVE_LIBSOCKET
+
+/* Define to 1 if you have the <machine/soundcard.h> header file. */
+#undef HAVE_MACHINE_SOUNDCARD_H
+
+/* Define to 1 if you have the <memory.h> header file. */
+#undef HAVE_MEMORY_H
+
+/* Define to 1 if you have the <portaudio.h> header file. */
+#undef HAVE_PORTAUDIO_H
+
+/* Define to 1 if you have the <pulse/simple.h> header file. */
+#undef HAVE_PULSE_SIMPLE_H
+
+/* Define to 1 if you have the `sleep' function. */
+#undef HAVE_SLEEP
+
+/* Define to 1 if you have the <sndfile.h> header file. */
+#undef HAVE_SNDFILE_H
+
+/* HAVE_SOCKLEN_T */
+#undef HAVE_SOCKLEN_T
+
+/* Define to 1 if you have the <stdint.h> header file. */
+#undef HAVE_STDINT_H
+
+/* Define to 1 if you have the <stdlib.h> header file. */
+#undef HAVE_STDLIB_H
+
+/* Define to 1 if you have the `strcasecmp' function. */
+#undef HAVE_STRCASECMP
+
+/* Define to 1 if you have the <strings.h> header file. */
+#undef HAVE_STRINGS_H
+
+/* Define to 1 if you have the <string.h> header file. */
+#undef HAVE_STRING_H
+
+/* Define to 1 if you have the <sys/asoundlib.h> header file. */
+#undef HAVE_SYS_ASOUNDLIB_H
+
+/* Define to 1 if you have the <sys/soundcard.h> header file. */
+#undef HAVE_SYS_SOUNDCARD_H
+
+/* Define to 1 if you have the <sys/stat.h> header file. */
+#undef HAVE_SYS_STAT_H
+
+/* Define to 1 if you have the <sys/types.h> header file. */
+#undef HAVE_SYS_TYPES_H
+
+/* Define to 1 if you have the <unistd.h> header file. */
+#undef HAVE_UNISTD_H
+
+/* HAVE_ZLIB */
+#undef HAVE_ZLIB
+
+/* Define to 1 if you have the <zlib.h> header file. */
+#undef HAVE_ZLIB_H
+
+/* LIBSENT_VERSION */
+#undef LIBSENT_VERSION
+
+/* Define to the sub-directory in which libtool stores uninstalled libraries.
+   */
+#undef LT_OBJDIR
+
+/* MFCC_SINCOS_TABLE */
+#undef MFCC_SINCOS_TABLE
+
+/* Define to 1 if your C compiler doesn't accept -c and -o together. */
+#undef NO_MINUS_C_MINUS_O
+
+/* Name of package */
+#undef PACKAGE
+
+/* Define to the address where bug reports for this package should be sent. */
+#undef PACKAGE_BUGREPORT
+
+/* Define to the full name of this package. */
+#undef PACKAGE_NAME
+
+/* Define to the full name and version of this package. */
+#undef PACKAGE_STRING
+
+/* Define to the one symbol short name of this package. */
+#undef PACKAGE_TARNAME
+
+/* Define to the home page for this package. */
+#undef PACKAGE_URL
+
+/* Define to the version of this package. */
+#undef PACKAGE_VERSION
+
+/* Define to 1 if you have the ANSI C header files. */
+#undef STDC_HEADERS
+
+/* USE_ADDLOG_ARRAY */
+#undef USE_ADDLOG_ARRAY
+
+/* USE_MBR */
 #undef USE_MBR
+
+/* USE_MIC */
+#undef USE_MIC
+
+/* USE_NETAUDIO */
+#undef USE_NETAUDIO
+
+/* USE_SPLIB */
+#undef USE_SPLIB
+
+/* Version number of package */
+#undef VERSION
+
+/* Define WORDS_BIGENDIAN to 1 if your processor stores words with the most
+   significant byte first (like Motorola and SPARC, unlike Intel). */
+#if defined AC_APPLE_UNIVERSAL_BUILD
+# if defined __BIG_ENDIAN__
+#  define WORDS_BIGENDIAN 1
+# endif
+#else
+# ifndef WORDS_BIGENDIAN
+#  undef WORDS_BIGENDIAN
+# endif
+#endif
+
+/* WORDS_INT */
+#undef WORDS_INT
+
+/* ZCAT */
+#undef ZCAT
+
+/* Define to empty if `const' does not conform to ANSI C. */
+#undef const

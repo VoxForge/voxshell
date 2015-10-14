@@ -1,6 +1,6 @@
-linux/rhythmbox/rhythmbox
-linux/firefox/firefox 
-linux/shell/shell 
-linux/libreoffice/libreoffice 
-linux/gnome/gnome 
+grammars/rhythmbox/rhythmbox
+grammars/firefox/firefox 
+grammars/shell/shell 
+grammars/libreoffice/libreoffice 
+grammars/gnome/gnome 
 
