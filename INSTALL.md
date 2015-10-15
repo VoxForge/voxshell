@@ -41,7 +41,7 @@ Extract the github zip file to a directory.
 #### to compile and install VoxShell binaries
 ##### to default (/usr/local/bin)
 
-  * $ configure --disable-shared
+  * $ configure --disable-shared --with-mictype=alsa
   * $ make
   * $ sudo make install
 
