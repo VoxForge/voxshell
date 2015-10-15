@@ -4,7 +4,12 @@ Extract the github zip file to a directory.
 
 ## Linux software prerequisites
 
-  [Julius](http://julius.osdn.jp/en_index.php) is a large vocabulary speech recognition engine.  VoxShell uses the Julius backend libraries for speech recognition and grammar creation/update.
+  remove all [Julius](http://julius.osdn.jp/en_index.php) executables and development packages.
+
+  remove Julius header files in: /usr/include/julius; and
+  and remove static libraries:
+    /usr/lib/libsent.a
+    /usr/lib/libjulius.a
 
 ###  Fedora:
 
@@ -22,7 +27,7 @@ Extract the github zip file to a directory.
 
 #### install voxshell compile dependencies
 
-      $ sudo apt-get install build-essential libasound2-dev libasound2-plugins libc6 libc6-dev zlib1g-dev
+      $ sudo apt-get install build-essential libasound2-dev libasound2-plugins libc6 libc6-dev zlib1g-dev libpulse-dev
 
 #### install Julia
 

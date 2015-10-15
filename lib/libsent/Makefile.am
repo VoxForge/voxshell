@@ -106,6 +106,7 @@ lib_LTLIBRARIES = libsent.la
 libsent_la_CFLAGS = -Wall -g -O2
 libsent_la_CPPFLAGS = -I$(includedir) -I$(srcdir)/include 
 libsent_la_SOURCES = $(SRC)
+libsent_la_LDFLAGS = -lasound -lm -z
 
 # these are needed so that voxshell.c compiles properly
 # where: mictype=auto, alsa becomes primary, still need source from other 3

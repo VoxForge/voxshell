@@ -11,7 +11,7 @@ AC_INIT([libjulius], [4.3.1], [contact@voxforge.org])
 AC_CONFIG_HEADER(include/julius/config.h)
 AC_CONFIG_AUX_DIR(../support)
 AC_CONFIG_MACRO_DIR([m4])
-AM_INIT_AUTOMAKE([foreign -Wall -Werror])
+AM_INIT_AUTOMAKE([foreign -Wall -Werror subdir-objects])
 AM_PROG_AR
 LT_INIT
 

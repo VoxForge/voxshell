@@ -141,28 +141,31 @@ am__installdirs = "$(DESTDIR)$(libdir)" \
 	"$(DESTDIR)$(juliusincludedir)"
 LTLIBRARIES = $(lib_LTLIBRARIES)
 libjulius_la_DEPENDENCIES = ../libsent/libsent.la
-am__objects_1 = libjulius_la-recogmain.lo libjulius_la-instance.lo \
-	libjulius_la-default.lo libjulius_la-jfunc.lo \
-	libjulius_la-callback.lo libjulius_la-useropt.lo \
-	libjulius_la-m_usage.lo libjulius_la-m_options.lo \
-	libjulius_la-m_jconf.lo libjulius_la-m_chkparam.lo \
-	libjulius_la-m_info.lo libjulius_la-m_fusion.lo \
-	libjulius_la-hmm_check.lo libjulius_la-multi-gram.lo \
-	libjulius_la-gramlist.lo libjulius_la-wchmm.lo \
-	libjulius_la-wchmm_check.lo libjulius_la-m_adin.lo \
-	libjulius_la-adin-cut.lo libjulius_la-wav2mfcc.lo \
-	libjulius_la-beam.lo libjulius_la-pass1.lo \
-	libjulius_la-spsegment.lo libjulius_la-realtime-1stpass.lo \
-	libjulius_la-factoring_sub.lo libjulius_la-outprob_style.lo \
-	libjulius_la-backtrellis.lo \
-	libjulius_la-search_bestfirst_main.lo \
-	libjulius_la-search_bestfirst_v1.lo \
-	libjulius_la-search_bestfirst_v2.lo \
-	libjulius_la-ngram_decode.lo libjulius_la-dfa_decode.lo \
-	libjulius_la-graphout.lo libjulius_la-confnet.lo \
-	libjulius_la-mbr.lo libjulius_la-gmm.lo \
-	libjulius_la-word_align.lo libjulius_la-plugin.lo \
-	libjulius_la-version.lo
+am__dirstamp = $(am__leading_dot)dirstamp
+am__objects_1 = src/libjulius_la-recogmain.lo \
+	src/libjulius_la-instance.lo src/libjulius_la-default.lo \
+	src/libjulius_la-jfunc.lo src/libjulius_la-callback.lo \
+	src/libjulius_la-useropt.lo src/libjulius_la-m_usage.lo \
+	src/libjulius_la-m_options.lo src/libjulius_la-m_jconf.lo \
+	src/libjulius_la-m_chkparam.lo src/libjulius_la-m_info.lo \
+	src/libjulius_la-m_fusion.lo src/libjulius_la-hmm_check.lo \
+	src/libjulius_la-multi-gram.lo src/libjulius_la-gramlist.lo \
+	src/libjulius_la-wchmm.lo src/libjulius_la-wchmm_check.lo \
+	src/libjulius_la-m_adin.lo src/libjulius_la-adin-cut.lo \
+	src/libjulius_la-wav2mfcc.lo src/libjulius_la-beam.lo \
+	src/libjulius_la-pass1.lo src/libjulius_la-spsegment.lo \
+	src/libjulius_la-realtime-1stpass.lo \
+	src/libjulius_la-factoring_sub.lo \
+	src/libjulius_la-outprob_style.lo \
+	src/libjulius_la-backtrellis.lo \
+	src/libjulius_la-search_bestfirst_main.lo \
+	src/libjulius_la-search_bestfirst_v1.lo \
+	src/libjulius_la-search_bestfirst_v2.lo \
+	src/libjulius_la-ngram_decode.lo \
+	src/libjulius_la-dfa_decode.lo src/libjulius_la-graphout.lo \
+	src/libjulius_la-confnet.lo src/libjulius_la-mbr.lo \
+	src/libjulius_la-gmm.lo src/libjulius_la-word_align.lo \
+	src/libjulius_la-plugin.lo src/libjulius_la-version.lo
 am_libjulius_la_OBJECTS = $(am__objects_1)
 libjulius_la_OBJECTS = $(am_libjulius_la_OBJECTS)
 AM_V_lt = $(am__v_lt_@AM_V@)
@@ -587,355 +590,445 @@ clean-libLTLIBRARIES:
 	  echo rm -f $${locs}; \
 	  rm -f $${locs}; \
 	}
+src/$(am__dirstamp):
+	@$(MKDIR_P) src
+	@: > src/$(am__dirstamp)
+src/$(DEPDIR)/$(am__dirstamp):
+	@$(MKDIR_P) src/$(DEPDIR)
+	@: > src/$(DEPDIR)/$(am__dirstamp)
+src/libjulius_la-recogmain.lo: src/$(am__dirstamp) \
+	src/$(DEPDIR)/$(am__dirstamp)
+src/libjulius_la-instance.lo: src/$(am__dirstamp) \
+	src/$(DEPDIR)/$(am__dirstamp)
+src/libjulius_la-default.lo: src/$(am__dirstamp) \
+	src/$(DEPDIR)/$(am__dirstamp)
+src/libjulius_la-jfunc.lo: src/$(am__dirstamp) \
+	src/$(DEPDIR)/$(am__dirstamp)
+src/libjulius_la-callback.lo: src/$(am__dirstamp) \
+	src/$(DEPDIR)/$(am__dirstamp)
+src/libjulius_la-useropt.lo: src/$(am__dirstamp) \
+	src/$(DEPDIR)/$(am__dirstamp)
+src/libjulius_la-m_usage.lo: src/$(am__dirstamp) \
+	src/$(DEPDIR)/$(am__dirstamp)
+src/libjulius_la-m_options.lo: src/$(am__dirstamp) \
+	src/$(DEPDIR)/$(am__dirstamp)
+src/libjulius_la-m_jconf.lo: src/$(am__dirstamp) \
+	src/$(DEPDIR)/$(am__dirstamp)
+src/libjulius_la-m_chkparam.lo: src/$(am__dirstamp) \
+	src/$(DEPDIR)/$(am__dirstamp)
+src/libjulius_la-m_info.lo: src/$(am__dirstamp) \
+	src/$(DEPDIR)/$(am__dirstamp)
+src/libjulius_la-m_fusion.lo: src/$(am__dirstamp) \
+	src/$(DEPDIR)/$(am__dirstamp)
+src/libjulius_la-hmm_check.lo: src/$(am__dirstamp) \
+	src/$(DEPDIR)/$(am__dirstamp)
+src/libjulius_la-multi-gram.lo: src/$(am__dirstamp) \
+	src/$(DEPDIR)/$(am__dirstamp)
+src/libjulius_la-gramlist.lo: src/$(am__dirstamp) \
+	src/$(DEPDIR)/$(am__dirstamp)
+src/libjulius_la-wchmm.lo: src/$(am__dirstamp) \
+	src/$(DEPDIR)/$(am__dirstamp)
+src/libjulius_la-wchmm_check.lo: src/$(am__dirstamp) \
+	src/$(DEPDIR)/$(am__dirstamp)
+src/libjulius_la-m_adin.lo: src/$(am__dirstamp) \
+	src/$(DEPDIR)/$(am__dirstamp)
+src/libjulius_la-adin-cut.lo: src/$(am__dirstamp) \
+	src/$(DEPDIR)/$(am__dirstamp)
+src/libjulius_la-wav2mfcc.lo: src/$(am__dirstamp) \
+	src/$(DEPDIR)/$(am__dirstamp)
+src/libjulius_la-beam.lo: src/$(am__dirstamp) \
+	src/$(DEPDIR)/$(am__dirstamp)
+src/libjulius_la-pass1.lo: src/$(am__dirstamp) \
+	src/$(DEPDIR)/$(am__dirstamp)
+src/libjulius_la-spsegment.lo: src/$(am__dirstamp) \
+	src/$(DEPDIR)/$(am__dirstamp)
+src/libjulius_la-realtime-1stpass.lo: src/$(am__dirstamp) \
+	src/$(DEPDIR)/$(am__dirstamp)
+src/libjulius_la-factoring_sub.lo: src/$(am__dirstamp) \
+	src/$(DEPDIR)/$(am__dirstamp)
+src/libjulius_la-outprob_style.lo: src/$(am__dirstamp) \
+	src/$(DEPDIR)/$(am__dirstamp)
+src/libjulius_la-backtrellis.lo: src/$(am__dirstamp) \
+	src/$(DEPDIR)/$(am__dirstamp)
+src/libjulius_la-search_bestfirst_main.lo: src/$(am__dirstamp) \
+	src/$(DEPDIR)/$(am__dirstamp)
+src/libjulius_la-search_bestfirst_v1.lo: src/$(am__dirstamp) \
+	src/$(DEPDIR)/$(am__dirstamp)
+src/libjulius_la-search_bestfirst_v2.lo: src/$(am__dirstamp) \
+	src/$(DEPDIR)/$(am__dirstamp)
+src/libjulius_la-ngram_decode.lo: src/$(am__dirstamp) \
+	src/$(DEPDIR)/$(am__dirstamp)
+src/libjulius_la-dfa_decode.lo: src/$(am__dirstamp) \
+	src/$(DEPDIR)/$(am__dirstamp)
+src/libjulius_la-graphout.lo: src/$(am__dirstamp) \
+	src/$(DEPDIR)/$(am__dirstamp)
+src/libjulius_la-confnet.lo: src/$(am__dirstamp) \
+	src/$(DEPDIR)/$(am__dirstamp)
+src/libjulius_la-mbr.lo: src/$(am__dirstamp) \
+	src/$(DEPDIR)/$(am__dirstamp)
+src/libjulius_la-gmm.lo: src/$(am__dirstamp) \
+	src/$(DEPDIR)/$(am__dirstamp)
+src/libjulius_la-word_align.lo: src/$(am__dirstamp) \
+	src/$(DEPDIR)/$(am__dirstamp)
+src/libjulius_la-plugin.lo: src/$(am__dirstamp) \
+	src/$(DEPDIR)/$(am__dirstamp)
+src/libjulius_la-version.lo: src/$(am__dirstamp) \
+	src/$(DEPDIR)/$(am__dirstamp)
 
 libjulius.la: $(libjulius_la_OBJECTS) $(libjulius_la_DEPENDENCIES) $(EXTRA_libjulius_la_DEPENDENCIES) 
 	$(AM_V_CCLD)$(libjulius_la_LINK) -rpath $(libdir) $(libjulius_la_OBJECTS) $(libjulius_la_LIBADD) $(LIBS)
 
 mostlyclean-compile:
 	-rm -f *.$(OBJEXT)
+	-rm -f src/*.$(OBJEXT)
+	-rm -f src/*.lo
 
 distclean-compile:
 	-rm -f *.tab.c
 
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/libjulius_la-adin-cut.Plo@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/libjulius_la-backtrellis.Plo@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/libjulius_la-beam.Plo@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/libjulius_la-callback.Plo@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/libjulius_la-confnet.Plo@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/libjulius_la-default.Plo@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/libjulius_la-dfa_decode.Plo@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/libjulius_la-factoring_sub.Plo@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/libjulius_la-gmm.Plo@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/libjulius_la-gramlist.Plo@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/libjulius_la-graphout.Plo@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/libjulius_la-hmm_check.Plo@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/libjulius_la-instance.Plo@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/libjulius_la-jfunc.Plo@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/libjulius_la-m_adin.Plo@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/libjulius_la-m_chkparam.Plo@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/libjulius_la-m_fusion.Plo@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/libjulius_la-m_info.Plo@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/libjulius_la-m_jconf.Plo@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/libjulius_la-m_options.Plo@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/libjulius_la-m_usage.Plo@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/libjulius_la-mbr.Plo@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/libjulius_la-multi-gram.Plo@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/libjulius_la-ngram_decode.Plo@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/libjulius_la-outprob_style.Plo@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/libjulius_la-pass1.Plo@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/libjulius_la-plugin.Plo@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/libjulius_la-realtime-1stpass.Plo@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/libjulius_la-recogmain.Plo@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/libjulius_la-search_bestfirst_main.Plo@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/libjulius_la-search_bestfirst_v1.Plo@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/libjulius_la-search_bestfirst_v2.Plo@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/libjulius_la-spsegment.Plo@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/libjulius_la-useropt.Plo@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/libjulius_la-version.Plo@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/libjulius_la-wav2mfcc.Plo@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/libjulius_la-wchmm.Plo@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/libjulius_la-wchmm_check.Plo@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/libjulius_la-word_align.Plo@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@src/$(DEPDIR)/libjulius_la-adin-cut.Plo@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@src/$(DEPDIR)/libjulius_la-backtrellis.Plo@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@src/$(DEPDIR)/libjulius_la-beam.Plo@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@src/$(DEPDIR)/libjulius_la-callback.Plo@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@src/$(DEPDIR)/libjulius_la-confnet.Plo@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@src/$(DEPDIR)/libjulius_la-default.Plo@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@src/$(DEPDIR)/libjulius_la-dfa_decode.Plo@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@src/$(DEPDIR)/libjulius_la-factoring_sub.Plo@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@src/$(DEPDIR)/libjulius_la-gmm.Plo@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@src/$(DEPDIR)/libjulius_la-gramlist.Plo@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@src/$(DEPDIR)/libjulius_la-graphout.Plo@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@src/$(DEPDIR)/libjulius_la-hmm_check.Plo@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@src/$(DEPDIR)/libjulius_la-instance.Plo@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@src/$(DEPDIR)/libjulius_la-jfunc.Plo@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@src/$(DEPDIR)/libjulius_la-m_adin.Plo@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@src/$(DEPDIR)/libjulius_la-m_chkparam.Plo@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@src/$(DEPDIR)/libjulius_la-m_fusion.Plo@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@src/$(DEPDIR)/libjulius_la-m_info.Plo@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@src/$(DEPDIR)/libjulius_la-m_jconf.Plo@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@src/$(DEPDIR)/libjulius_la-m_options.Plo@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@src/$(DEPDIR)/libjulius_la-m_usage.Plo@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@src/$(DEPDIR)/libjulius_la-mbr.Plo@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@src/$(DEPDIR)/libjulius_la-multi-gram.Plo@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@src/$(DEPDIR)/libjulius_la-ngram_decode.Plo@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@src/$(DEPDIR)/libjulius_la-outprob_style.Plo@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@src/$(DEPDIR)/libjulius_la-pass1.Plo@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@src/$(DEPDIR)/libjulius_la-plugin.Plo@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@src/$(DEPDIR)/libjulius_la-realtime-1stpass.Plo@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@src/$(DEPDIR)/libjulius_la-recogmain.Plo@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@src/$(DEPDIR)/libjulius_la-search_bestfirst_main.Plo@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@src/$(DEPDIR)/libjulius_la-search_bestfirst_v1.Plo@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@src/$(DEPDIR)/libjulius_la-search_bestfirst_v2.Plo@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@src/$(DEPDIR)/libjulius_la-spsegment.Plo@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@src/$(DEPDIR)/libjulius_la-useropt.Plo@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@src/$(DEPDIR)/libjulius_la-version.Plo@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@src/$(DEPDIR)/libjulius_la-wav2mfcc.Plo@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@src/$(DEPDIR)/libjulius_la-wchmm.Plo@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@src/$(DEPDIR)/libjulius_la-wchmm_check.Plo@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@src/$(DEPDIR)/libjulius_la-word_align.Plo@am__quote@
 
 .c.o:
-@am__fastdepCC_TRUE@	$(AM_V_CC)$(COMPILE) -MT $@ -MD -MP -MF $(DEPDIR)/$*.Tpo -c -o $@ $<
-@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) $(DEPDIR)/$*.Tpo $(DEPDIR)/$*.Po
+@am__fastdepCC_TRUE@	$(AM_V_CC)depbase=`echo $@ | sed 's|[^/]*$$|$(DEPDIR)/&|;s|\.o$$||'`;\
+@am__fastdepCC_TRUE@	$(COMPILE) -MT $@ -MD -MP -MF $$depbase.Tpo -c -o $@ $< &&\
+@am__fastdepCC_TRUE@	$(am__mv) $$depbase.Tpo $$depbase.Po
 @AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='$<' object='$@' libtool=no @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(COMPILE) -c $<
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(COMPILE) -c -o $@ $<
 
 .c.obj:
-@am__fastdepCC_TRUE@	$(AM_V_CC)$(COMPILE) -MT $@ -MD -MP -MF $(DEPDIR)/$*.Tpo -c -o $@ `$(CYGPATH_W) '$<'`
-@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) $(DEPDIR)/$*.Tpo $(DEPDIR)/$*.Po
+@am__fastdepCC_TRUE@	$(AM_V_CC)depbase=`echo $@ | sed 's|[^/]*$$|$(DEPDIR)/&|;s|\.obj$$||'`;\
+@am__fastdepCC_TRUE@	$(COMPILE) -MT $@ -MD -MP -MF $$depbase.Tpo -c -o $@ `$(CYGPATH_W) '$<'` &&\
+@am__fastdepCC_TRUE@	$(am__mv) $$depbase.Tpo $$depbase.Po
 @AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='$<' object='$@' libtool=no @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(COMPILE) -c `$(CYGPATH_W) '$<'`
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(COMPILE) -c -o $@ `$(CYGPATH_W) '$<'`
 
 .c.lo:
-@am__fastdepCC_TRUE@	$(AM_V_CC)$(LTCOMPILE) -MT $@ -MD -MP -MF $(DEPDIR)/$*.Tpo -c -o $@ $<
-@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) $(DEPDIR)/$*.Tpo $(DEPDIR)/$*.Plo
+@am__fastdepCC_TRUE@	$(AM_V_CC)depbase=`echo $@ | sed 's|[^/]*$$|$(DEPDIR)/&|;s|\.lo$$||'`;\
+@am__fastdepCC_TRUE@	$(LTCOMPILE) -MT $@ -MD -MP -MF $$depbase.Tpo -c -o $@ $< &&\
+@am__fastdepCC_TRUE@	$(am__mv) $$depbase.Tpo $$depbase.Plo
 @AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='$<' object='$@' libtool=yes @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
 @am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(LTCOMPILE) -c -o $@ $<
 
-libjulius_la-recogmain.lo: src/recogmain.c
-@am__fastdepCC_TRUE@	$(AM_V_CC)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libjulius_la_CPPFLAGS) $(CPPFLAGS) $(libjulius_la_CFLAGS) $(CFLAGS) -MT libjulius_la-recogmain.lo -MD -MP -MF $(DEPDIR)/libjulius_la-recogmain.Tpo -c -o libjulius_la-recogmain.lo `test -f 'src/recogmain.c' || echo '$(srcdir)/'`src/recogmain.c
-@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) $(DEPDIR)/libjulius_la-recogmain.Tpo $(DEPDIR)/libjulius_la-recogmain.Plo
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='src/recogmain.c' object='libjulius_la-recogmain.lo' libtool=yes @AMDEPBACKSLASH@
+src/libjulius_la-recogmain.lo: src/recogmain.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libjulius_la_CPPFLAGS) $(CPPFLAGS) $(libjulius_la_CFLAGS) $(CFLAGS) -MT src/libjulius_la-recogmain.lo -MD -MP -MF src/$(DEPDIR)/libjulius_la-recogmain.Tpo -c -o src/libjulius_la-recogmain.lo `test -f 'src/recogmain.c' || echo '$(srcdir)/'`src/recogmain.c
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) src/$(DEPDIR)/libjulius_la-recogmain.Tpo src/$(DEPDIR)/libjulius_la-recogmain.Plo
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='src/recogmain.c' object='src/libjulius_la-recogmain.lo' libtool=yes @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libjulius_la_CPPFLAGS) $(CPPFLAGS) $(libjulius_la_CFLAGS) $(CFLAGS) -c -o libjulius_la-recogmain.lo `test -f 'src/recogmain.c' || echo '$(srcdir)/'`src/recogmain.c
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libjulius_la_CPPFLAGS) $(CPPFLAGS) $(libjulius_la_CFLAGS) $(CFLAGS) -c -o src/libjulius_la-recogmain.lo `test -f 'src/recogmain.c' || echo '$(srcdir)/'`src/recogmain.c
 
-libjulius_la-instance.lo: src/instance.c
-@am__fastdepCC_TRUE@	$(AM_V_CC)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libjulius_la_CPPFLAGS) $(CPPFLAGS) $(libjulius_la_CFLAGS) $(CFLAGS) -MT libjulius_la-instance.lo -MD -MP -MF $(DEPDIR)/libjulius_la-instance.Tpo -c -o libjulius_la-instance.lo `test -f 'src/instance.c' || echo '$(srcdir)/'`src/instance.c
-@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) $(DEPDIR)/libjulius_la-instance.Tpo $(DEPDIR)/libjulius_la-instance.Plo
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='src/instance.c' object='libjulius_la-instance.lo' libtool=yes @AMDEPBACKSLASH@
+src/libjulius_la-instance.lo: src/instance.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libjulius_la_CPPFLAGS) $(CPPFLAGS) $(libjulius_la_CFLAGS) $(CFLAGS) -MT src/libjulius_la-instance.lo -MD -MP -MF src/$(DEPDIR)/libjulius_la-instance.Tpo -c -o src/libjulius_la-instance.lo `test -f 'src/instance.c' || echo '$(srcdir)/'`src/instance.c
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) src/$(DEPDIR)/libjulius_la-instance.Tpo src/$(DEPDIR)/libjulius_la-instance.Plo
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='src/instance.c' object='src/libjulius_la-instance.lo' libtool=yes @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libjulius_la_CPPFLAGS) $(CPPFLAGS) $(libjulius_la_CFLAGS) $(CFLAGS) -c -o libjulius_la-instance.lo `test -f 'src/instance.c' || echo '$(srcdir)/'`src/instance.c
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libjulius_la_CPPFLAGS) $(CPPFLAGS) $(libjulius_la_CFLAGS) $(CFLAGS) -c -o src/libjulius_la-instance.lo `test -f 'src/instance.c' || echo '$(srcdir)/'`src/instance.c
 
-libjulius_la-default.lo: src/default.c
-@am__fastdepCC_TRUE@	$(AM_V_CC)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libjulius_la_CPPFLAGS) $(CPPFLAGS) $(libjulius_la_CFLAGS) $(CFLAGS) -MT libjulius_la-default.lo -MD -MP -MF $(DEPDIR)/libjulius_la-default.Tpo -c -o libjulius_la-default.lo `test -f 'src/default.c' || echo '$(srcdir)/'`src/default.c
-@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) $(DEPDIR)/libjulius_la-default.Tpo $(DEPDIR)/libjulius_la-default.Plo
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='src/default.c' object='libjulius_la-default.lo' libtool=yes @AMDEPBACKSLASH@
+src/libjulius_la-default.lo: src/default.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libjulius_la_CPPFLAGS) $(CPPFLAGS) $(libjulius_la_CFLAGS) $(CFLAGS) -MT src/libjulius_la-default.lo -MD -MP -MF src/$(DEPDIR)/libjulius_la-default.Tpo -c -o src/libjulius_la-default.lo `test -f 'src/default.c' || echo '$(srcdir)/'`src/default.c
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) src/$(DEPDIR)/libjulius_la-default.Tpo src/$(DEPDIR)/libjulius_la-default.Plo
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='src/default.c' object='src/libjulius_la-default.lo' libtool=yes @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libjulius_la_CPPFLAGS) $(CPPFLAGS) $(libjulius_la_CFLAGS) $(CFLAGS) -c -o libjulius_la-default.lo `test -f 'src/default.c' || echo '$(srcdir)/'`src/default.c
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libjulius_la_CPPFLAGS) $(CPPFLAGS) $(libjulius_la_CFLAGS) $(CFLAGS) -c -o src/libjulius_la-default.lo `test -f 'src/default.c' || echo '$(srcdir)/'`src/default.c
 
-libjulius_la-jfunc.lo: src/jfunc.c
-@am__fastdepCC_TRUE@	$(AM_V_CC)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libjulius_la_CPPFLAGS) $(CPPFLAGS) $(libjulius_la_CFLAGS) $(CFLAGS) -MT libjulius_la-jfunc.lo -MD -MP -MF $(DEPDIR)/libjulius_la-jfunc.Tpo -c -o libjulius_la-jfunc.lo `test -f 'src/jfunc.c' || echo '$(srcdir)/'`src/jfunc.c
-@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) $(DEPDIR)/libjulius_la-jfunc.Tpo $(DEPDIR)/libjulius_la-jfunc.Plo
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='src/jfunc.c' object='libjulius_la-jfunc.lo' libtool=yes @AMDEPBACKSLASH@
+src/libjulius_la-jfunc.lo: src/jfunc.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libjulius_la_CPPFLAGS) $(CPPFLAGS) $(libjulius_la_CFLAGS) $(CFLAGS) -MT src/libjulius_la-jfunc.lo -MD -MP -MF src/$(DEPDIR)/libjulius_la-jfunc.Tpo -c -o src/libjulius_la-jfunc.lo `test -f 'src/jfunc.c' || echo '$(srcdir)/'`src/jfunc.c
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) src/$(DEPDIR)/libjulius_la-jfunc.Tpo src/$(DEPDIR)/libjulius_la-jfunc.Plo
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='src/jfunc.c' object='src/libjulius_la-jfunc.lo' libtool=yes @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libjulius_la_CPPFLAGS) $(CPPFLAGS) $(libjulius_la_CFLAGS) $(CFLAGS) -c -o libjulius_la-jfunc.lo `test -f 'src/jfunc.c' || echo '$(srcdir)/'`src/jfunc.c
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libjulius_la_CPPFLAGS) $(CPPFLAGS) $(libjulius_la_CFLAGS) $(CFLAGS) -c -o src/libjulius_la-jfunc.lo `test -f 'src/jfunc.c' || echo '$(srcdir)/'`src/jfunc.c
 
-libjulius_la-callback.lo: src/callback.c
-@am__fastdepCC_TRUE@	$(AM_V_CC)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libjulius_la_CPPFLAGS) $(CPPFLAGS) $(libjulius_la_CFLAGS) $(CFLAGS) -MT libjulius_la-callback.lo -MD -MP -MF $(DEPDIR)/libjulius_la-callback.Tpo -c -o libjulius_la-callback.lo `test -f 'src/callback.c' || echo '$(srcdir)/'`src/callback.c
-@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) $(DEPDIR)/libjulius_la-callback.Tpo $(DEPDIR)/libjulius_la-callback.Plo
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='src/callback.c' object='libjulius_la-callback.lo' libtool=yes @AMDEPBACKSLASH@
+src/libjulius_la-callback.lo: src/callback.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libjulius_la_CPPFLAGS) $(CPPFLAGS) $(libjulius_la_CFLAGS) $(CFLAGS) -MT src/libjulius_la-callback.lo -MD -MP -MF src/$(DEPDIR)/libjulius_la-callback.Tpo -c -o src/libjulius_la-callback.lo `test -f 'src/callback.c' || echo '$(srcdir)/'`src/callback.c
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) src/$(DEPDIR)/libjulius_la-callback.Tpo src/$(DEPDIR)/libjulius_la-callback.Plo
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='src/callback.c' object='src/libjulius_la-callback.lo' libtool=yes @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libjulius_la_CPPFLAGS) $(CPPFLAGS) $(libjulius_la_CFLAGS) $(CFLAGS) -c -o libjulius_la-callback.lo `test -f 'src/callback.c' || echo '$(srcdir)/'`src/callback.c
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libjulius_la_CPPFLAGS) $(CPPFLAGS) $(libjulius_la_CFLAGS) $(CFLAGS) -c -o src/libjulius_la-callback.lo `test -f 'src/callback.c' || echo '$(srcdir)/'`src/callback.c
 
-libjulius_la-useropt.lo: src/useropt.c
-@am__fastdepCC_TRUE@	$(AM_V_CC)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libjulius_la_CPPFLAGS) $(CPPFLAGS) $(libjulius_la_CFLAGS) $(CFLAGS) -MT libjulius_la-useropt.lo -MD -MP -MF $(DEPDIR)/libjulius_la-useropt.Tpo -c -o libjulius_la-useropt.lo `test -f 'src/useropt.c' || echo '$(srcdir)/'`src/useropt.c
-@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) $(DEPDIR)/libjulius_la-useropt.Tpo $(DEPDIR)/libjulius_la-useropt.Plo
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='src/useropt.c' object='libjulius_la-useropt.lo' libtool=yes @AMDEPBACKSLASH@
+src/libjulius_la-useropt.lo: src/useropt.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libjulius_la_CPPFLAGS) $(CPPFLAGS) $(libjulius_la_CFLAGS) $(CFLAGS) -MT src/libjulius_la-useropt.lo -MD -MP -MF src/$(DEPDIR)/libjulius_la-useropt.Tpo -c -o src/libjulius_la-useropt.lo `test -f 'src/useropt.c' || echo '$(srcdir)/'`src/useropt.c
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) src/$(DEPDIR)/libjulius_la-useropt.Tpo src/$(DEPDIR)/libjulius_la-useropt.Plo
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='src/useropt.c' object='src/libjulius_la-useropt.lo' libtool=yes @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libjulius_la_CPPFLAGS) $(CPPFLAGS) $(libjulius_la_CFLAGS) $(CFLAGS) -c -o libjulius_la-useropt.lo `test -f 'src/useropt.c' || echo '$(srcdir)/'`src/useropt.c
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libjulius_la_CPPFLAGS) $(CPPFLAGS) $(libjulius_la_CFLAGS) $(CFLAGS) -c -o src/libjulius_la-useropt.lo `test -f 'src/useropt.c' || echo '$(srcdir)/'`src/useropt.c
 
-libjulius_la-m_usage.lo: src/m_usage.c
-@am__fastdepCC_TRUE@	$(AM_V_CC)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libjulius_la_CPPFLAGS) $(CPPFLAGS) $(libjulius_la_CFLAGS) $(CFLAGS) -MT libjulius_la-m_usage.lo -MD -MP -MF $(DEPDIR)/libjulius_la-m_usage.Tpo -c -o libjulius_la-m_usage.lo `test -f 'src/m_usage.c' || echo '$(srcdir)/'`src/m_usage.c
-@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) $(DEPDIR)/libjulius_la-m_usage.Tpo $(DEPDIR)/libjulius_la-m_usage.Plo
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='src/m_usage.c' object='libjulius_la-m_usage.lo' libtool=yes @AMDEPBACKSLASH@
+src/libjulius_la-m_usage.lo: src/m_usage.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libjulius_la_CPPFLAGS) $(CPPFLAGS) $(libjulius_la_CFLAGS) $(CFLAGS) -MT src/libjulius_la-m_usage.lo -MD -MP -MF src/$(DEPDIR)/libjulius_la-m_usage.Tpo -c -o src/libjulius_la-m_usage.lo `test -f 'src/m_usage.c' || echo '$(srcdir)/'`src/m_usage.c
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) src/$(DEPDIR)/libjulius_la-m_usage.Tpo src/$(DEPDIR)/libjulius_la-m_usage.Plo
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='src/m_usage.c' object='src/libjulius_la-m_usage.lo' libtool=yes @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libjulius_la_CPPFLAGS) $(CPPFLAGS) $(libjulius_la_CFLAGS) $(CFLAGS) -c -o libjulius_la-m_usage.lo `test -f 'src/m_usage.c' || echo '$(srcdir)/'`src/m_usage.c
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libjulius_la_CPPFLAGS) $(CPPFLAGS) $(libjulius_la_CFLAGS) $(CFLAGS) -c -o src/libjulius_la-m_usage.lo `test -f 'src/m_usage.c' || echo '$(srcdir)/'`src/m_usage.c
 
-libjulius_la-m_options.lo: src/m_options.c
-@am__fastdepCC_TRUE@	$(AM_V_CC)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libjulius_la_CPPFLAGS) $(CPPFLAGS) $(libjulius_la_CFLAGS) $(CFLAGS) -MT libjulius_la-m_options.lo -MD -MP -MF $(DEPDIR)/libjulius_la-m_options.Tpo -c -o libjulius_la-m_options.lo `test -f 'src/m_options.c' || echo '$(srcdir)/'`src/m_options.c
-@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) $(DEPDIR)/libjulius_la-m_options.Tpo $(DEPDIR)/libjulius_la-m_options.Plo
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='src/m_options.c' object='libjulius_la-m_options.lo' libtool=yes @AMDEPBACKSLASH@
+src/libjulius_la-m_options.lo: src/m_options.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libjulius_la_CPPFLAGS) $(CPPFLAGS) $(libjulius_la_CFLAGS) $(CFLAGS) -MT src/libjulius_la-m_options.lo -MD -MP -MF src/$(DEPDIR)/libjulius_la-m_options.Tpo -c -o src/libjulius_la-m_options.lo `test -f 'src/m_options.c' || echo '$(srcdir)/'`src/m_options.c
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) src/$(DEPDIR)/libjulius_la-m_options.Tpo src/$(DEPDIR)/libjulius_la-m_options.Plo
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='src/m_options.c' object='src/libjulius_la-m_options.lo' libtool=yes @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libjulius_la_CPPFLAGS) $(CPPFLAGS) $(libjulius_la_CFLAGS) $(CFLAGS) -c -o libjulius_la-m_options.lo `test -f 'src/m_options.c' || echo '$(srcdir)/'`src/m_options.c
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libjulius_la_CPPFLAGS) $(CPPFLAGS) $(libjulius_la_CFLAGS) $(CFLAGS) -c -o src/libjulius_la-m_options.lo `test -f 'src/m_options.c' || echo '$(srcdir)/'`src/m_options.c
 
-libjulius_la-m_jconf.lo: src/m_jconf.c
-@am__fastdepCC_TRUE@	$(AM_V_CC)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libjulius_la_CPPFLAGS) $(CPPFLAGS) $(libjulius_la_CFLAGS) $(CFLAGS) -MT libjulius_la-m_jconf.lo -MD -MP -MF $(DEPDIR)/libjulius_la-m_jconf.Tpo -c -o libjulius_la-m_jconf.lo `test -f 'src/m_jconf.c' || echo '$(srcdir)/'`src/m_jconf.c
-@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) $(DEPDIR)/libjulius_la-m_jconf.Tpo $(DEPDIR)/libjulius_la-m_jconf.Plo
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='src/m_jconf.c' object='libjulius_la-m_jconf.lo' libtool=yes @AMDEPBACKSLASH@
+src/libjulius_la-m_jconf.lo: src/m_jconf.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libjulius_la_CPPFLAGS) $(CPPFLAGS) $(libjulius_la_CFLAGS) $(CFLAGS) -MT src/libjulius_la-m_jconf.lo -MD -MP -MF src/$(DEPDIR)/libjulius_la-m_jconf.Tpo -c -o src/libjulius_la-m_jconf.lo `test -f 'src/m_jconf.c' || echo '$(srcdir)/'`src/m_jconf.c
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) src/$(DEPDIR)/libjulius_la-m_jconf.Tpo src/$(DEPDIR)/libjulius_la-m_jconf.Plo
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='src/m_jconf.c' object='src/libjulius_la-m_jconf.lo' libtool=yes @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libjulius_la_CPPFLAGS) $(CPPFLAGS) $(libjulius_la_CFLAGS) $(CFLAGS) -c -o libjulius_la-m_jconf.lo `test -f 'src/m_jconf.c' || echo '$(srcdir)/'`src/m_jconf.c
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libjulius_la_CPPFLAGS) $(CPPFLAGS) $(libjulius_la_CFLAGS) $(CFLAGS) -c -o src/libjulius_la-m_jconf.lo `test -f 'src/m_jconf.c' || echo '$(srcdir)/'`src/m_jconf.c
 
-libjulius_la-m_chkparam.lo: src/m_chkparam.c
-@am__fastdepCC_TRUE@	$(AM_V_CC)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libjulius_la_CPPFLAGS) $(CPPFLAGS) $(libjulius_la_CFLAGS) $(CFLAGS) -MT libjulius_la-m_chkparam.lo -MD -MP -MF $(DEPDIR)/libjulius_la-m_chkparam.Tpo -c -o libjulius_la-m_chkparam.lo `test -f 'src/m_chkparam.c' || echo '$(srcdir)/'`src/m_chkparam.c
-@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) $(DEPDIR)/libjulius_la-m_chkparam.Tpo $(DEPDIR)/libjulius_la-m_chkparam.Plo
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='src/m_chkparam.c' object='libjulius_la-m_chkparam.lo' libtool=yes @AMDEPBACKSLASH@
+src/libjulius_la-m_chkparam.lo: src/m_chkparam.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libjulius_la_CPPFLAGS) $(CPPFLAGS) $(libjulius_la_CFLAGS) $(CFLAGS) -MT src/libjulius_la-m_chkparam.lo -MD -MP -MF src/$(DEPDIR)/libjulius_la-m_chkparam.Tpo -c -o src/libjulius_la-m_chkparam.lo `test -f 'src/m_chkparam.c' || echo '$(srcdir)/'`src/m_chkparam.c
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) src/$(DEPDIR)/libjulius_la-m_chkparam.Tpo src/$(DEPDIR)/libjulius_la-m_chkparam.Plo
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='src/m_chkparam.c' object='src/libjulius_la-m_chkparam.lo' libtool=yes @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libjulius_la_CPPFLAGS) $(CPPFLAGS) $(libjulius_la_CFLAGS) $(CFLAGS) -c -o libjulius_la-m_chkparam.lo `test -f 'src/m_chkparam.c' || echo '$(srcdir)/'`src/m_chkparam.c
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libjulius_la_CPPFLAGS) $(CPPFLAGS) $(libjulius_la_CFLAGS) $(CFLAGS) -c -o src/libjulius_la-m_chkparam.lo `test -f 'src/m_chkparam.c' || echo '$(srcdir)/'`src/m_chkparam.c
 
-libjulius_la-m_info.lo: src/m_info.c
-@am__fastdepCC_TRUE@	$(AM_V_CC)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libjulius_la_CPPFLAGS) $(CPPFLAGS) $(libjulius_la_CFLAGS) $(CFLAGS) -MT libjulius_la-m_info.lo -MD -MP -MF $(DEPDIR)/libjulius_la-m_info.Tpo -c -o libjulius_la-m_info.lo `test -f 'src/m_info.c' || echo '$(srcdir)/'`src/m_info.c
-@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) $(DEPDIR)/libjulius_la-m_info.Tpo $(DEPDIR)/libjulius_la-m_info.Plo
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='src/m_info.c' object='libjulius_la-m_info.lo' libtool=yes @AMDEPBACKSLASH@
+src/libjulius_la-m_info.lo: src/m_info.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libjulius_la_CPPFLAGS) $(CPPFLAGS) $(libjulius_la_CFLAGS) $(CFLAGS) -MT src/libjulius_la-m_info.lo -MD -MP -MF src/$(DEPDIR)/libjulius_la-m_info.Tpo -c -o src/libjulius_la-m_info.lo `test -f 'src/m_info.c' || echo '$(srcdir)/'`src/m_info.c
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) src/$(DEPDIR)/libjulius_la-m_info.Tpo src/$(DEPDIR)/libjulius_la-m_info.Plo
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='src/m_info.c' object='src/libjulius_la-m_info.lo' libtool=yes @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libjulius_la_CPPFLAGS) $(CPPFLAGS) $(libjulius_la_CFLAGS) $(CFLAGS) -c -o libjulius_la-m_info.lo `test -f 'src/m_info.c' || echo '$(srcdir)/'`src/m_info.c
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libjulius_la_CPPFLAGS) $(CPPFLAGS) $(libjulius_la_CFLAGS) $(CFLAGS) -c -o src/libjulius_la-m_info.lo `test -f 'src/m_info.c' || echo '$(srcdir)/'`src/m_info.c
 
-libjulius_la-m_fusion.lo: src/m_fusion.c
-@am__fastdepCC_TRUE@	$(AM_V_CC)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libjulius_la_CPPFLAGS) $(CPPFLAGS) $(libjulius_la_CFLAGS) $(CFLAGS) -MT libjulius_la-m_fusion.lo -MD -MP -MF $(DEPDIR)/libjulius_la-m_fusion.Tpo -c -o libjulius_la-m_fusion.lo `test -f 'src/m_fusion.c' || echo '$(srcdir)/'`src/m_fusion.c
-@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) $(DEPDIR)/libjulius_la-m_fusion.Tpo $(DEPDIR)/libjulius_la-m_fusion.Plo
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='src/m_fusion.c' object='libjulius_la-m_fusion.lo' libtool=yes @AMDEPBACKSLASH@
+src/libjulius_la-m_fusion.lo: src/m_fusion.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libjulius_la_CPPFLAGS) $(CPPFLAGS) $(libjulius_la_CFLAGS) $(CFLAGS) -MT src/libjulius_la-m_fusion.lo -MD -MP -MF src/$(DEPDIR)/libjulius_la-m_fusion.Tpo -c -o src/libjulius_la-m_fusion.lo `test -f 'src/m_fusion.c' || echo '$(srcdir)/'`src/m_fusion.c
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) src/$(DEPDIR)/libjulius_la-m_fusion.Tpo src/$(DEPDIR)/libjulius_la-m_fusion.Plo
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='src/m_fusion.c' object='src/libjulius_la-m_fusion.lo' libtool=yes @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libjulius_la_CPPFLAGS) $(CPPFLAGS) $(libjulius_la_CFLAGS) $(CFLAGS) -c -o libjulius_la-m_fusion.lo `test -f 'src/m_fusion.c' || echo '$(srcdir)/'`src/m_fusion.c
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libjulius_la_CPPFLAGS) $(CPPFLAGS) $(libjulius_la_CFLAGS) $(CFLAGS) -c -o src/libjulius_la-m_fusion.lo `test -f 'src/m_fusion.c' || echo '$(srcdir)/'`src/m_fusion.c
 
-libjulius_la-hmm_check.lo: src/hmm_check.c
-@am__fastdepCC_TRUE@	$(AM_V_CC)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libjulius_la_CPPFLAGS) $(CPPFLAGS) $(libjulius_la_CFLAGS) $(CFLAGS) -MT libjulius_la-hmm_check.lo -MD -MP -MF $(DEPDIR)/libjulius_la-hmm_check.Tpo -c -o libjulius_la-hmm_check.lo `test -f 'src/hmm_check.c' || echo '$(srcdir)/'`src/hmm_check.c
-@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) $(DEPDIR)/libjulius_la-hmm_check.Tpo $(DEPDIR)/libjulius_la-hmm_check.Plo
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='src/hmm_check.c' object='libjulius_la-hmm_check.lo' libtool=yes @AMDEPBACKSLASH@
+src/libjulius_la-hmm_check.lo: src/hmm_check.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libjulius_la_CPPFLAGS) $(CPPFLAGS) $(libjulius_la_CFLAGS) $(CFLAGS) -MT src/libjulius_la-hmm_check.lo -MD -MP -MF src/$(DEPDIR)/libjulius_la-hmm_check.Tpo -c -o src/libjulius_la-hmm_check.lo `test -f 'src/hmm_check.c' || echo '$(srcdir)/'`src/hmm_check.c
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) src/$(DEPDIR)/libjulius_la-hmm_check.Tpo src/$(DEPDIR)/libjulius_la-hmm_check.Plo
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='src/hmm_check.c' object='src/libjulius_la-hmm_check.lo' libtool=yes @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libjulius_la_CPPFLAGS) $(CPPFLAGS) $(libjulius_la_CFLAGS) $(CFLAGS) -c -o libjulius_la-hmm_check.lo `test -f 'src/hmm_check.c' || echo '$(srcdir)/'`src/hmm_check.c
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libjulius_la_CPPFLAGS) $(CPPFLAGS) $(libjulius_la_CFLAGS) $(CFLAGS) -c -o src/libjulius_la-hmm_check.lo `test -f 'src/hmm_check.c' || echo '$(srcdir)/'`src/hmm_check.c
 
-libjulius_la-multi-gram.lo: src/multi-gram.c
-@am__fastdepCC_TRUE@	$(AM_V_CC)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libjulius_la_CPPFLAGS) $(CPPFLAGS) $(libjulius_la_CFLAGS) $(CFLAGS) -MT libjulius_la-multi-gram.lo -MD -MP -MF $(DEPDIR)/libjulius_la-multi-gram.Tpo -c -o libjulius_la-multi-gram.lo `test -f 'src/multi-gram.c' || echo '$(srcdir)/'`src/multi-gram.c
-@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) $(DEPDIR)/libjulius_la-multi-gram.Tpo $(DEPDIR)/libjulius_la-multi-gram.Plo
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='src/multi-gram.c' object='libjulius_la-multi-gram.lo' libtool=yes @AMDEPBACKSLASH@
+src/libjulius_la-multi-gram.lo: src/multi-gram.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libjulius_la_CPPFLAGS) $(CPPFLAGS) $(libjulius_la_CFLAGS) $(CFLAGS) -MT src/libjulius_la-multi-gram.lo -MD -MP -MF src/$(DEPDIR)/libjulius_la-multi-gram.Tpo -c -o src/libjulius_la-multi-gram.lo `test -f 'src/multi-gram.c' || echo '$(srcdir)/'`src/multi-gram.c
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) src/$(DEPDIR)/libjulius_la-multi-gram.Tpo src/$(DEPDIR)/libjulius_la-multi-gram.Plo
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='src/multi-gram.c' object='src/libjulius_la-multi-gram.lo' libtool=yes @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libjulius_la_CPPFLAGS) $(CPPFLAGS) $(libjulius_la_CFLAGS) $(CFLAGS) -c -o libjulius_la-multi-gram.lo `test -f 'src/multi-gram.c' || echo '$(srcdir)/'`src/multi-gram.c
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libjulius_la_CPPFLAGS) $(CPPFLAGS) $(libjulius_la_CFLAGS) $(CFLAGS) -c -o src/libjulius_la-multi-gram.lo `test -f 'src/multi-gram.c' || echo '$(srcdir)/'`src/multi-gram.c
 
-libjulius_la-gramlist.lo: src/gramlist.c
-@am__fastdepCC_TRUE@	$(AM_V_CC)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libjulius_la_CPPFLAGS) $(CPPFLAGS) $(libjulius_la_CFLAGS) $(CFLAGS) -MT libjulius_la-gramlist.lo -MD -MP -MF $(DEPDIR)/libjulius_la-gramlist.Tpo -c -o libjulius_la-gramlist.lo `test -f 'src/gramlist.c' || echo '$(srcdir)/'`src/gramlist.c
-@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) $(DEPDIR)/libjulius_la-gramlist.Tpo $(DEPDIR)/libjulius_la-gramlist.Plo
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='src/gramlist.c' object='libjulius_la-gramlist.lo' libtool=yes @AMDEPBACKSLASH@
+src/libjulius_la-gramlist.lo: src/gramlist.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libjulius_la_CPPFLAGS) $(CPPFLAGS) $(libjulius_la_CFLAGS) $(CFLAGS) -MT src/libjulius_la-gramlist.lo -MD -MP -MF src/$(DEPDIR)/libjulius_la-gramlist.Tpo -c -o src/libjulius_la-gramlist.lo `test -f 'src/gramlist.c' || echo '$(srcdir)/'`src/gramlist.c
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) src/$(DEPDIR)/libjulius_la-gramlist.Tpo src/$(DEPDIR)/libjulius_la-gramlist.Plo
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='src/gramlist.c' object='src/libjulius_la-gramlist.lo' libtool=yes @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libjulius_la_CPPFLAGS) $(CPPFLAGS) $(libjulius_la_CFLAGS) $(CFLAGS) -c -o libjulius_la-gramlist.lo `test -f 'src/gramlist.c' || echo '$(srcdir)/'`src/gramlist.c
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libjulius_la_CPPFLAGS) $(CPPFLAGS) $(libjulius_la_CFLAGS) $(CFLAGS) -c -o src/libjulius_la-gramlist.lo `test -f 'src/gramlist.c' || echo '$(srcdir)/'`src/gramlist.c
 
-libjulius_la-wchmm.lo: src/wchmm.c
-@am__fastdepCC_TRUE@	$(AM_V_CC)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libjulius_la_CPPFLAGS) $(CPPFLAGS) $(libjulius_la_CFLAGS) $(CFLAGS) -MT libjulius_la-wchmm.lo -MD -MP -MF $(DEPDIR)/libjulius_la-wchmm.Tpo -c -o libjulius_la-wchmm.lo `test -f 'src/wchmm.c' || echo '$(srcdir)/'`src/wchmm.c
-@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) $(DEPDIR)/libjulius_la-wchmm.Tpo $(DEPDIR)/libjulius_la-wchmm.Plo
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='src/wchmm.c' object='libjulius_la-wchmm.lo' libtool=yes @AMDEPBACKSLASH@
+src/libjulius_la-wchmm.lo: src/wchmm.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libjulius_la_CPPFLAGS) $(CPPFLAGS) $(libjulius_la_CFLAGS) $(CFLAGS) -MT src/libjulius_la-wchmm.lo -MD -MP -MF src/$(DEPDIR)/libjulius_la-wchmm.Tpo -c -o src/libjulius_la-wchmm.lo `test -f 'src/wchmm.c' || echo '$(srcdir)/'`src/wchmm.c
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) src/$(DEPDIR)/libjulius_la-wchmm.Tpo src/$(DEPDIR)/libjulius_la-wchmm.Plo
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='src/wchmm.c' object='src/libjulius_la-wchmm.lo' libtool=yes @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libjulius_la_CPPFLAGS) $(CPPFLAGS) $(libjulius_la_CFLAGS) $(CFLAGS) -c -o libjulius_la-wchmm.lo `test -f 'src/wchmm.c' || echo '$(srcdir)/'`src/wchmm.c
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libjulius_la_CPPFLAGS) $(CPPFLAGS) $(libjulius_la_CFLAGS) $(CFLAGS) -c -o src/libjulius_la-wchmm.lo `test -f 'src/wchmm.c' || echo '$(srcdir)/'`src/wchmm.c
 
-libjulius_la-wchmm_check.lo: src/wchmm_check.c
-@am__fastdepCC_TRUE@	$(AM_V_CC)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libjulius_la_CPPFLAGS) $(CPPFLAGS) $(libjulius_la_CFLAGS) $(CFLAGS) -MT libjulius_la-wchmm_check.lo -MD -MP -MF $(DEPDIR)/libjulius_la-wchmm_check.Tpo -c -o libjulius_la-wchmm_check.lo `test -f 'src/wchmm_check.c' || echo '$(srcdir)/'`src/wchmm_check.c
-@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) $(DEPDIR)/libjulius_la-wchmm_check.Tpo $(DEPDIR)/libjulius_la-wchmm_check.Plo
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='src/wchmm_check.c' object='libjulius_la-wchmm_check.lo' libtool=yes @AMDEPBACKSLASH@
+src/libjulius_la-wchmm_check.lo: src/wchmm_check.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libjulius_la_CPPFLAGS) $(CPPFLAGS) $(libjulius_la_CFLAGS) $(CFLAGS) -MT src/libjulius_la-wchmm_check.lo -MD -MP -MF src/$(DEPDIR)/libjulius_la-wchmm_check.Tpo -c -o src/libjulius_la-wchmm_check.lo `test -f 'src/wchmm_check.c' || echo '$(srcdir)/'`src/wchmm_check.c
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) src/$(DEPDIR)/libjulius_la-wchmm_check.Tpo src/$(DEPDIR)/libjulius_la-wchmm_check.Plo
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='src/wchmm_check.c' object='src/libjulius_la-wchmm_check.lo' libtool=yes @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libjulius_la_CPPFLAGS) $(CPPFLAGS) $(libjulius_la_CFLAGS) $(CFLAGS) -c -o libjulius_la-wchmm_check.lo `test -f 'src/wchmm_check.c' || echo '$(srcdir)/'`src/wchmm_check.c
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libjulius_la_CPPFLAGS) $(CPPFLAGS) $(libjulius_la_CFLAGS) $(CFLAGS) -c -o src/libjulius_la-wchmm_check.lo `test -f 'src/wchmm_check.c' || echo '$(srcdir)/'`src/wchmm_check.c
 
-libjulius_la-m_adin.lo: src/m_adin.c
-@am__fastdepCC_TRUE@	$(AM_V_CC)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libjulius_la_CPPFLAGS) $(CPPFLAGS) $(libjulius_la_CFLAGS) $(CFLAGS) -MT libjulius_la-m_adin.lo -MD -MP -MF $(DEPDIR)/libjulius_la-m_adin.Tpo -c -o libjulius_la-m_adin.lo `test -f 'src/m_adin.c' || echo '$(srcdir)/'`src/m_adin.c
-@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) $(DEPDIR)/libjulius_la-m_adin.Tpo $(DEPDIR)/libjulius_la-m_adin.Plo
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='src/m_adin.c' object='libjulius_la-m_adin.lo' libtool=yes @AMDEPBACKSLASH@
+src/libjulius_la-m_adin.lo: src/m_adin.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libjulius_la_CPPFLAGS) $(CPPFLAGS) $(libjulius_la_CFLAGS) $(CFLAGS) -MT src/libjulius_la-m_adin.lo -MD -MP -MF src/$(DEPDIR)/libjulius_la-m_adin.Tpo -c -o src/libjulius_la-m_adin.lo `test -f 'src/m_adin.c' || echo '$(srcdir)/'`src/m_adin.c
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) src/$(DEPDIR)/libjulius_la-m_adin.Tpo src/$(DEPDIR)/libjulius_la-m_adin.Plo
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='src/m_adin.c' object='src/libjulius_la-m_adin.lo' libtool=yes @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libjulius_la_CPPFLAGS) $(CPPFLAGS) $(libjulius_la_CFLAGS) $(CFLAGS) -c -o libjulius_la-m_adin.lo `test -f 'src/m_adin.c' || echo '$(srcdir)/'`src/m_adin.c
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libjulius_la_CPPFLAGS) $(CPPFLAGS) $(libjulius_la_CFLAGS) $(CFLAGS) -c -o src/libjulius_la-m_adin.lo `test -f 'src/m_adin.c' || echo '$(srcdir)/'`src/m_adin.c
 
-libjulius_la-adin-cut.lo: src/adin-cut.c
-@am__fastdepCC_TRUE@	$(AM_V_CC)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libjulius_la_CPPFLAGS) $(CPPFLAGS) $(libjulius_la_CFLAGS) $(CFLAGS) -MT libjulius_la-adin-cut.lo -MD -MP -MF $(DEPDIR)/libjulius_la-adin-cut.Tpo -c -o libjulius_la-adin-cut.lo `test -f 'src/adin-cut.c' || echo '$(srcdir)/'`src/adin-cut.c
-@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) $(DEPDIR)/libjulius_la-adin-cut.Tpo $(DEPDIR)/libjulius_la-adin-cut.Plo
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='src/adin-cut.c' object='libjulius_la-adin-cut.lo' libtool=yes @AMDEPBACKSLASH@
+src/libjulius_la-adin-cut.lo: src/adin-cut.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libjulius_la_CPPFLAGS) $(CPPFLAGS) $(libjulius_la_CFLAGS) $(CFLAGS) -MT src/libjulius_la-adin-cut.lo -MD -MP -MF src/$(DEPDIR)/libjulius_la-adin-cut.Tpo -c -o src/libjulius_la-adin-cut.lo `test -f 'src/adin-cut.c' || echo '$(srcdir)/'`src/adin-cut.c
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) src/$(DEPDIR)/libjulius_la-adin-cut.Tpo src/$(DEPDIR)/libjulius_la-adin-cut.Plo
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='src/adin-cut.c' object='src/libjulius_la-adin-cut.lo' libtool=yes @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libjulius_la_CPPFLAGS) $(CPPFLAGS) $(libjulius_la_CFLAGS) $(CFLAGS) -c -o libjulius_la-adin-cut.lo `test -f 'src/adin-cut.c' || echo '$(srcdir)/'`src/adin-cut.c
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libjulius_la_CPPFLAGS) $(CPPFLAGS) $(libjulius_la_CFLAGS) $(CFLAGS) -c -o src/libjulius_la-adin-cut.lo `test -f 'src/adin-cut.c' || echo '$(srcdir)/'`src/adin-cut.c
 
-libjulius_la-wav2mfcc.lo: src/wav2mfcc.c
-@am__fastdepCC_TRUE@	$(AM_V_CC)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libjulius_la_CPPFLAGS) $(CPPFLAGS) $(libjulius_la_CFLAGS) $(CFLAGS) -MT libjulius_la-wav2mfcc.lo -MD -MP -MF $(DEPDIR)/libjulius_la-wav2mfcc.Tpo -c -o libjulius_la-wav2mfcc.lo `test -f 'src/wav2mfcc.c' || echo '$(srcdir)/'`src/wav2mfcc.c
-@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) $(DEPDIR)/libjulius_la-wav2mfcc.Tpo $(DEPDIR)/libjulius_la-wav2mfcc.Plo
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='src/wav2mfcc.c' object='libjulius_la-wav2mfcc.lo' libtool=yes @AMDEPBACKSLASH@
+src/libjulius_la-wav2mfcc.lo: src/wav2mfcc.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libjulius_la_CPPFLAGS) $(CPPFLAGS) $(libjulius_la_CFLAGS) $(CFLAGS) -MT src/libjulius_la-wav2mfcc.lo -MD -MP -MF src/$(DEPDIR)/libjulius_la-wav2mfcc.Tpo -c -o src/libjulius_la-wav2mfcc.lo `test -f 'src/wav2mfcc.c' || echo '$(srcdir)/'`src/wav2mfcc.c
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) src/$(DEPDIR)/libjulius_la-wav2mfcc.Tpo src/$(DEPDIR)/libjulius_la-wav2mfcc.Plo
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='src/wav2mfcc.c' object='src/libjulius_la-wav2mfcc.lo' libtool=yes @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libjulius_la_CPPFLAGS) $(CPPFLAGS) $(libjulius_la_CFLAGS) $(CFLAGS) -c -o libjulius_la-wav2mfcc.lo `test -f 'src/wav2mfcc.c' || echo '$(srcdir)/'`src/wav2mfcc.c
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libjulius_la_CPPFLAGS) $(CPPFLAGS) $(libjulius_la_CFLAGS) $(CFLAGS) -c -o src/libjulius_la-wav2mfcc.lo `test -f 'src/wav2mfcc.c' || echo '$(srcdir)/'`src/wav2mfcc.c
 
-libjulius_la-beam.lo: src/beam.c
-@am__fastdepCC_TRUE@	$(AM_V_CC)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libjulius_la_CPPFLAGS) $(CPPFLAGS) $(libjulius_la_CFLAGS) $(CFLAGS) -MT libjulius_la-beam.lo -MD -MP -MF $(DEPDIR)/libjulius_la-beam.Tpo -c -o libjulius_la-beam.lo `test -f 'src/beam.c' || echo '$(srcdir)/'`src/beam.c
-@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) $(DEPDIR)/libjulius_la-beam.Tpo $(DEPDIR)/libjulius_la-beam.Plo
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='src/beam.c' object='libjulius_la-beam.lo' libtool=yes @AMDEPBACKSLASH@
+src/libjulius_la-beam.lo: src/beam.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libjulius_la_CPPFLAGS) $(CPPFLAGS) $(libjulius_la_CFLAGS) $(CFLAGS) -MT src/libjulius_la-beam.lo -MD -MP -MF src/$(DEPDIR)/libjulius_la-beam.Tpo -c -o src/libjulius_la-beam.lo `test -f 'src/beam.c' || echo '$(srcdir)/'`src/beam.c
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) src/$(DEPDIR)/libjulius_la-beam.Tpo src/$(DEPDIR)/libjulius_la-beam.Plo
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='src/beam.c' object='src/libjulius_la-beam.lo' libtool=yes @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libjulius_la_CPPFLAGS) $(CPPFLAGS) $(libjulius_la_CFLAGS) $(CFLAGS) -c -o libjulius_la-beam.lo `test -f 'src/beam.c' || echo '$(srcdir)/'`src/beam.c
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libjulius_la_CPPFLAGS) $(CPPFLAGS) $(libjulius_la_CFLAGS) $(CFLAGS) -c -o src/libjulius_la-beam.lo `test -f 'src/beam.c' || echo '$(srcdir)/'`src/beam.c
 
-libjulius_la-pass1.lo: src/pass1.c
-@am__fastdepCC_TRUE@	$(AM_V_CC)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libjulius_la_CPPFLAGS) $(CPPFLAGS) $(libjulius_la_CFLAGS) $(CFLAGS) -MT libjulius_la-pass1.lo -MD -MP -MF $(DEPDIR)/libjulius_la-pass1.Tpo -c -o libjulius_la-pass1.lo `test -f 'src/pass1.c' || echo '$(srcdir)/'`src/pass1.c
-@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) $(DEPDIR)/libjulius_la-pass1.Tpo $(DEPDIR)/libjulius_la-pass1.Plo
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='src/pass1.c' object='libjulius_la-pass1.lo' libtool=yes @AMDEPBACKSLASH@
+src/libjulius_la-pass1.lo: src/pass1.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libjulius_la_CPPFLAGS) $(CPPFLAGS) $(libjulius_la_CFLAGS) $(CFLAGS) -MT src/libjulius_la-pass1.lo -MD -MP -MF src/$(DEPDIR)/libjulius_la-pass1.Tpo -c -o src/libjulius_la-pass1.lo `test -f 'src/pass1.c' || echo '$(srcdir)/'`src/pass1.c
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) src/$(DEPDIR)/libjulius_la-pass1.Tpo src/$(DEPDIR)/libjulius_la-pass1.Plo
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='src/pass1.c' object='src/libjulius_la-pass1.lo' libtool=yes @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libjulius_la_CPPFLAGS) $(CPPFLAGS) $(libjulius_la_CFLAGS) $(CFLAGS) -c -o libjulius_la-pass1.lo `test -f 'src/pass1.c' || echo '$(srcdir)/'`src/pass1.c
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libjulius_la_CPPFLAGS) $(CPPFLAGS) $(libjulius_la_CFLAGS) $(CFLAGS) -c -o src/libjulius_la-pass1.lo `test -f 'src/pass1.c' || echo '$(srcdir)/'`src/pass1.c
 
-libjulius_la-spsegment.lo: src/spsegment.c
-@am__fastdepCC_TRUE@	$(AM_V_CC)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libjulius_la_CPPFLAGS) $(CPPFLAGS) $(libjulius_la_CFLAGS) $(CFLAGS) -MT libjulius_la-spsegment.lo -MD -MP -MF $(DEPDIR)/libjulius_la-spsegment.Tpo -c -o libjulius_la-spsegment.lo `test -f 'src/spsegment.c' || echo '$(srcdir)/'`src/spsegment.c
-@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) $(DEPDIR)/libjulius_la-spsegment.Tpo $(DEPDIR)/libjulius_la-spsegment.Plo
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='src/spsegment.c' object='libjulius_la-spsegment.lo' libtool=yes @AMDEPBACKSLASH@
+src/libjulius_la-spsegment.lo: src/spsegment.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libjulius_la_CPPFLAGS) $(CPPFLAGS) $(libjulius_la_CFLAGS) $(CFLAGS) -MT src/libjulius_la-spsegment.lo -MD -MP -MF src/$(DEPDIR)/libjulius_la-spsegment.Tpo -c -o src/libjulius_la-spsegment.lo `test -f 'src/spsegment.c' || echo '$(srcdir)/'`src/spsegment.c
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) src/$(DEPDIR)/libjulius_la-spsegment.Tpo src/$(DEPDIR)/libjulius_la-spsegment.Plo
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='src/spsegment.c' object='src/libjulius_la-spsegment.lo' libtool=yes @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libjulius_la_CPPFLAGS) $(CPPFLAGS) $(libjulius_la_CFLAGS) $(CFLAGS) -c -o libjulius_la-spsegment.lo `test -f 'src/spsegment.c' || echo '$(srcdir)/'`src/spsegment.c
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libjulius_la_CPPFLAGS) $(CPPFLAGS) $(libjulius_la_CFLAGS) $(CFLAGS) -c -o src/libjulius_la-spsegment.lo `test -f 'src/spsegment.c' || echo '$(srcdir)/'`src/spsegment.c
 
-libjulius_la-realtime-1stpass.lo: src/realtime-1stpass.c
-@am__fastdepCC_TRUE@	$(AM_V_CC)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libjulius_la_CPPFLAGS) $(CPPFLAGS) $(libjulius_la_CFLAGS) $(CFLAGS) -MT libjulius_la-realtime-1stpass.lo -MD -MP -MF $(DEPDIR)/libjulius_la-realtime-1stpass.Tpo -c -o libjulius_la-realtime-1stpass.lo `test -f 'src/realtime-1stpass.c' || echo '$(srcdir)/'`src/realtime-1stpass.c
-@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) $(DEPDIR)/libjulius_la-realtime-1stpass.Tpo $(DEPDIR)/libjulius_la-realtime-1stpass.Plo
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='src/realtime-1stpass.c' object='libjulius_la-realtime-1stpass.lo' libtool=yes @AMDEPBACKSLASH@
+src/libjulius_la-realtime-1stpass.lo: src/realtime-1stpass.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libjulius_la_CPPFLAGS) $(CPPFLAGS) $(libjulius_la_CFLAGS) $(CFLAGS) -MT src/libjulius_la-realtime-1stpass.lo -MD -MP -MF src/$(DEPDIR)/libjulius_la-realtime-1stpass.Tpo -c -o src/libjulius_la-realtime-1stpass.lo `test -f 'src/realtime-1stpass.c' || echo '$(srcdir)/'`src/realtime-1stpass.c
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) src/$(DEPDIR)/libjulius_la-realtime-1stpass.Tpo src/$(DEPDIR)/libjulius_la-realtime-1stpass.Plo
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='src/realtime-1stpass.c' object='src/libjulius_la-realtime-1stpass.lo' libtool=yes @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libjulius_la_CPPFLAGS) $(CPPFLAGS) $(libjulius_la_CFLAGS) $(CFLAGS) -c -o libjulius_la-realtime-1stpass.lo `test -f 'src/realtime-1stpass.c' || echo '$(srcdir)/'`src/realtime-1stpass.c
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libjulius_la_CPPFLAGS) $(CPPFLAGS) $(libjulius_la_CFLAGS) $(CFLAGS) -c -o src/libjulius_la-realtime-1stpass.lo `test -f 'src/realtime-1stpass.c' || echo '$(srcdir)/'`src/realtime-1stpass.c
 
-libjulius_la-factoring_sub.lo: src/factoring_sub.c
-@am__fastdepCC_TRUE@	$(AM_V_CC)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libjulius_la_CPPFLAGS) $(CPPFLAGS) $(libjulius_la_CFLAGS) $(CFLAGS) -MT libjulius_la-factoring_sub.lo -MD -MP -MF $(DEPDIR)/libjulius_la-factoring_sub.Tpo -c -o libjulius_la-factoring_sub.lo `test -f 'src/factoring_sub.c' || echo '$(srcdir)/'`src/factoring_sub.c
-@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) $(DEPDIR)/libjulius_la-factoring_sub.Tpo $(DEPDIR)/libjulius_la-factoring_sub.Plo
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='src/factoring_sub.c' object='libjulius_la-factoring_sub.lo' libtool=yes @AMDEPBACKSLASH@
+src/libjulius_la-factoring_sub.lo: src/factoring_sub.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libjulius_la_CPPFLAGS) $(CPPFLAGS) $(libjulius_la_CFLAGS) $(CFLAGS) -MT src/libjulius_la-factoring_sub.lo -MD -MP -MF src/$(DEPDIR)/libjulius_la-factoring_sub.Tpo -c -o src/libjulius_la-factoring_sub.lo `test -f 'src/factoring_sub.c' || echo '$(srcdir)/'`src/factoring_sub.c
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) src/$(DEPDIR)/libjulius_la-factoring_sub.Tpo src/$(DEPDIR)/libjulius_la-factoring_sub.Plo
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='src/factoring_sub.c' object='src/libjulius_la-factoring_sub.lo' libtool=yes @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libjulius_la_CPPFLAGS) $(CPPFLAGS) $(libjulius_la_CFLAGS) $(CFLAGS) -c -o libjulius_la-factoring_sub.lo `test -f 'src/factoring_sub.c' || echo '$(srcdir)/'`src/factoring_sub.c
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libjulius_la_CPPFLAGS) $(CPPFLAGS) $(libjulius_la_CFLAGS) $(CFLAGS) -c -o src/libjulius_la-factoring_sub.lo `test -f 'src/factoring_sub.c' || echo '$(srcdir)/'`src/factoring_sub.c
 
-libjulius_la-outprob_style.lo: src/outprob_style.c
-@am__fastdepCC_TRUE@	$(AM_V_CC)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libjulius_la_CPPFLAGS) $(CPPFLAGS) $(libjulius_la_CFLAGS) $(CFLAGS) -MT libjulius_la-outprob_style.lo -MD -MP -MF $(DEPDIR)/libjulius_la-outprob_style.Tpo -c -o libjulius_la-outprob_style.lo `test -f 'src/outprob_style.c' || echo '$(srcdir)/'`src/outprob_style.c
-@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) $(DEPDIR)/libjulius_la-outprob_style.Tpo $(DEPDIR)/libjulius_la-outprob_style.Plo
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='src/outprob_style.c' object='libjulius_la-outprob_style.lo' libtool=yes @AMDEPBACKSLASH@
+src/libjulius_la-outprob_style.lo: src/outprob_style.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libjulius_la_CPPFLAGS) $(CPPFLAGS) $(libjulius_la_CFLAGS) $(CFLAGS) -MT src/libjulius_la-outprob_style.lo -MD -MP -MF src/$(DEPDIR)/libjulius_la-outprob_style.Tpo -c -o src/libjulius_la-outprob_style.lo `test -f 'src/outprob_style.c' || echo '$(srcdir)/'`src/outprob_style.c
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) src/$(DEPDIR)/libjulius_la-outprob_style.Tpo src/$(DEPDIR)/libjulius_la-outprob_style.Plo
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='src/outprob_style.c' object='src/libjulius_la-outprob_style.lo' libtool=yes @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libjulius_la_CPPFLAGS) $(CPPFLAGS) $(libjulius_la_CFLAGS) $(CFLAGS) -c -o libjulius_la-outprob_style.lo `test -f 'src/outprob_style.c' || echo '$(srcdir)/'`src/outprob_style.c
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libjulius_la_CPPFLAGS) $(CPPFLAGS) $(libjulius_la_CFLAGS) $(CFLAGS) -c -o src/libjulius_la-outprob_style.lo `test -f 'src/outprob_style.c' || echo '$(srcdir)/'`src/outprob_style.c
 
-libjulius_la-backtrellis.lo: src/backtrellis.c
-@am__fastdepCC_TRUE@	$(AM_V_CC)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libjulius_la_CPPFLAGS) $(CPPFLAGS) $(libjulius_la_CFLAGS) $(CFLAGS) -MT libjulius_la-backtrellis.lo -MD -MP -MF $(DEPDIR)/libjulius_la-backtrellis.Tpo -c -o libjulius_la-backtrellis.lo `test -f 'src/backtrellis.c' || echo '$(srcdir)/'`src/backtrellis.c
-@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) $(DEPDIR)/libjulius_la-backtrellis.Tpo $(DEPDIR)/libjulius_la-backtrellis.Plo
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='src/backtrellis.c' object='libjulius_la-backtrellis.lo' libtool=yes @AMDEPBACKSLASH@
+src/libjulius_la-backtrellis.lo: src/backtrellis.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libjulius_la_CPPFLAGS) $(CPPFLAGS) $(libjulius_la_CFLAGS) $(CFLAGS) -MT src/libjulius_la-backtrellis.lo -MD -MP -MF src/$(DEPDIR)/libjulius_la-backtrellis.Tpo -c -o src/libjulius_la-backtrellis.lo `test -f 'src/backtrellis.c' || echo '$(srcdir)/'`src/backtrellis.c
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) src/$(DEPDIR)/libjulius_la-backtrellis.Tpo src/$(DEPDIR)/libjulius_la-backtrellis.Plo
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='src/backtrellis.c' object='src/libjulius_la-backtrellis.lo' libtool=yes @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libjulius_la_CPPFLAGS) $(CPPFLAGS) $(libjulius_la_CFLAGS) $(CFLAGS) -c -o libjulius_la-backtrellis.lo `test -f 'src/backtrellis.c' || echo '$(srcdir)/'`src/backtrellis.c
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libjulius_la_CPPFLAGS) $(CPPFLAGS) $(libjulius_la_CFLAGS) $(CFLAGS) -c -o src/libjulius_la-backtrellis.lo `test -f 'src/backtrellis.c' || echo '$(srcdir)/'`src/backtrellis.c
 
-libjulius_la-search_bestfirst_main.lo: src/search_bestfirst_main.c
-@am__fastdepCC_TRUE@	$(AM_V_CC)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libjulius_la_CPPFLAGS) $(CPPFLAGS) $(libjulius_la_CFLAGS) $(CFLAGS) -MT libjulius_la-search_bestfirst_main.lo -MD -MP -MF $(DEPDIR)/libjulius_la-search_bestfirst_main.Tpo -c -o libjulius_la-search_bestfirst_main.lo `test -f 'src/search_bestfirst_main.c' || echo '$(srcdir)/'`src/search_bestfirst_main.c
-@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) $(DEPDIR)/libjulius_la-search_bestfirst_main.Tpo $(DEPDIR)/libjulius_la-search_bestfirst_main.Plo
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='src/search_bestfirst_main.c' object='libjulius_la-search_bestfirst_main.lo' libtool=yes @AMDEPBACKSLASH@
+src/libjulius_la-search_bestfirst_main.lo: src/search_bestfirst_main.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libjulius_la_CPPFLAGS) $(CPPFLAGS) $(libjulius_la_CFLAGS) $(CFLAGS) -MT src/libjulius_la-search_bestfirst_main.lo -MD -MP -MF src/$(DEPDIR)/libjulius_la-search_bestfirst_main.Tpo -c -o src/libjulius_la-search_bestfirst_main.lo `test -f 'src/search_bestfirst_main.c' || echo '$(srcdir)/'`src/search_bestfirst_main.c
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) src/$(DEPDIR)/libjulius_la-search_bestfirst_main.Tpo src/$(DEPDIR)/libjulius_la-search_bestfirst_main.Plo
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='src/search_bestfirst_main.c' object='src/libjulius_la-search_bestfirst_main.lo' libtool=yes @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libjulius_la_CPPFLAGS) $(CPPFLAGS) $(libjulius_la_CFLAGS) $(CFLAGS) -c -o libjulius_la-search_bestfirst_main.lo `test -f 'src/search_bestfirst_main.c' || echo '$(srcdir)/'`src/search_bestfirst_main.c
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libjulius_la_CPPFLAGS) $(CPPFLAGS) $(libjulius_la_CFLAGS) $(CFLAGS) -c -o src/libjulius_la-search_bestfirst_main.lo `test -f 'src/search_bestfirst_main.c' || echo '$(srcdir)/'`src/search_bestfirst_main.c
 
-libjulius_la-search_bestfirst_v1.lo: src/search_bestfirst_v1.c
-@am__fastdepCC_TRUE@	$(AM_V_CC)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libjulius_la_CPPFLAGS) $(CPPFLAGS) $(libjulius_la_CFLAGS) $(CFLAGS) -MT libjulius_la-search_bestfirst_v1.lo -MD -MP -MF $(DEPDIR)/libjulius_la-search_bestfirst_v1.Tpo -c -o libjulius_la-search_bestfirst_v1.lo `test -f 'src/search_bestfirst_v1.c' || echo '$(srcdir)/'`src/search_bestfirst_v1.c
-@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) $(DEPDIR)/libjulius_la-search_bestfirst_v1.Tpo $(DEPDIR)/libjulius_la-search_bestfirst_v1.Plo
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='src/search_bestfirst_v1.c' object='libjulius_la-search_bestfirst_v1.lo' libtool=yes @AMDEPBACKSLASH@
+src/libjulius_la-search_bestfirst_v1.lo: src/search_bestfirst_v1.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libjulius_la_CPPFLAGS) $(CPPFLAGS) $(libjulius_la_CFLAGS) $(CFLAGS) -MT src/libjulius_la-search_bestfirst_v1.lo -MD -MP -MF src/$(DEPDIR)/libjulius_la-search_bestfirst_v1.Tpo -c -o src/libjulius_la-search_bestfirst_v1.lo `test -f 'src/search_bestfirst_v1.c' || echo '$(srcdir)/'`src/search_bestfirst_v1.c
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) src/$(DEPDIR)/libjulius_la-search_bestfirst_v1.Tpo src/$(DEPDIR)/libjulius_la-search_bestfirst_v1.Plo
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='src/search_bestfirst_v1.c' object='src/libjulius_la-search_bestfirst_v1.lo' libtool=yes @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libjulius_la_CPPFLAGS) $(CPPFLAGS) $(libjulius_la_CFLAGS) $(CFLAGS) -c -o libjulius_la-search_bestfirst_v1.lo `test -f 'src/search_bestfirst_v1.c' || echo '$(srcdir)/'`src/search_bestfirst_v1.c
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libjulius_la_CPPFLAGS) $(CPPFLAGS) $(libjulius_la_CFLAGS) $(CFLAGS) -c -o src/libjulius_la-search_bestfirst_v1.lo `test -f 'src/search_bestfirst_v1.c' || echo '$(srcdir)/'`src/search_bestfirst_v1.c
 
-libjulius_la-search_bestfirst_v2.lo: src/search_bestfirst_v2.c
-@am__fastdepCC_TRUE@	$(AM_V_CC)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libjulius_la_CPPFLAGS) $(CPPFLAGS) $(libjulius_la_CFLAGS) $(CFLAGS) -MT libjulius_la-search_bestfirst_v2.lo -MD -MP -MF $(DEPDIR)/libjulius_la-search_bestfirst_v2.Tpo -c -o libjulius_la-search_bestfirst_v2.lo `test -f 'src/search_bestfirst_v2.c' || echo '$(srcdir)/'`src/search_bestfirst_v2.c
-@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) $(DEPDIR)/libjulius_la-search_bestfirst_v2.Tpo $(DEPDIR)/libjulius_la-search_bestfirst_v2.Plo
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='src/search_bestfirst_v2.c' object='libjulius_la-search_bestfirst_v2.lo' libtool=yes @AMDEPBACKSLASH@
+src/libjulius_la-search_bestfirst_v2.lo: src/search_bestfirst_v2.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libjulius_la_CPPFLAGS) $(CPPFLAGS) $(libjulius_la_CFLAGS) $(CFLAGS) -MT src/libjulius_la-search_bestfirst_v2.lo -MD -MP -MF src/$(DEPDIR)/libjulius_la-search_bestfirst_v2.Tpo -c -o src/libjulius_la-search_bestfirst_v2.lo `test -f 'src/search_bestfirst_v2.c' || echo '$(srcdir)/'`src/search_bestfirst_v2.c
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) src/$(DEPDIR)/libjulius_la-search_bestfirst_v2.Tpo src/$(DEPDIR)/libjulius_la-search_bestfirst_v2.Plo
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='src/search_bestfirst_v2.c' object='src/libjulius_la-search_bestfirst_v2.lo' libtool=yes @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libjulius_la_CPPFLAGS) $(CPPFLAGS) $(libjulius_la_CFLAGS) $(CFLAGS) -c -o libjulius_la-search_bestfirst_v2.lo `test -f 'src/search_bestfirst_v2.c' || echo '$(srcdir)/'`src/search_bestfirst_v2.c
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libjulius_la_CPPFLAGS) $(CPPFLAGS) $(libjulius_la_CFLAGS) $(CFLAGS) -c -o src/libjulius_la-search_bestfirst_v2.lo `test -f 'src/search_bestfirst_v2.c' || echo '$(srcdir)/'`src/search_bestfirst_v2.c
 
-libjulius_la-ngram_decode.lo: src/ngram_decode.c
-@am__fastdepCC_TRUE@	$(AM_V_CC)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libjulius_la_CPPFLAGS) $(CPPFLAGS) $(libjulius_la_CFLAGS) $(CFLAGS) -MT libjulius_la-ngram_decode.lo -MD -MP -MF $(DEPDIR)/libjulius_la-ngram_decode.Tpo -c -o libjulius_la-ngram_decode.lo `test -f 'src/ngram_decode.c' || echo '$(srcdir)/'`src/ngram_decode.c
-@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) $(DEPDIR)/libjulius_la-ngram_decode.Tpo $(DEPDIR)/libjulius_la-ngram_decode.Plo
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='src/ngram_decode.c' object='libjulius_la-ngram_decode.lo' libtool=yes @AMDEPBACKSLASH@
+src/libjulius_la-ngram_decode.lo: src/ngram_decode.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libjulius_la_CPPFLAGS) $(CPPFLAGS) $(libjulius_la_CFLAGS) $(CFLAGS) -MT src/libjulius_la-ngram_decode.lo -MD -MP -MF src/$(DEPDIR)/libjulius_la-ngram_decode.Tpo -c -o src/libjulius_la-ngram_decode.lo `test -f 'src/ngram_decode.c' || echo '$(srcdir)/'`src/ngram_decode.c
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) src/$(DEPDIR)/libjulius_la-ngram_decode.Tpo src/$(DEPDIR)/libjulius_la-ngram_decode.Plo
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='src/ngram_decode.c' object='src/libjulius_la-ngram_decode.lo' libtool=yes @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libjulius_la_CPPFLAGS) $(CPPFLAGS) $(libjulius_la_CFLAGS) $(CFLAGS) -c -o libjulius_la-ngram_decode.lo `test -f 'src/ngram_decode.c' || echo '$(srcdir)/'`src/ngram_decode.c
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libjulius_la_CPPFLAGS) $(CPPFLAGS) $(libjulius_la_CFLAGS) $(CFLAGS) -c -o src/libjulius_la-ngram_decode.lo `test -f 'src/ngram_decode.c' || echo '$(srcdir)/'`src/ngram_decode.c
 
-libjulius_la-dfa_decode.lo: src/dfa_decode.c
-@am__fastdepCC_TRUE@	$(AM_V_CC)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libjulius_la_CPPFLAGS) $(CPPFLAGS) $(libjulius_la_CFLAGS) $(CFLAGS) -MT libjulius_la-dfa_decode.lo -MD -MP -MF $(DEPDIR)/libjulius_la-dfa_decode.Tpo -c -o libjulius_la-dfa_decode.lo `test -f 'src/dfa_decode.c' || echo '$(srcdir)/'`src/dfa_decode.c
-@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) $(DEPDIR)/libjulius_la-dfa_decode.Tpo $(DEPDIR)/libjulius_la-dfa_decode.Plo
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='src/dfa_decode.c' object='libjulius_la-dfa_decode.lo' libtool=yes @AMDEPBACKSLASH@
+src/libjulius_la-dfa_decode.lo: src/dfa_decode.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libjulius_la_CPPFLAGS) $(CPPFLAGS) $(libjulius_la_CFLAGS) $(CFLAGS) -MT src/libjulius_la-dfa_decode.lo -MD -MP -MF src/$(DEPDIR)/libjulius_la-dfa_decode.Tpo -c -o src/libjulius_la-dfa_decode.lo `test -f 'src/dfa_decode.c' || echo '$(srcdir)/'`src/dfa_decode.c
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) src/$(DEPDIR)/libjulius_la-dfa_decode.Tpo src/$(DEPDIR)/libjulius_la-dfa_decode.Plo
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='src/dfa_decode.c' object='src/libjulius_la-dfa_decode.lo' libtool=yes @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libjulius_la_CPPFLAGS) $(CPPFLAGS) $(libjulius_la_CFLAGS) $(CFLAGS) -c -o libjulius_la-dfa_decode.lo `test -f 'src/dfa_decode.c' || echo '$(srcdir)/'`src/dfa_decode.c
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libjulius_la_CPPFLAGS) $(CPPFLAGS) $(libjulius_la_CFLAGS) $(CFLAGS) -c -o src/libjulius_la-dfa_decode.lo `test -f 'src/dfa_decode.c' || echo '$(srcdir)/'`src/dfa_decode.c
 
-libjulius_la-graphout.lo: src/graphout.c
-@am__fastdepCC_TRUE@	$(AM_V_CC)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libjulius_la_CPPFLAGS) $(CPPFLAGS) $(libjulius_la_CFLAGS) $(CFLAGS) -MT libjulius_la-graphout.lo -MD -MP -MF $(DEPDIR)/libjulius_la-graphout.Tpo -c -o libjulius_la-graphout.lo `test -f 'src/graphout.c' || echo '$(srcdir)/'`src/graphout.c
-@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) $(DEPDIR)/libjulius_la-graphout.Tpo $(DEPDIR)/libjulius_la-graphout.Plo
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='src/graphout.c' object='libjulius_la-graphout.lo' libtool=yes @AMDEPBACKSLASH@
+src/libjulius_la-graphout.lo: src/graphout.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libjulius_la_CPPFLAGS) $(CPPFLAGS) $(libjulius_la_CFLAGS) $(CFLAGS) -MT src/libjulius_la-graphout.lo -MD -MP -MF src/$(DEPDIR)/libjulius_la-graphout.Tpo -c -o src/libjulius_la-graphout.lo `test -f 'src/graphout.c' || echo '$(srcdir)/'`src/graphout.c
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) src/$(DEPDIR)/libjulius_la-graphout.Tpo src/$(DEPDIR)/libjulius_la-graphout.Plo
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='src/graphout.c' object='src/libjulius_la-graphout.lo' libtool=yes @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libjulius_la_CPPFLAGS) $(CPPFLAGS) $(libjulius_la_CFLAGS) $(CFLAGS) -c -o libjulius_la-graphout.lo `test -f 'src/graphout.c' || echo '$(srcdir)/'`src/graphout.c
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libjulius_la_CPPFLAGS) $(CPPFLAGS) $(libjulius_la_CFLAGS) $(CFLAGS) -c -o src/libjulius_la-graphout.lo `test -f 'src/graphout.c' || echo '$(srcdir)/'`src/graphout.c
 
-libjulius_la-confnet.lo: src/confnet.c
-@am__fastdepCC_TRUE@	$(AM_V_CC)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libjulius_la_CPPFLAGS) $(CPPFLAGS) $(libjulius_la_CFLAGS) $(CFLAGS) -MT libjulius_la-confnet.lo -MD -MP -MF $(DEPDIR)/libjulius_la-confnet.Tpo -c -o libjulius_la-confnet.lo `test -f 'src/confnet.c' || echo '$(srcdir)/'`src/confnet.c
-@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) $(DEPDIR)/libjulius_la-confnet.Tpo $(DEPDIR)/libjulius_la-confnet.Plo
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='src/confnet.c' object='libjulius_la-confnet.lo' libtool=yes @AMDEPBACKSLASH@
+src/libjulius_la-confnet.lo: src/confnet.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libjulius_la_CPPFLAGS) $(CPPFLAGS) $(libjulius_la_CFLAGS) $(CFLAGS) -MT src/libjulius_la-confnet.lo -MD -MP -MF src/$(DEPDIR)/libjulius_la-confnet.Tpo -c -o src/libjulius_la-confnet.lo `test -f 'src/confnet.c' || echo '$(srcdir)/'`src/confnet.c
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) src/$(DEPDIR)/libjulius_la-confnet.Tpo src/$(DEPDIR)/libjulius_la-confnet.Plo
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='src/confnet.c' object='src/libjulius_la-confnet.lo' libtool=yes @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libjulius_la_CPPFLAGS) $(CPPFLAGS) $(libjulius_la_CFLAGS) $(CFLAGS) -c -o libjulius_la-confnet.lo `test -f 'src/confnet.c' || echo '$(srcdir)/'`src/confnet.c
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libjulius_la_CPPFLAGS) $(CPPFLAGS) $(libjulius_la_CFLAGS) $(CFLAGS) -c -o src/libjulius_la-confnet.lo `test -f 'src/confnet.c' || echo '$(srcdir)/'`src/confnet.c
 
-libjulius_la-mbr.lo: src/mbr.c
-@am__fastdepCC_TRUE@	$(AM_V_CC)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libjulius_la_CPPFLAGS) $(CPPFLAGS) $(libjulius_la_CFLAGS) $(CFLAGS) -MT libjulius_la-mbr.lo -MD -MP -MF $(DEPDIR)/libjulius_la-mbr.Tpo -c -o libjulius_la-mbr.lo `test -f 'src/mbr.c' || echo '$(srcdir)/'`src/mbr.c
-@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) $(DEPDIR)/libjulius_la-mbr.Tpo $(DEPDIR)/libjulius_la-mbr.Plo
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='src/mbr.c' object='libjulius_la-mbr.lo' libtool=yes @AMDEPBACKSLASH@
+src/libjulius_la-mbr.lo: src/mbr.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libjulius_la_CPPFLAGS) $(CPPFLAGS) $(libjulius_la_CFLAGS) $(CFLAGS) -MT src/libjulius_la-mbr.lo -MD -MP -MF src/$(DEPDIR)/libjulius_la-mbr.Tpo -c -o src/libjulius_la-mbr.lo `test -f 'src/mbr.c' || echo '$(srcdir)/'`src/mbr.c
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) src/$(DEPDIR)/libjulius_la-mbr.Tpo src/$(DEPDIR)/libjulius_la-mbr.Plo
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='src/mbr.c' object='src/libjulius_la-mbr.lo' libtool=yes @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libjulius_la_CPPFLAGS) $(CPPFLAGS) $(libjulius_la_CFLAGS) $(CFLAGS) -c -o libjulius_la-mbr.lo `test -f 'src/mbr.c' || echo '$(srcdir)/'`src/mbr.c
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libjulius_la_CPPFLAGS) $(CPPFLAGS) $(libjulius_la_CFLAGS) $(CFLAGS) -c -o src/libjulius_la-mbr.lo `test -f 'src/mbr.c' || echo '$(srcdir)/'`src/mbr.c
 
-libjulius_la-gmm.lo: src/gmm.c
-@am__fastdepCC_TRUE@	$(AM_V_CC)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libjulius_la_CPPFLAGS) $(CPPFLAGS) $(libjulius_la_CFLAGS) $(CFLAGS) -MT libjulius_la-gmm.lo -MD -MP -MF $(DEPDIR)/libjulius_la-gmm.Tpo -c -o libjulius_la-gmm.lo `test -f 'src/gmm.c' || echo '$(srcdir)/'`src/gmm.c
-@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) $(DEPDIR)/libjulius_la-gmm.Tpo $(DEPDIR)/libjulius_la-gmm.Plo
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='src/gmm.c' object='libjulius_la-gmm.lo' libtool=yes @AMDEPBACKSLASH@
+src/libjulius_la-gmm.lo: src/gmm.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libjulius_la_CPPFLAGS) $(CPPFLAGS) $(libjulius_la_CFLAGS) $(CFLAGS) -MT src/libjulius_la-gmm.lo -MD -MP -MF src/$(DEPDIR)/libjulius_la-gmm.Tpo -c -o src/libjulius_la-gmm.lo `test -f 'src/gmm.c' || echo '$(srcdir)/'`src/gmm.c
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) src/$(DEPDIR)/libjulius_la-gmm.Tpo src/$(DEPDIR)/libjulius_la-gmm.Plo
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='src/gmm.c' object='src/libjulius_la-gmm.lo' libtool=yes @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libjulius_la_CPPFLAGS) $(CPPFLAGS) $(libjulius_la_CFLAGS) $(CFLAGS) -c -o libjulius_la-gmm.lo `test -f 'src/gmm.c' || echo '$(srcdir)/'`src/gmm.c
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libjulius_la_CPPFLAGS) $(CPPFLAGS) $(libjulius_la_CFLAGS) $(CFLAGS) -c -o src/libjulius_la-gmm.lo `test -f 'src/gmm.c' || echo '$(srcdir)/'`src/gmm.c
 
-libjulius_la-word_align.lo: src/word_align.c
-@am__fastdepCC_TRUE@	$(AM_V_CC)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libjulius_la_CPPFLAGS) $(CPPFLAGS) $(libjulius_la_CFLAGS) $(CFLAGS) -MT libjulius_la-word_align.lo -MD -MP -MF $(DEPDIR)/libjulius_la-word_align.Tpo -c -o libjulius_la-word_align.lo `test -f 'src/word_align.c' || echo '$(srcdir)/'`src/word_align.c
-@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) $(DEPDIR)/libjulius_la-word_align.Tpo $(DEPDIR)/libjulius_la-word_align.Plo
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='src/word_align.c' object='libjulius_la-word_align.lo' libtool=yes @AMDEPBACKSLASH@
+src/libjulius_la-word_align.lo: src/word_align.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libjulius_la_CPPFLAGS) $(CPPFLAGS) $(libjulius_la_CFLAGS) $(CFLAGS) -MT src/libjulius_la-word_align.lo -MD -MP -MF src/$(DEPDIR)/libjulius_la-word_align.Tpo -c -o src/libjulius_la-word_align.lo `test -f 'src/word_align.c' || echo '$(srcdir)/'`src/word_align.c
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) src/$(DEPDIR)/libjulius_la-word_align.Tpo src/$(DEPDIR)/libjulius_la-word_align.Plo
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='src/word_align.c' object='src/libjulius_la-word_align.lo' libtool=yes @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libjulius_la_CPPFLAGS) $(CPPFLAGS) $(libjulius_la_CFLAGS) $(CFLAGS) -c -o libjulius_la-word_align.lo `test -f 'src/word_align.c' || echo '$(srcdir)/'`src/word_align.c
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libjulius_la_CPPFLAGS) $(CPPFLAGS) $(libjulius_la_CFLAGS) $(CFLAGS) -c -o src/libjulius_la-word_align.lo `test -f 'src/word_align.c' || echo '$(srcdir)/'`src/word_align.c
 
-libjulius_la-plugin.lo: src/plugin.c
-@am__fastdepCC_TRUE@	$(AM_V_CC)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libjulius_la_CPPFLAGS) $(CPPFLAGS) $(libjulius_la_CFLAGS) $(CFLAGS) -MT libjulius_la-plugin.lo -MD -MP -MF $(DEPDIR)/libjulius_la-plugin.Tpo -c -o libjulius_la-plugin.lo `test -f 'src/plugin.c' || echo '$(srcdir)/'`src/plugin.c
-@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) $(DEPDIR)/libjulius_la-plugin.Tpo $(DEPDIR)/libjulius_la-plugin.Plo
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='src/plugin.c' object='libjulius_la-plugin.lo' libtool=yes @AMDEPBACKSLASH@
+src/libjulius_la-plugin.lo: src/plugin.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libjulius_la_CPPFLAGS) $(CPPFLAGS) $(libjulius_la_CFLAGS) $(CFLAGS) -MT src/libjulius_la-plugin.lo -MD -MP -MF src/$(DEPDIR)/libjulius_la-plugin.Tpo -c -o src/libjulius_la-plugin.lo `test -f 'src/plugin.c' || echo '$(srcdir)/'`src/plugin.c
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) src/$(DEPDIR)/libjulius_la-plugin.Tpo src/$(DEPDIR)/libjulius_la-plugin.Plo
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='src/plugin.c' object='src/libjulius_la-plugin.lo' libtool=yes @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libjulius_la_CPPFLAGS) $(CPPFLAGS) $(libjulius_la_CFLAGS) $(CFLAGS) -c -o libjulius_la-plugin.lo `test -f 'src/plugin.c' || echo '$(srcdir)/'`src/plugin.c
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libjulius_la_CPPFLAGS) $(CPPFLAGS) $(libjulius_la_CFLAGS) $(CFLAGS) -c -o src/libjulius_la-plugin.lo `test -f 'src/plugin.c' || echo '$(srcdir)/'`src/plugin.c
 
-libjulius_la-version.lo: src/version.c
-@am__fastdepCC_TRUE@	$(AM_V_CC)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libjulius_la_CPPFLAGS) $(CPPFLAGS) $(libjulius_la_CFLAGS) $(CFLAGS) -MT libjulius_la-version.lo -MD -MP -MF $(DEPDIR)/libjulius_la-version.Tpo -c -o libjulius_la-version.lo `test -f 'src/version.c' || echo '$(srcdir)/'`src/version.c
-@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) $(DEPDIR)/libjulius_la-version.Tpo $(DEPDIR)/libjulius_la-version.Plo
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='src/version.c' object='libjulius_la-version.lo' libtool=yes @AMDEPBACKSLASH@
+src/libjulius_la-version.lo: src/version.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libjulius_la_CPPFLAGS) $(CPPFLAGS) $(libjulius_la_CFLAGS) $(CFLAGS) -MT src/libjulius_la-version.lo -MD -MP -MF src/$(DEPDIR)/libjulius_la-version.Tpo -c -o src/libjulius_la-version.lo `test -f 'src/version.c' || echo '$(srcdir)/'`src/version.c
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) src/$(DEPDIR)/libjulius_la-version.Tpo src/$(DEPDIR)/libjulius_la-version.Plo
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='src/version.c' object='src/libjulius_la-version.lo' libtool=yes @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libjulius_la_CPPFLAGS) $(CPPFLAGS) $(libjulius_la_CFLAGS) $(CFLAGS) -c -o libjulius_la-version.lo `test -f 'src/version.c' || echo '$(srcdir)/'`src/version.c
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libjulius_la_CPPFLAGS) $(CPPFLAGS) $(libjulius_la_CFLAGS) $(CFLAGS) -c -o src/libjulius_la-version.lo `test -f 'src/version.c' || echo '$(srcdir)/'`src/version.c
 
 mostlyclean-libtool:
 	-rm -f *.lo
 
 clean-libtool:
 	-rm -rf .libs _libs
+	-rm -rf src/.libs src/_libs
 
 distclean-libtool:
 	-rm -f libtool config.lt
@@ -1282,6 +1375,8 @@ clean-generic:
 distclean-generic:
 	-test -z "$(CONFIG_CLEAN_FILES)" || rm -f $(CONFIG_CLEAN_FILES)
 	-test . = "$(srcdir)" || test -z "$(CONFIG_CLEAN_VPATH_FILES)" || rm -f $(CONFIG_CLEAN_VPATH_FILES)
+	-rm -f src/$(DEPDIR)/$(am__dirstamp)
+	-rm -f src/$(am__dirstamp)
 
 maintainer-clean-generic:
 	@echo "This command is intended for maintainers to use"
@@ -1293,7 +1388,7 @@ clean-am: clean-generic clean-libLTLIBRARIES clean-libtool \
 
 distclean: distclean-recursive
 	-rm -f $(am__CONFIG_DISTCLEAN_FILES)
-	-rm -rf ./$(DEPDIR)
+	-rm -rf src/$(DEPDIR)
 	-rm -f Makefile
 distclean-am: clean-am distclean-compile distclean-generic \
 	distclean-hdr distclean-libtool distclean-tags
@@ -1341,7 +1436,7 @@ installcheck-am:
 maintainer-clean: maintainer-clean-recursive
 	-rm -f $(am__CONFIG_DISTCLEAN_FILES)
 	-rm -rf $(top_srcdir)/autom4te.cache
-	-rm -rf ./$(DEPDIR)
+	-rm -rf src/$(DEPDIR)
 	-rm -f Makefile
 maintainer-clean-am: distclean-am maintainer-clean-generic
 
