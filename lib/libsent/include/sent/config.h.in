@@ -27,14 +27,8 @@
 /* HAS_ALSA */
 #undef HAS_ALSA
 
-/* HAS_ESD */
-#undef HAS_ESD
-
 /* HAS_OSS */
 #undef HAS_OSS
-
-/* HAS_PULSEAUDIO */
-#undef HAS_PULSEAUDIO
 
 /* Define to 1 if you have the <alsa/asoundlib.h> header file. */
 #undef HAVE_ALSA_ASOUNDLIB_H
@@ -62,9 +56,6 @@
 
 /* Define to 1 if you have the `socket' library (-lsocket). */
 #undef HAVE_LIBSOCKET
-
-/* Define to 1 if you have the <machine/soundcard.h> header file. */
-#undef HAVE_MACHINE_SOUNDCARD_H
 
 /* Define to 1 if you have the <memory.h> header file. */
 #undef HAVE_MEMORY_H
@@ -101,9 +92,6 @@
 
 /* Define to 1 if you have the <sys/asoundlib.h> header file. */
 #undef HAVE_SYS_ASOUNDLIB_H
-
-/* Define to 1 if you have the <sys/soundcard.h> header file. */
-#undef HAVE_SYS_SOUNDCARD_H
 
 /* Define to 1 if you have the <sys/stat.h> header file. */
 #undef HAVE_SYS_STAT_H

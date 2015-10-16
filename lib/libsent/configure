@@ -654,24 +654,10 @@ ALTYPE_PA_WINMM_FALSE
 ALTYPE_PA_WINMM_TRUE
 ALTYPE_PA_FALSE
 ALTYPE_PA_TRUE
-ALTYPE_NOAUTO_ESD_FALSE
-ALTYPE_NOAUTO_ESD_TRUE
-ALTYPE_NOAUTO_OSS_FALSE
-ALTYPE_NOAUTO_OSS_TRUE
-ALTYPE_NOAUTO_PULSEAUDIO_FALSE
-ALTYPE_NOAUTO_PULSEAUDIO_TRUE
 ALTYPE_NOAUTO_ALSA_FALSE
 ALTYPE_NOAUTO_ALSA_TRUE
-ALTYPE_AUTO_USE_MIC_FALSE
-ALTYPE_AUTO_USE_MIC_TRUE
-MICTYPE_AUTO_ESD_FALSE
-MICTYPE_AUTO_ESD_TRUE
-MICTYPE_AUTO_OSS_FALSE
-MICTYPE_AUTO_OSS_TRUE
 MICTYPE_AUTO_ALSA_FALSE
 MICTYPE_AUTO_ALSA_TRUE
-MICTYPE_AUTO_PULSEAUDIO_FALSE
-MICTYPE_AUTO_PULSEAUDIO_TRUE
 RM
 CPP
 OTOOL64
@@ -1465,7 +1451,7 @@ Optional Packages:
   --with-gnu-ld           assume the C compiler uses GNU ld [default=no]
   --with-sysroot=DIR Search for dependent libraries within DIR
                         (or the compiler's sysroot if not specified).
-  --with-mictype=TYPE     specify mic I/O (oss|alsa|freebsd|coreaudio|sol2|sun4|irix|esd|sp|portaudio|pa-oss|pa-alsa|pa-winmm|pa-dsound|pulseaudio)
+  --with-mictype=TYPE     specify mic I/O (alsa|portaudio)
   --with-netaudio-dir=DIR DatLink/NetAudio include/lib are in DIR
   --without-sndfile       does not link libsndfile library
 
@@ -11566,7 +11552,10 @@ CC="$lt_save_CC"
 
 LIBSENT_VERSION=4.3.1
 
+# !!!!!!
 # specify mic type
+#AC_ARG_WITH(mictype,
+#[  --with-mictype=TYPE     specify mic I/O (oss|alsa|freebsd|coreaudio|sol2|sun4|irix|esd|sp|portaudio|pa-oss|pa-alsa|pa-winmm|pa-dsound|pulseaudio)],,with_mictype=auto)
 
 # Check whether --with-mictype was given.
 if test "${with_mictype+set}" = set; then :
@@ -11575,6 +11564,7 @@ else
   with_mictype=auto
 fi
 
+# !!!!!!
 
 # NetAudio support
 
@@ -13397,35 +13387,11 @@ fi
 done
 
 # OSS
-    has_oss=yes
-    for ac_header in sys/soundcard.h
-do :
-  ac_fn_c_check_header_mongrel "$LINENO" "sys/soundcard.h" "ac_cv_header_sys_soundcard_h" "$ac_includes_default"
-if test "x$ac_cv_header_sys_soundcard_h" = xyes; then :
-  cat >>confdefs.h <<_ACEOF
-#define HAVE_SYS_SOUNDCARD_H 1
-_ACEOF
-
-else
-  for ac_header in machine/soundcard.h
-do :
-  ac_fn_c_check_header_mongrel "$LINENO" "machine/soundcard.h" "ac_cv_header_machine_soundcard_h" "$ac_includes_default"
-if test "x$ac_cv_header_machine_soundcard_h" = xyes; then :
-  cat >>confdefs.h <<_ACEOF
-#define HAVE_MACHINE_SOUNDCARD_H 1
-_ACEOF
-
-else
-  has_oss=no
-
-fi
-
-done
-
-fi
-
-done
-
+#    has_oss=yes
+#    AC_CHECK_HEADERS(sys/soundcard.h,,
+#      AC_CHECK_HEADERS(machine/soundcard.h,,
+#        has_oss=no
+#    ))
     ;;
 esac
 
@@ -13510,14 +13476,15 @@ $as_echo_n "checking for default input device type... " >&6; }
 	  # Linux - availability already checked, set default
 	  if test "$has_alsa" = yes; then
 	     altype=alsa
-	  elif test "$has_pulseaudio" = yes; then
-	     altype=pulseaudio
-	  elif test "$has_oss" = yes; then
-	     altype=oss
-	  elif test "$has_esd" = yes; then
-	     altype=esd
+#	  elif test "$has_pulseaudio" = yes; then
+#	     altype=pulseaudio
+#	  elif test "$has_oss" = yes; then
+#	     altype=oss
+#	  elif test "$has_esd" = yes; then
+#	     altype=esd
 	  else
-	     as_fn_error $? "none of alsa/oss/pulseaudio/esd header/lib found!" "$LINENO" 5
+	     #AC_MSG_ERROR([none of alsa/oss/pulseaudio/esd header/lib found!])
+	     as_fn_error $? "alsa header/lib not found!" "$LINENO" 5
 	  fi
 	;;
   freebsd*)
@@ -13531,7 +13498,7 @@ $as_echo_n "checking for default input device type... " >&6; }
 	  fi
 	;;
   darwin*)
-    # MacOSX (CoreAudio)
+    # MacOSX (CoreAudio); (note: AC_TRY_CPP, replaced with AC_PREPROC_IFELSE. )
 	  cat confdefs.h - <<_ACEOF >conftest.$ac_ext
 /* end confdefs.h.  */
 #include <CoreAudio/CoreAudio.h>
@@ -13574,10 +13541,6 @@ if ac_fn_c_try_cpp "$LINENO"; then :
 fi
 rm -f conftest.err conftest.i conftest.$ac_ext
 	;;
-#  osf*)
-#	# Digital Unix 4.0 --- not yet
-#	AC_TRY_CPP([#include <mme/mme_api.h>],altype=osf1)
-#	;;
   cygwin*|mingw*)
 	  # minGW - portaudio (auto select winmm / dsound)
 	  altype=portaudio
@@ -13650,8 +13613,8 @@ fi
       linux*)
         if test "$has_alsa" = yes; then
            altype="pa-alsa"
-        else
-           altype="pa-oss"
+#        else
+#           altype="pa-oss"
         fi
       ;;
       solaris*)
@@ -13723,14 +13686,7 @@ ADINOBJ=""
 adinlist=""
 
 # set makefile.am conditional variables
- if test "$with_mictype" = auto -a "$has_pulseaudio" = yes; then
-  MICTYPE_AUTO_PULSEAUDIO_TRUE=
-  MICTYPE_AUTO_PULSEAUDIO_FALSE='#'
-else
-  MICTYPE_AUTO_PULSEAUDIO_TRUE='#'
-  MICTYPE_AUTO_PULSEAUDIO_FALSE=
-fi
-
+#AM_CONDITIONAL([MICTYPE_AUTO_PULSEAUDIO], [test "$with_mictype" = auto -a "$has_pulseaudio" = yes])
  if test "$with_mictype" = auto -a "$has_alsa" = yes; then
   MICTYPE_AUTO_ALSA_TRUE=
   MICTYPE_AUTO_ALSA_FALSE='#'
@@ -13739,33 +13695,17 @@ else
   MICTYPE_AUTO_ALSA_FALSE=
 fi
 
- if test "$with_mictype" = auto -a "$has_oss" = yes; then
-  MICTYPE_AUTO_OSS_TRUE=
-  MICTYPE_AUTO_OSS_FALSE='#'
-else
-  MICTYPE_AUTO_OSS_TRUE='#'
-  MICTYPE_AUTO_OSS_FALSE=
-fi
-
- if test "$with_mictype" = auto -a "$has_esd" = yes; then
-  MICTYPE_AUTO_ESD_TRUE=
-  MICTYPE_AUTO_ESD_FALSE='#'
-else
-  MICTYPE_AUTO_ESD_TRUE='#'
-  MICTYPE_AUTO_ESD_FALSE=
-fi
-
+#AM_CONDITIONAL([MICTYPE_AUTO_OSS], [test "$with_mictype" = auto -a "$has_oss" = yes])
+#AM_CONDITIONAL([MICTYPE_AUTO_ESD], [test "$with_mictype" = auto -a "$has_esd" = yes])
 
 if test "$with_mictype" = auto; then
-  # if PulseAudio exist, include it
-  if test "$has_pulseaudio" = yes; then
-      SOUNDLIB="$SOUNDLIB -lpulse-simple -lpulse"
-      ADINOBJ="$ADINOBJ src/adin/adin_pulseaudio.c"
-
-$as_echo "#define HAS_PULSEAUDIO 1" >>confdefs.h
-
-      adinlist="$adinlist pulseaudio"
-  fi
+#  # if PulseAudio exist, include it
+#  if test "$has_pulseaudio" = yes; then
+#      SOUNDLIB="$SOUNDLIB -lpulse-simple -lpulse"
+#      ADINOBJ="$ADINOBJ src/adin/adin_pulseaudio.c"
+#      AC_DEFINE(HAS_PULSEAUDIO,1,[HAS_PULSEAUDIO])
+#      adinlist="$adinlist pulseaudio"
+#  fi
   # if alsa exist, include it
   if test "$has_alsa" = yes; then
       SOUNDLIB="$SOUNDLIB -lasound"
@@ -13776,35 +13716,24 @@ $as_echo "#define HAS_ALSA 1" >>confdefs.h
       adinlist="$adinlist alsa"
   fi
   # if oss exist, include it
-  if test "$has_oss" = yes; then
-      ADINOBJ="$ADINOBJ src/adin/adin_mic_linux_oss.c"
-
-$as_echo "#define HAS_OSS 1" >>confdefs.h
-
-      adinlist="$adinlist oss"
-  fi
+#  if test "$has_oss" = yes; then
+#      ADINOBJ="$ADINOBJ src/adin/adin_mic_linux_oss.c"
+#      AC_DEFINE(HAS_OSS,1,[HAS_OSS])
+#      adinlist="$adinlist oss"
+#  fi
   # if esd exist, include it
-  if test "$has_esd" = yes; then
-      SOUNDLIB="$SOUNDLIB -lesd"
-      ADINOBJ="$ADINOBJ src/adin/adin_esd.c"
-
-$as_echo "#define HAS_ESD 1" >>confdefs.h
-
-      adinlist="$adinlist esd"
-  fi
+#  if test "$has_esd" = yes; then
+#      SOUNDLIB="$SOUNDLIB -lesd"
+#      ADINOBJ="$ADINOBJ src/adin/adin_esd.c"
+#      AC_DEFINE(HAS_ESD,1,[HAS_ESD])
+#      adinlist="$adinlist esd"
+#  fi
 fi
 
 # altype-specific setup
 
 # set makefile.am conditional variables
- if test "$altype" = alsa -o "$altype" = oss -o "$altype" = esd -o "$altype" = pulseaudio; then
-  ALTYPE_AUTO_USE_MIC_TRUE=
-  ALTYPE_AUTO_USE_MIC_FALSE='#'
-else
-  ALTYPE_AUTO_USE_MIC_TRUE='#'
-  ALTYPE_AUTO_USE_MIC_FALSE=
-fi
-
+#AM_CONDITIONAL([ALTYPE_AUTO_USE_MIC], [test "$altype" = alsa -o "$altype" = oss -o "$altype" = esd -o "$altype" = pulseaudio])
 
  if test "$with_mictype" != auto -a "$altype" = alsa; then
   ALTYPE_NOAUTO_ALSA_TRUE=
@@ -13814,30 +13743,9 @@ else
   ALTYPE_NOAUTO_ALSA_FALSE=
 fi
 
- if test "$with_mictype" != auto -a "$altype" = pulseaudio; then
-  ALTYPE_NOAUTO_PULSEAUDIO_TRUE=
-  ALTYPE_NOAUTO_PULSEAUDIO_FALSE='#'
-else
-  ALTYPE_NOAUTO_PULSEAUDIO_TRUE='#'
-  ALTYPE_NOAUTO_PULSEAUDIO_FALSE=
-fi
-
- if test "$with_mictype" != auto -a "$altype" = oss; then
-  ALTYPE_NOAUTO_OSS_TRUE=
-  ALTYPE_NOAUTO_OSS_FALSE='#'
-else
-  ALTYPE_NOAUTO_OSS_TRUE='#'
-  ALTYPE_NOAUTO_OSS_FALSE=
-fi
-
- if test "$with_mictype" != auto -a "$altype" = esd; then
-  ALTYPE_NOAUTO_ESD_TRUE=
-  ALTYPE_NOAUTO_ESD_FALSE='#'
-else
-  ALTYPE_NOAUTO_ESD_TRUE='#'
-  ALTYPE_NOAUTO_ESD_FALSE=
-fi
-
+#AM_CONDITIONAL([ALTYPE_NOAUTO_PULSEAUDIO], [test "$with_mictype" != auto -a "$altype" = pulseaudio])
+#AM_CONDITIONAL([ALTYPE_NOAUTO_OSS], [test "$with_mictype" != auto -a "$altype" = oss])
+#AM_CONDITIONAL([ALTYPE_NOAUTO_ESD], [test "$with_mictype" != auto -a "$altype" = esd])
 
  if test "$altype" = pa-*; then
   ALTYPE_PA_TRUE=
@@ -14000,20 +13908,20 @@ $as_echo "#define USE_MIC 1" >>confdefs.h
 	        ADINOBJ="$ADINOBJ src/adin/pa/hostapi/dsound/pa_win_ds.c src/adin/pa/hostapi/dsound/pa_win_ds_dynlink.c"
           SOUNDLIB="$SOUNDLIB -lwinmm -ldsound -lole32"
         ;;
-        pa-alsa)
-	        aldesc="$aldesc (Unix/ALSA)"
-	        SOUNDINC="$SOUNDINC -Isrc/adin/pa/os/unix -DPA_USE_ALSA"
-	        ADINOBJ="$ADINOBJ src/adin/pa/os/unix/pa_unix_hostapis.c src/adin/pa/os/unix/pa_unix_util.c"
-          ADINOBJ="$ADINOBJ src/adin/pa/hostapi/alsa/pa_linux_alsa.c"
-          SOUNDLIB="$SOUNDLIB -lpthread -lasound"
-        ;;
-        pa-oss)
-	        aldesc="$aldesc (Unix/OSS)"
-	        SOUNDINC="$SOUNDINC -Isrc/adin/pa/os/unix -DPA_USE_OSS"
-	        ADINOBJ="$ADINOBJ src/adin/pa/os/unix/pa_unix_hostapis.c src/adin/pa/os/unix/pa_unix_util.c"
-          ADINOBJ="$ADINOBJ src/adin/pa/hostapi/oss/pa_unix_oss.c"
-          SOUNDLIB="$SOUNDLIB -lpthread"
-        ;;
+#        pa-alsa)
+#	        aldesc="$aldesc (Unix/ALSA)"
+#	        SOUNDINC="$SOUNDINC -Isrc/adin/pa/os/unix -DPA_USE_ALSA"
+#	        ADINOBJ="$ADINOBJ src/adin/pa/os/unix/pa_unix_hostapis.c src/adin/pa/os/unix/pa_unix_util.c"
+#          ADINOBJ="$ADINOBJ src/adin/pa/hostapi/alsa/pa_linux_alsa.c"
+#          SOUNDLIB="$SOUNDLIB -lpthread -lasound"
+#        ;;
+#        pa-oss)
+#	        aldesc="$aldesc (Unix/OSS)"
+#	        SOUNDINC="$SOUNDINC -Isrc/adin/pa/os/unix -DPA_USE_OSS"
+#	        ADINOBJ="$ADINOBJ src/adin/pa/os/unix/pa_unix_hostapis.c src/adin/pa/os/unix/pa_unix_util.c"
+#          ADINOBJ="$ADINOBJ src/adin/pa/hostapi/oss/pa_unix_oss.c"
+#          SOUNDLIB="$SOUNDLIB -lpthread"
+#        ;;
         pa-solaris)
 	        aldesc="$aldesc (Solaris)"
           ADINOBJ="$ADINOBJ src/adin/pa/pa_unix.c src/adin/pa/pa_unix_solaris.c"
@@ -14022,23 +13930,19 @@ $as_echo "#define USE_MIC 1" >>confdefs.h
       esac
       ADINOBJ="$ADINOBJ src/adin/adin_portaudio.c"
     ;;
-    oss)
-      if test "$has_oss" = no; then
-        as_fn_error $? "no OSS header!" "$LINENO" 5
-      fi
-      aldesc="Open Sound System compatible"
-
-$as_echo "#define USE_MIC 1" >>confdefs.h
-
-      ADINOBJ="$ADINOBJ src/adin/adin_mic_linux.c"
-      if test "$with_mictype" != auto; then
-	      ADINOBJ="$ADINOBJ src/adin/adin_mic_linux_oss.c"
-
-$as_echo "#define HAS_OSS 1" >>confdefs.h
-
-        adinlist="$adinlist oss"
-      fi
-    ;;
+#    oss)
+#      if test "$has_oss" = no; then
+#        AC_MSG_ERROR([no OSS header!])
+#      fi
+#      aldesc="Open Sound System compatible"
+#      AC_DEFINE(USE_MIC,1,[USE_MIC])
+#      ADINOBJ="$ADINOBJ src/adin/adin_mic_linux.c"
+#      if test "$with_mictype" != auto; then
+#	      ADINOBJ="$ADINOBJ src/adin/adin_mic_linux_oss.c"
+#	      AC_DEFINE(HAS_OSS,1,[HAS_OSS])
+#        adinlist="$adinlist oss"
+#      fi
+#    ;;
     alsa)
       if test "$has_alsa" = no; then
         as_fn_error $? "no ALSA header!" "$LINENO" 5
@@ -14057,42 +13961,34 @@ $as_echo "#define HAS_ALSA 1" >>confdefs.h
         adinlist="$adinlist alsa"
       fi
     ;;
-    esd)
-      if test "$has_esd" = no; then
-        as_fn_error $? "no ESounD header!" "$LINENO" 5
-      fi
-      aldesc="EsoundD - The Enlightened Sound Daemon"
-
-$as_echo "#define USE_MIC 1" >>confdefs.h
-
-      ADINOBJ="$ADINOBJ src/adin/adin_mic_linux.c"
-      if test "$with_mictype" != auto; then
-	      SOUNDLIB="$SOUNDLIB -lesd"
-	      ADINOBJ="$ADINOBJ src/adin/adin_esd.c"
-
-$as_echo "#define HAS_ESD 1" >>confdefs.h
-
-        adinlist="$adinlist esd"
-      fi
-    ;;
-    pulseaudio)
-      if test "$has_pulseaudio" = no; then
-        as_fn_error $? "no PulseAudio header!" "$LINENO" 5
-      fi
-      aldesc="PulseAudio"
-
-$as_echo "#define USE_MIC 1" >>confdefs.h
-
-      ADINOBJ="$ADINOBJ src/adin/adin_mic_linux.c"
-      if test "$with_mictype" != auto; then
-	      SOUNDLIB="$SOUNDLIB -lpulse-simple -lpulse"
-	      ADINOBJ="$ADINOBJ src/adin/adin_pulseaudio.c"
-
-$as_echo "#define HAS_PULSEAUDIO 1" >>confdefs.h
-
-        adinlist="$adinlist pulseaudio"
-      fi
-    ;;
+#    esd)
+#      if test "$has_esd" = no; then
+#        AC_MSG_ERROR([no ESounD header!])
+#      fi
+#      aldesc="EsoundD - The Enlightened Sound Daemon"
+#      AC_DEFINE(USE_MIC,1,[USE_MIC])
+#      ADINOBJ="$ADINOBJ src/adin/adin_mic_linux.c"
+#      if test "$with_mictype" != auto; then
+#	      SOUNDLIB="$SOUNDLIB -lesd"
+#	      ADINOBJ="$ADINOBJ src/adin/adin_esd.c"
+#	      AC_DEFINE(HAS_ESD,1,[HAS_ESD])
+#        adinlist="$adinlist esd"
+#      fi
+#    ;;
+#    pulseaudio)
+#      if test "$has_pulseaudio" = no; then
+#        AC_MSG_ERROR([no PulseAudio header!])
+#      fi
+#      aldesc="PulseAudio"
+#      AC_DEFINE(USE_MIC,1,[USE_MIC])
+#      ADINOBJ="$ADINOBJ src/adin/adin_mic_linux.c"
+#      if test "$with_mictype" != auto; then
+#	      SOUNDLIB="$SOUNDLIB -lpulse-simple -lpulse"
+#	      ADINOBJ="$ADINOBJ src/adin/adin_pulseaudio.c"
+#	      AC_DEFINE(HAS_PULSEAUDIO,1,[HAS_PULSEAUDIO])
+#        adinlist="$adinlist pulseaudio"
+#      fi
+#    ;;
   freebsd)
 	  if test "$has_oss" = no; then
 	    as_fn_error $? "neither sys/soundcard.h nor machine/soundcard.h exist" "$LINENO" 5
@@ -14623,40 +14519,12 @@ if test -z "${am__fastdepCC_TRUE}" && test -z "${am__fastdepCC_FALSE}"; then
 Usually this means the macro was only invoked conditionally." "$LINENO" 5
 fi
 
-if test -z "${MICTYPE_AUTO_PULSEAUDIO_TRUE}" && test -z "${MICTYPE_AUTO_PULSEAUDIO_FALSE}"; then
-  as_fn_error $? "conditional \"MICTYPE_AUTO_PULSEAUDIO\" was never defined.
-Usually this means the macro was only invoked conditionally." "$LINENO" 5
-fi
 if test -z "${MICTYPE_AUTO_ALSA_TRUE}" && test -z "${MICTYPE_AUTO_ALSA_FALSE}"; then
   as_fn_error $? "conditional \"MICTYPE_AUTO_ALSA\" was never defined.
 Usually this means the macro was only invoked conditionally." "$LINENO" 5
 fi
-if test -z "${MICTYPE_AUTO_OSS_TRUE}" && test -z "${MICTYPE_AUTO_OSS_FALSE}"; then
-  as_fn_error $? "conditional \"MICTYPE_AUTO_OSS\" was never defined.
-Usually this means the macro was only invoked conditionally." "$LINENO" 5
-fi
-if test -z "${MICTYPE_AUTO_ESD_TRUE}" && test -z "${MICTYPE_AUTO_ESD_FALSE}"; then
-  as_fn_error $? "conditional \"MICTYPE_AUTO_ESD\" was never defined.
-Usually this means the macro was only invoked conditionally." "$LINENO" 5
-fi
-if test -z "${ALTYPE_AUTO_USE_MIC_TRUE}" && test -z "${ALTYPE_AUTO_USE_MIC_FALSE}"; then
-  as_fn_error $? "conditional \"ALTYPE_AUTO_USE_MIC\" was never defined.
-Usually this means the macro was only invoked conditionally." "$LINENO" 5
-fi
 if test -z "${ALTYPE_NOAUTO_ALSA_TRUE}" && test -z "${ALTYPE_NOAUTO_ALSA_FALSE}"; then
   as_fn_error $? "conditional \"ALTYPE_NOAUTO_ALSA\" was never defined.
-Usually this means the macro was only invoked conditionally." "$LINENO" 5
-fi
-if test -z "${ALTYPE_NOAUTO_PULSEAUDIO_TRUE}" && test -z "${ALTYPE_NOAUTO_PULSEAUDIO_FALSE}"; then
-  as_fn_error $? "conditional \"ALTYPE_NOAUTO_PULSEAUDIO\" was never defined.
-Usually this means the macro was only invoked conditionally." "$LINENO" 5
-fi
-if test -z "${ALTYPE_NOAUTO_OSS_TRUE}" && test -z "${ALTYPE_NOAUTO_OSS_FALSE}"; then
-  as_fn_error $? "conditional \"ALTYPE_NOAUTO_OSS\" was never defined.
-Usually this means the macro was only invoked conditionally." "$LINENO" 5
-fi
-if test -z "${ALTYPE_NOAUTO_ESD_TRUE}" && test -z "${ALTYPE_NOAUTO_ESD_FALSE}"; then
-  as_fn_error $? "conditional \"ALTYPE_NOAUTO_ESD\" was never defined.
 Usually this means the macro was only invoked conditionally." "$LINENO" 5
 fi
 if test -z "${ALTYPE_PA_TRUE}" && test -z "${ALTYPE_PA_FALSE}"; then

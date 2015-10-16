@@ -47,7 +47,7 @@ Extract the github zip file to a directory.
 
 ##### to another location
 
-  * $ configure --disable-shared --prefix=pathToVoxShell      # e.g. --prefix=~/voxshell to create a bin directory in the voxshell folder
+  * $ configure --disable-shared --with-mictype=alsa --prefix=pathToVoxShell      # e.g. pathToVoxShell=full path to folder to install voxshell
   * $ make
   * $ sudo make install
 
