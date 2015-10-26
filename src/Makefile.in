@@ -292,8 +292,8 @@ voxshell_CPPFLAGS = -Iinclude -I../lib/libjulius/include -I../lib/libsent/includ
 # it works if specify static libraries, e.g.:
 #voxshell_LDADD= ../lib/libjulius/.libs/libjulius.a ../lib/libsent/.libs/libsent.a
 
-# must use 'configure --disable-shared' for voxshell to work properly with .la libraries (it
-# compiles but does not recognize any speech.
+# must use 'configure --disable-shared' for voxshell to work properly with .la libraries 
+# (otherwise, for dynamic libraries, it compiles but does not recognize any speech)
 voxshell_LDADD = ../lib/libjulius/libjulius.la ../lib/libsent/libsent.la
 voxshell_LDFLAGS = -ldl -lpthread -lpulse-simple -lpulse -lasound -lz -lnsl -lm
 all: all-am
