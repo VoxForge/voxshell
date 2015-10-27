@@ -269,6 +269,7 @@ fi
 # altype-specific setup
 
 # set makefile.am conditional variables
+AM_CONDITIONAL([ALTYPE_PORTAUDIO], [test "$altype" = libportaudio])
 AM_CONDITIONAL([ALTYPE_PA], [test "$altype" = pa-*])
 AM_CONDITIONAL([ALTYPE_PA_WINMM], [test "$altype" = pa-winmm])
 
@@ -279,6 +280,22 @@ case $altype in
     SOUNDLIB="$SOUNDLIB -lportaudio"
     AC_DEFINE(USE_MIC,1,[USE_MIC])
   ;;
+  pa-*)
+    aldesc="PortAudio library (internal)"
+    ADINOBJ="$ADINOBJ src/adin/pa/common/pa_allocation.o src/adin/pa/common/pa_converters.o src/adin/pa/common/pa_cpuload.o src/adin/pa/common/pa_debugprint.o src/adin/pa/common/pa_dither.o src/adin/pa/common/pa_front.o src/adin/pa/common/pa_process.o src/adin/pa/common/pa_ringbuffer.o src/adin/pa/common/pa_skeleton.o src/adin/pa/common/pa_stream.o src/adin/pa/common/pa_trace.o"
+    SOUNDINC="-Isrc/adin/pa/include -Isrc/adin/pa/common"
+    AC_DEFINE(USE_MIC)
+    case "$altype" in
+      pa-winmm)
+	      aldesc="$aldesc (WinMM)"
+	      SOUNDINC="$SOUNDINC -DPA_NO_DS -DPA_NO_ASIO"
+        ADINOBJ="$ADINOBJ src/adin/pa/os/win/pa_win_hostapis.o src/adin/pa/os/win/pa_win_util.o src/adin/pa/os/win/pa_win_waveformat.o"
+	      ADINOBJ="$ADINOBJ src/adin/pa/hostapi/wmme/pa_win_wmme.o"
+        SOUNDLIB="$SOUNDLIB -lwinmm"
+      ;;
+      esac
+      ADINOBJ="$ADINOBJ src/adin/adin_portaudio.o"
+      ;;
   alsa)
     if test "$has_alsa" = no; then
       AC_MSG_ERROR([no ALSA header!])

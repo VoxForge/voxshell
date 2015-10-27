@@ -11,6 +11,8 @@ LT_INIT
 # Checks for programs.
 AC_PROG_CC
 AC_PROG_INSTALL
+AM_PROG_LEX
+AC_PROG_YACC
 
 # Checks for libraries.
 

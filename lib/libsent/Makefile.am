@@ -112,13 +112,19 @@ if MICTYPE_AUTO_ALSA
   libsent_la_SOURCES += src/adin/adin_mic_linux.c src/adin/adin_mic_linux_alsa.c
   libsent_la_LDFLAGS += -lasound
 endif
-
+if ALTYPE_PORTAUDIO
+  libsent_la_SOURCES += src/adin/adin_portaudio.c
+  libsent_la_LDFLAGS += -lportaudio
+endif
 if ALTYPE_PA
   libsent_la_SOURCES += src/adin/pa/common/pa_allocation.c src/adin/pa/common/pa_converters.c src/adin/pa/common/pa_cpuload.c src/adin/pa/common/pa_debugprint.c src/adin/pa/common/pa_dither.c src/adin/pa/common/pa_front.c src/adin/pa/common/pa_process.c src/adin/pa/common/pa_ringbuffer.c src/adin/pa/common/pa_skeleton.c src/adin/pa/common/pa_stream.c src/adin/pa/common/pa_trace.c
 endif
 if ALTYPE_PA_WINMM
+  libsent_la_CPPFLAGS += -DPA_NO_DS -DPA_NO_ASIO
   libsent_la_SOURCES += src/adin/pa/os/win/pa_win_hostapis.c src/adin/pa/os/win/pa_win_util.c src/adin/pa/os/win/pa_win_waveformat.c
   libsent_la_SOURCES += src/adin/pa/hostapi/wmme/pa_win_wmme.c
+  libsent_la_LDFLAGS += -lwinmm
+  libsent_la_SOURCES += src/adin/adin_portaudio.c
 endif
 
 ACLOCAL_AMFLAGS=-I m4

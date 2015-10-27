@@ -81,12 +81,17 @@ build_triplet = @build@
 host_triplet = @host@
 @MICTYPE_AUTO_ALSA_TRUE@am__append_1 = src/adin/adin_mic_linux.c src/adin/adin_mic_linux_alsa.c
 @MICTYPE_AUTO_ALSA_TRUE@am__append_2 = -lasound
-@ALTYPE_PA_TRUE@am__append_3 = src/adin/pa/common/pa_allocation.c src/adin/pa/common/pa_converters.c src/adin/pa/common/pa_cpuload.c src/adin/pa/common/pa_debugprint.c src/adin/pa/common/pa_dither.c src/adin/pa/common/pa_front.c src/adin/pa/common/pa_process.c src/adin/pa/common/pa_ringbuffer.c src/adin/pa/common/pa_skeleton.c src/adin/pa/common/pa_stream.c src/adin/pa/common/pa_trace.c
-@ALTYPE_PA_WINMM_TRUE@am__append_4 =  \
+@ALTYPE_PORTAUDIO_TRUE@am__append_3 = src/adin/adin_portaudio.c
+@ALTYPE_PORTAUDIO_TRUE@am__append_4 = -lportaudio
+@ALTYPE_PA_TRUE@am__append_5 = src/adin/pa/common/pa_allocation.c src/adin/pa/common/pa_converters.c src/adin/pa/common/pa_cpuload.c src/adin/pa/common/pa_debugprint.c src/adin/pa/common/pa_dither.c src/adin/pa/common/pa_front.c src/adin/pa/common/pa_process.c src/adin/pa/common/pa_ringbuffer.c src/adin/pa/common/pa_skeleton.c src/adin/pa/common/pa_stream.c src/adin/pa/common/pa_trace.c
+@ALTYPE_PA_WINMM_TRUE@am__append_6 = -DPA_NO_DS -DPA_NO_ASIO
+@ALTYPE_PA_WINMM_TRUE@am__append_7 =  \
 @ALTYPE_PA_WINMM_TRUE@	src/adin/pa/os/win/pa_win_hostapis.c \
 @ALTYPE_PA_WINMM_TRUE@	src/adin/pa/os/win/pa_win_util.c \
 @ALTYPE_PA_WINMM_TRUE@	src/adin/pa/os/win/pa_win_waveformat.c \
-@ALTYPE_PA_WINMM_TRUE@	src/adin/pa/hostapi/wmme/pa_win_wmme.c
+@ALTYPE_PA_WINMM_TRUE@	src/adin/pa/hostapi/wmme/pa_win_wmme.c \
+@ALTYPE_PA_WINMM_TRUE@	src/adin/adin_portaudio.c
+@ALTYPE_PA_WINMM_TRUE@am__append_8 = -lwinmm
 subdir = .
 DIST_COMMON = $(srcdir)/Makefile.in $(srcdir)/Makefile.am \
 	$(top_srcdir)/configure $(am__configure_deps) \
@@ -189,7 +194,7 @@ am__libsent_la_SOURCES_DIST = src/adin/adin_file.c \
 	src/wav2mfcc/mfcc-core.c src/wav2mfcc/para.c \
 	include/sent/adin.h src/adin/lpfcoef_2to1.h \
 	src/adin/lpfcoef_3to4.h src/adin/adin_mic_linux.c \
-	src/adin/adin_mic_linux_alsa.c \
+	src/adin/adin_mic_linux_alsa.c src/adin/adin_portaudio.c \
 	src/adin/pa/common/pa_allocation.c \
 	src/adin/pa/common/pa_converters.c \
 	src/adin/pa/common/pa_cpuload.c \
@@ -286,7 +291,9 @@ am__objects_1 = src/adin/libsent_la-adin_file.lo \
 @MICTYPE_AUTO_ALSA_TRUE@am__objects_2 =  \
 @MICTYPE_AUTO_ALSA_TRUE@	src/adin/libsent_la-adin_mic_linux.lo \
 @MICTYPE_AUTO_ALSA_TRUE@	src/adin/libsent_la-adin_mic_linux_alsa.lo
-@ALTYPE_PA_TRUE@am__objects_3 = src/adin/pa/common/libsent_la-pa_allocation.lo \
+@ALTYPE_PORTAUDIO_TRUE@am__objects_3 =  \
+@ALTYPE_PORTAUDIO_TRUE@	src/adin/libsent_la-adin_portaudio.lo
+@ALTYPE_PA_TRUE@am__objects_4 = src/adin/pa/common/libsent_la-pa_allocation.lo \
 @ALTYPE_PA_TRUE@	src/adin/pa/common/libsent_la-pa_converters.lo \
 @ALTYPE_PA_TRUE@	src/adin/pa/common/libsent_la-pa_cpuload.lo \
 @ALTYPE_PA_TRUE@	src/adin/pa/common/libsent_la-pa_debugprint.lo \
@@ -297,12 +304,13 @@ am__objects_1 = src/adin/libsent_la-adin_file.lo \
 @ALTYPE_PA_TRUE@	src/adin/pa/common/libsent_la-pa_skeleton.lo \
 @ALTYPE_PA_TRUE@	src/adin/pa/common/libsent_la-pa_stream.lo \
 @ALTYPE_PA_TRUE@	src/adin/pa/common/libsent_la-pa_trace.lo
-@ALTYPE_PA_WINMM_TRUE@am__objects_4 = src/adin/pa/os/win/libsent_la-pa_win_hostapis.lo \
+@ALTYPE_PA_WINMM_TRUE@am__objects_5 = src/adin/pa/os/win/libsent_la-pa_win_hostapis.lo \
 @ALTYPE_PA_WINMM_TRUE@	src/adin/pa/os/win/libsent_la-pa_win_util.lo \
 @ALTYPE_PA_WINMM_TRUE@	src/adin/pa/os/win/libsent_la-pa_win_waveformat.lo \
-@ALTYPE_PA_WINMM_TRUE@	src/adin/pa/hostapi/wmme/libsent_la-pa_win_wmme.lo
+@ALTYPE_PA_WINMM_TRUE@	src/adin/pa/hostapi/wmme/libsent_la-pa_win_wmme.lo \
+@ALTYPE_PA_WINMM_TRUE@	src/adin/libsent_la-adin_portaudio.lo
 am_libsent_la_OBJECTS = $(am__objects_1) $(am__objects_2) \
-	$(am__objects_3) $(am__objects_4)
+	$(am__objects_3) $(am__objects_4) $(am__objects_5)
 libsent_la_OBJECTS = $(am_libsent_la_OBJECTS)
 AM_V_lt = $(am__v_lt_@AM_V@)
 am__v_lt_ = $(am__v_lt_@AM_DEFAULT_V@)
@@ -627,10 +635,12 @@ src/adin/lpfcoef_3to4.h
 ############################################################
 lib_LTLIBRARIES = libsent.la
 libsent_la_CFLAGS = -Wall -g -O2
-libsent_la_CPPFLAGS = -I$(includedir) -I$(srcdir)/include 
+libsent_la_CPPFLAGS = -I$(includedir) -I$(srcdir)/include \
+	$(am__append_6)
 libsent_la_SOURCES = $(SRC) $(am__append_1) $(am__append_3) \
-	$(am__append_4)
-libsent_la_LDFLAGS = -lm -lz $(am__append_2)
+	$(am__append_5) $(am__append_7)
+libsent_la_LDFLAGS = -lm -lz $(am__append_2) $(am__append_4) \
+	$(am__append_8)
 ACLOCAL_AMFLAGS = -I m4
 sentincludedir = $(includedir)/sent
 dist_sentinclude_HEADERS = \
@@ -1011,6 +1021,8 @@ src/adin/libsent_la-adin_mic_linux.lo: src/adin/$(am__dirstamp) \
 	src/adin/$(DEPDIR)/$(am__dirstamp)
 src/adin/libsent_la-adin_mic_linux_alsa.lo: src/adin/$(am__dirstamp) \
 	src/adin/$(DEPDIR)/$(am__dirstamp)
+src/adin/libsent_la-adin_portaudio.lo: src/adin/$(am__dirstamp) \
+	src/adin/$(DEPDIR)/$(am__dirstamp)
 src/adin/pa/common/$(am__dirstamp):
 	@$(MKDIR_P) src/adin/pa/common
 	@: > src/adin/pa/common/$(am__dirstamp)
@@ -1113,6 +1125,7 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@src/adin/$(DEPDIR)/libsent_la-adin_file.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@src/adin/$(DEPDIR)/libsent_la-adin_mic_linux.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@src/adin/$(DEPDIR)/libsent_la-adin_mic_linux_alsa.Plo@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@src/adin/$(DEPDIR)/libsent_la-adin_portaudio.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@src/adin/$(DEPDIR)/libsent_la-adin_sndfile.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@src/adin/$(DEPDIR)/libsent_la-adin_tcpip.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@src/adin/$(DEPDIR)/libsent_la-ds48to16.Plo@am__quote@
@@ -1933,6 +1946,13 @@ src/adin/libsent_la-adin_mic_linux_alsa.lo: src/adin/adin_mic_linux_alsa.c
 @AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='src/adin/adin_mic_linux_alsa.c' object='src/adin/libsent_la-adin_mic_linux_alsa.lo' libtool=yes @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
 @am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libsent_la_CPPFLAGS) $(CPPFLAGS) $(libsent_la_CFLAGS) $(CFLAGS) -c -o src/adin/libsent_la-adin_mic_linux_alsa.lo `test -f 'src/adin/adin_mic_linux_alsa.c' || echo '$(srcdir)/'`src/adin/adin_mic_linux_alsa.c
+
+src/adin/libsent_la-adin_portaudio.lo: src/adin/adin_portaudio.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libsent_la_CPPFLAGS) $(CPPFLAGS) $(libsent_la_CFLAGS) $(CFLAGS) -MT src/adin/libsent_la-adin_portaudio.lo -MD -MP -MF src/adin/$(DEPDIR)/libsent_la-adin_portaudio.Tpo -c -o src/adin/libsent_la-adin_portaudio.lo `test -f 'src/adin/adin_portaudio.c' || echo '$(srcdir)/'`src/adin/adin_portaudio.c
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) src/adin/$(DEPDIR)/libsent_la-adin_portaudio.Tpo src/adin/$(DEPDIR)/libsent_la-adin_portaudio.Plo
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='src/adin/adin_portaudio.c' object='src/adin/libsent_la-adin_portaudio.lo' libtool=yes @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libsent_la_CPPFLAGS) $(CPPFLAGS) $(libsent_la_CFLAGS) $(CFLAGS) -c -o src/adin/libsent_la-adin_portaudio.lo `test -f 'src/adin/adin_portaudio.c' || echo '$(srcdir)/'`src/adin/adin_portaudio.c
 
 src/adin/pa/common/libsent_la-pa_allocation.lo: src/adin/pa/common/pa_allocation.c
 @am__fastdepCC_TRUE@	$(AM_V_CC)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libsent_la_CPPFLAGS) $(CPPFLAGS) $(libsent_la_CFLAGS) $(CFLAGS) -MT src/adin/pa/common/libsent_la-pa_allocation.lo -MD -MP -MF src/adin/pa/common/$(DEPDIR)/libsent_la-pa_allocation.Tpo -c -o src/adin/pa/common/libsent_la-pa_allocation.lo `test -f 'src/adin/pa/common/pa_allocation.c' || echo '$(srcdir)/'`src/adin/pa/common/pa_allocation.c

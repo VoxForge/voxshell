@@ -654,6 +654,8 @@ ALTYPE_PA_WINMM_FALSE
 ALTYPE_PA_WINMM_TRUE
 ALTYPE_PA_FALSE
 ALTYPE_PA_TRUE
+ALTYPE_PORTAUDIO_FALSE
+ALTYPE_PORTAUDIO_TRUE
 MICTYPE_AUTO_ALSA_FALSE
 MICTYPE_AUTO_ALSA_TRUE
 RM
@@ -13627,6 +13629,14 @@ fi
 # altype-specific setup
 
 # set makefile.am conditional variables
+ if test "$altype" = libportaudio; then
+  ALTYPE_PORTAUDIO_TRUE=
+  ALTYPE_PORTAUDIO_FALSE='#'
+else
+  ALTYPE_PORTAUDIO_TRUE='#'
+  ALTYPE_PORTAUDIO_FALSE=
+fi
+
  if test "$altype" = pa-*; then
   ALTYPE_PA_TRUE=
   ALTYPE_PA_FALSE='#'
@@ -13653,6 +13663,23 @@ case $altype in
 $as_echo "#define USE_MIC 1" >>confdefs.h
 
   ;;
+  pa-*)
+    aldesc="PortAudio library (internal)"
+    ADINOBJ="$ADINOBJ src/adin/pa/common/pa_allocation.o src/adin/pa/common/pa_converters.o src/adin/pa/common/pa_cpuload.o src/adin/pa/common/pa_debugprint.o src/adin/pa/common/pa_dither.o src/adin/pa/common/pa_front.o src/adin/pa/common/pa_process.o src/adin/pa/common/pa_ringbuffer.o src/adin/pa/common/pa_skeleton.o src/adin/pa/common/pa_stream.o src/adin/pa/common/pa_trace.o"
+    SOUNDINC="-Isrc/adin/pa/include -Isrc/adin/pa/common"
+    $as_echo "#define USE_MIC 1" >>confdefs.h
+
+    case "$altype" in
+      pa-winmm)
+	      aldesc="$aldesc (WinMM)"
+	      SOUNDINC="$SOUNDINC -DPA_NO_DS -DPA_NO_ASIO"
+        ADINOBJ="$ADINOBJ src/adin/pa/os/win/pa_win_hostapis.o src/adin/pa/os/win/pa_win_util.o src/adin/pa/os/win/pa_win_waveformat.o"
+	      ADINOBJ="$ADINOBJ src/adin/pa/hostapi/wmme/pa_win_wmme.o"
+        SOUNDLIB="$SOUNDLIB -lwinmm"
+      ;;
+      esac
+      ADINOBJ="$ADINOBJ src/adin/adin_portaudio.o"
+      ;;
   alsa)
     if test "$has_alsa" = no; then
       as_fn_error $? "no ALSA header!" "$LINENO" 5
@@ -14156,6 +14183,10 @@ fi
 
 if test -z "${MICTYPE_AUTO_ALSA_TRUE}" && test -z "${MICTYPE_AUTO_ALSA_FALSE}"; then
   as_fn_error $? "conditional \"MICTYPE_AUTO_ALSA\" was never defined.
+Usually this means the macro was only invoked conditionally." "$LINENO" 5
+fi
+if test -z "${ALTYPE_PORTAUDIO_TRUE}" && test -z "${ALTYPE_PORTAUDIO_FALSE}"; then
+  as_fn_error $? "conditional \"ALTYPE_PORTAUDIO\" was never defined.
 Usually this means the macro was only invoked conditionally." "$LINENO" 5
 fi
 if test -z "${ALTYPE_PA_TRUE}" && test -z "${ALTYPE_PA_FALSE}"; then
