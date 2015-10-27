@@ -18,13 +18,8 @@ LT_INIT
 LIBSENT_VERSION=4.3.1
 
 dnl Checks for options
-# !!!!!!
-# specify mic type
-#AC_ARG_WITH(mictype,
-#[  --with-mictype=TYPE     specify mic I/O (oss|alsa|freebsd|coreaudio|sol2|sun4|irix|esd|sp|portaudio|pa-oss|pa-alsa|pa-winmm|pa-dsound|pulseaudio)],,with_mictype=auto)
-AC_ARG_WITH(mictype,
-[  --with-mictype=TYPE     specify mic I/O (alsa|portaudio)],,with_mictype=auto)
-# !!!!!!
+# mic type
+with_mictype=auto
 
 # NetAudio support
 AC_ARG_WITH(netaudio-dir,
@@ -73,8 +68,6 @@ AC_ARG_ENABLE(mbr,
 want_mbr=$enableval
 ,want_mbr=yes)
 
-
-
 dnl enable/disable use of zlib library
 AC_ARG_ENABLE(zlib,
 [  --disable-zlib          disable zlib library],
@@ -85,11 +78,6 @@ dnl libsndfile
 AC_ARG_WITH(sndfile,
 [  --without-sndfile       does not link libsndfile library])
 
-dnl multipath version
-dnl AC_ARG_ENABLE(multipath,
-dnl [  --enable-multipath      Compile as multipath version],
-dnl want_multipath=$enableval
-dnl ,want_multipath=no)
 
 if test "$want_addarray" = yes; then
 	AC_DEFINE(USE_ADDLOG_ARRAY,1,[USE_ADDLOG_ARRAY])
@@ -165,9 +153,6 @@ AC_MSG_RESULT([yes]),
 AC_MSG_RESULT([no]))
 
 dnl Checks for library functions.
-dnl AC_PROG_GCC_TRADITIONAL
-dnl AC_FUNC_VPRINTF
-dnl AC_CHECK_FUNCS(strdup strstr)
 AC_CHECK_FUNC(gethostbyname,,AC_CHECK_LIB(nsl,gethostbyname))
 AC_CHECK_FUNC(connect,,AC_CHECK_LIB(socket, connect,,
 AC_MSG_CHECKING([for connect in -lws2_32])
@@ -201,12 +186,6 @@ case "$host_os" in
       AC_CHECK_HEADERS(sys/asoundlib.h,,
        has_alsa=no
     ))
-# OSS
-#    has_oss=yes
-#    AC_CHECK_HEADERS(sys/soundcard.h,,
-#      AC_CHECK_HEADERS(machine/soundcard.h,,
-#        has_oss=no
-#    ))
     ;;
 esac
 
@@ -227,42 +206,13 @@ if test "$with_mictype" = auto; then
 	  # Linux - availability already checked, set default
 	  if test "$has_alsa" = yes; then
 	     altype=alsa
-#	  elif test "$has_pulseaudio" = yes; then
-#	     altype=pulseaudio
-#	  elif test "$has_oss" = yes; then
-#	     altype=oss
-#	  elif test "$has_esd" = yes; then
-#	     altype=esd
 	  else
-	     #AC_MSG_ERROR([none of alsa/oss/pulseaudio/esd header/lib found!])
 	     AC_MSG_ERROR([alsa header/lib not found!])
 	  fi
 	;;
-  freebsd*)
-	  # FreeBSD (snd driver)
-	  if test "$has_oss" = yes; then
-	      altype=freebsd
-	  elif test "$has_pulseaudio" = yes; then
-	      altype=pulseaudio
-	  else
-	      AC_MSG_ERROR([no soundcard.h or pulseaudio header/lib found!])
-	  fi
-	;;
   darwin*)
-    # MacOSX (CoreAudio); (note: AC_TRY_CPP, replaced with AC_PREPROC_IFELSE. )
-	  AC_TRY_CPP([#include <CoreAudio/CoreAudio.h>],altype=coreaudio)
-	;;
-  solaris2*)
-	  # Solaris2.x Built-in Audio
-	  AC_TRY_CPP([#include <sys/audioio.h>],altype=sol2)
-	;;
-  sunos4*)
-	  # SunOS4 Audio
-	  AC_TRY_CPP([#include <multimedia/libaudio.h>],altype=sun4)
-	;;
-  irix6*)
-   	# O2 (SGI IRIX6.3)
-	  AC_TRY_CPP([#include <audio.h>],altype=irix)
+        # MacOSX (CoreAudio)
+	AC_TRY_CPP([#include <CoreAudio/CoreAudio.h>],altype=coreaudio)
 	;;
   cygwin*|mingw*)
 	  # minGW - portaudio (auto select winmm / dsound)
@@ -282,16 +232,6 @@ case $altype in
     AC_CHECK_LIB(portaudio,Pa_Initialize,AC_CHECK_HEADERS(portaudio.h, pa_system=yes))
     if test "$pa_system" = no; then
       case "$host_os" in
-      linux*)
-        if test "$has_alsa" = yes; then
-           altype="pa-alsa"
-#        else
-#           altype="pa-oss"
-        fi
-      ;;
-      solaris*)
-        altype="pa-solaris"
-      ;;
       cygwin*|mingw*)
         AC_CHECK_LIB(dsound,main,
             AC_CHECK_HEADERS(DSound.h,
@@ -314,19 +254,9 @@ ADINOBJ=""
 adinlist=""
 
 # set makefile.am conditional variables
-#AM_CONDITIONAL([MICTYPE_AUTO_PULSEAUDIO], [test "$with_mictype" = auto -a "$has_pulseaudio" = yes])
 AM_CONDITIONAL([MICTYPE_AUTO_ALSA], [test "$with_mictype" = auto -a "$has_alsa" = yes])
-#AM_CONDITIONAL([MICTYPE_AUTO_OSS], [test "$with_mictype" = auto -a "$has_oss" = yes])
-#AM_CONDITIONAL([MICTYPE_AUTO_ESD], [test "$with_mictype" = auto -a "$has_esd" = yes])
 
 if test "$with_mictype" = auto; then
-#  # if PulseAudio exist, include it
-#  if test "$has_pulseaudio" = yes; then
-#      SOUNDLIB="$SOUNDLIB -lpulse-simple -lpulse"
-#      ADINOBJ="$ADINOBJ src/adin/adin_pulseaudio.c"
-#      AC_DEFINE(HAS_PULSEAUDIO,1,[HAS_PULSEAUDIO])
-#      adinlist="$adinlist pulseaudio"
-#  fi
   # if alsa exist, include it
   if test "$has_alsa" = yes; then
       SOUNDLIB="$SOUNDLIB -lasound"
@@ -334,217 +264,45 @@ if test "$with_mictype" = auto; then
       AC_DEFINE(HAS_ALSA,1,[HAS_ALSA])
       adinlist="$adinlist alsa"
   fi
-  # if oss exist, include it
-#  if test "$has_oss" = yes; then
-#      ADINOBJ="$ADINOBJ src/adin/adin_mic_linux_oss.c"
-#      AC_DEFINE(HAS_OSS,1,[HAS_OSS])
-#      adinlist="$adinlist oss"
-#  fi
-  # if esd exist, include it
-#  if test "$has_esd" = yes; then
-#      SOUNDLIB="$SOUNDLIB -lesd"
-#      ADINOBJ="$ADINOBJ src/adin/adin_esd.c"
-#      AC_DEFINE(HAS_ESD,1,[HAS_ESD])
-#      adinlist="$adinlist esd"
-#  fi
 fi
 
 # altype-specific setup
 
 # set makefile.am conditional variables
-#AM_CONDITIONAL([ALTYPE_AUTO_USE_MIC], [test "$altype" = alsa -o "$altype" = oss -o "$altype" = esd -o "$altype" = pulseaudio])
-
-AM_CONDITIONAL([ALTYPE_NOAUTO_ALSA], [test "$with_mictype" != auto -a "$altype" = alsa])
-#AM_CONDITIONAL([ALTYPE_NOAUTO_PULSEAUDIO], [test "$with_mictype" != auto -a "$altype" = pulseaudio])
-#AM_CONDITIONAL([ALTYPE_NOAUTO_OSS], [test "$with_mictype" != auto -a "$altype" = oss])
-#AM_CONDITIONAL([ALTYPE_NOAUTO_ESD], [test "$with_mictype" != auto -a "$altype" = esd])
-
 AM_CONDITIONAL([ALTYPE_PA], [test "$altype" = pa-*])
 AM_CONDITIONAL([ALTYPE_PA_WINMM], [test "$altype" = pa-winmm])
 
 case $altype in
-    sp)
-      aldesc="spAudio"
-      ADINOBJ="$ADINOBJ src/adin/adin_mic_sp.c"
-      AC_DEFINE(USE_MIC,1,[USE_MIC])
-      AC_DEFINE(USE_SPLIB,1,[USE_SPLIB])
-      case "$host_os" in
-        linux*)
-          AC_CHECK_LIB(spa.linux, spInitAudio,
-              SOUNDLIB="$SOUNDLIB -lspa.linux -lspb.linux",
-            AC_CHECK_LIB(spa.linux-glibc, spInitAudio,
-                SOUNDLIB="$SOUNDLIB -lspa.linux-glibc -lspb.linux-glibc",
-              AC_MSG_ERROR([spAudio library not found!]),
-              [-lspb.linux-glibc -lm]),
-            [-lspb.linux -lm])
-        ;;
-        solaris2*)
-          SOUNDLIB="$SOUNDLIB -L/usr/local/lib -lspa.sun -lspb.sun"
-        ;;
-        sunos4*)
-          SOUNDLIB="$SOUNDLIB -L/usr/local/lib -lspa.sun -lspb.sun -laudio"
-        ;;
-        irix6*)
-          SOUNDLIB="$SOUNDLIB -L/usr/local/lib -lspa.sgi -lspb.sgi -laudio"
-        ;;
-        cygwin*)
-          SOUNDLIB="$SOUNDLIB -L/usr/local/lib -lspa.win -lspb.win -lwinmm -liconv"
-        ;;
-        darwin*)
-          SOUNDLIB="$SOUNDLIB -arch ppc -framework CoreAudio -framework Carbon -L/usr/local/lib -lspa.mac -lspb.mac"
-        ;;
-      esac
-    ;;
-    libportaudio)
-      aldesc="PortAudio library (external)"
-      ADINOBJ="$ADINOBJ src/adin/adin_portaudio.c"
-      SOUNDLIB="$SOUNDLIB -lportaudio"
-      AC_DEFINE(USE_MIC,1,[USE_MIC])
-    ;;
-    pa-*)
-      aldesc="PortAudio library (internal)"
-      ADINOBJ="$ADINOBJ src/adin/pa/common/pa_allocation.c src/adin/pa/common/pa_converters.c src/adin/pa/common/pa_cpuload.c src/adin/pa/common/pa_debugprint.c src/adin/pa/common/pa_dither.c src/adin/pa/common/pa_front.c src/adin/pa/common/pa_process.c src/adin/pa/common/pa_ringbuffer.c src/adin/pa/common/pa_skeleton.c src/adin/pa/common/pa_stream.c src/adin/pa/common/pa_trace.c"
-      SOUNDINC="-Isrc/adin/pa/include -Isrc/adin/pa/common"
-      AC_DEFINE(USE_MIC,1,[USE_MIC])
-      case "$altype" in
-        pa-winmm)
-	        aldesc="$aldesc (WinMM)"
-	        SOUNDINC="$SOUNDINC -DPA_NO_DS -DPA_NO_ASIO"
-          ADINOBJ="$ADINOBJ src/adin/pa/os/win/pa_win_hostapis.c src/adin/pa/os/win/pa_win_util.c src/adin/pa/os/win/pa_win_waveformat.c"
-	        ADINOBJ="$ADINOBJ src/adin/pa/hostapi/wmme/pa_win_wmme.c"
-          SOUNDLIB="$SOUNDLIB -lwinmm"
-        ;;
-        pa-dsound)
-	        aldesc="$aldesc (DirectSound)"
-	        SOUNDINC="$SOUNDINC -Isrc/adin/pa/os/win -DPA_NO_ASIO"
-          ADINOBJ="$ADINOBJ src/adin/pa/os/win/pa_win_hostapis.c src/adin/pa/os/win/pa_win_util.c src/adin/pa/os/win/pa_win_waveformat.c"
-	        ADINOBJ="$ADINOBJ src/adin/pa/hostapi/wmme/pa_win_wmme.c"
-	        ADINOBJ="$ADINOBJ src/adin/pa/hostapi/dsound/pa_win_ds.c src/adin/pa/hostapi/dsound/pa_win_ds_dynlink.c"
-          SOUNDLIB="$SOUNDLIB -lwinmm -ldsound -lole32"
-        ;;
-#        pa-alsa)
-#	        aldesc="$aldesc (Unix/ALSA)"
-#	        SOUNDINC="$SOUNDINC -Isrc/adin/pa/os/unix -DPA_USE_ALSA"
-#	        ADINOBJ="$ADINOBJ src/adin/pa/os/unix/pa_unix_hostapis.c src/adin/pa/os/unix/pa_unix_util.c"
-#          ADINOBJ="$ADINOBJ src/adin/pa/hostapi/alsa/pa_linux_alsa.c"
-#          SOUNDLIB="$SOUNDLIB -lpthread -lasound"
-#        ;;
-#        pa-oss)
-#	        aldesc="$aldesc (Unix/OSS)"
-#	        SOUNDINC="$SOUNDINC -Isrc/adin/pa/os/unix -DPA_USE_OSS"
-#	        ADINOBJ="$ADINOBJ src/adin/pa/os/unix/pa_unix_hostapis.c src/adin/pa/os/unix/pa_unix_util.c"
-#          ADINOBJ="$ADINOBJ src/adin/pa/hostapi/oss/pa_unix_oss.c"
-#          SOUNDLIB="$SOUNDLIB -lpthread"
-#        ;;
-        pa-solaris)
-	        aldesc="$aldesc (Solaris)"
-          ADINOBJ="$ADINOBJ src/adin/pa/pa_unix.c src/adin/pa/pa_unix_solaris.c"
-          SOUNDLIB="$SOUNDLIB -lpthread"
-      ;;
-      esac
-      ADINOBJ="$ADINOBJ src/adin/adin_portaudio.c"
-    ;;
-#    oss)
-#      if test "$has_oss" = no; then
-#        AC_MSG_ERROR([no OSS header!])
-#      fi
-#      aldesc="Open Sound System compatible"
-#      AC_DEFINE(USE_MIC,1,[USE_MIC])
-#      ADINOBJ="$ADINOBJ src/adin/adin_mic_linux.c"
-#      if test "$with_mictype" != auto; then
-#	      ADINOBJ="$ADINOBJ src/adin/adin_mic_linux_oss.c"
-#	      AC_DEFINE(HAS_OSS,1,[HAS_OSS])
-#        adinlist="$adinlist oss"
-#      fi
-#    ;;
-    alsa)
-      if test "$has_alsa" = no; then
-        AC_MSG_ERROR([no ALSA header!])
-      fi
-      aldesc="Advanced Linux Sound Architecture"
-      AC_DEFINE(USE_MIC,1,[USE_MIC])
-      ADINOBJ="$ADINOBJ src/adin/adin_mic_linux.c"
-      if test "$with_mictype" != auto; then
-	      SOUNDLIB="$SOUNDLIB -lasound"
-	      ADINOBJ="$ADINOBJ src/adin/adin_mic_linux_alsa.c"
-	      AC_DEFINE(HAS_ALSA,1,[HAS_ALSA])
-        adinlist="$adinlist alsa"
-      fi
-    ;;
-#    esd)
-#      if test "$has_esd" = no; then
-#        AC_MSG_ERROR([no ESounD header!])
-#      fi
-#      aldesc="EsoundD - The Enlightened Sound Daemon"
-#      AC_DEFINE(USE_MIC,1,[USE_MIC])
-#      ADINOBJ="$ADINOBJ src/adin/adin_mic_linux.c"
-#      if test "$with_mictype" != auto; then
-#	      SOUNDLIB="$SOUNDLIB -lesd"
-#	      ADINOBJ="$ADINOBJ src/adin/adin_esd.c"
-#	      AC_DEFINE(HAS_ESD,1,[HAS_ESD])
-#        adinlist="$adinlist esd"
-#      fi
-#    ;;
-#    pulseaudio)
-#      if test "$has_pulseaudio" = no; then
-#        AC_MSG_ERROR([no PulseAudio header!])
-#      fi
-#      aldesc="PulseAudio"
-#      AC_DEFINE(USE_MIC,1,[USE_MIC])
-#      ADINOBJ="$ADINOBJ src/adin/adin_mic_linux.c"
-#      if test "$with_mictype" != auto; then
-#	      SOUNDLIB="$SOUNDLIB -lpulse-simple -lpulse"
-#	      ADINOBJ="$ADINOBJ src/adin/adin_pulseaudio.c"
-#	      AC_DEFINE(HAS_PULSEAUDIO,1,[HAS_PULSEAUDIO])
-#        adinlist="$adinlist pulseaudio"
-#      fi
-#    ;;
-  freebsd)
-	  if test "$has_oss" = no; then
-	    AC_MSG_ERROR([neither sys/soundcard.h nor machine/soundcard.h exist])
-	  fi
-	  aldesc="FreeBSD snd driver"
-	  ADINOBJ="$ADINOBJ src/adin/adin_mic_freebsd.c"
+  libportaudio)
+    aldesc="PortAudio library (external)"
+    ADINOBJ="$ADINOBJ src/adin/adin_portaudio.c"
+    SOUNDLIB="$SOUNDLIB -lportaudio"
     AC_DEFINE(USE_MIC,1,[USE_MIC])
-	  if test "$with_mictype" != auto; then
-	     ADINOBJ="$ADINOBJ src/adin/adin_mic_linux_oss.c"
-	     AC_DEFINE(HAS_OSS,1,[HAS_OSS])
-       adinlist="$adinlist oss"
-	  fi
-	;;
-  coreaudio)
-	  aldesc="MacOSX CoreAudio"
-	  ADINOBJ="$ADINOBJ src/adin/adin_mic_darwin_coreaudio.c"
-    AC_DEFINE(USE_MIC,1,[USE_MIC])
-	  SOUNDLIB="$SOUNDLIB -Wl,-framework -Wl,CoreServices -Wl,-framework -Wl,CoreAudio -Wl,-framework -Wl,AudioUnit -Wl,-framework -Wl,AudioToolbox"
-	;;
-  sol2)
-	  aldesc="Solaris2.x audio interface"
-	  ADINOBJ="$ADINOBJ src/adin/adin_mic_sol2.c"
-    AC_DEFINE(USE_MIC,1,[USE_MIC])
-	;;
-  sun4)
-  	aldesc="SunOS4.x audio interface"
-	  ADINOBJ="$ADINOBJ src/adin/adin_mic_sun4.c"
-    AC_DEFINE(USE_MIC,1,[USE_MIC])
-	  SOUNDLIB="$SOUNDLIB -laudio"
-	;;
-  irix)
-	  aldesc="IRIX6.x audio interface"
-	  ADINOBJ="$ADINOBJ src/adin/adin_mic_o2.c"
-    AC_DEFINE(USE_MIC,1,[USE_MIC])
-	  SOUNDLIB="$SOUNDLIB -laudio"
   ;;
-#    osf1)
-#	aldesc="Digital/Unix 4.0"
-#	ADINOBJ=src/adin/adin_mic_osf1.c
-#	AC_DEFINE(USE_MIC,1,[USE_MIC])
-#	SOUNDLIB="-L/usr/opt/MME242/lib -lmme")
-#	;;
+  alsa)
+    if test "$has_alsa" = no; then
+      AC_MSG_ERROR([no ALSA header!])
+    fi
+    aldesc="Advanced Linux Sound Architecture"
+    AC_DEFINE(USE_MIC,1,[USE_MIC])
+    ADINOBJ="$ADINOBJ src/adin/adin_mic_linux.c"
+    if test "$with_mictype" != auto; then
+      SOUNDLIB="$SOUNDLIB -lasound"
+      ADINOBJ="$ADINOBJ src/adin/adin_mic_linux_alsa.c"
+      AC_DEFINE(HAS_ALSA,1,[HAS_ALSA])
+      adinlist="$adinlist alsa"
+    fi
+  ;;
+  coreaudio)
+    aldesc="MacOSX CoreAudio"
+    ADINOBJ="$ADINOBJ src/adin/adin_mic_darwin_coreaudio.c"
+    AC_DEFINE(USE_MIC,1,[USE_MIC])
+    SOUNDLIB="$SOUNDLIB -Wl,-framework -Wl,CoreServices -Wl,-framework -Wl,CoreAudio -Wl,-framework -Wl,AudioUnit -Wl,-framework -Wl,AudioToolbox"
+  ;;
   *)
-	  aldesc="no support"
-	  AC_MSG_ERROR([mictype not supported, or specified type not exist])
-	;;
+    aldesc="no support"
+    AC_MSG_ERROR([mictype not supported, or specified type not exist])
+  ;;
 esac
 
 dnl check for NetAudio support
@@ -595,13 +353,6 @@ if test "$use_zlib" = no; then
     AC_DEFINE(ZCAT, ["gzip -d -c"], [ZCAT])
   fi
 fi
-
-dnl check for iconv library
-dnl macro "AM_ICONV" will check for availability of iconv function,
-dnl and if found, define HAVE_ICONV.  If the iconv function is defined
-dnl in libiconv, it defines LIBICONV="-liconv".
-dnl it also detects if function is const and set the result to ICONV_CONST.
-dnl it also adds "--with-libiconv-prefix=DIR" option.
 
 dnl check for libsndfile
 wavefile_support="RAW and WAV only"

@@ -106,45 +106,12 @@ lib_LTLIBRARIES = libsent.la
 libsent_la_CFLAGS = -Wall -g -O2
 libsent_la_CPPFLAGS = -I$(includedir) -I$(srcdir)/include 
 libsent_la_SOURCES = $(SRC)
-libsent_la_LDFLAGS = -lasound -lm -lz
+libsent_la_LDFLAGS = -lm -lz
 
-# these are needed so that voxshell.c compiles properly
-# where: mictype=auto, alsa becomes primary, still need source from other 3
-# to compile voxshell.
-# mictype=auto includes source for alsa, pulseaudio, oss & esd:
-#if MICTYPE_AUTO_ALSA
-#  libsent_la_SOURCES += src/adin/adin_mic_linux_alsa.c
-#endif
-#if MICTYPE_AUTO_PULSEAUDIO
-#  libsent_la_SOURCES += src/adin/adin_pulseaudio.c
-#endif
-#if MICTYPE_AUTO_OSS
-#  libsent_la_SOURCES += src/adin/adin_mic_linux_oss.c
-#endif
-#if MICTYPE_AUTO_ESD
-#  libsent_la_SOURCES += src/adin/adin_esd.c
-#endif
-#if ALTYPE_AUTO_USE_MIC
-#  libsent_la_SOURCES += src/adin/adin_mic_linux.c
-#endif
 if MICTYPE_AUTO_ALSA
   libsent_la_SOURCES += src/adin/adin_mic_linux.c src/adin/adin_mic_linux_alsa.c
+  libsent_la_LDFLAGS += -lasound
 endif
-
-
-# these were selected via '--with-mictype' user parameter: 
-#if ALTYPE_NOAUTO_ALSA
-#  libsent_la_SOURCES += src/adin/adin_mic_linux.c src/adin/adin_mic_linux_alsa.c
-#endif
-#if ALTYPE_NOAUTO_PULSEAUDIO
-#  libsent_la_SOURCES += src/adin/adin_mic_linux.c src/adin/adin_pulseaudio.c
-#endif
-#if ALTYPE_NOAUTO_OSS
-#  libsent_la_SOURCES += src/adin/adin_mic_linux.c src/adin/adin_mic_linux_oss.c
-#endif
-#if ALTYPE_NOAUTO_ESD
-#  libsent_la_SOURCES += src/adin/adin_mic_linux.c src/adin/adin_esd.c
-#endif
 
 if ALTYPE_PA
   libsent_la_SOURCES += src/adin/pa/common/pa_allocation.c src/adin/pa/common/pa_converters.c src/adin/pa/common/pa_cpuload.c src/adin/pa/common/pa_debugprint.c src/adin/pa/common/pa_dither.c src/adin/pa/common/pa_front.c src/adin/pa/common/pa_process.c src/adin/pa/common/pa_ringbuffer.c src/adin/pa/common/pa_skeleton.c src/adin/pa/common/pa_stream.c src/adin/pa/common/pa_trace.c

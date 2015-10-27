@@ -27,9 +27,6 @@
 /* HAS_ALSA */
 #undef HAS_ALSA
 
-/* HAS_OSS */
-#undef HAS_OSS
-
 /* Define to 1 if you have the <alsa/asoundlib.h> header file. */
 #undef HAVE_ALSA_ASOUNDLIB_H
 
@@ -156,9 +153,6 @@
 
 /* USE_NETAUDIO */
 #undef USE_NETAUDIO
-
-/* USE_SPLIB */
-#undef USE_SPLIB
 
 /* Version number of package */
 #undef VERSION
