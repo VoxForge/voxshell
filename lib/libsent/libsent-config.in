@@ -66,7 +66,9 @@ while test $# -gt 0; do
 	    echo $sound_inc
 	    ;;
 	--libs)
-	    echo -lsent $sound_libs @LIBS@ -lm
+      # lsent not required since using libtool to link libsent library
+	    #echo -lsent $sound_libs @LIBS@ -lm
+	    echo $sound_libs @LIBS@ -lm
 	    ;;
 	--version)
 	    echo "${version}"

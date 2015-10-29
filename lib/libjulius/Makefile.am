@@ -56,7 +56,7 @@ libjulius_la_CFLAGS = -Wall -g -O2
 libjulius_la_CPPFLAGS = -Iinclude -I$(LIBSENT)/include  `$(LIBSENT)/libsent-config --cflags`
 libjulius_la_SOURCES = $(SRC) 
 libjulius_la_LIBADD= ../libsent/libsent.la
-libjulius_la_LDFLAGS = -L$(LIBSENT) `$(LIBSENT)/libsent-config --libs` 
+libjulius_la_LDFLAGS = -L$(LIBSENT) `$(LIBSENT)/libsent-config --libs`
 
 ACLOCAL_AMFLAGS=-I m4
 
