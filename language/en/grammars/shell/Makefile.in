@@ -291,9 +291,6 @@ dist_app_DATA = $(TARGETS)
 appscriptdir = $(datadir)/@GRAM_INST_DIR@/$(APP)/scripts
 dist_appscript_DATA = $(APPSCRIPTS)
 
-#install-data-hook:
-#	chmod +x $(appscriptdir)/*
-
 ##### files to be included in 'make dist'
 EXTRA_DIST = \
 $(SOURCES) \
@@ -525,7 +522,8 @@ info: info-am
 info-am:
 
 install-data-am: install-dist_appDATA install-dist_appscriptDATA
-
+	@$(NORMAL_INSTALL)
+	$(MAKE) $(AM_MAKEFLAGS) install-data-hook
 install-dvi: install-dvi-am
 
 install-dvi-am:
@@ -570,21 +568,21 @@ ps-am:
 
 uninstall-am: uninstall-dist_appDATA uninstall-dist_appscriptDATA
 
-.MAKE: install-am install-strip
+.MAKE: install-am install-data-am install-strip
 
 .PHONY: CTAGS GTAGS TAGS all all-am check check-am clean clean-generic \
 	clean-libtool cscopelist-am ctags ctags-am distclean \
 	distclean-generic distclean-libtool distclean-tags distdir dvi \
 	dvi-am html html-am info info-am install install-am \
-	install-data install-data-am install-dist_appDATA \
-	install-dist_appscriptDATA install-dvi install-dvi-am \
-	install-exec install-exec-am install-html install-html-am \
-	install-info install-info-am install-man install-pdf \
-	install-pdf-am install-ps install-ps-am install-strip \
-	installcheck installcheck-am installdirs maintainer-clean \
-	maintainer-clean-generic mostlyclean mostlyclean-generic \
-	mostlyclean-libtool pdf pdf-am ps ps-am tags tags-am uninstall \
-	uninstall-am uninstall-dist_appDATA \
+	install-data install-data-am install-data-hook \
+	install-dist_appDATA install-dist_appscriptDATA install-dvi \
+	install-dvi-am install-exec install-exec-am install-html \
+	install-html-am install-info install-info-am install-man \
+	install-pdf install-pdf-am install-ps install-ps-am \
+	install-strip installcheck installcheck-am installdirs \
+	maintainer-clean maintainer-clean-generic mostlyclean \
+	mostlyclean-generic mostlyclean-libtool pdf pdf-am ps ps-am \
+	tags tags-am uninstall uninstall-am uninstall-dist_appDATA \
 	uninstall-dist_appscriptDATA
 
 
@@ -592,7 +590,9 @@ all: $(TARGETS)
 
 $(TARGETS): $(SOURCES)
 	julia $(abs_top_builddir)/@COMPILE_GRAMMAR@ $(APP) $(abs_top_builddir)/@MKFA_DIR@ $(abs_top_builddir)/@DFA_MINIMIZE_DIR@ $(abs_top_builddir)/@VOXFORGE_DICT@
-	chmod +x $(APPSCRIPTS)
+
+install-data-hook:
+	chmod +x $(appscriptdir)/*
 
 # Tell versions [3.59,3.63) of GNU make to not export all variables.
 # Otherwise a system limit (for SysV at least) may be exceeded.

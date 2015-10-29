@@ -18,9 +18,8 @@ dist_app_DATA = $(TARGETS)
 appscriptdir=$(datadir)/@GRAM_INST_DIR@/$(APP)/scripts
 dist_appscript_DATA = $(APPSCRIPTS)
 
-#chmod +x $(appscriptdir)/*
-#install-data-hook:
-#	chmod +x scripts/*
+install-data-hook:
+	chmod +x $(appscriptdir)/*
 
 ##### files to be included in 'make dist'
 EXTRA_DIST = \
