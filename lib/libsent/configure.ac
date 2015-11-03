@@ -122,6 +122,7 @@ dnl Checks for compiler.
 AC_PROG_CC
 AC_PROG_CPP
 AM_PROG_CC_C_O
+AC_PROG_CXX
 
 dnl Checks for programs.
 AC_PROG_INSTALL

@@ -8,3 +8,4 @@ bin/*
 *.dict
 *.term
 config.status
+.deps

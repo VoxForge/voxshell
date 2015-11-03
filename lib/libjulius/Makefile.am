@@ -83,4 +83,5 @@ include/julius/jfunc.h \
 include/julius/juliuslib.h \
 include/julius/plugin.h \
 include/julius/stamp-h1 \
-include/julius/wchmm.h
+include/julius/wchmm.h 
+
