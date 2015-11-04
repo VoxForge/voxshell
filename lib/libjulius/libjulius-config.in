@@ -43,7 +43,8 @@ while test $# -gt 0; do
 	    echo @CPPFLAGS@
 	    ;;
 	--libs)
-	    echo -ljulius @LDFLAGS@ @LIBS@
+	    #echo -ljulius @LDFLAGS@ @LIBS@
+	    echo  @LDFLAGS@ @LIBS@
 	    ;;
 	--version)
 	    echo "${version}"

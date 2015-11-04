@@ -290,7 +290,8 @@ libjulius_la_CFLAGS = -Wall -g -O2
 AM_CPPFLAGS = -Iinclude -I$(LIBSENT)/include `$(LIBSENT)/libsent-config --cflags`
 dfa_minimize_SOURCES = dfa_minimize.c
 dfa_minimize_LDADD = $(LIBSENT)/libsent.la
-dfa_minimize_LDFLAGS = -L$(libdir) -lpulse-simple -lpulse -lasound -lz -lm
+#dfa_minimize_LDFLAGS = -L$(libdir) -lpulse-simple -lpulse -lasound -lz -lm
+dfa_minimize_LDFLAGS = `$(LIBSENT)/libsent-config --libs`
 all: all-am
 
 .SUFFIXES:
