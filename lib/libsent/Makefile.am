@@ -100,6 +100,14 @@ include/sent/adin.h \
 src/adin/lpfcoef_2to1.h \
 src/adin/lpfcoef_3to4.h 
 
+# re: "src/net/server-client.c"
+# (see http://stackoverflow.com/questions/4638604/where-does-one-get-the-sys-socket-h-header-source-file)
+# The header <sys/socket.h> is defined in IEEE Std. 1003.1 (POSIX), but 
+# sadly Windows is non-compliant with the POSIX standard. The MinGW compiler 
+# is a port of GCC for compiling Windows applications, and therefore does 
+# not include these POSIX system headers.
+# libsent uses winsock2.h instead...
+
 HDR = \
 include/sent/adin.h \
 include/sent/hmm.h \
@@ -136,16 +144,22 @@ if ALTYPE_PORTAUDIO
   libsent_la_SOURCES += src/adin/adin_portaudio.c
   libsent_la_LDFLAGS += -lportaudio
 endif
-if ALTYPE_PA
+#if ALTYPE_PA
+#  libsent_la_SOURCES += src/adin/pa/common/pa_allocation.c src/adin/pa/common/pa_converters.c src/adin/pa/common/pa_cpuload.c src/adin/pa/common/pa_debugprint.c src/adin/pa/common/pa_dither.c src/adin/pa/common/pa_front.c src/adin/pa/common/pa_process.c src/adin/pa/common/pa_ringbuffer.c src/adin/pa/common/pa_skeleton.c src/adin/pa/common/pa_stream.c src/adin/pa/common/pa_trace.c
+#  libsent_la_CPPFLAGS += -Isrc/adin/pa/include -Isrc/adin/pa/common
+#endif
+if ALTYPE_PA_WINMM
   libsent_la_SOURCES += src/adin/pa/common/pa_allocation.c src/adin/pa/common/pa_converters.c src/adin/pa/common/pa_cpuload.c src/adin/pa/common/pa_debugprint.c src/adin/pa/common/pa_dither.c src/adin/pa/common/pa_front.c src/adin/pa/common/pa_process.c src/adin/pa/common/pa_ringbuffer.c src/adin/pa/common/pa_skeleton.c src/adin/pa/common/pa_stream.c src/adin/pa/common/pa_trace.c
   libsent_la_CPPFLAGS += -Isrc/adin/pa/include -Isrc/adin/pa/common
-endif
-if ALTYPE_PA_WINMM
+
   libsent_la_CPPFLAGS += -DPA_NO_DS -DPA_NO_ASIO
   libsent_la_SOURCES += src/adin/pa/os/win/pa_win_hostapis.c src/adin/pa/os/win/pa_win_util.c src/adin/pa/os/win/pa_win_waveformat.c
   libsent_la_SOURCES += src/adin/pa/hostapi/wmme/pa_win_wmme.c
   libsent_la_LDFLAGS += -lwinmm
   libsent_la_SOURCES += src/adin/adin_portaudio.c
+endif
+if HAS_WINSOCK2
+  libsent_la_LDFLAGS += -lws2_32
 endif
 
 ACLOCAL_AMFLAGS=-I m4

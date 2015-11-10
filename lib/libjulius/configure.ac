@@ -10,9 +10,20 @@ dnl
 AC_INIT([libjulius], [4.3.1], [contact@voxforge.org])
 AC_CONFIG_HEADER(include/julius/config.h)
 AC_CONFIG_AUX_DIR(../support)
+
+# if get error: 
+#   libtoolize: AC_CONFIG_MACRO_DIR([m4]) conflicts with ACLOCAL_AMFLAGS=-I m4
+# solution:
+#   dos2unix configure.ac && dos2unix Makefile.am
+# Error is caused by using CRLFs in Makefile.am. "m4<CR>" != "m4" and thus the 
+# libtoolize script will produce an error.
+# (http://pete.akeo.ie/2010/12/that-darn-libtoolize-acconfigmacrodirm4.html)
 AC_CONFIG_MACRO_DIR([m4])
+
 AM_INIT_AUTOMAKE([foreign -Wall -Werror subdir-objects])
-AM_PROG_AR
+#AM_PROG_AR # don't use in mingw/ works on cygwin/ required for Linux
+m4_ifdef([AM_PROG_AR], [AM_PROG_AR])
+
 LT_INIT
 
 JULIUS_PRODUCTNAME=JuliusLib

@@ -34,12 +34,13 @@ function reverse_grammar(rgramfile,gramfile)
 
       write(rgramfile_fh, left * ":")
       write(rgramfile_fh, join(reverse_category_arr," ")  )
-      if ismatch(r"\r$", lineln) # windows line ending
-        write(rgramfile_fh, "\n\r")
-      else
+# does not work in cygwin
+#      if ismatch(r"\r$", lineln) # windows line ending
+#        write(rgramfile_fh, "\n\r")
+#      else
         write(rgramfile_fh, "\n")
 
-      end
+#      end
       n=n+1
     end
   end
@@ -214,23 +215,23 @@ function vfvoca2dict(vocafile,dic,dictfile)
   println("generated: $dictfile")
 end
 
-function main (grammar_prefix, mkfa, dfa_minimize, voxforge_dict)
+function main (grammar_prefix, gramfile, vocafile, termfile, dfafile, dictfile, mkfa, dfa_minimize, voxforge_dict)
   workingfolder=mktempdir()
-
+  println("workingfolder: $(workingfolder)")
   rgramfile= "$(workingfolder)/g$(getpid()).grammar"
-  gramfile="$(grammar_prefix).grammar"
-  vocafile=grammar_prefix * ".vox"
-  termfile=grammar_prefix * ".term"
+#  gramfile="$(grammar_prefix).grammar"
+#  vocafile=grammar_prefix * ".vox"
+#  termfile=grammar_prefix * ".term"
   tmpvocafile="$(workingfolder)/g$(getpid()).vox"
-  dfafile=grammar_prefix * ".dfa"
-  dictfile="$(grammar_prefix).dict"
+#  dfafile=grammar_prefix * ".dfa"
+#  dictfile="$(grammar_prefix).dict"
   headerfile="$(workingfolder)/g$(getpid()).h"
 
   reverse_grammar(rgramfile,gramfile)
-  dictfile="$(grammar_prefix).dict"
+
 
   make_category_voca(vocafile,termfile,tmpvocafile)
-  println("dir $(pwd())")
+  println("dir $(pwd())") # !!!!!!
   # mkfa outputs dfafile.tmp and headerfile.h (not sure what it is used for)
   run(`$mkfa -e1 -fg $rgramfile -fv $tmpvocafile -fo $(dfafile).tmp -fh $headerfile`)
   # dfa_minimize compresses dfafile.tmp (if it can) to .dfa file
@@ -245,18 +246,20 @@ function main (grammar_prefix, mkfa, dfa_minimize, voxforge_dict)
 end
 
 if length(ARGS) > 0 
-  grammar_prefix=ARGS[1] 
   grammar_folder=ARGS[1] 
-  mkfa_dir=ARGS[2]
-  dfa_minimize_dir=ARGS[3]  
-  voxforge_dict=ARGS[4] 
+  grammar_prefix=ARGS[2] 
+  mkfa_dir=ARGS[3]
+  dfa_minimize_dir=ARGS[4]  
+  voxforge_dict=ARGS[5] 
 
   # grammar prefix must be same for .vox and .grammar files
-  if ! isfile(grammar_prefix * ".grammar")
-    error("can't find gramfile file: $(grammar_folder)/$(grammar_prefix).grammar")
+  gramfile="$(grammar_folder)/$(grammar_prefix).grammar"
+  if ! isfile(gramfile)
+    error("can't find gramfile file: $(gramfile)")
   end
-  if ! isfile(grammar_prefix * ".vox")
-    error("can't find voca file: $(grammar_prefix).vox")
+  vocafile="$(grammar_folder)/$(grammar_prefix).vox"
+  if ! isfile(vocafile)
+    error("can't find vox file: $(vocafile)")
   end
 
   mkfa= @windows ? "$(mkfa_dir)/mkfa.exe" : "$(mkfa_dir)/mkfa"
@@ -271,11 +274,15 @@ if length(ARGS) > 0
   if ! isfile(voxforge_dict)
     error("can't find voxforge_dict file: $(voxforge_dict)")
   end
-  if length(ARGS) > 4
+  if length(ARGS) > 5
     error("mkdfa: too many arguments for call from command line")
   end
 
-  main(grammar_prefix, mkfa, dfa_minimize, voxforge_dict)
+  termfile="$(grammar_folder)/$(grammar_prefix).term"
+  dfafile="$(grammar_folder)/$(grammar_prefix).dfa"
+  dictfile="$(grammar_folder)/$(grammar_prefix).dict"
+
+  main(grammar_prefix, gramfile, vocafile, termfile, dfafile, dictfile, mkfa, dfa_minimize, voxforge_dict)
 else
   println("must be called from command line")
   println("usage: juliua compile_grammar.jl grammarPrefixWithPath mkfaFolder voxforge_dict")

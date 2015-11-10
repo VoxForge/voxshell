@@ -2691,6 +2691,15 @@ am__tar='$${TAR-tar} chof - "$$tardir"' am__untar='$${TAR-tar} xf -'
 
 
 
+# if get error:
+#   libtoolize: AC_CONFIG_MACRO_DIR([m4]) conflicts with ACLOCAL_AMFLAGS=-I m4
+# solution:
+#   dos2unix configure.ac && dos2unix Makefile.am
+# Error is caused by using CRLFs in Makefile.am. "m4<CR>" != "m4" and thus the
+# libtoolize script will produce an error.
+# (http://pete.akeo.ie/2010/12/that-darn-libtoolize-acconfigmacrodirm4.html)
+
+
 
 ac_config_headers="$ac_config_headers config.h"
 

@@ -83,16 +83,32 @@ host_triplet = @host@
 @MICTYPE_AUTO_ALSA_TRUE@am__append_2 = -lasound
 @ALTYPE_PORTAUDIO_TRUE@am__append_3 = src/adin/adin_portaudio.c
 @ALTYPE_PORTAUDIO_TRUE@am__append_4 = -lportaudio
-@ALTYPE_PA_TRUE@am__append_5 = src/adin/pa/common/pa_allocation.c src/adin/pa/common/pa_converters.c src/adin/pa/common/pa_cpuload.c src/adin/pa/common/pa_debugprint.c src/adin/pa/common/pa_dither.c src/adin/pa/common/pa_front.c src/adin/pa/common/pa_process.c src/adin/pa/common/pa_ringbuffer.c src/adin/pa/common/pa_skeleton.c src/adin/pa/common/pa_stream.c src/adin/pa/common/pa_trace.c
-@ALTYPE_PA_TRUE@am__append_6 = -Isrc/adin/pa/include -Isrc/adin/pa/common
-@ALTYPE_PA_WINMM_TRUE@am__append_7 = -DPA_NO_DS -DPA_NO_ASIO
-@ALTYPE_PA_WINMM_TRUE@am__append_8 =  \
+#if ALTYPE_PA
+#  libsent_la_SOURCES += src/adin/pa/common/pa_allocation.c src/adin/pa/common/pa_converters.c src/adin/pa/common/pa_cpuload.c src/adin/pa/common/pa_debugprint.c src/adin/pa/common/pa_dither.c src/adin/pa/common/pa_front.c src/adin/pa/common/pa_process.c src/adin/pa/common/pa_ringbuffer.c src/adin/pa/common/pa_skeleton.c src/adin/pa/common/pa_stream.c src/adin/pa/common/pa_trace.c
+#  libsent_la_CPPFLAGS += -Isrc/adin/pa/include -Isrc/adin/pa/common
+#endif
+@ALTYPE_PA_WINMM_TRUE@am__append_5 =  \
+@ALTYPE_PA_WINMM_TRUE@	src/adin/pa/common/pa_allocation.c \
+@ALTYPE_PA_WINMM_TRUE@	src/adin/pa/common/pa_converters.c \
+@ALTYPE_PA_WINMM_TRUE@	src/adin/pa/common/pa_cpuload.c \
+@ALTYPE_PA_WINMM_TRUE@	src/adin/pa/common/pa_debugprint.c \
+@ALTYPE_PA_WINMM_TRUE@	src/adin/pa/common/pa_dither.c \
+@ALTYPE_PA_WINMM_TRUE@	src/adin/pa/common/pa_front.c \
+@ALTYPE_PA_WINMM_TRUE@	src/adin/pa/common/pa_process.c \
+@ALTYPE_PA_WINMM_TRUE@	src/adin/pa/common/pa_ringbuffer.c \
+@ALTYPE_PA_WINMM_TRUE@	src/adin/pa/common/pa_skeleton.c \
+@ALTYPE_PA_WINMM_TRUE@	src/adin/pa/common/pa_stream.c \
+@ALTYPE_PA_WINMM_TRUE@	src/adin/pa/common/pa_trace.c \
 @ALTYPE_PA_WINMM_TRUE@	src/adin/pa/os/win/pa_win_hostapis.c \
 @ALTYPE_PA_WINMM_TRUE@	src/adin/pa/os/win/pa_win_util.c \
 @ALTYPE_PA_WINMM_TRUE@	src/adin/pa/os/win/pa_win_waveformat.c \
 @ALTYPE_PA_WINMM_TRUE@	src/adin/pa/hostapi/wmme/pa_win_wmme.c \
 @ALTYPE_PA_WINMM_TRUE@	src/adin/adin_portaudio.c
-@ALTYPE_PA_WINMM_TRUE@am__append_9 = -lwinmm
+@ALTYPE_PA_WINMM_TRUE@am__append_6 = -Isrc/adin/pa/include \
+@ALTYPE_PA_WINMM_TRUE@	-Isrc/adin/pa/common -DPA_NO_DS \
+@ALTYPE_PA_WINMM_TRUE@	-DPA_NO_ASIO
+@ALTYPE_PA_WINMM_TRUE@am__append_7 = -lwinmm
+@HAS_WINSOCK2_TRUE@am__append_8 = -lws2_32
 subdir = .
 DIST_COMMON = $(srcdir)/Makefile.in $(srcdir)/Makefile.am \
 	$(top_srcdir)/configure $(am__configure_deps) \
@@ -294,24 +310,24 @@ am__objects_1 = src/adin/libsent_la-adin_file.lo \
 @MICTYPE_AUTO_ALSA_TRUE@	src/adin/libsent_la-adin_mic_linux_alsa.lo
 @ALTYPE_PORTAUDIO_TRUE@am__objects_3 =  \
 @ALTYPE_PORTAUDIO_TRUE@	src/adin/libsent_la-adin_portaudio.lo
-@ALTYPE_PA_TRUE@am__objects_4 = src/adin/pa/common/libsent_la-pa_allocation.lo \
-@ALTYPE_PA_TRUE@	src/adin/pa/common/libsent_la-pa_converters.lo \
-@ALTYPE_PA_TRUE@	src/adin/pa/common/libsent_la-pa_cpuload.lo \
-@ALTYPE_PA_TRUE@	src/adin/pa/common/libsent_la-pa_debugprint.lo \
-@ALTYPE_PA_TRUE@	src/adin/pa/common/libsent_la-pa_dither.lo \
-@ALTYPE_PA_TRUE@	src/adin/pa/common/libsent_la-pa_front.lo \
-@ALTYPE_PA_TRUE@	src/adin/pa/common/libsent_la-pa_process.lo \
-@ALTYPE_PA_TRUE@	src/adin/pa/common/libsent_la-pa_ringbuffer.lo \
-@ALTYPE_PA_TRUE@	src/adin/pa/common/libsent_la-pa_skeleton.lo \
-@ALTYPE_PA_TRUE@	src/adin/pa/common/libsent_la-pa_stream.lo \
-@ALTYPE_PA_TRUE@	src/adin/pa/common/libsent_la-pa_trace.lo
-@ALTYPE_PA_WINMM_TRUE@am__objects_5 = src/adin/pa/os/win/libsent_la-pa_win_hostapis.lo \
+@ALTYPE_PA_WINMM_TRUE@am__objects_4 = src/adin/pa/common/libsent_la-pa_allocation.lo \
+@ALTYPE_PA_WINMM_TRUE@	src/adin/pa/common/libsent_la-pa_converters.lo \
+@ALTYPE_PA_WINMM_TRUE@	src/adin/pa/common/libsent_la-pa_cpuload.lo \
+@ALTYPE_PA_WINMM_TRUE@	src/adin/pa/common/libsent_la-pa_debugprint.lo \
+@ALTYPE_PA_WINMM_TRUE@	src/adin/pa/common/libsent_la-pa_dither.lo \
+@ALTYPE_PA_WINMM_TRUE@	src/adin/pa/common/libsent_la-pa_front.lo \
+@ALTYPE_PA_WINMM_TRUE@	src/adin/pa/common/libsent_la-pa_process.lo \
+@ALTYPE_PA_WINMM_TRUE@	src/adin/pa/common/libsent_la-pa_ringbuffer.lo \
+@ALTYPE_PA_WINMM_TRUE@	src/adin/pa/common/libsent_la-pa_skeleton.lo \
+@ALTYPE_PA_WINMM_TRUE@	src/adin/pa/common/libsent_la-pa_stream.lo \
+@ALTYPE_PA_WINMM_TRUE@	src/adin/pa/common/libsent_la-pa_trace.lo \
+@ALTYPE_PA_WINMM_TRUE@	src/adin/pa/os/win/libsent_la-pa_win_hostapis.lo \
 @ALTYPE_PA_WINMM_TRUE@	src/adin/pa/os/win/libsent_la-pa_win_util.lo \
 @ALTYPE_PA_WINMM_TRUE@	src/adin/pa/os/win/libsent_la-pa_win_waveformat.lo \
 @ALTYPE_PA_WINMM_TRUE@	src/adin/pa/hostapi/wmme/libsent_la-pa_win_wmme.lo \
 @ALTYPE_PA_WINMM_TRUE@	src/adin/libsent_la-adin_portaudio.lo
 am_libsent_la_OBJECTS = $(am__objects_1) $(am__objects_2) \
-	$(am__objects_3) $(am__objects_4) $(am__objects_5)
+	$(am__objects_3) $(am__objects_4)
 libsent_la_OBJECTS = $(am_libsent_la_OBJECTS)
 AM_V_lt = $(am__v_lt_@AM_V@)
 am__v_lt_ = $(am__v_lt_@AM_DEFAULT_V@)
@@ -637,6 +653,14 @@ include/sent/adin.h \
 src/adin/lpfcoef_2to1.h \
 src/adin/lpfcoef_3to4.h 
 
+
+# re: "src/net/server-client.c"
+# (see http://stackoverflow.com/questions/4638604/where-does-one-get-the-sys-socket-h-header-source-file)
+# The header <sys/socket.h> is defined in IEEE Std. 1003.1 (POSIX), but 
+# sadly Windows is non-compliant with the POSIX standard. The MinGW compiler 
+# is a port of GCC for compiling Windows applications, and therefore does 
+# not include these POSIX system headers.
+# libsent uses winsock2.h instead...
 HDR = \
 include/sent/adin.h \
 include/sent/hmm.h \
@@ -662,11 +686,11 @@ include/sent/vocabulary.h
 lib_LTLIBRARIES = libsent.la
 libsent_la_CFLAGS = -Wall -g -O2
 libsent_la_CPPFLAGS = -I$(includedir) -I$(srcdir)/include \
-	$Isrc/adin/pa/common/ $(am__append_6) $(am__append_7)
+	$Isrc/adin/pa/common/ $(am__append_6)
 libsent_la_SOURCES = $(SRC) $(am__append_1) $(am__append_3) \
-	$(am__append_5) $(am__append_8)
+	$(am__append_5)
 libsent_la_LDFLAGS = -lm -lz $(am__append_2) $(am__append_4) \
-	$(am__append_9)
+	$(am__append_7) $(am__append_8)
 ACLOCAL_AMFLAGS = -I m4
 sentincludedir = $(includedir)/sent
 dist_sentinclude_HEADERS = $(HDR)

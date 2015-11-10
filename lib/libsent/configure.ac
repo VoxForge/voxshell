@@ -10,9 +10,26 @@ dnl Process this file with autoconf to produce a configure script.
 AC_INIT([libsent], [4.3.1], [contact@voxforge.org])
 AC_CONFIG_HEADER(include/sent/config.h)
 AC_CONFIG_AUX_DIR(../support)
-AC_CONFIG_MACRO_DIR([m4])
+
+# if get error: 
+#   libtoolize: AC_CONFIG_MACRO_DIR([m4]) conflicts with ACLOCAL_AMFLAGS=-I m4
+# solution:
+#   dos2unix configure.ac && dos2unix Makefile.am
+# Error is caused by using CRLFs in Makefile.am. "m4<CR>" != "m4" and thus the 
+# libtoolize script will produce an error.
+# (http://pete.akeo.ie/2010/12/that-darn-libtoolize-acconfigmacrodirm4.html)
+AC_CONFIG_MACRO_DIR([m4]) 
+
+
 AM_INIT_AUTOMAKE([foreign -Wall -Werror subdir-objects]) 
-AM_PROG_AR
+#AM_PROG_AR # don't use in mingw/ works on cygwin/ required for Linux
+m4_ifdef([AM_PROG_AR], [AM_PROG_AR])
+#case "$host_os" in  # this does ont work on Linux
+#  linux*)
+#    AM_PROG_AR
+#	;;
+#esac
+
 LT_INIT
 
 LIBSENT_VERSION=4.3.1
@@ -154,6 +171,7 @@ AC_MSG_RESULT([yes]),
 AC_MSG_RESULT([no]))
 
 dnl Checks for library functions.
+AM_CONDITIONAL([WINSOCK2], [test "$altype" = libportaudio])
 AC_CHECK_FUNC(gethostbyname,,AC_CHECK_LIB(nsl,gethostbyname))
 AC_CHECK_FUNC(connect,,AC_CHECK_LIB(socket, connect,,
 AC_MSG_CHECKING([for connect in -lws2_32])
@@ -164,11 +182,14 @@ int sd;
 struct sockaddr_in s;
 ], [connect(sd, (struct sockaddr *)&s, sizeof(s));],
 EXTRALIB="$EXTRALIB -lws2_32"
-AC_MSG_RESULT([yes]),
+AC_MSG_RESULT([yes])
+has_winsock2=true,
 LIBS=$xxxxLIBS
 AC_MSG_RESULT([no])
+has_winsock2=false
 )
 ))
+AM_CONDITIONAL([HAS_WINSOCK2], [test "$altype" = has_winsock2])
 
 AC_CHECK_FUNCS(strcasecmp)
 AC_CHECK_FUNCS(sleep)
@@ -271,7 +292,7 @@ fi
 
 # set makefile.am conditional variables
 AM_CONDITIONAL([ALTYPE_PORTAUDIO], [test "$altype" = libportaudio])
-AM_CONDITIONAL([ALTYPE_PA], [test "$altype" = pa-*])
+AM_CONDITIONAL([ALTYPE_PA], [[test "$altype" = pa-*]])
 AM_CONDITIONAL([ALTYPE_PA_WINMM], [test "$altype" = pa-winmm])
 
 case $altype in
@@ -346,6 +367,8 @@ EXTRAOBJ="$EXTRAOBJ $ADINOBJ"
 # using Autotools creates static and dynamic versions all code...
 # problem is that zlib is only compiled statically (on Fedora at least...)
 # (https://bugzilla.redhat.com/show_bug.cgi?id=832545)
+#
+# on Mingw, zlib called libz; development package needs to be installed
 dnl check for file decompression using zlib
 have_zlib=no;
 if test "$use_zlib" = yes; then

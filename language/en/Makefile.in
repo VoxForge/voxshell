@@ -82,9 +82,9 @@ subdir = .
 DIST_COMMON = $(srcdir)/Makefile.in $(srcdir)/Makefile.am \
 	$(top_srcdir)/configure $(am__configure_deps) \
 	$(dist_acousticmodel_DATA) $(dist_langroot_DATA) \
-	$(dist_lexicon_DATA) build-aux/ar-lib build-aux/config.guess \
-	build-aux/config.sub build-aux/install-sh build-aux/missing \
-	build-aux/ltmain.sh $(top_srcdir)/build-aux/ar-lib \
+	$(dist_lexicon_DATA) build-aux/ar-lib build-aux/compile \
+	build-aux/config.guess build-aux/config.sub \
+	build-aux/install-sh build-aux/missing build-aux/ltmain.sh \
 	$(top_srcdir)/build-aux/config.guess \
 	$(top_srcdir)/build-aux/config.sub \
 	$(top_srcdir)/build-aux/install-sh \
@@ -185,7 +185,7 @@ am__define_uniq_tagged_files = \
 ETAGS = etags
 CTAGS = ctags
 CSCOPE = cscope
-DIST_SUBDIRS = $(SUBDIRS)
+DIST_SUBDIRS = windows grammars
 DISTFILES = $(DIST_COMMON) $(DIST_SOURCES) $(TEXINFOS) $(EXTRA_DIST)
 distdir = $(PACKAGE)-$(VERSION)
 top_distdir = $(distdir)
@@ -257,6 +257,7 @@ EXEEXT = @EXEEXT@
 FGREP = @FGREP@
 GRAMMAR_ROOT = @GRAMMAR_ROOT@
 GRAM_INST_DIR = @GRAM_INST_DIR@
+GRAM_SOURCE_DIR = @GRAM_SOURCE_DIR@
 GREP = @GREP@
 INSTALL = @INSTALL@
 INSTALL_DATA = @INSTALL_DATA@
@@ -297,6 +298,8 @@ SHELL = @SHELL@
 STRIP = @STRIP@
 VERSION = @VERSION@
 VOXFORGE_DICT = @VOXFORGE_DICT@
+VOXSHELL_SOURCE_ROOT = @VOXSHELL_SOURCE_ROOT@
+WIN_GRAM_SOURCE_DIR = @WIN_GRAM_SOURCE_DIR@
 abs_builddir = @abs_builddir@
 abs_srcdir = @abs_srcdir@
 abs_top_builddir = @abs_top_builddir@
@@ -349,13 +352,14 @@ target_alias = @target_alias@
 top_build_prefix = @top_build_prefix@
 top_builddir = @top_builddir@
 top_srcdir = @top_srcdir@
-SUBDIRS = grammars
+@VF_LINUX_FALSE@SUBDIRS = windows
+@VF_LINUX_TRUE@SUBDIRS = grammars
 LANGROOT = $(datadir)/@SHARE_FOLDER@/en
 
 ##### files to be included in 'make install'
 langrootdir = $(LANGROOT)
-# target              = source
-dist_langroot_DATA = grammars_linux voxshell.jconf ../../README.md
+# target           = source
+dist_langroot_DATA = voxshell.jconf ../../README.md
 acousticmodeldir = $(datadir)/@SHARE_FOLDER@/en/acoustic_model
 dist_acousticmodel_DATA = \
 acoustic_model/tiedlist \
@@ -368,7 +372,7 @@ lexicon/VoxForgeDict.txt
 
 ##### files to be included in 'make dist'
 EXTRA_DIST = \
-$(dist_grammarlist_DATA) \
+$(dist_langroot_DATA) \
 $(dist_acousticmodel_DATA) \
 $(dist_lexicon_DATA)
 

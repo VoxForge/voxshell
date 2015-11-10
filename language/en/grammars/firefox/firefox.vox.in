@@ -13,7 +13,6 @@
 [COM] VOXFORGE
 
 % VOXFORGE_CAT
-[@GRAMMAR_ROOT@/firefox/scripts/test.sh] TEST
 [firefox -remote openurl(http://www.voxforge.org)] HOME PAGE
 [firefox -remote openurl(http://www.voxforge.org/home/read)] READ SUBMIT
 [firefox -remote openurl(http://www.voxforge.org/home/listen)] LISTEN
@@ -28,4 +27,4 @@
 [COM] BROWSER
 
 % BROWSER_CAT
-[share/voxshell/en/grammars/firefox/scripts/search.sh xkcd] TEST
+[@GRAMMAR_ROOT@/firefox/scripts/search.sh xkcd] TEST

@@ -2192,6 +2192,15 @@ ac_configure="$SHELL $ac_aux_dir/configure"  # Please don't use this var.
 
 
 
+# if get error:
+#   libtoolize: AC_CONFIG_MACRO_DIR([m4]) conflicts with ACLOCAL_AMFLAGS=-I m4
+# solution:
+#   dos2unix configure.ac && dos2unix Makefile.am
+# Error is caused by using CRLFs in Makefile.am. "m4<CR>" != "m4" and thus the
+# libtoolize script will produce an error.
+# (http://pete.akeo.ie/2010/12/that-darn-libtoolize-acconfigmacrodirm4.html)
+
+
 am__api_version='1.13'
 
 # Find a good install program.  We prefer a C program (faster),
@@ -2729,6 +2738,7 @@ am__tar='$${TAR-tar} chof - "$$tardir"' am__untar='$${TAR-tar} xf -'
 
 
 
+#AM_PROG_AR # don't use in mingw/ works on cygwin/ required for Linux
 DEPDIR="${am__leading_dot}deps"
 
 ac_config_commands="$ac_config_commands depfiles"
@@ -3869,6 +3879,7 @@ unknown)
   as_fn_error $? "could not determine $AR interface" "$LINENO" 5
   ;;
 esac
+
 
 case `pwd` in
   *\ * | *\	*)

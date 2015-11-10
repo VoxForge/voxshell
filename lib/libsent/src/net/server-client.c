@@ -120,11 +120,16 @@ int
 accept_from(int sd)
 {
   static struct sockaddr_in from;
-#ifdef HAVE_SOCKLEN_T
-  static socklen_t nbyte;
-#else  
-  static int nbyte;
-#endif /* HAVE_SOCKLEN_T */
+/* !!!!!!
+*  ifdef HAVE_SOCKLEN_T
+*     static socklen_t nbyte;
+*  else  
+*   static int nbyte;
+*  endif 
+*/
+static int nbyte;
+/* !!!!!! */
+
   int asd;
 
   nbyte = sizeof(struct sockaddr_in);

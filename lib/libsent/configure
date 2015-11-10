@@ -658,6 +658,10 @@ ALTYPE_PORTAUDIO_FALSE
 ALTYPE_PORTAUDIO_TRUE
 MICTYPE_AUTO_ALSA_FALSE
 MICTYPE_AUTO_ALSA_TRUE
+HAS_WINSOCK2_FALSE
+HAS_WINSOCK2_TRUE
+WINSOCK2_FALSE
+WINSOCK2_TRUE
 RM
 CXXCPP
 am__fastdepCXX_FALSE
@@ -2413,6 +2417,16 @@ ac_configure="$SHELL $ac_aux_dir/configure"  # Please don't use this var.
 
 
 
+# if get error:
+#   libtoolize: AC_CONFIG_MACRO_DIR([m4]) conflicts with ACLOCAL_AMFLAGS=-I m4
+# solution:
+#   dos2unix configure.ac && dos2unix Makefile.am
+# Error is caused by using CRLFs in Makefile.am. "m4<CR>" != "m4" and thus the
+# libtoolize script will produce an error.
+# (http://pete.akeo.ie/2010/12/that-darn-libtoolize-acconfigmacrodirm4.html)
+
+
+
 am__api_version='1.13'
 
 # Find a good install program.  We prefer a C program (faster),
@@ -2950,6 +2964,7 @@ am__tar='$${TAR-tar} chof - "$$tardir"' am__untar='$${TAR-tar} xf -'
 
 
 
+#AM_PROG_AR # don't use in mingw/ works on cygwin/ required for Linux
 DEPDIR="${am__leading_dot}deps"
 
 ac_config_commands="$ac_config_commands depfiles"
@@ -4090,6 +4105,12 @@ unknown)
   as_fn_error $? "could not determine $AR interface" "$LINENO" 5
   ;;
 esac
+
+#case "$host_os" in  # this does ont work on Linux
+#  linux*)
+#    AM_PROG_AR
+#	;;
+#esac
 
 case `pwd` in
   *\ * | *\	*)
@@ -16898,6 +16919,14 @@ $as_echo "no" >&6; }
 fi
 rm -f core conftest.err conftest.$ac_objext conftest.$ac_ext
 
+ if test "$altype" = libportaudio; then
+  WINSOCK2_TRUE=
+  WINSOCK2_FALSE='#'
+else
+  WINSOCK2_TRUE='#'
+  WINSOCK2_FALSE=
+fi
+
 ac_fn_c_check_func "$LINENO" "gethostbyname" "ac_cv_func_gethostbyname"
 if test "x$ac_cv_func_gethostbyname" = xyes; then :
 
@@ -17019,10 +17048,12 @@ if ac_fn_c_try_link "$LINENO"; then :
   EXTRALIB="$EXTRALIB -lws2_32"
 { $as_echo "$as_me:${as_lineno-$LINENO}: result: yes" >&5
 $as_echo "yes" >&6; }
+has_winsock2=true
 else
   LIBS=$xxxxLIBS
 { $as_echo "$as_me:${as_lineno-$LINENO}: result: no" >&5
 $as_echo "no" >&6; }
+has_winsock2=false
 
 fi
 rm -f core conftest.err conftest.$ac_objext \
@@ -17030,6 +17061,14 @@ rm -f core conftest.err conftest.$ac_objext \
 
 fi
 
+fi
+
+ if test "$altype" = has_winsock2; then
+  HAS_WINSOCK2_TRUE=
+  HAS_WINSOCK2_FALSE='#'
+else
+  HAS_WINSOCK2_TRUE='#'
+  HAS_WINSOCK2_FALSE=
 fi
 
 
@@ -17468,6 +17507,8 @@ EXTRAOBJ="$EXTRAOBJ $ADINOBJ"
 # using Autotools creates static and dynamic versions all code...
 # problem is that zlib is only compiled statically (on Fedora at least...)
 # (https://bugzilla.redhat.com/show_bug.cgi?id=832545)
+#
+# on Mingw, zlib called libz; development package needs to be installed
 have_zlib=no;
 if test "$use_zlib" = yes; then
   { $as_echo "$as_me:${as_lineno-$LINENO}: checking for deflate in -lz" >&5
@@ -17908,6 +17949,14 @@ if test -z "${am__fastdepCXX_TRUE}" && test -z "${am__fastdepCXX_FALSE}"; then
 Usually this means the macro was only invoked conditionally." "$LINENO" 5
 fi
 
+if test -z "${WINSOCK2_TRUE}" && test -z "${WINSOCK2_FALSE}"; then
+  as_fn_error $? "conditional \"WINSOCK2\" was never defined.
+Usually this means the macro was only invoked conditionally." "$LINENO" 5
+fi
+if test -z "${HAS_WINSOCK2_TRUE}" && test -z "${HAS_WINSOCK2_FALSE}"; then
+  as_fn_error $? "conditional \"HAS_WINSOCK2\" was never defined.
+Usually this means the macro was only invoked conditionally." "$LINENO" 5
+fi
 if test -z "${MICTYPE_AUTO_ALSA_TRUE}" && test -z "${MICTYPE_AUTO_ALSA_FALSE}"; then
   as_fn_error $? "conditional \"MICTYPE_AUTO_ALSA\" was never defined.
 Usually this means the macro was only invoked conditionally." "$LINENO" 5

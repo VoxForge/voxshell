@@ -5,10 +5,18 @@ SOURCES= $(APP).vox $(APP).grammar
 TARGETS= $(APP).dict $(APP).term $(APP).dfa
 CLEANFILES=$(TARGETS)
 
-all: $(TARGETS) 
+VF_ROOT=$(abs_top_builddir)/@VOXSHELL_SOURCE_ROOT@
+GRAMMAR_FOLDER=@GRAM_SOURCE_DIR@/$(APP)
+
+all: $(TARGETS)
+
+#VF_MSG="GOODBY"
+#if VF_WINDOWS
+#VF_MSG="HELLO"
+#endif
 
 $(TARGETS): $(SOURCES)
-	julia $(abs_top_builddir)/@COMPILE_GRAMMAR@ $(APP) $(abs_top_builddir)/@MKFA_DIR@ $(abs_top_builddir)/@DFA_MINIMIZE_DIR@ $(abs_top_builddir)/@VOXFORGE_DICT@
+	cd $(VF_ROOT) && julia @COMPILE_GRAMMAR@ $(GRAMMAR_FOLDER) $(APP) @MKFA_DIR@ @DFA_MINIMIZE_DIR@ @VOXFORGE_DICT@
 	chmod +x $(APPSCRIPTS)
 
 ##### files to be included in 'make install'
@@ -25,4 +33,4 @@ install-data-hook:
 EXTRA_DIST = \
 $(SOURCES) \
 $(TARGETS) \
-$(APPSCRIPTS) 
+$(APPSCRIPTS)
