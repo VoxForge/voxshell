@@ -14,7 +14,7 @@
 [rhythmbox-client --play] PLAY START
 [rhythmbox-client --next] NEXT SKIP
 [rhythmbox-client --previous] PREVIOUS BACK
-[@GRAMMAR_ROOT@/rhythmbox/scripts/show.sh] SHOW WHO ABOUT INFORMATION
+[@GRAMMAR_ROOT@/rhythmbox/scripts/show.sh] SHOW WHO ABOUT INFORMATION WHO-IS
 [rhythmbox-client --volume-up] UP LOUDER
 [rhythmbox-client --volume-down] DOWN LOWER SOFTER QUIETER
 [rhythmbox-client --pause] SILENCE STOP QUIET
@@ -53,8 +53,5 @@
 % RADIOHEAD_ALBUMS
 [@GRAMMAR_ROOT@/rhythmbox/scripts/search.sh radiohead best of] BEST-OF
 [@GRAMMAR_ROOT@/rhythmbox/scripts/search.sh radiohead OK Computer] OK-COMPUTER
-
-
-
 
 
