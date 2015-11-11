@@ -11279,8 +11279,9 @@ WIN_GRAM_SOURCE_DIR=language/en/windows
 
 # AM_CONDITIONAL([VF_WINDOWS], [test $host_os = "cygwin*|mingw*"]) # wildcard does not work
 # use case statement b/c can use wildcards...
-WINDOWS_FOUND=false
-LINUX_FOUND=false
+#AC_MSG_CHECKING([!!!!!! host OS:])
+{ $as_echo "$as_me:${as_lineno-$LINENO}: result: $host_os" >&5
+$as_echo "$host_os" >&6; }
 case "$host_os" in
   cygwin*|mingw*)
     WINDOWS_FOUND=true
@@ -11288,8 +11289,12 @@ case "$host_os" in
   linux*)
     LINUX_FOUND=true
   ;;
+  *)
+    WINDOWS_FOUND=false
+    LINUX_FOUND=false
+  ;;
 esac
- if test WINDOWS_FOUND=true; then
+ if test "$WINDOWS_FOUND" = true; then
   VF_WINDOWS_TRUE=
   VF_WINDOWS_FALSE='#'
 else
@@ -11297,7 +11302,7 @@ else
   VF_WINDOWS_FALSE=
 fi
 
- if test LINUX_FOUND=true; then
+ if test "$LINUX_FOUND" = true; then
   VF_LINUX_TRUE=
   VF_LINUX_FALSE='#'
 else

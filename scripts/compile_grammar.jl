@@ -233,19 +233,16 @@ function main (grammar_prefix, gramfile, vocafile, termfile, dfafile, dictfile, 
   make_category_voca(vocafile,termfile,tmpvocafile)
   println("dir $(pwd())") # !!!!!!
   # mkfa outputs dfafile.tmp and headerfile.h (not sure what it is used for)
-  run(`$mkfa -e1 -fg $rgramfile -fv $tmpvocafile -fo tmpdfafile -fh $headerfile`)
+  run(`$mkfa -e1 -fg $rgramfile -fv $tmpvocafile -fo $tmpdfafile -fh $headerfile`)
   # dfa_minimize compresses dfafile.tmp (if it can) to .dfa file
-  run(`$dfa_minimize tmpdfafile -o $dfafile`)
+  run(`$dfa_minimize $tmpdfafile -o $dfafile`)
 
   vfvoca2dict(vocafile,voxforge_dict,dictfile)
 
   rm(rgramfile)
   rm(tmpvocafile)
   rm(headerfile)
-#  this somehow gives "ERROR: unlink: no such file or directory (ENOENT)"
-#  when runnning make in parallel (make -j); even though the file is
-#  unique to the directory... ?
-  #rm(tmpdfafile)
+  rm(tmpdfafile)
 end
 
 if length(ARGS) > 0 

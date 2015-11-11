@@ -185,7 +185,7 @@ am__define_uniq_tagged_files = \
 ETAGS = etags
 CTAGS = ctags
 CSCOPE = cscope
-DIST_SUBDIRS = windows grammars
+DIST_SUBDIRS = grammars windows
 DISTFILES = $(DIST_COMMON) $(DIST_SOURCES) $(TEXINFOS) $(EXTRA_DIST)
 distdir = $(PACKAGE)-$(VERSION)
 top_distdir = $(distdir)
@@ -352,8 +352,9 @@ target_alias = @target_alias@
 top_build_prefix = @top_build_prefix@
 top_builddir = @top_builddir@
 top_srcdir = @top_srcdir@
-@VF_LINUX_FALSE@SUBDIRS = windows
-@VF_LINUX_TRUE@SUBDIRS = grammars
+@VF_LINUX_TRUE@@VF_WINDOWS_FALSE@MAYBE_GRAM = grammars
+@VF_WINDOWS_TRUE@MAYBE_GRAM = windows
+SUBDIRS = $(MAYBE_GRAM)
 LANGROOT = $(datadir)/@SHARE_FOLDER@/en
 
 ##### files to be included in 'make install'

@@ -17,8 +17,8 @@ AC_SUBST(WIN_GRAM_SOURCE_DIR, [language/en/windows])
 dnl Check for Windows
 # AM_CONDITIONAL([VF_WINDOWS], [test $host_os = "cygwin*|mingw*"]) # wildcard does not work
 # use case statement b/c can use wildcards...
-WINDOWS_FOUND=false
-LINUX_FOUND=false
+#AC_MSG_CHECKING([!!!!!! host OS:])
+AC_MSG_RESULT([$host_os])
 case "$host_os" in
   cygwin*|mingw*)
     WINDOWS_FOUND=true
@@ -26,9 +26,13 @@ case "$host_os" in
   linux*)
     LINUX_FOUND=true
   ;;
+  *)
+    WINDOWS_FOUND=false
+    LINUX_FOUND=false
+  ;;
 esac
-AM_CONDITIONAL([VF_WINDOWS], [test WINDOWS_FOUND=true]) 
-AM_CONDITIONAL([VF_LINUX], [test LINUX_FOUND=true]) 
+AM_CONDITIONAL([VF_WINDOWS], [test "$WINDOWS_FOUND" = true]) 
+AM_CONDITIONAL([VF_LINUX], [test "$LINUX_FOUND" = true]) 
 
 # before install directories
 # relative to $(datadir)

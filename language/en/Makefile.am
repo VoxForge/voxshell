@@ -1,8 +1,13 @@
 if  VF_WINDOWS
-SUBDIRS = windows
+MAYBE_GRAM = windows
 else
-SUBDIRS = grammars
+
+if  VF_LINUX
+MAYBE_GRAM = grammars
 endif
+
+endif
+SUBDIRS = $(MAYBE_GRAM)
 
 LANGROOT=$(datadir)/@SHARE_FOLDER@/en
 
