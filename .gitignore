@@ -9,3 +9,5 @@ bin/*
 *.term
 config.status
 .deps
+build-aux
+m4
