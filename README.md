@@ -31,7 +31,7 @@ If you modify one of the grammar files, just run *make grammar* in the top voxsh
 
 ##  Windows:
 
-      C:> bin\julius.exe -input mic -C share\voxshell\en\voxshell.jconf -gramlist share\voxshell\en\grammar_list
+      C:> bin\voxshell.exe -input mic -C share\voxshell\en\voxshell.jconf -gramlist share\voxshell\en\grammar_list
 
 # Submit speech samples to make better acoustic models
 

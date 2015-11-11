@@ -306,7 +306,7 @@ output_result(Recog *recog, void *dummy)
 void 
 win_process_command(char *result_str)
 {
-printf("!!!!!!result %s\n", result_str); 
+//printf("!!!!!!result %s\n", result_str); 
 
   if (result_str == NULL)
   {
