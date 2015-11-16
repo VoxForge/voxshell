@@ -17,7 +17,7 @@ corpus) that uses the collected speech to create acoustic models.
 
 follow instructions in INSTALL.md.
 
-##  Linux:
+##  Linux
 
 ### run VoxShell version of julius
       
@@ -30,6 +30,12 @@ Look to the .vox and .grammar grammar files to see what the system will recogniz
 If you modify one of the grammar files, just run *make grammar* in the top voxshell directory to recompile your all your grammar files (i.e. creates new .dict, .dfa, .term files).
 
 ##  Windows:
+
+###  MingW or Cygwin console:
+
+      $ bin/voxshell -input mic -C share/voxshell/en/voxshell.jconf -gramlist share/voxshell/en/grammar_list
+
+###  Command Prompt window:
 
       C:> bin\voxshell.exe -input mic -C share\voxshell\en\voxshell.jconf -gramlist share\voxshell\en\grammar_list
 

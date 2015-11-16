@@ -408,5 +408,5 @@ AC_SUBST(easy_setup)
 AC_OUTPUT_COMMANDS(
 [chmod +x libjulius-config libjulius-config-dist
 ])
-AC_CONFIG_SUBDIRS([../libsent])
+#AC_CONFIG_SUBDIRS([../libsent]) # create at top level
 AC_OUTPUT(Makefile libjulius-config libjulius-config-dist src/version.c)

@@ -81,8 +81,8 @@ build_triplet = @build@
 host_triplet = @host@
 subdir = grammars/rhythmbox
 DIST_COMMON = $(srcdir)/Makefile.in $(srcdir)/Makefile.am \
-	$(srcdir)/rhythmbox.vox.in $(dist_app_SCRIPTS) \
-	$(dist_appscript_DATA)
+	$(srcdir)/rhythmbox.vox.in $(dist_appscript_SCRIPTS) \
+	$(dist_app_DATA)
 ACLOCAL_M4 = $(top_srcdir)/aclocal.m4
 am__aclocal_m4_deps = $(top_srcdir)/configure.ac
 am__configure_deps = $(am__aclocal_m4_deps) $(CONFIGURE_DEPENDENCIES) \
@@ -117,8 +117,8 @@ am__uninstall_files_from_dir = { \
     || { echo " ( cd '$$dir' && rm -f" $$files ")"; \
          $(am__cd) "$$dir" && rm -f $$files; }; \
   }
-am__installdirs = "$(DESTDIR)$(appdir)" "$(DESTDIR)$(appscriptdir)"
-SCRIPTS = $(dist_app_SCRIPTS)
+am__installdirs = "$(DESTDIR)$(appscriptdir)" "$(DESTDIR)$(appdir)"
+SCRIPTS = $(dist_appscript_SCRIPTS)
 AM_V_P = $(am__v_P_@AM_V@)
 am__v_P_ = $(am__v_P_@AM_DEFAULT_V@)
 am__v_P_0 = false
@@ -137,7 +137,7 @@ am__can_run_installinfo = \
     n|no|NO) false;; \
     *) (install-info --version) >/dev/null 2>&1;; \
   esac
-DATA = $(dist_appscript_DATA)
+DATA = $(dist_app_DATA)
 am__tagged_files = $(HEADERS) $(SOURCES) $(TAGS_FILES) $(LISP)
 # Read a list of newline-separated strings from the standard input,
 # and print each of them once, without duplicates.  Input order is
@@ -297,9 +297,9 @@ GRAMMAR_FOLDER = @GRAM_SOURCE_DIR@/$(APP)
 
 ##### files to be included in 'make install'
 appdir = $(datadir)/@GRAM_INST_DIR@/$(APP)
-dist_app_SCRIPTS = $(TARGETS)
+dist_app_DATA = $(TARGETS)
 appscriptdir = $(datadir)/@GRAM_INST_DIR@/$(APP)/scripts
-dist_appscript_DATA = $(APPSCRIPTS)
+dist_appscript_SCRIPTS = $(APPSCRIPTS)
 
 ##### files to be included in 'make dist'
 EXTRA_DIST = \
@@ -342,12 +342,12 @@ $(ACLOCAL_M4):  $(am__aclocal_m4_deps)
 $(am__aclocal_m4_deps):
 rhythmbox.vox: $(top_builddir)/config.status $(srcdir)/rhythmbox.vox.in
 	cd $(top_builddir) && $(SHELL) ./config.status $(subdir)/$@
-install-dist_appSCRIPTS: $(dist_app_SCRIPTS)
+install-dist_appscriptSCRIPTS: $(dist_appscript_SCRIPTS)
 	@$(NORMAL_INSTALL)
-	@list='$(dist_app_SCRIPTS)'; test -n "$(appdir)" || list=; \
+	@list='$(dist_appscript_SCRIPTS)'; test -n "$(appscriptdir)" || list=; \
 	if test -n "$$list"; then \
-	  echo " $(MKDIR_P) '$(DESTDIR)$(appdir)'"; \
-	  $(MKDIR_P) "$(DESTDIR)$(appdir)" || exit 1; \
+	  echo " $(MKDIR_P) '$(DESTDIR)$(appscriptdir)'"; \
+	  $(MKDIR_P) "$(DESTDIR)$(appscriptdir)" || exit 1; \
 	fi; \
 	for p in $$list; do \
 	  if test -f "$$p"; then d=; else d="$(srcdir)/"; fi; \
@@ -366,44 +366,44 @@ install-dist_appSCRIPTS: $(dist_app_SCRIPTS)
 	while read type dir files; do \
 	     if test "$$dir" = .; then dir=; else dir=/$$dir; fi; \
 	     test -z "$$files" || { \
-	       echo " $(INSTALL_SCRIPT) $$files '$(DESTDIR)$(appdir)$$dir'"; \
-	       $(INSTALL_SCRIPT) $$files "$(DESTDIR)$(appdir)$$dir" || exit $$?; \
+	       echo " $(INSTALL_SCRIPT) $$files '$(DESTDIR)$(appscriptdir)$$dir'"; \
+	       $(INSTALL_SCRIPT) $$files "$(DESTDIR)$(appscriptdir)$$dir" || exit $$?; \
 	     } \
 	; done
 
-uninstall-dist_appSCRIPTS:
+uninstall-dist_appscriptSCRIPTS:
 	@$(NORMAL_UNINSTALL)
-	@list='$(dist_app_SCRIPTS)'; test -n "$(appdir)" || exit 0; \
+	@list='$(dist_appscript_SCRIPTS)'; test -n "$(appscriptdir)" || exit 0; \
 	files=`for p in $$list; do echo "$$p"; done | \
 	       sed -e 's,.*/,,;$(transform)'`; \
-	dir='$(DESTDIR)$(appdir)'; $(am__uninstall_files_from_dir)
+	dir='$(DESTDIR)$(appscriptdir)'; $(am__uninstall_files_from_dir)
 
 mostlyclean-libtool:
 	-rm -f *.lo
 
 clean-libtool:
 	-rm -rf .libs _libs
-install-dist_appscriptDATA: $(dist_appscript_DATA)
+install-dist_appDATA: $(dist_app_DATA)
 	@$(NORMAL_INSTALL)
-	@list='$(dist_appscript_DATA)'; test -n "$(appscriptdir)" || list=; \
+	@list='$(dist_app_DATA)'; test -n "$(appdir)" || list=; \
 	if test -n "$$list"; then \
-	  echo " $(MKDIR_P) '$(DESTDIR)$(appscriptdir)'"; \
-	  $(MKDIR_P) "$(DESTDIR)$(appscriptdir)" || exit 1; \
+	  echo " $(MKDIR_P) '$(DESTDIR)$(appdir)'"; \
+	  $(MKDIR_P) "$(DESTDIR)$(appdir)" || exit 1; \
 	fi; \
 	for p in $$list; do \
 	  if test -f "$$p"; then d=; else d="$(srcdir)/"; fi; \
 	  echo "$$d$$p"; \
 	done | $(am__base_list) | \
 	while read files; do \
-	  echo " $(INSTALL_DATA) $$files '$(DESTDIR)$(appscriptdir)'"; \
-	  $(INSTALL_DATA) $$files "$(DESTDIR)$(appscriptdir)" || exit $$?; \
+	  echo " $(INSTALL_DATA) $$files '$(DESTDIR)$(appdir)'"; \
+	  $(INSTALL_DATA) $$files "$(DESTDIR)$(appdir)" || exit $$?; \
 	done
 
-uninstall-dist_appscriptDATA:
+uninstall-dist_appDATA:
 	@$(NORMAL_UNINSTALL)
-	@list='$(dist_appscript_DATA)'; test -n "$(appscriptdir)" || list=; \
+	@list='$(dist_app_DATA)'; test -n "$(appdir)" || list=; \
 	files=`for p in $$list; do echo $$p; done | sed -e 's|^.*/||'`; \
-	dir='$(DESTDIR)$(appscriptdir)'; $(am__uninstall_files_from_dir)
+	dir='$(DESTDIR)$(appdir)'; $(am__uninstall_files_from_dir)
 
 ID: $(am__tagged_files)
 	$(am__define_uniq_tagged_files); mkid -fID $$unique
@@ -491,7 +491,7 @@ check-am: all-am
 check: check-am
 all-am: Makefile $(SCRIPTS) $(DATA)
 installdirs:
-	for dir in "$(DESTDIR)$(appdir)" "$(DESTDIR)$(appscriptdir)"; do \
+	for dir in "$(DESTDIR)$(appscriptdir)" "$(DESTDIR)$(appdir)"; do \
 	  test -z "$$dir" || $(MKDIR_P) "$$dir"; \
 	done
 install: install-am
@@ -545,7 +545,7 @@ info: info-am
 
 info-am:
 
-install-data-am: install-dist_appSCRIPTS install-dist_appscriptDATA
+install-data-am: install-dist_appDATA install-dist_appscriptSCRIPTS
 
 install-dvi: install-dvi-am
 
@@ -589,7 +589,7 @@ ps: ps-am
 
 ps-am:
 
-uninstall-am: uninstall-dist_appSCRIPTS uninstall-dist_appscriptDATA
+uninstall-am: uninstall-dist_appDATA uninstall-dist_appscriptSCRIPTS
 
 .MAKE: install-am install-strip
 
@@ -597,16 +597,16 @@ uninstall-am: uninstall-dist_appSCRIPTS uninstall-dist_appscriptDATA
 	clean-libtool cscopelist-am ctags ctags-am distclean \
 	distclean-generic distclean-libtool distclean-tags distdir dvi \
 	dvi-am html html-am info info-am install install-am \
-	install-data install-data-am install-dist_appSCRIPTS \
-	install-dist_appscriptDATA install-dvi install-dvi-am \
+	install-data install-data-am install-dist_appDATA \
+	install-dist_appscriptSCRIPTS install-dvi install-dvi-am \
 	install-exec install-exec-am install-html install-html-am \
 	install-info install-info-am install-man install-pdf \
 	install-pdf-am install-ps install-ps-am install-strip \
 	installcheck installcheck-am installdirs maintainer-clean \
 	maintainer-clean-generic mostlyclean mostlyclean-generic \
 	mostlyclean-libtool pdf pdf-am ps ps-am tags tags-am uninstall \
-	uninstall-am uninstall-dist_appSCRIPTS \
-	uninstall-dist_appscriptDATA
+	uninstall-am uninstall-dist_appDATA \
+	uninstall-dist_appscriptSCRIPTS
 
 
 all: $(TARGETS) 

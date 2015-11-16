@@ -20,5 +20,5 @@ esac
 AC_MSG_RESULT($host_os)
 
 AC_CONFIG_FILES([Makefile src/Makefile language/Makefile])
-AC_CONFIG_SUBDIRS([lib/libjulius lib/gramtools language/en])
+AC_CONFIG_SUBDIRS([lib/libsent lib/libjulius lib/gramtools language/en])
 AC_OUTPUT

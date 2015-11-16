@@ -345,7 +345,7 @@ target_alias = @target_alias@
 top_build_prefix = @top_build_prefix@
 top_builddir = @top_builddir@
 top_srcdir = @top_srcdir@
-SUBDIRS = lib/libjulius lib/gramtools src language
+SUBDIRS = lib/libsent lib/libjulius lib/gramtools src language
 ACLOCAL_AMFLAGS = -I m4
 dist_bin_SCRIPTS = scripts/compile_grammar.jl
 all: all-recursive

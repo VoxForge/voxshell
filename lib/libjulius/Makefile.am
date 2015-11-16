@@ -1,4 +1,4 @@
-SUBDIRS = ../libsent
+#SUBDIRS = ../libsent # create at top level
 
 SRC = \
 src/recogmain.c \
