@@ -13,9 +13,11 @@ Follow the instructions on github to clone voxshell to your computer
   remove all [Julius](http://julius.osdn.jp/en_index.php) executables and development packages.
 
   remove Julius header files in: 
+
     * /usr/include/julius; 
 
   remove static libraries:
+
     *  /usr/lib/libsent.a; 
     *  /usr/lib/libjulius.a
 
