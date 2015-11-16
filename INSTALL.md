@@ -14,12 +14,12 @@ Follow the instructions on github to clone voxshell to your computer
 
   remove Julius header files in: 
 
-    * /usr/include/julius; 
+    /usr/include/julius; 
 
   remove static libraries:
 
-    *  /usr/lib/libsent.a; 
-    *  /usr/lib/libjulius.a
+    /usr/lib/libsent.a; 
+    /usr/lib/libjulius.a
 
 ###  Fedora:
 
