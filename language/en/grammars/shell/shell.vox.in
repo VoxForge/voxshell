@@ -16,6 +16,7 @@
 # be a problem if the triphones do not exist (Julius tells you when this
 # happens).  You may need to add your own *logical* to *physical* triphone mapping
 # to tiedlist file (not as complicated as it sounds...)
+#[@GRAMMAR_ROOT@/shell/scripts/ruby_weather.rb] 
 [@GRAMMAR_ROOT@/shell/scripts/weather.sh] WEATHER IS-IT-CLOUDY IS-IT-SUNNY
 [firefox -remote openurl(https://ca-mg6.mail.yahoo.com/neo/launch?.partner=rogers-acs)] EMAIL MAIL
 [ls] LIST-FILES FILES

@@ -15,7 +15,7 @@ Extract the github zip file to a directory.
 
 #### install voxshell compile dependencies
 
-     $ sudo yum install gcc glibc-devel libgcc alsa-lib alsa-lib-devel pulseaudio-libs pulseaudio-libs-devel alsa-plugins-pulseaudio
+     $ sudo yum install gcc glibc-devel libgcc alsa-lib alsa-lib-devel
 
 #### install Julia
 
@@ -27,7 +27,7 @@ Extract the github zip file to a directory.
 
 #### install voxshell compile dependencies
 
-      $ sudo apt-get install build-essential libasound2-dev libasound2-plugins libc6 libc6-dev zlib1g-dev libpulse-dev
+      $ sudo apt-get install build-essential libasound2-dev libasound2-plugins libc6 libc6-dev zlib1g-dev 
 
 #### install Julia
 
@@ -41,14 +41,16 @@ Extract the github zip file to a directory.
 #### to compile and install VoxShell binaries
 ##### to default (/usr/local/bin)
 
+  * $ autoreconf -ivf
   * $ configure
-  * $ make
+  * $ make -j
   * $ sudo make install
 
 ##### to another location
 
+  * $ autoreconf -ivf
   * $ configure --prefix=pathToVoxShell      # e.g. pathToVoxShell=full path to folder to install voxshell
-  * $ make
+  * $ make -j
   * $ sudo make install
 
 #### to compile grammars
@@ -95,7 +97,73 @@ Extract the github zip file to a directory.
 
       $ sudo apt-get install inxi festival
 
+
+
 ##  Windows:
 
-  Currently uses prebuilt binaries - no make required.
+#### Mingw
+
+  Download and install [Mingw installer](http://www.mingw.org/category/wiki/download) 
+
+#### install voxshell compile dependencies
+  
+  use the mingw-get GUI installer to install the following dependencies:
+
+  Basic Setup
+    Package
+      mingw-developer-toolkit
+      mingw32-base
+      msys-base
+  All Packages
+    MinGW
+      mingw32-autoconf
+      mingw32-autotools
+      mingw32-base
+      mingw32-binutils
+      mingw32-gcc
+      mingw32-libgcc
+      mingw32-libtool
+      mingw32-libz
+      mingw32-make
+      mingw32-mingwrt
+    MSYS
+      msys-autoconf
+      msys-automake
+      msys-base
+      msys-bash
+      msys-bison
+      msys-core
+      msys-coreutils
+      msys-dos2unix
+      msys-flex
+      msys-libz2
+      msys-m4
+      msys-make
+
+  msys is you unix-style command shell and is located at
+
+    C:\MinGW\msys\1.0\msys.bat
+
+  It is easiest to create a shortcut on your desktop of the msys start script.
+
+#### install Julia
+
+  Download and install [Julia](http://julialang.org/downloads/)
+
+  [Julia](http://julialang.org/) is the scripting language used to compile VoxShell grammars
+
+
+### build executable and compile grammars
+
+#### to compile and install VoxShell binaries
+##### to default (/usr/local/bin)
+
+  From an msys console, execute the following commands:
+
+  * $ git config core.autocrlf = input
+  * $ git clone git@github.com:VoxForge/voxshell.git
+  * $ autoreconf -ivf
+  * $ configure --prefix=pathToVoxShell      # e.g. pathToVoxShell=full path to folder to install voxshell
+  * $ make -j
+  * $ sudo make install
 

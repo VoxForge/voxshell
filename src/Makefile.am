@@ -1,5 +1,5 @@
 bin_PROGRAMS = voxshell
-voxshell_SOURCES = voxshell.c
+voxshell_SOURCES = voxshell.c voxshell.h
 voxshell_CFLAGS = -Wall -g -O2
 voxshell_CPPFLAGS = -Iinclude -I../lib/libjulius/include -I../lib/libsent/include `libjulius-config --cflags` `libsent-config --cflags`
 voxshell_LDADD= ../lib/libjulius/libjulius.la ../lib/libsent/libsent.la

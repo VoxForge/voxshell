@@ -22,13 +22,10 @@ $(TARGETS): $(SOURCES)
 
 ##### files to be included in 'make install'
 appdir=$(datadir)/@GRAM_INST_DIR@/$(APP)
-dist_app_DATA = $(TARGETS)
+dist_app_SCRIPTS = $(TARGETS)
 
 appscriptdir=$(datadir)/@GRAM_INST_DIR@/$(APP)/scripts
 dist_appscript_DATA = $(APPSCRIPTS)
-
-install-data-hook:
-	chmod +x $(appscriptdir)/*
 
 ##### files to be included in 'make dist'
 EXTRA_DIST = \

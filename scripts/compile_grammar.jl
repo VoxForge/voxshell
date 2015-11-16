@@ -152,7 +152,6 @@ function vfvoca2dict(vocafile,dic,dictfile)
     function process_compound_word(command, word)
       compound_word=split(word,r"\-")
       write(dictfile_fh, "$(newid)\t$command ")
-      #for word=compound_word
       for i=1:length(compound_word)-1
         word=dic_hash[compound_word[i]]
         #write(dictfile_fh, "$word sp ") # do you really need a sort pause???
@@ -200,7 +199,7 @@ function vfvoca2dict(vocafile,dic,dictfile)
         newid=newid+1
       elseif ismatch(r"\<s\>", line) # get a bounds error if search for <s> or </s>
         write(dictfile_fh, "$(newid)\t[<s>] sil\n")
-      elseif ismatch(r"\<\/s\>", line) # get a bounds error if search for <s> or </s>
+      elseif ismatch(r"\<\/s\>", line) 
         write(dictfile_fh, "$(newid)\t[</s>] sil\n")
       else
         processLine(newid, line)
@@ -219,12 +218,7 @@ function main (grammar_prefix, gramfile, vocafile, termfile, dfafile, dictfile, 
   workingfolder=mktempdir()
   println("workingfolder: $(workingfolder)")
   rgramfile= "$(workingfolder)/g$(getpid()).grammar"
-#  gramfile="$(grammar_prefix).grammar"
-#  vocafile=grammar_prefix * ".vox"
-#  termfile=grammar_prefix * ".term"
   tmpvocafile="$(workingfolder)/g$(getpid()).vox"
-#  dfafile=grammar_prefix * ".dfa"
-#  dictfile="$(grammar_prefix).dict"
   headerfile="$(workingfolder)/g$(getpid()).h"
   tmpdfafile="$(dfafile).tmp"
 
