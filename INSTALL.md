@@ -6,16 +6,18 @@ Extract the github zip file to a directory.
 
 Follow the instructions on github to clone voxshell to your computer
 
-  git clone https://github.com/VoxForge/voxshell.git
+  * git clone https://github.com/VoxForge/voxshell.git
 
 ## Linux software prerequisites
 
   remove all [Julius](http://julius.osdn.jp/en_index.php) executables and development packages.
 
-  remove Julius header files in: /usr/include/julius; and
-  and remove static libraries:
-    /usr/lib/libsent.a
-    /usr/lib/libjulius.a
+  remove Julius header files in: 
+    * /usr/include/julius; 
+
+  remove static libraries:
+    *  /usr/lib/libsent.a; 
+    *  /usr/lib/libjulius.a
 
 ###  Fedora:
 
