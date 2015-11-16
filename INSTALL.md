@@ -2,6 +2,12 @@
 
 Extract the github zip file to a directory.
 
+- or- 
+
+Follow the instructions on github to clone voxshell to your computer
+
+  git clone https://github.com/VoxForge/voxshell.git
+
 ## Linux software prerequisites
 
   remove all [Julius](http://julius.osdn.jp/en_index.php) executables and development packages.
@@ -49,13 +55,9 @@ Extract the github zip file to a directory.
 ##### to another location
 
   * $ autoreconf -ivf
-  * $ configure --prefix=pathToVoxShell      # e.g. pathToVoxShell=full path to folder to install voxshell
+  * $ configure --prefix=pathToVoxShell      # e.g. pathToVoxShell=*full path* to folder where voxshell is to be installed
   * $ make -j
   * $ sudo make install
-
-#### to compile grammars
-
-    $ make grammar
 
 ## Grammar Dependencies
 
@@ -83,7 +85,7 @@ Extract the github zip file to a directory.
 
   Ubuntu:
 
-      $ sudo apt-get install wmctrl xdotool   
+      $ sudo apt-get install wmctrl xdotool
 
 ### Shell grammar
 
@@ -102,11 +104,15 @@ Extract the github zip file to a directory.
 ##  Windows:
 
 #### Mingw
+  
+  MingW is preferred over Cynwin because an executable created using MingW 
+  can be executed in a regular Windows Command Prompt window without any
+  additional files. 
 
   Download and install [Mingw installer](http://www.mingw.org/category/wiki/download) 
 
 #### install voxshell compile dependencies
-  
+
   use the mingw-get GUI installer to install the following dependencies:
 
   Basic Setup
@@ -166,4 +172,6 @@ Extract the github zip file to a directory.
   * $ configure --prefix=pathToVoxShell      # e.g. pathToVoxShell=full path to folder to install voxshell
   * $ make -j
   * $ sudo make install
+
+  
 
