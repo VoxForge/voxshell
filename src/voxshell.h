@@ -48,6 +48,16 @@
 # include <sys/wait.h>
 #endif /* VF_WINDOWS */
 
+// Internationalization & Localization
+#include <config.h>
+#include <locale.h>
+#include "gettext.h"
+#define _(string) gettext (string)
+
+
+
+
+
 // Callback to be called when start waiting speech input.
 static void status_recready(Recog *recog, void *dummy);
 

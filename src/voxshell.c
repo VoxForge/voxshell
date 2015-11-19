@@ -27,6 +27,12 @@
 int
 main(int argc, char *argv[])
 {
+
+  // Localization
+  setlocale (LC_ALL, "");
+  bindtextdomain (PACKAGE,
+                  LOCALEDIR);
+  textdomain (PACKAGE);
   /**
    * configuration parameter holder
    * 
@@ -53,7 +59,7 @@ main(int argc, char *argv[])
   /* if no argument, output usage and exit */
   if (argc == 1) 
   {
-    fprintf(stderr, "Julius rev.%s - based on ", JULIUS_VERSION);
+    fprintf(stderr, _("Julius rev.%s - based on "), JULIUS_VERSION);
     j_put_version(stderr);
     fprintf(stderr, "Try '-setting' for built-in engine configuration.\n");
     fprintf(stderr, "Try '-help' for run time options.\n");

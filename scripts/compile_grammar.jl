@@ -242,8 +242,8 @@ end
 if length(ARGS) > 0 
   grammar_folder=ARGS[1] 
   grammar_prefix=ARGS[2] 
-  mkfa_dir=ARGS[3]
-  dfa_minimize_dir=ARGS[4]  
+  mkfa=ARGS[3]
+  dfa_minimize=ARGS[4]  
   voxforge_dict=ARGS[5] 
 
   # grammar prefix must be same for .vox and .grammar files
@@ -256,8 +256,6 @@ if length(ARGS) > 0
     error("can't find vox file: $(vocafile)")
   end
 
-  mkfa= @windows ? "$(mkfa_dir)/mkfa.exe" : "$(mkfa_dir)/mkfa"
-  dfa_minimize= @windows ? "$(dfa_minimize_dir)/dfa_minimize.exe" : "$(dfa_minimize_dir)/dfa_minimize"
   if ! isfile(mkfa)
     error("can't find mkfa executable: $(mkfa)")
   end

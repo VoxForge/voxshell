@@ -1,3 +1,0 @@
-need an empty m4 directory so that autotools will work; but git does not track
-folders, so creating this file so git will track the folder
-(see: http://stackoverflow.com/questions/115983/how-can-i-add-an-empty-directory-to-a-git-repository)

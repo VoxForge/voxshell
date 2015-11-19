@@ -7,6 +7,8 @@ LT_INIT
 AC_PROG_CC
 AM_PROG_CC_C_O
 AC_CONFIG_HEADERS([src/config.h])
+AM_GNU_GETTEXT_VERSION([0.18.3])
+AM_GNU_GETTEXT([external])
 
 AC_MSG_CHECKING(for host type)
 case "$host_os" in
@@ -19,6 +21,12 @@ case "$host_os" in
 esac
 AC_MSG_RESULT($host_os)
 
-AC_CONFIG_FILES([Makefile src/Makefile language/Makefile])
-AC_CONFIG_SUBDIRS([lib/libsent lib/libjulius lib/gramtools language/en])
+AC_CONFIG_FILES([Makefile src/Makefile language/Makefile po/Makefile.in])
+AC_CONFIG_SUBDIRS([ \
+lib/libsent \
+lib/libjulius \
+lib/gramtools \
+language/en \
+language/apps \
+])
 AC_OUTPUT
