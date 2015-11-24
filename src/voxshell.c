@@ -61,8 +61,8 @@ main(int argc, char *argv[])
   {
     fprintf(stderr, _("Julius rev.%s - based on "), JULIUS_VERSION);
     j_put_version(stderr);
-    fprintf(stderr, "Try '-setting' for built-in engine configuration.\n");
-    fprintf(stderr, "Try '-help' for run time options.\n");
+    fprintf(stderr, _("Try '-setting' for built-in engine configuration.\n") );
+    fprintf(stderr, _("Try '-help' for run time options.\n") );
     return -1;
   }
 
@@ -75,7 +75,7 @@ main(int argc, char *argv[])
   //jconf = j_config_load_file_new(jconf_filename);
   if (jconf == NULL) 
   {		/* error */
-    fprintf(stderr, "Try `-help' for more information.\n");
+    fprintf(stderr, _("Try `-help' for more information.\n"));
     return -1;
   }
   
@@ -87,7 +87,7 @@ main(int argc, char *argv[])
   if (recog == NULL) 
 
   {
-    fprintf(stderr, "Error in startup\n");
+    fprintf(stderr, _("Error in startup\n") );
     return -1;
   }
 
@@ -123,10 +123,10 @@ main(int argc, char *argv[])
     case 0:			/* succeeded */
       break;
     case -1:      		/* error */
-      fprintf(stderr, "error in input stream\n");
+      fprintf(stderr, _("error in input stream\n") );
       return(0);
     case -2:			/* end of recognition process */
-      fprintf(stderr, "failed to begin input stream\n");
+      fprintf(stderr, _("failed to begin input stream\n") );
       return(0);
   }
   
@@ -164,7 +164,7 @@ static void
 status_recready(Recog *recog, void *dummy)
 {
   if (recog->jconf->input.speech_input == SP_MIC || recog->jconf->input.speech_input == SP_NETAUDIO) {
-    fprintf(stderr, "<<< please speak >>>");
+    fprintf(stderr, _("<<< please speak >>>") );
   }
 }
 
@@ -190,25 +190,25 @@ process_status(RecogProcess *r)
   switch(r->result.status) 
   {
     case J_RESULT_STATUS_REJECT_POWER:
-      printf("<input rejected by power>\n");
+      printf( _("<input rejected by power>\n") );
       break;
     case J_RESULT_STATUS_TERMINATE:
-      printf("<input teminated by request>\n");
+      printf( _("<input teminated by request>\n") );
       break;
     case J_RESULT_STATUS_ONLY_SILENCE:
-      printf("<input rejected by decoder (silence input result)>\n");
+      printf( _("<input rejected by decoder (silence input result)>\n") );
       break;
     case J_RESULT_STATUS_REJECT_GMM:
-      printf("<input rejected by GMM>\n");
+      printf( _("<input rejected by GMM>\n") );
       break;
     case J_RESULT_STATUS_REJECT_SHORT:
-      printf("<input rejected by short input>\n");
+      printf( _("<input rejected by short input>\n") );
       break;
     case J_RESULT_STATUS_REJECT_LONG:
-      printf("<input rejected by long input>\n");
+      printf( _("<input rejected by long input>\n") );
       break;
     case J_RESULT_STATUS_FAIL:
-      printf("<search failed>\n");
+      printf( _("<search failed>\n") );
       printf("\a"); // ring terminal bell
       break;
   }
@@ -274,7 +274,7 @@ output_result(Recog *recog, void *dummy)
       {
         if (s->confidence[i] < min_confidence)
         {
-          printf("word %d confidence too low: %5.3f\n", i+1, s->confidence[i]);
+          printf( _("word %d confidence too low: %5.3f\n"), i+1, s->confidence[i]);
           skip=true;
         }
       }
@@ -288,7 +288,7 @@ output_result(Recog *recog, void *dummy)
         char *command = winfo->woutput[seq[seqnum-2]];
         if (command == NULL) 
         {
-          printf("[null result]\n");
+          printf( _("[null result]\n") );
         } 
         else
         {
@@ -393,12 +393,12 @@ void child(char *result)
 
   if (status < 0)
   {
-    printf("Warning: can't find command: %d\n"), status;
+    printf( _("Warning: can't find command: %d\n") ), status;
 
-    printf("command:[%s]\n", command);
+    printf( _("command:[%s]\n") ), command);
     for (i=0; i<arg_idx; i++)
     {
-      printf("argv: %d [%s]\n", i, argv[i]);
+      printf( _("argv: %d [%s]\n"), i, argv[i]);
     }
     exit(EXIT_FAILURE);
   }
@@ -440,7 +440,7 @@ lin_process_command(char command[])
     status = execvp(tokens[0], tokens); 
     if (status < 0)
     {
-      printf("Warning: can't find command: [%s]\n", tokens[0]);
+      printf( _("Warning: can't find command: [%s]\n"), tokens[0]);
       exit(EXIT_FAILURE);
     }
   }
@@ -485,7 +485,7 @@ parse_command(char result[], char *tokens[]) // modifies result string!
     }
     else
     {
-      printf("Warning: unsupported grammar character: [%c]\n", result[i]);
+      printf( _("Warning: unsupported grammar character: [%c]\n"), result[i]);
     }
 
     i++;

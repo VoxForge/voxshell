@@ -55,9 +55,6 @@
 #define _(string) gettext (string)
 
 
-
-
-
 // Callback to be called when start waiting speech input.
 static void status_recready(Recog *recog, void *dummy);
 

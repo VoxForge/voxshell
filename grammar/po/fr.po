@@ -1,0 +1,76 @@
+# #-#-#-#-#  fr.po_in (voxshell_apps 0.1)  #-#-#-#-#
+# French translations for voxshell_apps package.
+# Copyright (C) 2015 VoxForge
+# This file is distributed under the same license as the voxshell_apps package.
+# kmaclean <kmaclean@voxforge.org>, 2015.
+#
+# #-#-#-#-#  fr.po_bak (en 0.1)  #-#-#-#-#
+# French translations for en package.
+# Copyright (C) 2015 VoxForge
+# This file is distributed under the same license as the en package.
+# kmaclean <kmaclean@www.test.org>, 2015.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: en 0.1\n"
+"Report-Msgid-Bugs-To: contact@voxforge.org\n"
+"POT-Creation-Date: 2015-11-19 11:26-0500\n"
+"PO-Revision-Date: 2015-11-17 12:33-0500\n"
+"Last-Translator: kmaclean <kmaclean@www.test.org>\n"
+"Language-Team: French\n"
+"Language: fr\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=ASCII\n"
+"Content-Transfer-Encoding: 8bit\n"
+"#-#-#-#-#  fr.po_in (voxshell_apps 0.1)  #-#-#-#-#\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"#-#-#-#-#  fr.po_bak (en 0.1)  #-#-#-#-#\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+
+#: rhythmbox/rhythmbox_voxcreate.c:35
+msgid "UH WELL HUM"
+msgstr ""
+
+#: rhythmbox/rhythmbox_voxcreate.c:39
+msgid "RHYTHMBOX PLAYER MUSIC"
+msgstr "JOUEUR MUSIQUE"
+
+#: rhythmbox/rhythmbox_voxcreate.c:43
+msgid "PLAY START"
+msgstr "JOUE JOUER COMMENCE"
+
+#: rhythmbox/rhythmbox_voxcreate.c:44
+msgid "NEXT SKIP"
+msgstr "PROCHAIN SUIVANT"
+
+#: rhythmbox/rhythmbox_voxcreate.c:45
+msgid "PREVIOUS BACK"
+msgstr "PRECEDENT"
+
+#: rhythmbox/rhythmbox_voxcreate.c:46
+msgid "SHOW WHO ABOUT INFORMATION"
+msgstr "QUI-EST"
+
+#: rhythmbox/rhythmbox_voxcreate.c:47
+msgid "UP LOUDER"
+msgstr "PLUS-FORT"
+
+#: rhythmbox/rhythmbox_voxcreate.c:48
+msgid "DOWN LOWER SOFTER QUIETER"
+msgstr "PLUS-DOUX"
+
+#: rhythmbox/rhythmbox_voxcreate.c:49
+msgid "SILENCE STOP QUIET MUTE"
+msgstr ""
+
+#: rhythmbox/rhythmbox_voxcreate.c:52
+msgid "FAST-FORWARD ADVANCE"
+msgstr "AVANCE"
+
+#: rhythmbox/rhythmbox_voxcreate.c:53
+msgid "REWIND GO-BACK"
+msgstr "REMBOBINER"
+
+#~ msgid "SILENCE STOP QUIET"
+#~ msgstr "SILENCE ARRETE"

@@ -21,12 +21,8 @@ case "$host_os" in
 esac
 AC_MSG_RESULT($host_os)
 
-AC_CONFIG_FILES([Makefile src/Makefile language/Makefile po/Makefile.in])
-AC_CONFIG_SUBDIRS([ \
-lib/libsent \
-lib/libjulius \
-lib/gramtools \
-language/en \
-language/apps \
-])
+AC_SUBST(SHARE_FOLDER, [voxshell]) # !!!!!! already definedin language/apps config file...
+
+AC_CONFIG_FILES([Makefile src/Makefile po/Makefile.in])
+AC_CONFIG_SUBDIRS([lib/libsent lib/libjulius lib/gramtools grammar])
 AC_OUTPUT

@@ -1,0 +1,45 @@
+% NS_B
+[] <s>
+
+% NS_E
+[] </s>
+
+% FILLER
+[] UH WELL HUM
+
+% MUSIC_PLAYER 
+[] RHYTHMBOX PLAYER MUSIC
+
+% CONTROL
+[rhythmbox-client --play] PLAY START
+[rhythmbox-client --next] NEXT SKIP
+[rhythmbox-client --previous] PREVIOUS BACK
+[@GRAMMAR_ROOT@/rhythmbox/scripts/show.sh] SHOW WHO ABOUT INFORMATION
+[rhythmbox-client --volume-up] UP LOUDER
+[rhythmbox-client --volume-down] DOWN LOWER SOFTER QUIETER
+[rhythmbox-client --pause] SILENCE STOP QUIET
+[@GRAMMAR_ROOT@/rhythmbox/scripts/dbus_fastforward.sh] FAST-FORWARD ADVANCE
+[@GRAMMAR_ROOT@/rhythmbox/scripts/dbus_rewind.sh] REWIND GO-BACK
+
+% PLAY
+[] PLAY
+
+% ARTIST
+[@GRAMMAR_ROOT@/rhythmbox/scripts/search.sh arcade fire] ARCADE-FIRE
+[@GRAMMAR_ROOT@/rhythmbox/scripts/search.sh police] POLICE
+[@GRAMMAR_ROOT@/rhythmbox/scripts/search.sh radiohead] RADIO-HEAD
+[@GRAMMAR_ROOT@/rhythmbox/scripts/search.sh U2] U-TWO
+
+% ALBUMS
+[@GRAMMAR_ROOT@/rhythmbox/scripts/search.sh The Police] BEST-OF-POLICE
+[@GRAMMAR_ROOT@/rhythmbox/scripts/search.sh Police Every Breath] POLICE-EVERY-BREATH
+[@GRAMMAR_ROOT@/rhythmbox/scripts/search.sh U2 best of] BEST-OF-U-TWO
+[@GRAMMAR_ROOT@/rhythmbox/scripts/search.sh U2 Zooropa] U-TWO-ZOOP-ROPE-A
+[@GRAMMAR_ROOT@/rhythmbox/scripts/search.sh radiohead best of] BEST-OF-RADIO-HEAD
+[@GRAMMAR_ROOT@/rhythmbox/scripts/search.sh radiohead OK Computer] OK-COMPUTER
+
+% GENRE
+[@GRAMMAR_ROOT@/rhythmbox/scripts/search.sh rock] ROCK ROCK-AND-ROLL
+
+
+

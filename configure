@@ -638,6 +638,7 @@ am__EXEEXT_TRUE
 LTLIBOBJS
 LIBOBJS
 subdirs
+SHARE_FOLDER
 POSUB
 LTLIBINTL
 LIBINTL
@@ -793,13 +794,7 @@ LDFLAGS
 LIBS
 CPPFLAGS
 CPP'
-ac_subdirs_all=' \
-lib/libsent \
-lib/libjulius \
-lib/gramtools \
-language/en \
-language/apps \
-'
+ac_subdirs_all='lib/libsent lib/libjulius lib/gramtools grammar'
 
 # Initialize some variables set by options.
 ac_init_help=
@@ -14165,11 +14160,14 @@ esac
 { $as_echo "$as_me:${as_lineno-$LINENO}: result: $host_os" >&5
 $as_echo "$host_os" >&6; }
 
-ac_config_files="$ac_config_files Makefile src/Makefile language/Makefile po/Makefile.in"
+SHARE_FOLDER=voxshell
+ # !!!!!! already definedin language/apps config file...
+
+ac_config_files="$ac_config_files Makefile src/Makefile po/Makefile.in"
 
 
 
-subdirs="$subdirs lib/libsent lib/libjulius lib/gramtools language/en language/apps"
+subdirs="$subdirs lib/libsent lib/libjulius lib/gramtools grammar"
 
 cat >confcache <<\_ACEOF
 # This file is a shell script that caches the results of configure
@@ -15190,7 +15188,6 @@ do
     "po-directories") CONFIG_COMMANDS="$CONFIG_COMMANDS po-directories" ;;
     "Makefile") CONFIG_FILES="$CONFIG_FILES Makefile" ;;
     "src/Makefile") CONFIG_FILES="$CONFIG_FILES src/Makefile" ;;
-    "language/Makefile") CONFIG_FILES="$CONFIG_FILES language/Makefile" ;;
     "po/Makefile.in") CONFIG_FILES="$CONFIG_FILES po/Makefile.in" ;;
 
   *) as_fn_error $? "invalid argument: \`$ac_config_target'" "$LINENO" 5;;

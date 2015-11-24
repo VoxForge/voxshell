@@ -1,0 +1,62 @@
+# French translations for voxshell_apps package.
+# Copyright (C) 2015 VoxForge
+# This file is distributed under the same license as the voxshell_apps package.
+# kmaclean <kmaclean@voxforge.org>, 2015.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: voxshell_apps 0.1\n"
+"Report-Msgid-Bugs-To: contact@voxforge.org\n"
+"POT-Creation-Date: 2015-11-19 11:26-0500\n"
+"PO-Revision-Date: 2015-11-19 13:49-0500\n"
+"Last-Translator: kmaclean <kmaclean@voxforge.org>\n"
+"Language-Team: French\n"
+"Language: fr\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=ASCII\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+
+#: rhythmbox/rhythmbox_voxcreate.c:35
+msgid "UH WELL HUM"
+msgstr ""
+
+#: rhythmbox/rhythmbox_voxcreate.c:39
+msgid "RHYTHMBOX PLAYER MUSIC"
+msgstr ""
+
+#: rhythmbox/rhythmbox_voxcreate.c:43
+msgid "PLAY START"
+msgstr ""
+
+#: rhythmbox/rhythmbox_voxcreate.c:44
+msgid "NEXT SKIP"
+msgstr ""
+
+#: rhythmbox/rhythmbox_voxcreate.c:45
+msgid "PREVIOUS BACK"
+msgstr ""
+
+#: rhythmbox/rhythmbox_voxcreate.c:46
+msgid "SHOW WHO ABOUT INFORMATION"
+msgstr ""
+
+#: rhythmbox/rhythmbox_voxcreate.c:47
+msgid "UP LOUDER"
+msgstr ""
+
+#: rhythmbox/rhythmbox_voxcreate.c:48
+msgid "DOWN LOWER SOFTER QUIETER"
+msgstr ""
+
+#: rhythmbox/rhythmbox_voxcreate.c:49
+msgid "SILENCE STOP QUIET MUTE"
+msgstr ""
+
+#: rhythmbox/rhythmbox_voxcreate.c:52
+msgid "FAST-FORWARD ADVANCE"
+msgstr ""
+
+#: rhythmbox/rhythmbox_voxcreate.c:53
+msgid "REWIND GO-BACK"
+msgstr ""
