@@ -6662,7 +6662,7 @@ fi
 
 ac_config_headers="$ac_config_headers config.h"
 
-ac_config_files="$ac_config_files po/Makefile.in Makefile rhythmbox/Makefile"
+ac_config_files="$ac_config_files po/Makefile.in language/Makefile Makefile rhythmbox/Makefile"
 
 
 # source directories
@@ -6696,7 +6696,7 @@ $as_echo "$host_os" >&6; }
 COMPILE_GRAMMAR=scripts/compile_grammar.jl
 
 
-VOXFORGE_DICT=grammar/language/en_voxforgedict.txt
+VOXFORGE_DICT=grammar/language/en/voxforgedict.txt
 
 GRAM_SOURCE_DIR=grammar
 
@@ -7451,6 +7451,7 @@ do
     "depfiles") CONFIG_COMMANDS="$CONFIG_COMMANDS depfiles" ;;
     "config.h") CONFIG_HEADERS="$CONFIG_HEADERS config.h" ;;
     "po/Makefile.in") CONFIG_FILES="$CONFIG_FILES po/Makefile.in" ;;
+    "language/Makefile") CONFIG_FILES="$CONFIG_FILES language/Makefile" ;;
     "Makefile") CONFIG_FILES="$CONFIG_FILES Makefile" ;;
     "rhythmbox/Makefile") CONFIG_FILES="$CONFIG_FILES rhythmbox/Makefile" ;;
 

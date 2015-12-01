@@ -9,6 +9,7 @@ AC_PROG_CC
 AC_CONFIG_HEADERS([config.h])
 AC_CONFIG_FILES([ \
 po/Makefile.in \
+language/Makefile \
 Makefile \
 rhythmbox/Makefile \
 ])
@@ -35,7 +36,7 @@ esac
 AC_MSG_RESULT($host_os)
 AC_SUBST(COMPILE_GRAMMAR, [scripts/compile_grammar.jl])
 
-AC_SUBST(VOXFORGE_DICT, [grammar/language/en_voxforgedict.txt])
+AC_SUBST(VOXFORGE_DICT, [grammar/language/en/voxforgedict.txt])
 AC_SUBST(GRAM_SOURCE_DIR, [grammar])
 AC_SUBST(WIN_GRAM_SOURCE_DIR, [language/en/windows])
 

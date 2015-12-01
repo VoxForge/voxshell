@@ -81,7 +81,7 @@ host_triplet = @host@
 subdir = .
 DIST_COMMON = $(srcdir)/Makefile.in $(srcdir)/Makefile.am \
 	$(top_srcdir)/configure $(am__configure_deps) \
-	$(srcdir)/config.h.in $(dist_datafiles_DATA) ABOUT-NLS \
+	$(srcdir)/config.h.in $(dist_readme_DATA) ABOUT-NLS \
 	build-aux/config.guess build-aux/config.rpath \
 	build-aux/config.sub build-aux/depcomp build-aux/install-sh \
 	build-aux/missing $(top_srcdir)/build-aux/config.guess \
@@ -158,8 +158,8 @@ am__uninstall_files_from_dir = { \
     || { echo " ( cd '$$dir' && rm -f" $$files ")"; \
          $(am__cd) "$$dir" && rm -f $$files; }; \
   }
-am__installdirs = "$(DESTDIR)$(datafilesdir)"
-DATA = $(dist_datafiles_DATA)
+am__installdirs = "$(DESTDIR)$(readmedir)"
+DATA = $(dist_readme_DATA)
 RECURSIVE_CLEAN_TARGETS = mostlyclean-recursive clean-recursive	\
   distclean-recursive maintainer-clean-recursive
 am__recursive_targets = \
@@ -355,21 +355,17 @@ target_alias = @target_alias@
 top_build_prefix = @top_build_prefix@
 top_builddir = @top_builddir@
 top_srcdir = @top_srcdir@
-SUBDIRS = po rhythmbox
+SUBDIRS = po rhythmbox language
 ACLOCAL_AMFLAGS = -I m4
-datafilesdir = $(datadir)/@SHARE_FOLDER@/language
-dist_datafiles_DATA = \
-language/en_tiedlist \
-language/en_hmmdefs \
-language/en_voxforgedict.txt \
-language/en_voxshell.jconf \
-language/en_grammar_list
+readmedir = $(datadir)/@SHARE_FOLDER@/language
+dist_readme_DATA = \
+../README.md
 
 
 ##### files to be included in 'make dist'
 EXTRA_DIST = \
 build-aux/config.rpath \
-$(dist_datafiles_DATA)
+$(dist_readme_DATA)
 
 all: config.h
 	$(MAKE) $(AM_MAKEFLAGS) all-recursive
@@ -424,27 +420,27 @@ $(srcdir)/config.h.in:  $(am__configure_deps)
 
 distclean-hdr:
 	-rm -f config.h stamp-h1
-install-dist_datafilesDATA: $(dist_datafiles_DATA)
+install-dist_readmeDATA: $(dist_readme_DATA)
 	@$(NORMAL_INSTALL)
-	@list='$(dist_datafiles_DATA)'; test -n "$(datafilesdir)" || list=; \
+	@list='$(dist_readme_DATA)'; test -n "$(readmedir)" || list=; \
 	if test -n "$$list"; then \
-	  echo " $(MKDIR_P) '$(DESTDIR)$(datafilesdir)'"; \
-	  $(MKDIR_P) "$(DESTDIR)$(datafilesdir)" || exit 1; \
+	  echo " $(MKDIR_P) '$(DESTDIR)$(readmedir)'"; \
+	  $(MKDIR_P) "$(DESTDIR)$(readmedir)" || exit 1; \
 	fi; \
 	for p in $$list; do \
 	  if test -f "$$p"; then d=; else d="$(srcdir)/"; fi; \
 	  echo "$$d$$p"; \
 	done | $(am__base_list) | \
 	while read files; do \
-	  echo " $(INSTALL_DATA) $$files '$(DESTDIR)$(datafilesdir)'"; \
-	  $(INSTALL_DATA) $$files "$(DESTDIR)$(datafilesdir)" || exit $$?; \
+	  echo " $(INSTALL_DATA) $$files '$(DESTDIR)$(readmedir)'"; \
+	  $(INSTALL_DATA) $$files "$(DESTDIR)$(readmedir)" || exit $$?; \
 	done
 
-uninstall-dist_datafilesDATA:
+uninstall-dist_readmeDATA:
 	@$(NORMAL_UNINSTALL)
-	@list='$(dist_datafiles_DATA)'; test -n "$(datafilesdir)" || list=; \
+	@list='$(dist_readme_DATA)'; test -n "$(readmedir)" || list=; \
 	files=`for p in $$list; do echo $$p; done | sed -e 's|^.*/||'`; \
-	dir='$(DESTDIR)$(datafilesdir)'; $(am__uninstall_files_from_dir)
+	dir='$(DESTDIR)$(readmedir)'; $(am__uninstall_files_from_dir)
 
 # This directory's subdirectories are mostly independent; you can cd
 # into them and run 'make' without going through this Makefile.
@@ -738,7 +734,7 @@ check: check-recursive
 all-am: Makefile $(DATA) config.h
 installdirs: installdirs-recursive
 installdirs-am:
-	for dir in "$(DESTDIR)$(datafilesdir)"; do \
+	for dir in "$(DESTDIR)$(readmedir)"; do \
 	  test -z "$$dir" || $(MKDIR_P) "$$dir"; \
 	done
 install: install-recursive
@@ -792,7 +788,7 @@ info: info-recursive
 
 info-am:
 
-install-data-am: install-dist_datafilesDATA
+install-data-am: install-dist_readmeDATA
 
 install-dvi: install-dvi-recursive
 
@@ -838,7 +834,7 @@ ps: ps-recursive
 
 ps-am:
 
-uninstall-am: uninstall-dist_datafilesDATA
+uninstall-am: uninstall-dist_readmeDATA
 
 .MAKE: $(am__recursive_targets) all install-am install-strip
 
@@ -849,7 +845,7 @@ uninstall-am: uninstall-dist_datafilesDATA
 	distcheck distclean distclean-generic distclean-hdr \
 	distclean-tags distcleancheck distdir distuninstallcheck dvi \
 	dvi-am html html-am info info-am install install-am \
-	install-data install-data-am install-dist_datafilesDATA \
+	install-data install-data-am install-dist_readmeDATA \
 	install-dvi install-dvi-am install-exec install-exec-am \
 	install-html install-html-am install-info install-info-am \
 	install-man install-pdf install-pdf-am install-ps \
@@ -857,7 +853,7 @@ uninstall-am: uninstall-dist_datafilesDATA
 	installdirs installdirs-am maintainer-clean \
 	maintainer-clean-generic mostlyclean mostlyclean-generic pdf \
 	pdf-am ps ps-am tags tags-am uninstall uninstall-am \
-	uninstall-dist_datafilesDATA
+	uninstall-dist_readmeDATA
 
 
 # Tell versions [3.59,3.63) of GNU make to not export all variables.
