@@ -5,9 +5,13 @@ AM_INIT_AUTOMAKE([foreign -Wall -Werror])
 AM_GNU_GETTEXT_VERSION([0.18.3])
 AM_GNU_GETTEXT([external])
 
+AM_PROG_AR
+LT_INIT
+
 AC_PROG_CC
 AC_CONFIG_HEADERS([config.h])
 AC_CONFIG_FILES([ \
+lib/Makefile \
 po/Makefile.in \
 language/Makefile \
 Makefile \

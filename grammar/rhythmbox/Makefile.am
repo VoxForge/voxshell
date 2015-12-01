@@ -7,8 +7,8 @@ scripts/show.sh
 # compile source code
 #bin_PROGRAMS = rhythmbox_voxcreate
 noinst_PROGRAMS = rhythmbox_voxcreate
-rhythmbox_voxcreate_SOURCES = rhythmbox_voxcreate.c ../include/gettext.h get_parameters.c
-LDADD = $(LIBINTL)
+rhythmbox_voxcreate_SOURCES = rhythmbox_voxcreate.c 
+LDADD = $(LIBINTL) ../lib/libget_parameters.la
 
 AM_CPPFLAGS = -DLOCALEDIR=\"$(localedir)\"
 

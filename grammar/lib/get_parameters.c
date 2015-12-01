@@ -1,6 +1,6 @@
 #ifndef GET_PARAMETERS_H
 #define GET_PARAMETERS_H
-#include "get_parameters.h"
+#include "../include/get_parameters.h"
 #endif /* GET_PARAMETERS_H */
 
 // get user parameters from command line

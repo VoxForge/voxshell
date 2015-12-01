@@ -51,7 +51,7 @@
 // Internationalization & Localization
 #include <config.h>
 #include <locale.h>
-#include "gettext.h"
+#include "../include/gettext.h"
 #define _(string) gettext (string)
 
 
