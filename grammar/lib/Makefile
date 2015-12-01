@@ -283,6 +283,7 @@ SHELL = /bin/sh
 STRIP = strip
 USE_NLS = yes
 VERSION = 0.1
+VF_LANGUAGE = en
 VOXFORGE_DICT = grammar/language/en/voxforgedict.txt
 VOXSHELL_SOURCE_ROOT = ..
 WIN_GRAM_SOURCE_DIR = language/en/windows

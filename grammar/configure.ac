@@ -48,8 +48,14 @@ AC_SUBST(WIN_GRAM_SOURCE_DIR, [language/en/windows])
 # location of grammar files after 'make install'
 AC_SUBST(GRAMMAR_ROOT, [share/voxshell/grammar])
 
+VF_LANGUAGE=`echo $LANG | cut -f1 -d_`
+AC_SUBST(VF_LANGUAGE)
+
+AC_CHECK_FILE([language/$VF_LANGUAGE/grammar_list],,AC_MSG_ERROR([grammar_list not found in language/$VF_LANGUAGE]))
+AC_CHECK_FILE([language/$VF_LANGUAGE/hmmdefs],,AC_MSG_ERROR([hmmdefs not found in language/$VF_LANGUAGE]))
+AC_CHECK_FILE([language/$VF_LANGUAGE/tiedlist],,AC_MSG_ERROR([tiedlist not found in language/$VF_LANGUAGE]))
+AC_CHECK_FILE([language/$VF_LANGUAGE/voxforgedict.txt],,AC_MSG_ERROR([voxforgedict.txt not found in language/$VF_LANGUAGE]))
+AC_CHECK_FILE([language/$VF_LANGUAGE/voxshell.jconf],,AC_MSG_ERROR([voxshell.jconf not found in language/$VF_LANGUAGE]))
+
 # configure script replaces @VAR@ variables in *.in files (e.g. firefox.vox.in)
-#AC_OUTPUT( \
-#language/en_grammar_list \
-#)
 AC_OUTPUT()

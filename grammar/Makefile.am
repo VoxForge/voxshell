@@ -1,4 +1,4 @@
-SUBDIRS = po rhythmbox language
+SUBDIRS = language po rhythmbox
 
 ACLOCAL_AMFLAGS = -I m4
 

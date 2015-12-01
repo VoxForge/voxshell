@@ -15,19 +15,21 @@ AM_CPPFLAGS = -DLOCALEDIR=\"$(localedir)\"
 # compile grammars
 SOURCES= $(APP).vox $(APP).grammar
 TARGETS= $(APP).dict $(APP).term $(APP).dfa
-CLEANFILES=$(TARGETS)
+CLEANFILES=$(TARGETS) $(APP).vox
 
 VF_ROOT=$(abs_top_builddir)/@VOXSHELL_SOURCE_ROOT@
 GRAMMAR_FOLDER=@GRAM_SOURCE_DIR@/$(APP)
 
 all: $(TARGETS) 
 
-# so it doesn't try to run this script 3 times, one for each target
+# so it doesn't try to run this script 3 times, once for each target
 .NOTPARALLEL: $(TARGETS)
  
-$(TARGETS): rhythmbox_voxcreate $(SOURCES) 
-	./rhythmbox_voxcreate --grammar @GRAMMAR_ROOT@ > rhythmbox.vox
+$(TARGETS): rhythmbox_voxcreate $(SOURCES)
 	cd $(VF_ROOT) && julia @COMPILE_GRAMMAR@ $(GRAMMAR_FOLDER) $(APP) @MKFA@ @DFA_MINIMIZE@ @VOXFORGE_DICT@
+
+$(APP).vox: rhythmbox_voxcreate
+	LANG=$(LANG) ./rhythmbox_voxcreate --grammar @GRAMMAR_ROOT@ > rhythmbox.vox
 
 ##### files to be included in 'make install'
 appdir=$(datadir)/@GRAM_INST_DIR@/$(APP)
@@ -41,6 +43,3 @@ EXTRA_DIST = \
 $(SOURCES) \
 $(TARGETS) \
 $(APPSCRIPTS) 
-
-
-

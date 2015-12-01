@@ -1,10 +1,10 @@
 datafilesdir=$(datadir)/@SHARE_FOLDER@/language/en
 dist_datafiles_DATA = \
-en/tiedlist \
-en/hmmdefs \
-en/voxforgedict.txt \
-en/voxshell.jconf \
-en/grammar_list
+@VF_LANGUAGE@/tiedlist \
+@VF_LANGUAGE@/hmmdefs \
+@VF_LANGUAGE@/voxforgedict.txt \
+@VF_LANGUAGE@/voxshell.jconf \
+@VF_LANGUAGE@/grammar_list
 
 ##### files to be included in 'make dist'
 EXTRA_DIST = \

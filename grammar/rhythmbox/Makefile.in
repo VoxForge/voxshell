@@ -284,6 +284,7 @@ SHELL = @SHELL@
 STRIP = @STRIP@
 USE_NLS = @USE_NLS@
 VERSION = @VERSION@
+VF_LANGUAGE = @VF_LANGUAGE@
 VOXFORGE_DICT = @VOXFORGE_DICT@
 VOXSHELL_SOURCE_ROOT = @VOXSHELL_SOURCE_ROOT@
 WIN_GRAM_SOURCE_DIR = @WIN_GRAM_SOURCE_DIR@
@@ -356,7 +357,7 @@ AM_CPPFLAGS = -DLOCALEDIR=\"$(localedir)\"
 # compile grammars
 SOURCES = $(APP).vox $(APP).grammar
 TARGETS = $(APP).dict $(APP).term $(APP).dfa
-CLEANFILES = $(TARGETS)
+CLEANFILES = $(TARGETS) $(APP).vox
 VF_ROOT = $(abs_top_builddir)/@VOXSHELL_SOURCE_ROOT@
 GRAMMAR_FOLDER = @GRAM_SOURCE_DIR@/$(APP)
 
@@ -723,12 +724,14 @@ uninstall-am: uninstall-dist_appDATA uninstall-dist_appscriptSCRIPTS
 
 all: $(TARGETS) 
 
-# so it doesn't try to run this script 3 times, one for each target
+# so it doesn't try to run this script 3 times, once for each target
 .NOTPARALLEL: $(TARGETS)
 
-$(TARGETS): rhythmbox_voxcreate $(SOURCES) 
-	./rhythmbox_voxcreate --grammar @GRAMMAR_ROOT@ > rhythmbox.vox
+$(TARGETS): rhythmbox_voxcreate $(SOURCES)
 	cd $(VF_ROOT) && julia @COMPILE_GRAMMAR@ $(GRAMMAR_FOLDER) $(APP) @MKFA@ @DFA_MINIMIZE@ @VOXFORGE_DICT@
+
+$(APP).vox: rhythmbox_voxcreate
+	LANG=$(LANG) ./rhythmbox_voxcreate --grammar @GRAMMAR_ROOT@ > rhythmbox.vox
 
 # Tell versions [3.59,3.63) of GNU make to not export all variables.
 # Otherwise a system limit (for SysV at least) may be exceeded.
