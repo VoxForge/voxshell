@@ -1,14 +1,12 @@
-APP=rhythmbox
+APP=firefox
 APPSCRIPTS= \
-scripts/dbus_fastforward.sh \
-scripts/dbus_rewind.sh \
-scripts/search.sh \
-scripts/show.sh
+scripts/page_down.sh \
+scripts/page_up.sh \
+scripts/start.sh
 
 # compile source code
-#bin_PROGRAMS = rhythmbox_voxcreate
-noinst_PROGRAMS = rhythmbox_voxcreate
-rhythmbox_voxcreate_SOURCES = rhythmbox_voxcreate.c 
+noinst_PROGRAMS = firefox_voxcreate
+firefox_voxcreate_SOURCES = firefox_voxcreate.c 
 LDADD = $(LIBINTL) ../lib/libget_parameters.la
 
 AM_CPPFLAGS = -DLOCALEDIR=\"$(localedir)\"

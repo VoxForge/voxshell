@@ -1,4 +1,11 @@
-SUBDIRS = language po rhythmbox
+SUBDIRS = language \
+po \
+rhythmbox \
+voxforge \
+gnome \
+libreoffice \
+firefox \
+terminal
 
 ACLOCAL_AMFLAGS = -I m4
 

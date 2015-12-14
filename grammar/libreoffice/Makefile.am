@@ -1,14 +1,13 @@
-APP=rhythmbox
+APP=libreoffice
 APPSCRIPTS= \
-scripts/dbus_fastforward.sh \
-scripts/dbus_rewind.sh \
-scripts/search.sh \
-scripts/show.sh
+scripts/open.sh \
+scripts/page_down.sh \
+scripts/page_up.sh \
+scripts/start.sh
 
 # compile source code
-#bin_PROGRAMS = rhythmbox_voxcreate
-noinst_PROGRAMS = rhythmbox_voxcreate
-rhythmbox_voxcreate_SOURCES = rhythmbox_voxcreate.c 
+noinst_PROGRAMS = libreoffice_voxcreate
+libreoffice_voxcreate_SOURCES = libreoffice_voxcreate.c 
 LDADD = $(LIBINTL) ../lib/libget_parameters.la
 
 AM_CPPFLAGS = -DLOCALEDIR=\"$(localedir)\"

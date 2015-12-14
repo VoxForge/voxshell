@@ -80,8 +80,8 @@ PRE_UNINSTALL = :
 POST_UNINSTALL = :
 build_triplet = @build@
 host_triplet = @host@
-noinst_PROGRAMS = rhythmbox_voxcreate$(EXEEXT)
-subdir = rhythmbox
+noinst_PROGRAMS = voxforge_voxcreate$(EXEEXT)
+subdir = voxforge
 DIST_COMMON = $(srcdir)/Makefile.in $(srcdir)/Makefile.am \
 	$(dist_appscript_SCRIPTS) $(top_srcdir)/build-aux/depcomp \
 	$(dist_app_DATA)
@@ -101,11 +101,11 @@ CONFIG_HEADER = $(top_builddir)/config.h
 CONFIG_CLEAN_FILES =
 CONFIG_CLEAN_VPATH_FILES =
 PROGRAMS = $(noinst_PROGRAMS)
-am_rhythmbox_voxcreate_OBJECTS = rhythmbox_voxcreate.$(OBJEXT)
-rhythmbox_voxcreate_OBJECTS = $(am_rhythmbox_voxcreate_OBJECTS)
-rhythmbox_voxcreate_LDADD = $(LDADD)
+am_voxforge_voxcreate_OBJECTS = voxforge_voxcreate.$(OBJEXT)
+voxforge_voxcreate_OBJECTS = $(am_voxforge_voxcreate_OBJECTS)
+voxforge_voxcreate_LDADD = $(LDADD)
 am__DEPENDENCIES_1 =
-rhythmbox_voxcreate_DEPENDENCIES = $(am__DEPENDENCIES_1) \
+voxforge_voxcreate_DEPENDENCIES = $(am__DEPENDENCIES_1) \
 	../lib/libget_parameters.la
 AM_V_lt = $(am__v_lt_@AM_V@)
 am__v_lt_ = $(am__v_lt_@AM_DEFAULT_V@)
@@ -174,7 +174,7 @@ AM_V_CCLD = $(am__v_CCLD_@AM_V@)
 am__v_CCLD_ = $(am__v_CCLD_@AM_DEFAULT_V@)
 am__v_CCLD_0 = @echo "  CCLD    " $@;
 am__v_CCLD_1 = 
-DIST_SOURCES = $(rhythmbox_voxcreate_SOURCES)
+DIST_SOURCES = $(voxforge_voxcreate_SOURCES)
 am__can_run_installinfo = \
   case $$AM_UPDATE_INFO_DIR in \
     n|no|NO) false;; \
@@ -343,14 +343,9 @@ target_alias = @target_alias@
 top_build_prefix = @top_build_prefix@
 top_builddir = @top_builddir@
 top_srcdir = @top_srcdir@
-APP = rhythmbox
-APPSCRIPTS = \
-scripts/dbus_fastforward.sh \
-scripts/dbus_rewind.sh \
-scripts/search.sh \
-scripts/show.sh
-
-rhythmbox_voxcreate_SOURCES = rhythmbox_voxcreate.c 
+APP = voxforge
+APPSCRIPTS = scripts/search.sh
+voxforge_voxcreate_SOURCES = voxforge_voxcreate.c 
 LDADD = $(LIBINTL) ../lib/libget_parameters.la
 AM_CPPFLAGS = -DLOCALEDIR=\"$(localedir)\"
 
@@ -386,9 +381,9 @@ $(srcdir)/Makefile.in:  $(srcdir)/Makefile.am  $(am__configure_deps)
 	      exit 1;; \
 	  esac; \
 	done; \
-	echo ' cd $(top_srcdir) && $(AUTOMAKE) --foreign rhythmbox/Makefile'; \
+	echo ' cd $(top_srcdir) && $(AUTOMAKE) --foreign voxforge/Makefile'; \
 	$(am__cd) $(top_srcdir) && \
-	  $(AUTOMAKE) --foreign rhythmbox/Makefile
+	  $(AUTOMAKE) --foreign voxforge/Makefile
 .PRECIOUS: Makefile
 Makefile: $(srcdir)/Makefile.in $(top_builddir)/config.status
 	@case '$?' in \
@@ -417,9 +412,9 @@ clean-noinstPROGRAMS:
 	echo " rm -f" $$list; \
 	rm -f $$list
 
-rhythmbox_voxcreate$(EXEEXT): $(rhythmbox_voxcreate_OBJECTS) $(rhythmbox_voxcreate_DEPENDENCIES) $(EXTRA_rhythmbox_voxcreate_DEPENDENCIES) 
-	@rm -f rhythmbox_voxcreate$(EXEEXT)
-	$(AM_V_CCLD)$(LINK) $(rhythmbox_voxcreate_OBJECTS) $(rhythmbox_voxcreate_LDADD) $(LIBS)
+voxforge_voxcreate$(EXEEXT): $(voxforge_voxcreate_OBJECTS) $(voxforge_voxcreate_DEPENDENCIES) $(EXTRA_voxforge_voxcreate_DEPENDENCIES) 
+	@rm -f voxforge_voxcreate$(EXEEXT)
+	$(AM_V_CCLD)$(LINK) $(voxforge_voxcreate_OBJECTS) $(voxforge_voxcreate_LDADD) $(LIBS)
 install-dist_appscriptSCRIPTS: $(dist_appscript_SCRIPTS)
 	@$(NORMAL_INSTALL)
 	@list='$(dist_appscript_SCRIPTS)'; test -n "$(appscriptdir)" || list=; \
@@ -462,7 +457,7 @@ mostlyclean-compile:
 distclean-compile:
 	-rm -f *.tab.c
 
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/rhythmbox_voxcreate.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/voxforge_voxcreate.Po@am__quote@
 
 .c.o:
 @am__fastdepCC_TRUE@	$(AM_V_CC)$(COMPILE) -MT $@ -MD -MP -MF $(DEPDIR)/$*.Tpo -c -o $@ $<

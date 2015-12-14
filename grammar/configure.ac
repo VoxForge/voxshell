@@ -1,4 +1,4 @@
-AC_INIT([voxshell_apps], [0.1], [contact@voxforge.org])
+AC_INIT([voxshell_grammar], [0.1], [contact@voxforge.org])
 AC_CONFIG_AUX_DIR([build-aux])
 AM_INIT_AUTOMAKE([foreign -Wall -Werror])
 
@@ -17,6 +17,11 @@ po/Makefile.in \
 language/Makefile \
 Makefile \
 rhythmbox/Makefile \
+voxforge/Makefile \
+gnome/Makefile \
+libreoffice/Makefile \
+firefox/Makefile \
+terminal/Makefile \
 ])
 
 # source directories

@@ -462,6 +462,8 @@ parse_command(char result[], char *tokens[]) // modifies result string!
   {
     // see: http://www.theasciicode.com.ar/ascii-control-characters/escape-ascii-code-27.html
     // skip non-valid ASCII printable characters && special characters (&,|,<,>)
+    //TODO may need to let double quotes through for some xdotool commands:
+    //     e.g. xdotool search "Mozilla Firefox" windowactivate --sync key Next
     if ( (result[i] >= 32 && result[i] <= 126) &&
          (result[i] != '&' && result[i] != '|'  && 
           result[i] != '<' && result[i] != '>')

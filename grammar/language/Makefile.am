@@ -1,4 +1,4 @@
-datafilesdir=$(datadir)/@SHARE_FOLDER@/language/en
+datafilesdir=$(datadir)/@SHARE_FOLDER@/language/@VF_LANGUAGE@
 dist_datafiles_DATA = \
 @VF_LANGUAGE@/tiedlist \
 @VF_LANGUAGE@/hmmdefs \

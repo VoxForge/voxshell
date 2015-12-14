@@ -1,14 +1,13 @@
-APP=rhythmbox
+APP=gnome
 APPSCRIPTS= \
-scripts/dbus_fastforward.sh \
-scripts/dbus_rewind.sh \
-scripts/search.sh \
-scripts/show.sh
+scripts/next_workspace.sh \
+scripts/open.sh \
+scripts/previous_workspace.sh
 
 # compile source code
 #bin_PROGRAMS = rhythmbox_voxcreate
-noinst_PROGRAMS = rhythmbox_voxcreate
-rhythmbox_voxcreate_SOURCES = rhythmbox_voxcreate.c 
+noinst_PROGRAMS = gnome_voxcreate
+gnome_voxcreate_SOURCES = gnome_voxcreate.c 
 LDADD = $(LIBINTL) ../lib/libget_parameters.la
 
 AM_CPPFLAGS = -DLOCALEDIR=\"$(localedir)\"

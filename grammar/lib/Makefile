@@ -62,10 +62,10 @@ am__make_running_with_option = \
   test $$has_opt = yes
 am__make_dryrun = (target_option=n; $(am__make_running_with_option))
 am__make_keepgoing = (target_option=k; $(am__make_running_with_option))
-pkgdatadir = $(datadir)/voxshell_apps
-pkgincludedir = $(includedir)/voxshell_apps
-pkglibdir = $(libdir)/voxshell_apps
-pkglibexecdir = $(libexecdir)/voxshell_apps
+pkgdatadir = $(datadir)/voxshell_grammar
+pkgincludedir = $(includedir)/voxshell_grammar
+pkglibdir = $(libdir)/voxshell_grammar
+pkglibexecdir = $(libexecdir)/voxshell_grammar
 am__cd = CDPATH="$${ZSH_VERSION+.}$(PATH_SEPARATOR)" && cd
 install_sh_DATA = $(install_sh) -c -m 644
 install_sh_PROGRAM = $(install_sh) -c
@@ -266,11 +266,11 @@ OBJDUMP = objdump
 OBJEXT = o
 OTOOL = 
 OTOOL64 = 
-PACKAGE = voxshell_apps
+PACKAGE = voxshell_grammar
 PACKAGE_BUGREPORT = contact@voxforge.org
-PACKAGE_NAME = voxshell_apps
-PACKAGE_STRING = voxshell_apps 0.1
-PACKAGE_TARNAME = voxshell_apps
+PACKAGE_NAME = voxshell_grammar
+PACKAGE_STRING = voxshell_grammar 0.1
+PACKAGE_TARNAME = voxshell_grammar
 PACKAGE_URL = 
 PACKAGE_VERSION = 0.1
 PATH_SEPARATOR = :

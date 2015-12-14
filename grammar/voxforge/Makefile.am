@@ -1,14 +1,9 @@
-APP=rhythmbox
-APPSCRIPTS= \
-scripts/dbus_fastforward.sh \
-scripts/dbus_rewind.sh \
-scripts/search.sh \
-scripts/show.sh
+APP=voxforge
+APPSCRIPTS= scripts/search.sh
 
 # compile source code
-#bin_PROGRAMS = rhythmbox_voxcreate
-noinst_PROGRAMS = rhythmbox_voxcreate
-rhythmbox_voxcreate_SOURCES = rhythmbox_voxcreate.c 
+noinst_PROGRAMS = voxforge_voxcreate
+voxforge_voxcreate_SOURCES = voxforge_voxcreate.c 
 LDADD = $(LIBINTL) ../lib/libget_parameters.la
 
 AM_CPPFLAGS = -DLOCALEDIR=\"$(localedir)\"

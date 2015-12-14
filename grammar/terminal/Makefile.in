@@ -15,7 +15,6 @@
 @SET_MAKE@
 
 
-
 VPATH = @srcdir@
 am__is_gnu_make = test -n '$(MAKEFILE_LIST)' && test -n '$(MAKELEVEL)'
 am__make_running_with_option = \
@@ -80,11 +79,10 @@ PRE_UNINSTALL = :
 POST_UNINSTALL = :
 build_triplet = @build@
 host_triplet = @host@
-noinst_PROGRAMS = rhythmbox_voxcreate$(EXEEXT)
-subdir = rhythmbox
+noinst_PROGRAMS = terminal_voxcreate$(EXEEXT)
+subdir = terminal
 DIST_COMMON = $(srcdir)/Makefile.in $(srcdir)/Makefile.am \
-	$(dist_appscript_SCRIPTS) $(top_srcdir)/build-aux/depcomp \
-	$(dist_app_DATA)
+	$(top_srcdir)/build-aux/depcomp $(dist_app_DATA)
 ACLOCAL_M4 = $(top_srcdir)/aclocal.m4
 am__aclocal_m4_deps = $(top_srcdir)/m4/gettext.m4 \
 	$(top_srcdir)/m4/iconv.m4 $(top_srcdir)/m4/intlmacosx.m4 \
@@ -101,45 +99,16 @@ CONFIG_HEADER = $(top_builddir)/config.h
 CONFIG_CLEAN_FILES =
 CONFIG_CLEAN_VPATH_FILES =
 PROGRAMS = $(noinst_PROGRAMS)
-am_rhythmbox_voxcreate_OBJECTS = rhythmbox_voxcreate.$(OBJEXT)
-rhythmbox_voxcreate_OBJECTS = $(am_rhythmbox_voxcreate_OBJECTS)
-rhythmbox_voxcreate_LDADD = $(LDADD)
+am_terminal_voxcreate_OBJECTS = terminal_voxcreate.$(OBJEXT)
+terminal_voxcreate_OBJECTS = $(am_terminal_voxcreate_OBJECTS)
+terminal_voxcreate_LDADD = $(LDADD)
 am__DEPENDENCIES_1 =
-rhythmbox_voxcreate_DEPENDENCIES = $(am__DEPENDENCIES_1) \
+terminal_voxcreate_DEPENDENCIES = $(am__DEPENDENCIES_1) \
 	../lib/libget_parameters.la
 AM_V_lt = $(am__v_lt_@AM_V@)
 am__v_lt_ = $(am__v_lt_@AM_DEFAULT_V@)
 am__v_lt_0 = --silent
 am__v_lt_1 = 
-am__vpath_adj_setup = srcdirstrip=`echo "$(srcdir)" | sed 's|.|.|g'`;
-am__vpath_adj = case $$p in \
-    $(srcdir)/*) f=`echo "$$p" | sed "s|^$$srcdirstrip/||"`;; \
-    *) f=$$p;; \
-  esac;
-am__strip_dir = f=`echo $$p | sed -e 's|^.*/||'`;
-am__install_max = 40
-am__nobase_strip_setup = \
-  srcdirstrip=`echo "$(srcdir)" | sed 's/[].[^$$\\*|]/\\\\&/g'`
-am__nobase_strip = \
-  for p in $$list; do echo "$$p"; done | sed -e "s|$$srcdirstrip/||"
-am__nobase_list = $(am__nobase_strip_setup); \
-  for p in $$list; do echo "$$p $$p"; done | \
-  sed "s| $$srcdirstrip/| |;"' / .*\//!s/ .*/ ./; s,\( .*\)/[^/]*$$,\1,' | \
-  $(AWK) 'BEGIN { files["."] = "" } { files[$$2] = files[$$2] " " $$1; \
-    if (++n[$$2] == $(am__install_max)) \
-      { print $$2, files[$$2]; n[$$2] = 0; files[$$2] = "" } } \
-    END { for (dir in files) print dir, files[dir] }'
-am__base_list = \
-  sed '$$!N;$$!N;$$!N;$$!N;$$!N;$$!N;$$!N;s/\n/ /g' | \
-  sed '$$!N;$$!N;$$!N;$$!N;s/\n/ /g'
-am__uninstall_files_from_dir = { \
-  test -z "$$files" \
-    || { test ! -d "$$dir" && test ! -f "$$dir" && test ! -r "$$dir"; } \
-    || { echo " ( cd '$$dir' && rm -f" $$files ")"; \
-         $(am__cd) "$$dir" && rm -f $$files; }; \
-  }
-am__installdirs = "$(DESTDIR)$(appscriptdir)" "$(DESTDIR)$(appdir)"
-SCRIPTS = $(dist_appscript_SCRIPTS)
 AM_V_P = $(am__v_P_@AM_V@)
 am__v_P_ = $(am__v_P_@AM_DEFAULT_V@)
 am__v_P_0 = false
@@ -174,12 +143,40 @@ AM_V_CCLD = $(am__v_CCLD_@AM_V@)
 am__v_CCLD_ = $(am__v_CCLD_@AM_DEFAULT_V@)
 am__v_CCLD_0 = @echo "  CCLD    " $@;
 am__v_CCLD_1 = 
-DIST_SOURCES = $(rhythmbox_voxcreate_SOURCES)
+DIST_SOURCES = $(terminal_voxcreate_SOURCES)
 am__can_run_installinfo = \
   case $$AM_UPDATE_INFO_DIR in \
     n|no|NO) false;; \
     *) (install-info --version) >/dev/null 2>&1;; \
   esac
+am__vpath_adj_setup = srcdirstrip=`echo "$(srcdir)" | sed 's|.|.|g'`;
+am__vpath_adj = case $$p in \
+    $(srcdir)/*) f=`echo "$$p" | sed "s|^$$srcdirstrip/||"`;; \
+    *) f=$$p;; \
+  esac;
+am__strip_dir = f=`echo $$p | sed -e 's|^.*/||'`;
+am__install_max = 40
+am__nobase_strip_setup = \
+  srcdirstrip=`echo "$(srcdir)" | sed 's/[].[^$$\\*|]/\\\\&/g'`
+am__nobase_strip = \
+  for p in $$list; do echo "$$p"; done | sed -e "s|$$srcdirstrip/||"
+am__nobase_list = $(am__nobase_strip_setup); \
+  for p in $$list; do echo "$$p $$p"; done | \
+  sed "s| $$srcdirstrip/| |;"' / .*\//!s/ .*/ ./; s,\( .*\)/[^/]*$$,\1,' | \
+  $(AWK) 'BEGIN { files["."] = "" } { files[$$2] = files[$$2] " " $$1; \
+    if (++n[$$2] == $(am__install_max)) \
+      { print $$2, files[$$2]; n[$$2] = 0; files[$$2] = "" } } \
+    END { for (dir in files) print dir, files[dir] }'
+am__base_list = \
+  sed '$$!N;$$!N;$$!N;$$!N;$$!N;$$!N;$$!N;s/\n/ /g' | \
+  sed '$$!N;$$!N;$$!N;$$!N;s/\n/ /g'
+am__uninstall_files_from_dir = { \
+  test -z "$$files" \
+    || { test ! -d "$$dir" && test ! -f "$$dir" && test ! -r "$$dir"; } \
+    || { echo " ( cd '$$dir' && rm -f" $$files ")"; \
+         $(am__cd) "$$dir" && rm -f $$files; }; \
+  }
+am__installdirs = "$(DESTDIR)$(appdir)"
 DATA = $(dist_app_DATA)
 am__tagged_files = $(HEADERS) $(SOURCES) $(TAGS_FILES) $(LISP)
 # Read a list of newline-separated strings from the standard input,
@@ -343,14 +340,8 @@ target_alias = @target_alias@
 top_build_prefix = @top_build_prefix@
 top_builddir = @top_builddir@
 top_srcdir = @top_srcdir@
-APP = rhythmbox
-APPSCRIPTS = \
-scripts/dbus_fastforward.sh \
-scripts/dbus_rewind.sh \
-scripts/search.sh \
-scripts/show.sh
-
-rhythmbox_voxcreate_SOURCES = rhythmbox_voxcreate.c 
+APP = terminal
+terminal_voxcreate_SOURCES = terminal_voxcreate.c 
 LDADD = $(LIBINTL) ../lib/libget_parameters.la
 AM_CPPFLAGS = -DLOCALEDIR=\"$(localedir)\"
 
@@ -365,13 +356,11 @@ GRAMMAR_FOLDER = @GRAM_SOURCE_DIR@/$(APP)
 appdir = $(datadir)/@GRAM_INST_DIR@/$(APP)
 dist_app_DATA = $(TARGETS)
 appscriptdir = $(datadir)/@GRAM_INST_DIR@/$(APP)/scripts
-dist_appscript_SCRIPTS = $(APPSCRIPTS)
 
 ##### files to be included in 'make dist'
 EXTRA_DIST = \
 $(SOURCES) \
-$(TARGETS) \
-$(APPSCRIPTS) 
+$(TARGETS)
 
 all: all-am
 
@@ -386,9 +375,9 @@ $(srcdir)/Makefile.in:  $(srcdir)/Makefile.am  $(am__configure_deps)
 	      exit 1;; \
 	  esac; \
 	done; \
-	echo ' cd $(top_srcdir) && $(AUTOMAKE) --foreign rhythmbox/Makefile'; \
+	echo ' cd $(top_srcdir) && $(AUTOMAKE) --foreign terminal/Makefile'; \
 	$(am__cd) $(top_srcdir) && \
-	  $(AUTOMAKE) --foreign rhythmbox/Makefile
+	  $(AUTOMAKE) --foreign terminal/Makefile
 .PRECIOUS: Makefile
 Makefile: $(srcdir)/Makefile.in $(top_builddir)/config.status
 	@case '$?' in \
@@ -417,44 +406,9 @@ clean-noinstPROGRAMS:
 	echo " rm -f" $$list; \
 	rm -f $$list
 
-rhythmbox_voxcreate$(EXEEXT): $(rhythmbox_voxcreate_OBJECTS) $(rhythmbox_voxcreate_DEPENDENCIES) $(EXTRA_rhythmbox_voxcreate_DEPENDENCIES) 
-	@rm -f rhythmbox_voxcreate$(EXEEXT)
-	$(AM_V_CCLD)$(LINK) $(rhythmbox_voxcreate_OBJECTS) $(rhythmbox_voxcreate_LDADD) $(LIBS)
-install-dist_appscriptSCRIPTS: $(dist_appscript_SCRIPTS)
-	@$(NORMAL_INSTALL)
-	@list='$(dist_appscript_SCRIPTS)'; test -n "$(appscriptdir)" || list=; \
-	if test -n "$$list"; then \
-	  echo " $(MKDIR_P) '$(DESTDIR)$(appscriptdir)'"; \
-	  $(MKDIR_P) "$(DESTDIR)$(appscriptdir)" || exit 1; \
-	fi; \
-	for p in $$list; do \
-	  if test -f "$$p"; then d=; else d="$(srcdir)/"; fi; \
-	  if test -f "$$d$$p"; then echo "$$d$$p"; echo "$$p"; else :; fi; \
-	done | \
-	sed -e 'p;s,.*/,,;n' \
-	    -e 'h;s|.*|.|' \
-	    -e 'p;x;s,.*/,,;$(transform)' | sed 'N;N;N;s,\n, ,g' | \
-	$(AWK) 'BEGIN { files["."] = ""; dirs["."] = 1; } \
-	  { d=$$3; if (dirs[d] != 1) { print "d", d; dirs[d] = 1 } \
-	    if ($$2 == $$4) { files[d] = files[d] " " $$1; \
-	      if (++n[d] == $(am__install_max)) { \
-		print "f", d, files[d]; n[d] = 0; files[d] = "" } } \
-	    else { print "f", d "/" $$4, $$1 } } \
-	  END { for (d in files) print "f", d, files[d] }' | \
-	while read type dir files; do \
-	     if test "$$dir" = .; then dir=; else dir=/$$dir; fi; \
-	     test -z "$$files" || { \
-	       echo " $(INSTALL_SCRIPT) $$files '$(DESTDIR)$(appscriptdir)$$dir'"; \
-	       $(INSTALL_SCRIPT) $$files "$(DESTDIR)$(appscriptdir)$$dir" || exit $$?; \
-	     } \
-	; done
-
-uninstall-dist_appscriptSCRIPTS:
-	@$(NORMAL_UNINSTALL)
-	@list='$(dist_appscript_SCRIPTS)'; test -n "$(appscriptdir)" || exit 0; \
-	files=`for p in $$list; do echo "$$p"; done | \
-	       sed -e 's,.*/,,;$(transform)'`; \
-	dir='$(DESTDIR)$(appscriptdir)'; $(am__uninstall_files_from_dir)
+terminal_voxcreate$(EXEEXT): $(terminal_voxcreate_OBJECTS) $(terminal_voxcreate_DEPENDENCIES) $(EXTRA_terminal_voxcreate_DEPENDENCIES) 
+	@rm -f terminal_voxcreate$(EXEEXT)
+	$(AM_V_CCLD)$(LINK) $(terminal_voxcreate_OBJECTS) $(terminal_voxcreate_LDADD) $(LIBS)
 
 mostlyclean-compile:
 	-rm -f *.$(OBJEXT)
@@ -462,7 +416,7 @@ mostlyclean-compile:
 distclean-compile:
 	-rm -f *.tab.c
 
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/rhythmbox_voxcreate.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/terminal_voxcreate.Po@am__quote@
 
 .c.o:
 @am__fastdepCC_TRUE@	$(AM_V_CC)$(COMPILE) -MT $@ -MD -MP -MF $(DEPDIR)/$*.Tpo -c -o $@ $<
@@ -596,9 +550,9 @@ distdir: $(DISTFILES)
 	done
 check-am: all-am
 check: check-am
-all-am: Makefile $(PROGRAMS) $(SCRIPTS) $(DATA)
+all-am: Makefile $(PROGRAMS) $(DATA)
 installdirs:
-	for dir in "$(DESTDIR)$(appscriptdir)" "$(DESTDIR)$(appdir)"; do \
+	for dir in "$(DESTDIR)$(appdir)"; do \
 	  test -z "$$dir" || $(MKDIR_P) "$$dir"; \
 	done
 install: install-am
@@ -655,7 +609,7 @@ info: info-am
 
 info-am:
 
-install-data-am: install-dist_appDATA install-dist_appscriptSCRIPTS
+install-data-am: install-dist_appDATA
 
 install-dvi: install-dvi-am
 
@@ -701,7 +655,7 @@ ps: ps-am
 
 ps-am:
 
-uninstall-am: uninstall-dist_appDATA uninstall-dist_appscriptSCRIPTS
+uninstall-am: uninstall-dist_appDATA
 
 .MAKE: install-am install-strip
 
@@ -710,19 +664,18 @@ uninstall-am: uninstall-dist_appDATA uninstall-dist_appscriptSCRIPTS
 	ctags-am distclean distclean-compile distclean-generic \
 	distclean-libtool distclean-tags distdir dvi dvi-am html \
 	html-am info info-am install install-am install-data \
-	install-data-am install-dist_appDATA \
-	install-dist_appscriptSCRIPTS install-dvi install-dvi-am \
-	install-exec install-exec-am install-html install-html-am \
-	install-info install-info-am install-man install-pdf \
-	install-pdf-am install-ps install-ps-am install-strip \
-	installcheck installcheck-am installdirs maintainer-clean \
-	maintainer-clean-generic mostlyclean mostlyclean-compile \
-	mostlyclean-generic mostlyclean-libtool pdf pdf-am ps ps-am \
-	tags tags-am uninstall uninstall-am uninstall-dist_appDATA \
-	uninstall-dist_appscriptSCRIPTS
+	install-data-am install-dist_appDATA install-dvi \
+	install-dvi-am install-exec install-exec-am install-html \
+	install-html-am install-info install-info-am install-man \
+	install-pdf install-pdf-am install-ps install-ps-am \
+	install-strip installcheck installcheck-am installdirs \
+	maintainer-clean maintainer-clean-generic mostlyclean \
+	mostlyclean-compile mostlyclean-generic mostlyclean-libtool \
+	pdf pdf-am ps ps-am tags tags-am uninstall uninstall-am \
+	uninstall-dist_appDATA
 
 
-all: $(TARGETS) 
+all: $(TARGETS)
 
 # so it doesn't try to run this script 3 times, once for each target
 .NOTPARALLEL: $(TARGETS)
