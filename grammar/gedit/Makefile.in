@@ -345,19 +345,7 @@ top_builddir = @top_builddir@
 top_srcdir = @top_srcdir@
 APP = gedit
 APPSCRIPTS = \
-scripts/find.sh \
-scripts/pagedown.sh \
-scripts/pageup.sh \
-scripts/replace.sh \
-scripts/save.sh \
-scripts/start.sh \
-scripts/close.sh \
-scripts/quit.sh \
-scripts/open.sh \
-scripts/tableft.sh \
-scripts/tabright.sh \
-scripts/undo.sh \
-scripts/redo.sh 
+scripts/start.sh
 
 gedit_voxcreate_SOURCES = gedit_voxcreate.c 
 LDADD = $(LIBINTL) ../lib/libget_parameters.la

@@ -1,18 +1,7 @@
 APP=gedit
 APPSCRIPTS= \
-scripts/find.sh \
-scripts/pagedown.sh \
-scripts/pageup.sh \
-scripts/replace.sh \
-scripts/save.sh \
-scripts/start.sh \
-scripts/close.sh \
-scripts/quit.sh \
-scripts/open.sh \
-scripts/tableft.sh \
-scripts/tabright.sh \
-scripts/undo.sh \
-scripts/redo.sh 
+scripts/start.sh
+
 
 # compile source code
 noinst_PROGRAMS = gedit_voxcreate
