@@ -1,8 +1,22 @@
-APP=terminal
+APP=gedit
+APPSCRIPTS= \
+scripts/find.sh \
+scripts/pagedown.sh \
+scripts/pageup.sh \
+scripts/replace.sh \
+scripts/save.sh \
+scripts/start.sh \
+scripts/close.sh \
+scripts/quit.sh \
+scripts/open.sh \
+scripts/tableft.sh \
+scripts/tabright.sh \
+scripts/undo.sh \
+scripts/redo.sh 
 
 # compile source code
-noinst_PROGRAMS = terminal_voxcreate
-terminal_voxcreate_SOURCES = terminal_voxcreate.c 
+noinst_PROGRAMS = gedit_voxcreate
+gedit_voxcreate_SOURCES = gedit_voxcreate.c 
 LDADD = $(LIBINTL) ../lib/libget_parameters.la
 
 AM_CPPFLAGS = -DLOCALEDIR=\"$(localedir)\"
@@ -15,7 +29,7 @@ CLEANFILES=$(TARGETS) $(APP).vox
 VF_ROOT=$(abs_top_builddir)/@VOXSHELL_SOURCE_ROOT@
 GRAMMAR_FOLDER=@GRAM_SOURCE_DIR@/$(APP)
 
-all: $(TARGETS)
+all: $(TARGETS) 
 
 # so it doesn't try to run this script 3 times, once for each target
 .NOTPARALLEL: $(TARGETS)
@@ -31,8 +45,10 @@ appdir=$(datadir)/@GRAM_INST_DIR@/$(APP)
 dist_app_DATA = $(TARGETS)
 
 appscriptdir=$(datadir)/@GRAM_INST_DIR@/$(APP)/scripts
+dist_appscript_SCRIPTS = $(APPSCRIPTS)
 
 ##### files to be included in 'make dist'
 EXTRA_DIST = \
 $(SOURCES) \
-$(TARGETS)
+$(TARGETS) \
+$(APPSCRIPTS) 

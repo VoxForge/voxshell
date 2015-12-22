@@ -14256,7 +14256,7 @@ fi
 
 ac_config_headers="$ac_config_headers config.h"
 
-ac_config_files="$ac_config_files lib/Makefile po/Makefile.in language/Makefile Makefile rhythmbox/Makefile voxforge/Makefile gnome/Makefile libreoffice/Makefile firefox/Makefile terminal/Makefile"
+ac_config_files="$ac_config_files lib/Makefile po/Makefile.in language/Makefile Makefile rhythmbox/Makefile voxforge/Makefile gnome/Makefile libreoffice/Makefile firefox/Makefile gedit/Makefile"
 
 
 # source directories
@@ -15447,7 +15447,7 @@ do
     "gnome/Makefile") CONFIG_FILES="$CONFIG_FILES gnome/Makefile" ;;
     "libreoffice/Makefile") CONFIG_FILES="$CONFIG_FILES libreoffice/Makefile" ;;
     "firefox/Makefile") CONFIG_FILES="$CONFIG_FILES firefox/Makefile" ;;
-    "terminal/Makefile") CONFIG_FILES="$CONFIG_FILES terminal/Makefile" ;;
+    "gedit/Makefile") CONFIG_FILES="$CONFIG_FILES gedit/Makefile" ;;
 
   *) as_fn_error $? "invalid argument: \`$ac_config_target'" "$LINENO" 5;;
   esac

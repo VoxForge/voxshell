@@ -59,22 +59,30 @@ main(int argc, char *argv[])
   printf("[] "); puts(_("UH WELL HUM"));
   puts("");
 
-  puts("% TERMINAL");
-  printf("[] "); puts( _("TERMINAL COMMAND-LINE") );
+  puts("% GEDIT");
+  printf("[] "); puts( _("EDIT EDITOR G-EDIT") );
   puts("");
 
-  puts("% START");
-  printf("[bash] "); puts( _("START") );
-  puts("");
+  puts("% ACTION");
+  printf("[%s/gedit/scripts/find.sh] ",     parms.grammar_root); puts( _("FIND") );
+  printf("[%s/gedit/scripts/replace.sh] ",  parms.grammar_root); puts( _("REPLACE") );
+  printf("[%s/gedit/scripts/save.sh] ",     parms.grammar_root); puts( _("SAVE") );
+  printf("[%s/gedit/scripts/start.sh] ",    parms.grammar_root); puts( _("START NEW-TAB") );
+  printf("[%s/gedit/scripts/close.sh] ",    parms.grammar_root); puts( _("CLOSE") );
+  printf("[%s/gedit/scripts/open.sh] ",     parms.grammar_root); puts( _("OPEN") );
+  printf("[%s/gedit/scripts/quit.sh] ",     parms.grammar_root); puts( _("QUIT") );
+  printf("[%s/gedit/scripts/tableft.sh] ",  parms.grammar_root); puts( _("TAB-LEFT") );
+  printf("[%s/gedit/scripts/tabright.sh] ", parms.grammar_root); puts( _("TAB-RIGHT") );
+  printf("[%s/gedit/scripts/undo.sh] ",     parms.grammar_root); puts( _("UNDO") );
+  printf("[%s/gedit/scripts/redo.sh] ",     parms.grammar_root); puts( _("REDO") );
 
   puts("% PAGE");
   printf("[] "); puts( _("PAGE SCREEN") );
   puts("");
 
   puts("% PAGE_DIRECTION");
-  char *ff="[xdotool search gnome-terminal windowactivate --sync key";
-  printf("%s Next] ", ff); puts( _("DOWN") );
-  printf("%s Prior] ", ff); puts( _("UP") );
+  printf("[%s/gedit/scripts/pagedown.sh] ", parms.grammar_root); puts( _("DOWN FORWARD") );
+  printf("[%s/gedit/scripts/pageup.sh] ", parms.grammar_root); puts( _("UP BACK") );
   puts("");
 
   // exit program

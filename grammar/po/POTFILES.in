@@ -3,3 +3,5 @@ rhythmbox/rhythmbox_voxcreate.c
 gnome/gnome_voxcreate.c
 voxforge/voxforge_voxcreate.c
 libreoffice/libreoffice_voxcreate.c
+firefox/firefox_voxcreate.c
+gedit/gedit_voxcreate.c

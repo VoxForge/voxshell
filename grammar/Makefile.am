@@ -5,7 +5,7 @@ voxforge \
 gnome \
 libreoffice \
 firefox \
-terminal
+gedit
 
 ACLOCAL_AMFLAGS = -I m4
 

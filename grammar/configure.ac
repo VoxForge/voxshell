@@ -21,7 +21,7 @@ voxforge/Makefile \
 gnome/Makefile \
 libreoffice/Makefile \
 firefox/Makefile \
-terminal/Makefile \
+gedit/Makefile \
 ])
 
 # source directories

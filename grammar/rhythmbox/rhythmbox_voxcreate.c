@@ -1,24 +1,9 @@
 // Internationalization & Localization
-#ifndef CONFIG_H
-#define CONFIG_H
 #include <config.h>
-#endif /* CONFIG_H */
-
-#ifndef LOCALE_H
-#define LOCALE_H
 #include <locale.h>
-#endif /* GETTEXT_H */
-
-#ifndef GETTEXT_H
-#define GETTEXT_H
 #include "../include/gettext.h"
 #define _(string) gettext (string)
-#endif /* GETTEXT_H */
-
-#ifndef GET_PARAMETERS_H
-#define GET_PARAMETERS_H
 #include "../include/get_parameters.h"
-#endif /* GET_PARAMETERS_H */
 
 #define NUMARTISTS 4
 #define NUMALBUMS 6
