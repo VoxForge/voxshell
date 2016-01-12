@@ -345,8 +345,6 @@ top_builddir = @top_builddir@
 top_srcdir = @top_srcdir@
 APP = firefox
 APPSCRIPTS = \
-scripts/page_down.sh \
-scripts/page_up.sh \
 scripts/start.sh
 
 firefox_voxcreate_SOURCES = firefox_voxcreate.c 

@@ -48,7 +48,7 @@ main(int argc, char *argv[])
   puts("");
 
   puts("% START");
-  printf("[%s/libreoffice/scripts/start.sh] ", parms.grammar_root); puts( _("START") );
+  printf("[%s/firefox/scripts/start.sh] ", parms.grammar_root); puts( _("START") );
   puts("");
 
   puts("% PAGE");

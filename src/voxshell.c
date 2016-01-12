@@ -309,6 +309,7 @@ output_result(Recog *recog, void *dummy)
 }
 
 #ifdef VF_WINDOWS
+// exec parsed command
 void 
 win_process_command(char *result_str)
 {

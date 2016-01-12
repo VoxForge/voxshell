@@ -1,21 +1,8 @@
 // Internationalization & Localization
 #include <config.h>
-
-#ifndef LOCALE_H
-#define LOCALE_H
 #include <locale.h>
-#endif /* GETTEXT_H */
-
-#ifndef GETTEXT_H
-#define GETTEXT_H
 #include "../include/gettext.h"
-#define _(string) gettext (string)
-#endif /* GETTEXT_H */
-
-#ifndef GET_PARAMETERS_H
-#define GET_PARAMETERS_H
 #include "../include/get_parameters.h"
-#endif /* GET_PARAMETERS_H */
 
 #define NUMARTISTS 4
 #define NUMALBUMS 6
@@ -63,21 +50,23 @@ main(int argc, char *argv[])
   printf("[] "); puts( _("EDIT EDITOR G-EDIT") );
   puts("");
 
+  // hacky way to get xdotool to work with gedit
+  // see: 
   char *xdotool="[xdotool search --onlyvisible --limit 1 --class gedit windowactivate key --window 0 ";
 
   puts("% ACTION");
-  printf(xdotool); printf(" ctrl ctrl+f] "); puts( _("FIND") ); // first 'ctrl' keycode is ignored (but needs to be a valid xdotool keycode)
-  printf(xdotool); printf(" ctrl ctrl+h] "); puts( _("REPLACE") );
-  printf(xdotool); printf(" ctrl ctrl+s] "); puts( _("SAVE") );
-  printf(xdotool); printf(" ctrl ctrl+w] "); puts( _("CLOSE") );
-  printf(xdotool); printf(" ctrl ctrl+o] "); puts( _("OPEN") );
-  printf(xdotool); printf(" ctrl ctrl+q] "); puts( _("QUIT") );
-  printf(xdotool); printf(" ctrl+alt+Prior] "); puts( _("TAB-LEFT") ); // no need for leading dummy keycode when three keycodes in a row
-  printf(xdotool); printf(" ctrl+alt+Next] "); puts( _("TAB-RIGHT") );
-  printf(xdotool); printf(" ctrl ctrl+z] "); puts( _("UNDO") );
-  printf(xdotool); printf(" shift+ctrl+z] "); puts( _("REDO") );
-  printf(xdotool); printf(" ctrl ctrl+Home] "); puts( _("HOME BEGINNING FRONT") );
-  printf(xdotool); printf(" ctrl ctrl+End] "); puts( _("END BOTTOM") );
+  printf("%s ctrl ctrl+f] ", xdotool); puts( _("FIND") ); // first 'ctrl' keycode is ignored (but needs to be a valid xdotool keycode)
+  printf("%s ctrl ctrl+h] ", xdotool); puts( _("REPLACE") );
+  printf("%s ctrl ctrl+s] ", xdotool); puts( _("SAVE") );
+  printf("%s ctrl ctrl+w] ", xdotool); puts( _("CLOSE") );
+  printf("%s ctrl ctrl+o] ", xdotool); puts( _("OPEN") );
+  printf("%s ctrl ctrl+q] ", xdotool); puts( _("QUIT") );
+  printf("%s ctrl+alt+Prior] ", xdotool); puts( _("TAB-LEFT") ); // no need for leading dummy keycode when three keycodes in a row
+  printf("%s ctrl+alt+Next] ", xdotool); puts( _("TAB-RIGHT") );
+  printf("%s ctrl ctrl+z] ", xdotool); puts( _("UNDO") );
+  printf("%s shift+ctrl+z] ", xdotool); puts( _("REDO") );
+  printf("%s ctrl ctrl+Home] ", xdotool); puts( _("HOME BEGINNING FRONT") );
+  printf("%s ctrl ctrl+End] ", xdotool); puts( _("END BOTTOM") );
   printf("[%s/gedit/scripts/start.sh] ",    parms.grammar_root); puts( _("START NEW-TAB") );
   puts("");
 
@@ -86,8 +75,8 @@ main(int argc, char *argv[])
   puts("");
 
   puts("% PAGE_DIRECTION");
-  printf(xdotool); printf(" Prior Prior] "); puts( _("UP BACK") );
-  printf(xdotool); printf(" Next Next] "); puts( _("DOWN FORWARD") );
+  printf("%s Prior Prior] ", xdotool); puts( _("UP BACK") );
+  printf("%s Next Next] ", xdotool); puts( _("DOWN FORWARD") );
   puts("");
 
   // exit program

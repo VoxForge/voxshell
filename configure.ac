@@ -21,8 +21,16 @@ case "$host_os" in
 esac
 AC_MSG_RESULT($host_os)
 
+AC_CHECK_PROGS([DOXYGEN], [doxygen])
+if test -z "$DOXYGEN";
+   then AC_MSG_WARN([Doxygen not found - continuing without Doxygen support])
+fi
+AM_CONDITIONAL([HAVE_DOXYGEN],
+[test -n "$DOXYGEN"])AM_COND_IF([HAVE_DOXYGEN], [AC_CONFIG_FILES([docs/Doxyfile])])
+
+
 AC_SUBST(SHARE_FOLDER, [voxshell]) # !!!!!! already definedin language/apps config file...
 
-AC_CONFIG_FILES([Makefile src/Makefile po/Makefile.in])
+AC_CONFIG_FILES([Makefile src/Makefile po/Makefile.in docs/Makefile])
 AC_CONFIG_SUBDIRS([lib/libsent lib/libjulius lib/gramtools grammar])
 AC_OUTPUT

@@ -1,7 +1,5 @@
 APP=firefox
 APPSCRIPTS= \
-scripts/page_down.sh \
-scripts/page_up.sh \
 scripts/start.sh
 
 # compile source code
